@@ -1,0 +1,494 @@
+{
+  "contentVersion": "2026.10-ch1",
+  "puzzles": [
+    {
+      "id": "utat_math_01",
+      "category": "math",
+      "difficulty": 1,
+      "pools": [
+        "utat"
+      ],
+      "type": "numeric",
+      "prompt": "A train covers 180 km in 2 hours 30 minutes. What is its average speed in km/h?",
+      "answer": 72,
+      "explanation": "2 hours 30 minutes is 2.5 hours. Average speed = distance ÷ time = 180 ÷ 2.5 = 72 km/h.",
+      "timeLimitSec": 90,
+      "tolerance": 0,
+      "unit": "km/h"
+    },
+    {
+      "id": "utat_math_02",
+      "category": "math",
+      "difficulty": 2,
+      "pools": [
+        "utat"
+      ],
+      "type": "mcq",
+      "prompt": "A phone's price rises by 20% and then falls by 20%. Compared with the original price, the final price is:",
+      "options": [
+        "The same",
+        "4% lower",
+        "4% higher",
+        "2% lower"
+      ],
+      "answer": 1,
+      "explanation": "Percentages compound on the current price, not the original. 1.20 × 0.80 = 0.96, so the final price is 96% of the original — 4% lower. The 20% fall is taken from a bigger number than the 20% rise was.",
+      "timeLimitSec": 90
+    },
+    {
+      "id": "utat_logic_01",
+      "category": "logic",
+      "difficulty": 2,
+      "pools": [
+        "utat"
+      ],
+      "type": "mcq",
+      "prompt": "Anu, Bala, Chitra and Dev sit in a row facing north. Dev is at the left end. Chitra is not at either end. Bala sits immediately to the right of Anu. Who sits at the right end?",
+      "options": [
+        "Anu",
+        "Bala",
+        "Chitra",
+        "Dev"
+      ],
+      "answer": 1,
+      "explanation": "Number the seats 1 (left) to 4 (right). Dev takes seat 1. Chitra must be in seat 2 or 3. If Chitra were in seat 3, Anu and Bala would need two adjacent seats from {2, 4} — impossible. So Chitra is in seat 2, Anu in 3 and Bala in 4: Bala is at the right end.",
+      "timeLimitSec": 120
+    },
+    {
+      "id": "utat_pattern_01",
+      "category": "pattern",
+      "difficulty": 1,
+      "pools": [
+        "utat"
+      ],
+      "type": "numeric",
+      "prompt": "Find the next number: 2, 6, 12, 20, 30, ?",
+      "answer": 42,
+      "explanation": "The gaps are 4, 6, 8, 10 — rising by 2 each time — so the next gap is 12 and 30 + 12 = 42. (Equivalently, the terms are 1×2, 2×3, 3×4, 4×5, 5×6, so the next is 6×7 = 42.)",
+      "timeLimitSec": 90,
+      "tolerance": 0
+    },
+    {
+      "id": "utat_pattern_02",
+      "category": "pattern",
+      "difficulty": 2,
+      "pools": [
+        "utat"
+      ],
+      "type": "mcq",
+      "prompt": "Which number comes next: 1, 1, 2, 6, 24, ?",
+      "options": [
+        "48",
+        "96",
+        "120",
+        "144"
+      ],
+      "answer": 2,
+      "explanation": "Each term is the previous term multiplied by 1, 2, 3, 4, … in turn: 1×1 = 1, 1×2 = 2, 2×3 = 6, 6×4 = 24, so the next is 24×5 = 120. These are the factorials 0! to 5!.",
+      "timeLimitSec": 90
+    },
+    {
+      "id": "utat_reading_01",
+      "category": "reading",
+      "difficulty": 2,
+      "pools": [
+        "utat"
+      ],
+      "type": "mcq",
+      "prompt": "According to the passage, which statement is best supported?",
+      "options": [
+        "Solar pumps cost less to buy than diesel pumps",
+        "Farmers who need water at night must plan for storage",
+        "Subsidy paperwork is completed within a week",
+        "Diesel pumps are no longer used in villages"
+      ],
+      "answer": 1,
+      "explanation": "The passage says solar output depends on sunlight, so farmers needing water at night 'must store it in tanks during the day'. It says solar pumps cost MORE upfront, that paperwork 'can take months', and only that 'many' farmers switched — so the other options contradict or overstate it.",
+      "timeLimitSec": 150,
+      "passage": "In many villages, farmers have replaced diesel pumps with solar-powered ones. A solar pump costs more to buy but has almost no fuel cost. Its output depends on sunlight, so farmers who need water at night must store it in tanks during the day. Subsidies have reduced the upfront price for small farmers, though the paperwork can take months."
+    },
+    {
+      "id": "utat_prog_01",
+      "category": "programming",
+      "difficulty": 2,
+      "pools": [
+        "utat"
+      ],
+      "type": "mcq",
+      "prompt": "What does this pseudocode print?\n\nx = 1\nrepeat 4 times:\n    x = x * 2\nprint(x)",
+      "options": [
+        "8",
+        "16",
+        "32",
+        "4"
+      ],
+      "answer": 1,
+      "explanation": "x starts at 1 and is doubled four times: 1 → 2 → 4 → 8 → 16. So it prints 16, which is 2⁴.",
+      "timeLimitSec": 90
+    },
+    {
+      "id": "utat_science_01",
+      "category": "science",
+      "difficulty": 2,
+      "pools": [
+        "utat"
+      ],
+      "type": "numeric",
+      "prompt": "A 2 kW water heater runs for 90 minutes. How many units (kWh) of electricity does it use?",
+      "answer": 3,
+      "explanation": "Energy = power × time. 90 minutes = 1.5 hours, so 2 kW × 1.5 h = 3 kWh. One 'unit' on an electricity bill is one kWh.",
+      "timeLimitSec": 90,
+      "tolerance": 0,
+      "unit": "kWh"
+    },
+    {
+      "id": "utat_time_01",
+      "category": "time",
+      "difficulty": 3,
+      "pools": [
+        "utat"
+      ],
+      "type": "mcq",
+      "prompt": "A 60-minute paper has three sections. A: 10 questions × 2 marks, about 2 min each. B: 5 questions × 6 marks, about 6 min each. C: 4 questions × 5 marks, about 10 min each. Which plan earns the most marks in 60 minutes?",
+      "options": [
+        "All of C first, then as much of B as time allows",
+        "All of A and B, then one question from C",
+        "All of B and C, skipping A",
+        "All of C and all of A"
+      ],
+      "answer": 1,
+      "explanation": "Compare marks per minute: A = 2/2 = 1, B = 6/6 = 1, C = 5/10 = 0.5. Do the efficient sections first: A (20 min, 20 marks) + B (30 min, 30 marks) = 50 min, 50 marks; the last 10 minutes fit one C question (+5) for 55. The other plans score 38, 45 and 40.",
+      "timeLimitSec": 150
+    },
+    {
+      "id": "utat_logic_02",
+      "category": "logic",
+      "difficulty": 3,
+      "pools": [
+        "utat"
+      ],
+      "type": "mcq",
+      "prompt": "All drones in the lab are tested devices. Some tested devices are faulty. Which conclusion MUST be true?",
+      "options": [
+        "Some drones are faulty",
+        "No drones are faulty",
+        "Every drone in the lab is a tested device",
+        "Every faulty device is a drone"
+      ],
+      "answer": 2,
+      "explanation": "Only the restatement is certain. 'Some tested devices are faulty' doesn't say which ones — the faulty ones might all be non-drones, or might include drones. So we can't conclude anything about drones being faulty or not, and nothing says all faulty devices are drones.",
+      "timeLimitSec": 120
+    },
+    {
+      "id": "sw_debug_01",
+      "category": "debugging",
+      "difficulty": 2,
+      "pools": [
+        "interview_software"
+      ],
+      "type": "mcq",
+      "prompt": "This code should return the sum of a list, but gives a wrong answer for [3, 4, 5]. Lists are indexed from 0.\n\ntotal = 0\nfor i from 1 to len(items) - 1:\n    total = total + items[i]\nreturn total\n\nWhat does it return, and why?",
+      "options": [
+        "12 — the code is correct",
+        "9 — the loop skips the first item",
+        "7 — the loop skips the last item",
+        "3 — it only adds the first item"
+      ],
+      "answer": 1,
+      "explanation": "With a 3-item list the loop runs for i = 1 and 2, adding items[1] + items[2] = 4 + 5 = 9. items[0] (the 3) is never added: an off-by-one error. Starting the loop at 0 fixes it.",
+      "timeLimitSec": 120
+    },
+    {
+      "id": "sw_logic_01",
+      "category": "programming",
+      "difficulty": 2,
+      "pools": [
+        "interview_software"
+      ],
+      "type": "numeric",
+      "prompt": "f(n) returns 1 when n ≤ 1, otherwise f(n − 1) + f(n − 2). What is f(5)?",
+      "answer": 8,
+      "explanation": "Build it up: f(0) = 1, f(1) = 1, f(2) = 2, f(3) = 3, f(4) = 5, f(5) = 5 + 3 = 8. Computing bottom-up like this also avoids the exponential repeated work of naive recursion.",
+      "timeLimitSec": 120,
+      "tolerance": 0
+    },
+    {
+      "id": "sw_interview_01",
+      "category": "interview",
+      "difficulty": 1,
+      "pools": [
+        "interview_software"
+      ],
+      "type": "mcq",
+      "prompt": "Your lead wants a feature by Friday. On Wednesday you find a bug that will delay it. What's the most professional move?",
+      "options": [
+        "Stay quiet and work through the night",
+        "Tell your lead now, explain the bug, and propose a revised plan",
+        "Ship on Friday and quietly fix the bug later",
+        "Ask a teammate to take responsibility"
+      ],
+      "answer": 1,
+      "explanation": "Raising risks early, with a proposed plan, lets the team adjust while there's still time. Hiding a known bug or burning out quietly both turn a manageable delay into a bigger failure later.",
+      "timeLimitSec": 90
+    },
+    {
+      "id": "acc_recon_01",
+      "category": "accounting",
+      "difficulty": 2,
+      "pools": [
+        "interview_accounting"
+      ],
+      "type": "numeric",
+      "prompt": "A shop's cash book shows a balance of ₹48,500. The bank statement shows ₹43,700. A ₹4,000 cheque deposited on the last day isn't on the statement yet, and a ₹800 bank charge isn't in the cash book. What is the corrected cash book balance (in ₹)?",
+      "answer": 47700,
+      "explanation": "Correct the cash book for what the bank knows and you didn't: 48,500 − 800 bank charge = ₹47,700. Check: statement 43,700 + 4,000 deposit in transit = 47,700. Both sides now agree, so the reconciliation is complete.",
+      "timeLimitSec": 150,
+      "tolerance": 0,
+      "unit": "₹"
+    },
+    {
+      "id": "acc_disc_01",
+      "category": "accounting",
+      "difficulty": 2,
+      "pools": [
+        "interview_accounting"
+      ],
+      "type": "mcq",
+      "prompt": "Monthly sales invoices total ₹2,40,000 but the sales ledger shows ₹2,04,000. Which error most likely explains the ₹36,000 difference?",
+      "options": [
+        "Two digits were swapped when posting (a transposition error)",
+        "A zero was dropped from the total",
+        "Tax was added twice",
+        "A refund was recorded as a sale"
+      ],
+      "answer": 0,
+      "explanation": "2,40,000 and 2,04,000 contain the same digits with the 4 and 0 swapped. Differences caused by swapped digits are always divisible by 9 — and 36,000 ÷ 9 = 4,000. A dropped zero would give ₹24,000 (a ₹2,16,000 gap).",
+      "timeLimitSec": 120
+    },
+    {
+      "id": "acc_interview_01",
+      "category": "interview",
+      "difficulty": 1,
+      "pools": [
+        "interview_accounting"
+      ],
+      "type": "mcq",
+      "prompt": "Your manager asks you to backdate an invoice so it falls into the previous quarter. What do you do?",
+      "options": [
+        "Do it — your manager asked",
+        "Politely decline, explain it would misstate the accounts, and suggest raising it with the finance head",
+        "Do it but keep a private copy, just in case",
+        "Delete the invoice"
+      ],
+      "answer": 1,
+      "explanation": "Backdating misstates financial records and can be fraud. A professional refuses clearly and respectfully, explains why, and escalates through proper channels. Keeping a 'private copy' still means participating.",
+      "timeLimitSec": 90
+    },
+    {
+      "id": "elec_ohm_01",
+      "category": "electrical",
+      "difficulty": 1,
+      "pools": [
+        "interview_electrical"
+      ],
+      "type": "numeric",
+      "prompt": "A 230 V supply feeds a heater element with a resistance of 46 Ω. What current flows (in amperes)?",
+      "answer": 5,
+      "explanation": "Ohm's law: I = V ÷ R = 230 ÷ 46 = 5 A.",
+      "timeLimitSec": 90,
+      "tolerance": 0,
+      "unit": "A"
+    },
+    {
+      "id": "elec_fault_01",
+      "category": "electrical",
+      "difficulty": 2,
+      "pools": [
+        "interview_electrical"
+      ],
+      "type": "mcq",
+      "prompt": "In one room the lights work but every socket is dead. The socket circuit's breaker (MCB) has NOT tripped. With the supply isolated and proven dead, what is the most sensible first thing to check?",
+      "options": [
+        "Replace all the bulbs in the room",
+        "A loose or burnt connection at the first socket on that circuit",
+        "The electricity meter",
+        "The ceiling fan regulator"
+      ],
+      "answer": 1,
+      "explanation": "Lights and sockets are separate circuits, so the bulbs and fan are irrelevant. An untripped breaker suggests an open circuit rather than a short — and sockets are usually wired in a chain, so a failed connection at the first socket cuts off everything after it.",
+      "timeLimitSec": 120
+    },
+    {
+      "id": "elec_safety_01",
+      "category": "interview",
+      "difficulty": 1,
+      "pools": [
+        "interview_electrical"
+      ],
+      "type": "mcq",
+      "prompt": "Before working on a distribution board, which step comes first?",
+      "options": [
+        "Switch off, lock off, and prove the circuit is dead with a tester",
+        "Work quickly so the power cut is short",
+        "Wear rubber slippers and proceed",
+        "Ask the customer to hold a torch near the busbar"
+      ],
+      "answer": 0,
+      "explanation": "Safe isolation always comes first: switch off, lock off so no one can switch it back on, then verify it is dead with a tester you've checked works. Speed and footwear are not safety procedures.",
+      "timeLimitSec": 90
+    },
+    {
+      "id": "cs_sem_01",
+      "category": "programming",
+      "difficulty": 2,
+      "pools": [
+        "sem_cs"
+      ],
+      "type": "numeric",
+      "prompt": "Binary search halves the remaining range at every step. Starting with 1,024 sorted items, after how many halvings is exactly one item left?",
+      "answer": 10,
+      "explanation": "1,024 = 2¹⁰. Each halving divides by 2: 1024 → 512 → 256 → … → 1 takes 10 halvings. That's why binary search is O(log n): a million items need only about 20 steps.",
+      "timeLimitSec": 90,
+      "tolerance": 0
+    },
+    {
+      "id": "cs_sem_02",
+      "category": "programming",
+      "difficulty": 1,
+      "pools": [
+        "sem_cs"
+      ],
+      "type": "mcq",
+      "prompt": "Which data structure works on a 'last in, first out' basis?",
+      "options": [
+        "Queue",
+        "Stack",
+        "Array",
+        "Graph"
+      ],
+      "answer": 1,
+      "explanation": "A stack is last-in, first-out, like a pile of plates: you take from the top. A queue is first-in, first-out, like a line at a ticket counter.",
+      "timeLimitSec": 90
+    },
+    {
+      "id": "com_sem_01",
+      "category": "accounting",
+      "difficulty": 1,
+      "pools": [
+        "sem_commerce"
+      ],
+      "type": "mcq",
+      "prompt": "Which equation underlies double-entry bookkeeping?",
+      "options": [
+        "Assets = Liabilities + Equity",
+        "Revenue = Profit − Expenses",
+        "Assets = Revenue − Liabilities",
+        "Equity = Assets + Liabilities"
+      ],
+      "answer": 0,
+      "explanation": "Everything a business owns (assets) was financed either by borrowing (liabilities) or by its owners (equity). Every transaction is recorded twice so the equation always stays balanced.",
+      "timeLimitSec": 90
+    },
+    {
+      "id": "com_sem_02",
+      "category": "math",
+      "difficulty": 2,
+      "pools": [
+        "sem_commerce"
+      ],
+      "type": "numeric",
+      "prompt": "Goods costing ₹800 are sold at a 25% profit on cost. What is the selling price (in ₹)?",
+      "answer": 1000,
+      "explanation": "Profit = 25% of 800 = ₹200, so the selling price = 800 + 200 = ₹1,000. Note that this is a 20% margin on the selling price (200 ÷ 1,000).",
+      "timeLimitSec": 90,
+      "tolerance": 0,
+      "unit": "₹"
+    },
+    {
+      "id": "iti_sem_01",
+      "category": "electrical",
+      "difficulty": 1,
+      "pools": [
+        "sem_trade"
+      ],
+      "type": "numeric",
+      "prompt": "Three 60 W bulbs and one 1,000 W iron run together for 2 hours. How many units (kWh) are used?",
+      "answer": 2.36,
+      "explanation": "Total power = 3 × 60 + 1,000 = 1,180 W = 1.18 kW. Energy = 1.18 kW × 2 h = 2.36 kWh.",
+      "timeLimitSec": 90,
+      "tolerance": 0.01,
+      "unit": "kWh"
+    },
+    {
+      "id": "iti_sem_02",
+      "category": "electrical",
+      "difficulty": 2,
+      "pools": [
+        "sem_trade"
+      ],
+      "type": "mcq",
+      "prompt": "Two 10 Ω resistors are connected in parallel. What is their combined resistance?",
+      "options": [
+        "20 Ω",
+        "10 Ω",
+        "5 Ω",
+        "2.5 Ω"
+      ],
+      "answer": 2,
+      "explanation": "For two equal resistors in parallel, the combined resistance is half of one: 1/R = 1/10 + 1/10 = 2/10, so R = 5 Ω. Parallel paths give current more ways through, so resistance drops.",
+      "timeLimitSec": 90
+    },
+    {
+      "id": "vc_case_01",
+      "category": "case",
+      "difficulty": 2,
+      "pools": [
+        "venture_case"
+      ],
+      "type": "mcq",
+      "prompt": "A hardware shop offers FixLab ₹20,000 a month to handle all its repairs. Doing that work would cost FixLab about ₹14,000 a month in parts and paid help — and leave no time for walk-in customers, who currently bring ₹9,000 a month in profit. On these numbers, should FixLab take the deal?",
+      "options": [
+        "Yes — ₹20,000 is more than ₹9,000",
+        "No — the deal earns ₹6,000 profit but gives up ₹9,000 of walk-in profit",
+        "Yes — fixed income is always better",
+        "No — never work with other businesses"
+      ],
+      "answer": 1,
+      "explanation": "Compare profit, not revenue. The deal's profit is 20,000 − 14,000 = ₹6,000, but taking it costs the ₹9,000 walk-in profit (an opportunity cost). FixLab would be ₹3,000 a month worse off — unless the terms can be renegotiated.",
+      "timeLimitSec": 150
+    },
+    {
+      "id": "vc_case_02",
+      "category": "case",
+      "difficulty": 2,
+      "pools": [
+        "venture_case"
+      ],
+      "type": "numeric",
+      "prompt": "FixLab charges ₹600 per repair. Parts cost ₹250 per repair; rent and tools cost ₹7,000 a month. How many repairs a month are needed to break even?",
+      "answer": 20,
+      "explanation": "Each repair contributes 600 − 250 = ₹350 towards fixed costs. Break-even = 7,000 ÷ 350 = 20 repairs a month. Repair number 21 is the first that makes a profit.",
+      "timeLimitSec": 120,
+      "tolerance": 0
+    },
+    {
+      "id": "vc_case_03",
+      "category": "case",
+      "difficulty": 1,
+      "pools": [
+        "venture_case"
+      ],
+      "type": "mcq",
+      "prompt": "FixLab accidentally damaged a ₹1,200 part during a customer's laptop repair. What best protects FixLab's reputation?",
+      "options": [
+        "Blame the laptop's age",
+        "Admit it, replace the part at FixLab's cost and explain how you'll prevent it",
+        "Charge the customer anyway",
+        "Stop replying to their messages"
+      ],
+      "answer": 1,
+      "explanation": "In a small, word-of-mouth business, trust is the main asset. Owning the mistake costs ₹1,200 now; a reputation for evasion costs far more customers later.",
+      "timeLimitSec": 90
+    }
+  ]
+}

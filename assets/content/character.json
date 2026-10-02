@@ -1,0 +1,246 @@
+{
+  "contentVersion": "2026.10-ch1",
+  "backgrounds": [
+    {
+      "id": "rural_farming",
+      "name": "Farming family",
+      "summary": "Close-knit, practical, cash-tight.",
+      "description": "Your parents farm two acres of paddy and groundnut. Money arrives with the harvest and leaves long before the next one. The household runs on early mornings, shared work and a tin box of savings.",
+      "startingCash": 8000,
+      "familySupportMonthly": 1500,
+      "startStats": {
+        "discipline": 5,
+        "wellbeing": 3
+      },
+      "startSkills": {
+        "electrical": 4
+      },
+      "flags": [
+        "need_based_eligible"
+      ],
+      "familyAffinity": 55,
+      "obligations": [
+        "Help at home during harvest season",
+        "Your family hopes you'll contribute once you earn"
+      ],
+      "opportunities": [
+        "Eligible for need-based scholarships",
+        "A family that shows up when it matters"
+      ],
+      "lifestyleCostMultiplier": 1.0
+    },
+    {
+      "id": "urban_lower_middle",
+      "name": "City lower-middle-class family",
+      "summary": "Every rupee counted, every plan written down.",
+      "description": "Appa is a bus conductor; Amma runs a tailoring business from the front room. There is always a plan, and a notebook in which the plan is written. There is rarely money left over.",
+      "startingCash": 25000,
+      "familySupportMonthly": 4000,
+      "startStats": {
+        "communication": 4
+      },
+      "startSkills": {
+        "business": 3
+      },
+      "flags": [
+        "need_based_eligible"
+      ],
+      "familyAffinity": 45,
+      "obligations": [
+        "Household savings are already promised to repairs and relatives"
+      ],
+      "opportunities": [
+        "Eligible for need-based scholarships",
+        "Neighbourhood contacts and small gigs"
+      ],
+      "lifestyleCostMultiplier": 1.0
+    },
+    {
+      "id": "affluent_business",
+      "name": "Affluent family business",
+      "summary": "Comfortable, connected — and expected.",
+      "description": "Your family runs a well-established textiles business. Fees are not a worry. Expectations are: relatives already talk about the day you'll 'take over'.",
+      "startingCash": 150000,
+      "familySupportMonthly": 12000,
+      "startStats": {
+        "wellbeing": 2
+      },
+      "startSkills": {
+        "business": 8
+      },
+      "flags": [
+        "family_business"
+      ],
+      "familyAffinity": 35,
+      "obligations": [
+        "Family expects you to join the business one day"
+      ],
+      "opportunities": [
+        "Can afford private colleges and coaching",
+        "A ready-made business network"
+      ],
+      "lifestyleCostMultiplier": 1.8
+    }
+  ],
+  "hometowns": [
+    {
+      "id": "chennai",
+      "name": "Chennai",
+      "kind": "metro",
+      "description": "Coastal metro: big job market, long commutes, filter coffee everywhere.",
+      "livingCostMonthly": 4000,
+      "rentMonthly": 9000,
+      "wageMultiplier": 1.0,
+      "commuteHoursWeekly": 7
+    },
+    {
+      "id": "bengaluru",
+      "name": "Bengaluru",
+      "kind": "metro",
+      "description": "Tech capital: highest salaries, highest rents, legendary traffic.",
+      "livingCostMonthly": 5000,
+      "rentMonthly": 13000,
+      "wageMultiplier": 1.15,
+      "commuteHoursWeekly": 9
+    },
+    {
+      "id": "rural_tn",
+      "name": "Vellanur (Tiruvannamalai district)",
+      "kind": "rural",
+      "description": "A fictional village two bus rides from town: low costs, fewer opportunities, everyone knows your name.",
+      "livingCostMonthly": 2000,
+      "rentMonthly": 3500,
+      "wageMultiplier": 0.75,
+      "commuteHoursWeekly": 10
+    }
+  ],
+  "traits": [
+    {
+      "id": "curious",
+      "name": "Curious",
+      "description": "You learn faster when you're interested — which is often.",
+      "startStats": {
+        "knowledge": 3
+      },
+      "modifiers": {
+        "knowledgeGain": 1.12
+      }
+    },
+    {
+      "id": "steady",
+      "name": "Steady",
+      "description": "Habits stick to you. Discipline grows faster.",
+      "startStats": {
+        "discipline": 5
+      },
+      "modifiers": {
+        "disciplineGain": 1.15
+      }
+    },
+    {
+      "id": "outgoing",
+      "name": "Outgoing",
+      "description": "Conversations come easily; communication grows faster.",
+      "startStats": {
+        "communication": 5
+      },
+      "modifiers": {
+        "communicationGain": 1.15
+      }
+    },
+    {
+      "id": "empathetic",
+      "name": "Empathetic",
+      "description": "People feel heard around you. Bonds grow faster.",
+      "startStats": {},
+      "modifiers": {
+        "relationshipGain": 1.2
+      }
+    },
+    {
+      "id": "resilient",
+      "name": "Resilient",
+      "description": "You bounce back. Well-being recovers faster.",
+      "startStats": {
+        "wellbeing": 5
+      },
+      "modifiers": {
+        "wellbeingRecovery": 1.2
+      }
+    },
+    {
+      "id": "hands_on",
+      "name": "Hands-on",
+      "description": "You learn by doing. Practical skills grow faster.",
+      "startStats": {},
+      "modifiers": {
+        "skillGain": 1.1
+      }
+    }
+  ],
+  "interests": [
+    {
+      "id": "technology",
+      "name": "Technology & code",
+      "startSkills": {
+        "programming": 6
+      }
+    },
+    {
+      "id": "numbers",
+      "name": "Numbers & money",
+      "startSkills": {
+        "accounting": 4,
+        "mathematics": 2
+      }
+    },
+    {
+      "id": "tinkering",
+      "name": "Fixing & building things",
+      "startSkills": {
+        "electrical": 6
+      }
+    },
+    {
+      "id": "enterprise",
+      "name": "Selling & enterprise",
+      "startSkills": {
+        "business": 6
+      }
+    },
+    {
+      "id": "puzzles",
+      "name": "Puzzles & maths",
+      "startSkills": {
+        "mathematics": 6
+      }
+    }
+  ],
+  "ambitions": [
+    {
+      "id": "financial_security",
+      "name": "Financial security",
+      "description": "Never again worry about the next month's rent."
+    },
+    {
+      "id": "mastery",
+      "name": "Mastery of a craft",
+      "description": "Become genuinely, quietly excellent at something."
+    },
+    {
+      "id": "family_first",
+      "name": "Family first",
+      "description": "Build a life your family can lean on — and enjoy."
+    },
+    {
+      "id": "build_own",
+      "name": "Build something of my own",
+      "description": "Own the thing you build, risks included."
+    },
+    {
+      "id": "community",
+      "name": "Serve my community",
+      "description": "Leave your street better than you found it."
+    }
+  ]
+}

@@ -1,0 +1,193 @@
+{
+  "contentVersion": "2026.10-situations",
+  "events": [
+    {
+      "id": "ev_campus_conflict",
+      "chapter": 1,
+      "title": "Outside the Lecture Hall",
+      "location": "campus",
+      "summary": "A disagreement turns public between two students.",
+      "trigger": {
+        "kind": "random",
+        "when": {
+          "type": "all",
+          "conditions": [
+            {"type": "flag", "key": "mature_on"},
+            {"type": "educationStatus", "value": "enrolled"}
+          ]
+        },
+        "chancePerMonth": 0.2
+      },
+      "start": "start",
+      "nodes": {
+        "start": {
+          "speaker": "narrator",
+          "text": "Outside the lecture hall, a heated argument draws a crowd. One student is filming. Nobody looks sure how it started, but everyone has an opinion.",
+          "choices": [
+            {"id": "c_calm", "label": "Ask everyone to pause and move the conversation somewhere private.", "next": "calm", "effects": [{"type": "stat", "key": "communication", "delta": 1.2}, {"type": "stat", "key": "wellbeing", "delta": 1}]},
+            {"id": "c_security", "label": "Call a faculty member or campus security.", "next": "security", "effects": [{"type": "flag", "key": "campus_safety_report"}, {"type": "stat", "key": "discipline", "delta": 0.8}]},
+            {"id": "c_leave", "label": "Take your friend and leave before the crowd gets involved.", "next": "leave", "effects": [{"type": "stat", "key": "wellbeing", "delta": 1.5}, {"type": "skill", "key": "streetwise", "delta": 0.4}]},
+            {"id": "c_shout", "label": "Shout back and make yourself part of the confrontation.", "next": "shout", "effects": [{"type": "stat", "key": "wellbeing", "delta": -4}, {"type": "stat", "key": "health", "delta": -2}, {"type": "counter", "key": "heat", "delta": 1}]}
+          ]
+        },
+        "calm": {"speaker": "narrator", "text": "The volume drops by degrees. It is not dramatic, but the crowd loses interest and the students agree to speak with a tutor."},
+        "security": {"speaker": "narrator", "text": "A faculty member arrives and separates the students. You give a short account, then return to class."},
+        "leave": {"speaker": "narrator", "text": "You do not get the satisfaction of the last word. You do get to make it to your next lecture."},
+        "shout": {"speaker": "narrator", "text": "The argument becomes a spectacle. A tutor writes down your name, and your friend asks why you made a bad afternoon bigger."}
+      }
+    },
+    {
+      "id": "ev_exam_integrity",
+      "chapter": 1,
+      "title": "The Extra Sheet",
+      "location": "exam_hall",
+      "summary": "An exam decision tests more than memory.",
+      "trigger": {
+        "kind": "random",
+        "when": {"type": "educationStatus", "value": "enrolled"},
+        "chancePerMonth": 0.16
+      },
+      "start": "start",
+      "nodes": {
+        "start": {
+          "speaker": "narrator",
+          "text": "Ten minutes into the paper, a folded answer sheet appears under the edge of the desk behind you. Your friend catches your eye. The invigilator is checking the other side of the room.",
+          "choices": [
+            {"id": "c_report", "label": "Hand it to the invigilator without opening it.", "next": "report", "effects": [{"type": "flag", "key": "academic_integrity"}, {"type": "stat", "key": "discipline", "delta": 2}]},
+            {"id": "c_ignore", "label": "Leave it where it is and keep writing your own paper.", "next": "ignore", "effects": [{"type": "stat", "key": "discipline", "delta": 0.6}]},
+            {"id": "c_use", "label": "Use it. You are already behind and nobody may notice.", "next": "use", "effects": [{"type": "flag", "key": "malpractice"}, {"type": "stat", "key": "discipline", "delta": -4}, {"type": "stat", "key": "wellbeing", "delta": -3}]},
+            {"id": "c_warn", "label": "Quietly tell your friend to put it away and finish honestly.", "next": "warn", "effects": [{"type": "relationship", "npc": "kavya", "trust": 2}, {"type": "stat", "key": "communication", "delta": 0.8}]}
+          ]
+        },
+        "report": {"speaker": "narrator", "text": "The invigilator takes the sheet and asks you two calm questions. Your pulse settles; your paper is still yours."},
+        "ignore": {"speaker": "narrator", "text": "You keep your eyes on your own work. The room becomes very quiet, but you finish with a clear conscience."},
+        "use": {"speaker": "narrator", "text": "The answers save a few marks and cost you sleep. A later review notices the pattern, and your academic record now has a shadow."},
+        "warn": {"speaker": "narrator", "text": "Your friend folds the sheet back up. You both sit with the awkwardness and submit what you actually know."}
+      }
+    },
+    {
+      "id": "ev_bar_boundaries",
+      "chapter": 1,
+      "title": "One More Round",
+      "location": "bar",
+      "summary": "A night out asks what kind of friend you want to be.",
+      "trigger": {
+        "kind": "random",
+        "when": {"type": "all", "conditions": [{"type": "flag", "key": "mature_on"}, {"type": "age", "op": ">=", "value": 21}]},
+        "chancePerMonth": 0.12
+      },
+      "start": "start",
+      "nodes": {
+        "start": {
+          "speaker": "narrator",
+          "text": "The bar is loud, the band is good, and someone at your table keeps ordering another round for everyone. Your friend has stopped looking comfortable.",
+          "choices": [
+            {"id": "c_water", "label": "Order water and food for the table.", "next": "water", "effects": [{"type": "stat", "key": "discipline", "delta": 0.8}, {"type": "stat", "key": "wellbeing", "delta": 1}]},
+            {"id": "c_leave", "label": "Call a cab and leave with your friend.", "next": "leave", "cost": {"money": 500}, "effects": [{"type": "stat", "key": "communication", "delta": 0.8}]},
+            {"id": "c_join", "label": "Join the round and let the night decide itself.", "next": "join", "cost": {"money": 900, "energy": 6}, "effects": [{"type": "counter", "key": "drinks", "delta": 2}, {"type": "stat", "key": "discipline", "delta": -0.7}]},
+            {"id": "c_boundary", "label": "Say clearly that nobody should be pressured to drink.", "next": "boundary", "effects": [{"type": "stat", "key": "communication", "delta": 1.2}, {"type": "relationship", "npc": "kavya", "trust": 2}]}
+          ]
+        },
+        "water": {"speaker": "narrator", "text": "The food arrives. Conversation comes back. The night is less cinematic and much easier to remember."},
+        "leave": {"speaker": "narrator", "text": "Outside, the air is cooler. Your friend thanks you for noticing before the night became a story they did not want."},
+        "join": {"speaker": "narrator", "text": "The music blurs into a morning headache and an expensive card notification."},
+        "boundary": {"speaker": "narrator", "text": "There is a brief awkward silence. Then another friend says, 'Good. I was waiting for someone to say it.'"}
+      },
+      "repeatable": true,
+      "worldEvent": true
+    },
+    {
+      "id": "ev_smoke_pressure",
+      "chapter": 1,
+      "title": "Behind the Canteen",
+      "location": "campus",
+      "summary": "A small social choice can become a habit.",
+      "trigger": {
+        "kind": "random",
+        "when": {"type": "all", "conditions": [{"type": "flag", "key": "mature_on"}, {"type": "not", "condition": {"type": "flag", "key": "smoker"}}]},
+        "chancePerMonth": 0.13
+      },
+      "start": "start",
+      "nodes": {
+        "start": {
+          "speaker": "narrator",
+          "text": "A few classmates are taking a smoke break behind the canteen. Someone offers you one and says it is only about having a minute away from everybody else.",
+          "choices": [
+            {"id": "c_refuse", "label": "Refuse and stay for the conversation.", "next": "refuse", "effects": [{"type": "stat", "key": "health", "delta": 0.4}, {"type": "stat", "key": "discipline", "delta": 0.4}]},
+            {"id": "c_walk", "label": "Take a walk instead and return to class.", "next": "walk", "effects": [{"type": "stat", "key": "wellbeing", "delta": 1}]},
+            {"id": "c_try", "label": "Try it once because you do not want to look nervous.", "next": "try", "effects": [{"type": "flag", "key": "smoker"}, {"type": "counter", "key": "cigarettes", "delta": 1}, {"type": "stat", "key": "health", "delta": -1}]},
+            {"id": "c_question", "label": "Ask why the group comes here and listen.", "next": "question", "effects": [{"type": "stat", "key": "communication", "delta": 1}]}
+          ]
+        },
+        "refuse": {"speaker": "narrator", "text": "Nobody makes a speech about it. The conversation continues, which is useful information about how much pressure was really there."},
+        "walk": {"speaker": "narrator", "text": "You take the long way around the quad and arrive back with a clearer head."},
+        "try": {"speaker": "narrator", "text": "The smoke is harsher than the movie version. The social part, unfortunately, is easy to repeat."},
+        "question": {"speaker": "narrator", "text": "The answer is mostly stress and habit. Nobody seems proud of either one."}
+      },
+      "repeatable": false,
+      "worldEvent": true
+    },
+    {
+      "id": "ev_sports_scout",
+      "chapter": 1,
+      "title": "The Scout's Clipboard",
+      "location": "campus",
+      "summary": "Practice begins to look like an opportunity.",
+      "trigger": {
+        "kind": "random",
+        "when": {"type": "counter", "key": "sports_sessions", "op": ">=", "value": 2},
+        "chancePerMonth": 0.18
+      },
+      "start": "start",
+      "nodes": {
+        "start": {
+          "speaker": "narrator",
+          "text": "A local club scout has watched you play twice. The offer is not glamorous: early practice, travel, and a chance to earn a small match fee.",
+          "choices": [
+            {"id": "c_commit", "label": "Commit to structured practice for a season.", "next": "commit", "effects": [{"type": "flag", "key": "sports_contract"}, {"type": "stat", "key": "discipline", "delta": 2}]},
+            {"id": "c_study", "label": "Keep sport as a hobby while you focus on exams.", "next": "study", "effects": [{"type": "stat", "key": "knowledge", "delta": 1.2}, {"type": "stat", "key": "wellbeing", "delta": 1}]},
+            {"id": "c_negotiate", "label": "Ask about safety, schedule and what the fee really covers.", "next": "negotiate", "effects": [{"type": "skill", "key": "business", "delta": 0.8}, {"type": "stat", "key": "communication", "delta": 0.8}]},
+            {"id": "c_decline", "label": "Decline kindly; the timing is not right.", "next": "decline", "effects": [{"type": "stat", "key": "wellbeing", "delta": 1}]}
+          ]
+        },
+        "commit": {"speaker": "narrator", "text": "The clipboard becomes a calendar. You are not a professional yet, but the path is no longer imaginary."},
+        "study": {"speaker": "narrator", "text": "You keep your shoes by the door and your notes on the desk. The hobby stays yours, which is its own kind of success."},
+        "negotiate": {"speaker": "narrator", "text": "The scout respects the questions and returns with a clearer offer. Details matter when a dream gets paperwork."},
+        "decline": {"speaker": "narrator", "text": "The scout leaves a number in your phone. Some doors can wait without disappearing."}
+      },
+      "repeatable": true,
+      "worldEvent": true
+    },
+    {
+      "id": "ev_market_headline",
+      "chapter": 1,
+      "title": "The Breaking Headline",
+      "location": "bank",
+      "summary": "A market headline tests your patience.",
+      "trigger": {
+        "kind": "random",
+        "when": {"type": "flag", "key": "investor"},
+        "chancePerMonth": 0.2
+      },
+      "start": "start",
+      "nodes": {
+        "start": {
+          "speaker": "narrator",
+          "text": "A dramatic headline says the market is about to collapse. The fictional market board is down, but nobody knows whether the story is signal, panic, or a person trying to sell clicks.",
+          "choices": [
+            {"id": "c_hold", "label": "Check your time horizon and hold your plan.", "next": "hold", "effects": [{"type": "stat", "key": "discipline", "delta": 1}, {"type": "stat", "key": "knowledge", "delta": 0.6}]},
+            {"id": "c_research", "label": "Read the company notes before deciding anything.", "next": "research", "effects": [{"type": "stat", "key": "knowledge", "delta": 1}, {"type": "skill", "key": "business", "delta": 0.4}]},
+            {"id": "c_panic", "label": "Sell everything immediately.", "next": "panic", "effects": [{"type": "stat", "key": "discipline", "delta": -1}, {"type": "stat", "key": "wellbeing", "delta": -2}]},
+            {"id": "c_ignore", "label": "Close the app and get on with your day.", "next": "ignore", "effects": [{"type": "stat", "key": "wellbeing", "delta": 1}]}
+          ]
+        },
+        "hold": {"speaker": "narrator", "text": "The headline keeps shouting. Your plan is quieter, and that is why it survives the afternoon."},
+        "research": {"speaker": "narrator", "text": "You find three facts, two opinions and one missing piece. Uncertainty feels less frightening when you name it."},
+        "panic": {"speaker": "narrator", "text": "The order goes through. Relief arrives first; the question of whether you acted too quickly arrives later."},
+        "ignore": {"speaker": "narrator", "text": "The market will still be there tomorrow. Your friend, your class and your dinner also count as assets."}
+      },
+      "repeatable": true,
+      "worldEvent": true
+    }
+  ]
+}

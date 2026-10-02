@@ -1,0 +1,4106 @@
+{
+  "contentVersion": "2026.10-crime",
+  "locations": [
+    {
+      "id": "backstreets",
+      "name": "Old Town Lanes",
+      "mapLabel": "Old Town",
+      "description": "Narrow lanes behind the wholesale market, where things fall off lorries and nobody asks questions. 18+, mature themes.",
+      "gridX": 0,
+      "gridY": 3,
+      "kind": "alley",
+      "requires": {
+        "type": "flag",
+        "key": "mature_on"
+      }
+    },
+    {
+      "id": "casino",
+      "name": "Lucky Star Club",
+      "mapLabel": "Lucky Star",
+      "description": "Card tables, a roulette wheel, slot machines and a betting desk for every match. The house always wins — eventually.",
+      "gridX": 1,
+      "gridY": 4,
+      "kind": "casino",
+      "requires": {
+        "type": "flag",
+        "key": "mature_on"
+      }
+    },
+    {
+      "id": "police_station",
+      "name": "City Police Station",
+      "mapLabel": "Police",
+      "description": "A busy station with a front desk, a lock-up and a community-policing notice board.",
+      "gridX": 4,
+      "gridY": 3,
+      "kind": "police"
+    }
+  ],
+  "actions": [
+    {
+      "id": "crime_pickpocket",
+      "label": "Pick pockets in the market crowd",
+      "description": "Quick hands, crowded buses, distracted shoppers. Small money, small risk — at first.",
+      "location": "backstreets",
+      "energyCost": 6,
+      "requires": {
+        "type": "flag",
+        "key": "mature_on"
+      },
+      "effects": [
+        {
+          "type": "if",
+          "when": {
+            "type": "skill",
+            "key": "streetwise",
+            "op": ">=",
+            "value": 40
+          },
+          "then": [
+            {
+              "type": "roll",
+              "key": "crime_ok",
+              "chance": 0.8
+            }
+          ],
+          "else": [
+            {
+              "type": "roll",
+              "key": "crime_ok",
+              "chance": 0.65
+            }
+          ]
+        },
+        {
+          "type": "if",
+          "when": {
+            "type": "flag",
+            "key": "crime_ok"
+          },
+          "then": [
+            {
+              "type": "money",
+              "amount": 1500,
+              "label": "Pick pockets in the market crowd",
+              "category": "crime"
+            },
+            {
+              "type": "skill",
+              "key": "streetwise",
+              "delta": 0.8
+            },
+            {
+              "type": "counter",
+              "key": "heat",
+              "delta": 1
+            },
+            {
+              "type": "counter",
+              "key": "crimes",
+              "delta": 1
+            },
+            {
+              "type": "flag",
+              "key": "crime_any"
+            },
+            {
+              "type": "if",
+              "when": {
+                "type": "counter",
+                "key": "heat",
+                "op": ">=",
+                "value": 6
+              },
+              "then": [
+                {
+                  "type": "roll",
+                  "key": "crime_caught",
+                  "chance": 0.42
+                }
+              ],
+              "else": [
+                {
+                  "type": "if",
+                  "when": {
+                    "type": "counter",
+                    "key": "heat",
+                    "op": ">=",
+                    "value": 3
+                  },
+                  "then": [
+                    {
+                      "type": "roll",
+                      "key": "crime_caught",
+                      "chance": 0.27
+                    }
+                  ],
+                  "else": [
+                    {
+                      "type": "roll",
+                      "key": "crime_caught",
+                      "chance": 0.12
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "else": [
+            {
+              "type": "stat",
+              "key": "wellbeing",
+              "delta": -1
+            },
+            {
+              "type": "counter",
+              "key": "heat",
+              "delta": 1
+            },
+            {
+              "type": "if",
+              "when": {
+                "type": "counter",
+                "key": "heat",
+                "op": ">=",
+                "value": 6
+              },
+              "then": [
+                {
+                  "type": "roll",
+                  "key": "crime_caught",
+                  "chance": 0.48
+                }
+              ],
+              "else": [
+                {
+                  "type": "if",
+                  "when": {
+                    "type": "counter",
+                    "key": "heat",
+                    "op": ">=",
+                    "value": 3
+                  },
+                  "then": [
+                    {
+                      "type": "roll",
+                      "key": "crime_caught",
+                      "chance": 0.32999999999999996
+                    }
+                  ],
+                  "else": [
+                    {
+                      "type": "roll",
+                      "key": "crime_caught",
+                      "chance": 0.18
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "if",
+          "when": {
+            "type": "flag",
+            "key": "crime_caught"
+          },
+          "then": [
+            {
+              "type": "clearFlag",
+              "key": "crime_caught"
+            },
+            {
+              "type": "schedule",
+              "event": "ev_arrest_petty",
+              "inDays": 0
+            }
+          ]
+        },
+        {
+          "type": "stat",
+          "key": "discipline",
+          "delta": -0.3
+        }
+      ]
+    },
+    {
+      "id": "crime_shoplift",
+      "label": "Shoplift from a crowded store",
+      "description": "Earphones and perfume slip into a bag. The cameras might be fake.",
+      "location": "backstreets",
+      "energyCost": 6,
+      "requires": {
+        "type": "flag",
+        "key": "mature_on"
+      },
+      "effects": [
+        {
+          "type": "if",
+          "when": {
+            "type": "skill",
+            "key": "streetwise",
+            "op": ">=",
+            "value": 40
+          },
+          "then": [
+            {
+              "type": "roll",
+              "key": "crime_ok",
+              "chance": 0.75
+            }
+          ],
+          "else": [
+            {
+              "type": "roll",
+              "key": "crime_ok",
+              "chance": 0.6
+            }
+          ]
+        },
+        {
+          "type": "if",
+          "when": {
+            "type": "flag",
+            "key": "crime_ok"
+          },
+          "then": [
+            {
+              "type": "money",
+              "amount": 3000,
+              "label": "Shoplift from a crowded store",
+              "category": "crime"
+            },
+            {
+              "type": "skill",
+              "key": "streetwise",
+              "delta": 0.8
+            },
+            {
+              "type": "counter",
+              "key": "heat",
+              "delta": 1
+            },
+            {
+              "type": "counter",
+              "key": "crimes",
+              "delta": 1
+            },
+            {
+              "type": "flag",
+              "key": "crime_any"
+            },
+            {
+              "type": "if",
+              "when": {
+                "type": "counter",
+                "key": "heat",
+                "op": ">=",
+                "value": 6
+              },
+              "then": [
+                {
+                  "type": "roll",
+                  "key": "crime_caught",
+                  "chance": 0.48
+                }
+              ],
+              "else": [
+                {
+                  "type": "if",
+                  "when": {
+                    "type": "counter",
+                    "key": "heat",
+                    "op": ">=",
+                    "value": 3
+                  },
+                  "then": [
+                    {
+                      "type": "roll",
+                      "key": "crime_caught",
+                      "chance": 0.32999999999999996
+                    }
+                  ],
+                  "else": [
+                    {
+                      "type": "roll",
+                      "key": "crime_caught",
+                      "chance": 0.18
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "else": [
+            {
+              "type": "stat",
+              "key": "wellbeing",
+              "delta": -1
+            },
+            {
+              "type": "counter",
+              "key": "heat",
+              "delta": 1
+            },
+            {
+              "type": "if",
+              "when": {
+                "type": "counter",
+                "key": "heat",
+                "op": ">=",
+                "value": 6
+              },
+              "then": [
+                {
+                  "type": "roll",
+                  "key": "crime_caught",
+                  "chance": 0.5700000000000001
+                }
+              ],
+              "else": [
+                {
+                  "type": "if",
+                  "when": {
+                    "type": "counter",
+                    "key": "heat",
+                    "op": ">=",
+                    "value": 3
+                  },
+                  "then": [
+                    {
+                      "type": "roll",
+                      "key": "crime_caught",
+                      "chance": 0.42000000000000004
+                    }
+                  ],
+                  "else": [
+                    {
+                      "type": "roll",
+                      "key": "crime_caught",
+                      "chance": 0.27
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "if",
+          "when": {
+            "type": "flag",
+            "key": "crime_caught"
+          },
+          "then": [
+            {
+              "type": "clearFlag",
+              "key": "crime_caught"
+            },
+            {
+              "type": "schedule",
+              "event": "ev_arrest_petty",
+              "inDays": 0
+            }
+          ]
+        },
+        {
+          "type": "stat",
+          "key": "discipline",
+          "delta": -0.3
+        }
+      ]
+    },
+    {
+      "id": "crime_bootleg",
+      "label": "Sell fake branded goods",
+      "description": "A tarpaulin, a pile of \"designer\" handbags and an eye on the street corner.",
+      "location": "backstreets",
+      "energyCost": 10,
+      "requires": {
+        "type": "flag",
+        "key": "mature_on"
+      },
+      "effects": [
+        {
+          "type": "if",
+          "when": {
+            "type": "skill",
+            "key": "streetwise",
+            "op": ">=",
+            "value": 40
+          },
+          "then": [
+            {
+              "type": "roll",
+              "key": "crime_ok",
+              "chance": 0.9
+            }
+          ],
+          "else": [
+            {
+              "type": "roll",
+              "key": "crime_ok",
+              "chance": 0.75
+            }
+          ]
+        },
+        {
+          "type": "if",
+          "when": {
+            "type": "flag",
+            "key": "crime_ok"
+          },
+          "then": [
+            {
+              "type": "money",
+              "amount": 4500,
+              "label": "Sell fake branded goods",
+              "category": "crime"
+            },
+            {
+              "type": "skill",
+              "key": "streetwise",
+              "delta": 0.6
+            },
+            {
+              "type": "counter",
+              "key": "heat",
+              "delta": 1
+            },
+            {
+              "type": "counter",
+              "key": "crimes",
+              "delta": 1
+            },
+            {
+              "type": "flag",
+              "key": "crime_any"
+            },
+            {
+              "type": "if",
+              "when": {
+                "type": "counter",
+                "key": "heat",
+                "op": ">=",
+                "value": 6
+              },
+              "then": [
+                {
+                  "type": "roll",
+                  "key": "crime_caught",
+                  "chance": 0.4
+                }
+              ],
+              "else": [
+                {
+                  "type": "if",
+                  "when": {
+                    "type": "counter",
+                    "key": "heat",
+                    "op": ">=",
+                    "value": 3
+                  },
+                  "then": [
+                    {
+                      "type": "roll",
+                      "key": "crime_caught",
+                      "chance": 0.25
+                    }
+                  ],
+                  "else": [
+                    {
+                      "type": "roll",
+                      "key": "crime_caught",
+                      "chance": 0.1
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "else": [
+            {
+              "type": "stat",
+              "key": "wellbeing",
+              "delta": -1
+            },
+            {
+              "type": "counter",
+              "key": "heat",
+              "delta": 1
+            },
+            {
+              "type": "if",
+              "when": {
+                "type": "counter",
+                "key": "heat",
+                "op": ">=",
+                "value": 6
+              },
+              "then": [
+                {
+                  "type": "roll",
+                  "key": "crime_caught",
+                  "chance": 0.45
+                }
+              ],
+              "else": [
+                {
+                  "type": "if",
+                  "when": {
+                    "type": "counter",
+                    "key": "heat",
+                    "op": ">=",
+                    "value": 3
+                  },
+                  "then": [
+                    {
+                      "type": "roll",
+                      "key": "crime_caught",
+                      "chance": 0.30000000000000004
+                    }
+                  ],
+                  "else": [
+                    {
+                      "type": "roll",
+                      "key": "crime_caught",
+                      "chance": 0.15000000000000002
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "if",
+          "when": {
+            "type": "flag",
+            "key": "crime_caught"
+          },
+          "then": [
+            {
+              "type": "clearFlag",
+              "key": "crime_caught"
+            },
+            {
+              "type": "schedule",
+              "event": "ev_arrest_petty",
+              "inDays": 0
+            }
+          ]
+        },
+        {
+          "type": "stat",
+          "key": "discipline",
+          "delta": -0.3
+        }
+      ]
+    },
+    {
+      "id": "crime_courier",
+      "label": "Carry a 'no-questions' package",
+      "description": "Pappu Bhai needs something taken across town. Don’t open it. Don’t get stopped.",
+      "location": "backstreets",
+      "energyCost": 8,
+      "requires": {
+        "type": "all",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "mature_on"
+          },
+          {
+            "type": "skill",
+            "key": "streetwise",
+            "op": ">=",
+            "value": 15
+          }
+        ]
+      },
+      "effects": [
+        {
+          "type": "if",
+          "when": {
+            "type": "skill",
+            "key": "streetwise",
+            "op": ">=",
+            "value": 40
+          },
+          "then": [
+            {
+              "type": "roll",
+              "key": "crime_ok",
+              "chance": 0.95
+            }
+          ],
+          "else": [
+            {
+              "type": "roll",
+              "key": "crime_ok",
+              "chance": 0.8
+            }
+          ]
+        },
+        {
+          "type": "if",
+          "when": {
+            "type": "flag",
+            "key": "crime_ok"
+          },
+          "then": [
+            {
+              "type": "money",
+              "amount": 9000,
+              "label": "Carry a 'no-questions' package",
+              "category": "crime"
+            },
+            {
+              "type": "skill",
+              "key": "streetwise",
+              "delta": 1.0
+            },
+            {
+              "type": "counter",
+              "key": "heat",
+              "delta": 2
+            },
+            {
+              "type": "counter",
+              "key": "crimes",
+              "delta": 1
+            },
+            {
+              "type": "flag",
+              "key": "crime_any"
+            },
+            {
+              "type": "if",
+              "when": {
+                "type": "counter",
+                "key": "heat",
+                "op": ">=",
+                "value": 6
+              },
+              "then": [
+                {
+                  "type": "roll",
+                  "key": "crime_caught",
+                  "chance": 0.42
+                }
+              ],
+              "else": [
+                {
+                  "type": "if",
+                  "when": {
+                    "type": "counter",
+                    "key": "heat",
+                    "op": ">=",
+                    "value": 3
+                  },
+                  "then": [
+                    {
+                      "type": "roll",
+                      "key": "crime_caught",
+                      "chance": 0.27
+                    }
+                  ],
+                  "else": [
+                    {
+                      "type": "roll",
+                      "key": "crime_caught",
+                      "chance": 0.12
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "else": [
+            {
+              "type": "stat",
+              "key": "wellbeing",
+              "delta": -1
+            },
+            {
+              "type": "counter",
+              "key": "heat",
+              "delta": 1
+            },
+            {
+              "type": "if",
+              "when": {
+                "type": "counter",
+                "key": "heat",
+                "op": ">=",
+                "value": 6
+              },
+              "then": [
+                {
+                  "type": "roll",
+                  "key": "crime_caught",
+                  "chance": 0.48
+                }
+              ],
+              "else": [
+                {
+                  "type": "if",
+                  "when": {
+                    "type": "counter",
+                    "key": "heat",
+                    "op": ">=",
+                    "value": 3
+                  },
+                  "then": [
+                    {
+                      "type": "roll",
+                      "key": "crime_caught",
+                      "chance": 0.32999999999999996
+                    }
+                  ],
+                  "else": [
+                    {
+                      "type": "roll",
+                      "key": "crime_caught",
+                      "chance": 0.18
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "if",
+          "when": {
+            "type": "flag",
+            "key": "crime_caught"
+          },
+          "then": [
+            {
+              "type": "clearFlag",
+              "key": "crime_caught"
+            },
+            {
+              "type": "schedule",
+              "event": "ev_arrest_serious",
+              "inDays": 0
+            }
+          ]
+        },
+        {
+          "type": "stat",
+          "key": "discipline",
+          "delta": -0.3
+        }
+      ]
+    },
+    {
+      "id": "crime_car_theft",
+      "label": "Steal a car to order",
+      "description": "A buyer wants a particular SUV. You know where one sleeps.",
+      "location": "backstreets",
+      "energyCost": 14,
+      "requires": {
+        "type": "all",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "mature_on"
+          },
+          {
+            "type": "all",
+            "conditions": [
+              {
+                "type": "skill",
+                "key": "streetwise",
+                "op": ">=",
+                "value": 35
+              },
+              {
+                "type": "flag",
+                "key": "driving_licence"
+              }
+            ]
+          }
+        ]
+      },
+      "effects": [
+        {
+          "type": "if",
+          "when": {
+            "type": "skill",
+            "key": "streetwise",
+            "op": ">=",
+            "value": 40
+          },
+          "then": [
+            {
+              "type": "roll",
+              "key": "crime_ok",
+              "chance": 0.65
+            }
+          ],
+          "else": [
+            {
+              "type": "roll",
+              "key": "crime_ok",
+              "chance": 0.5
+            }
+          ]
+        },
+        {
+          "type": "if",
+          "when": {
+            "type": "flag",
+            "key": "crime_ok"
+          },
+          "then": [
+            {
+              "type": "money",
+              "amount": 40000,
+              "label": "Steal a car to order",
+              "category": "crime"
+            },
+            {
+              "type": "skill",
+              "key": "streetwise",
+              "delta": 1.5
+            },
+            {
+              "type": "counter",
+              "key": "heat",
+              "delta": 3
+            },
+            {
+              "type": "counter",
+              "key": "crimes",
+              "delta": 1
+            },
+            {
+              "type": "flag",
+              "key": "crime_any"
+            },
+            {
+              "type": "if",
+              "when": {
+                "type": "counter",
+                "key": "heat",
+                "op": ">=",
+                "value": 6
+              },
+              "then": [
+                {
+                  "type": "roll",
+                  "key": "crime_caught",
+                  "chance": 0.55
+                }
+              ],
+              "else": [
+                {
+                  "type": "if",
+                  "when": {
+                    "type": "counter",
+                    "key": "heat",
+                    "op": ">=",
+                    "value": 3
+                  },
+                  "then": [
+                    {
+                      "type": "roll",
+                      "key": "crime_caught",
+                      "chance": 0.4
+                    }
+                  ],
+                  "else": [
+                    {
+                      "type": "roll",
+                      "key": "crime_caught",
+                      "chance": 0.25
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "else": [
+            {
+              "type": "stat",
+              "key": "wellbeing",
+              "delta": -1
+            },
+            {
+              "type": "counter",
+              "key": "heat",
+              "delta": 2
+            },
+            {
+              "type": "if",
+              "when": {
+                "type": "counter",
+                "key": "heat",
+                "op": ">=",
+                "value": 6
+              },
+              "then": [
+                {
+                  "type": "roll",
+                  "key": "crime_caught",
+                  "chance": 0.675
+                }
+              ],
+              "else": [
+                {
+                  "type": "if",
+                  "when": {
+                    "type": "counter",
+                    "key": "heat",
+                    "op": ">=",
+                    "value": 3
+                  },
+                  "then": [
+                    {
+                      "type": "roll",
+                      "key": "crime_caught",
+                      "chance": 0.525
+                    }
+                  ],
+                  "else": [
+                    {
+                      "type": "roll",
+                      "key": "crime_caught",
+                      "chance": 0.375
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "if",
+          "when": {
+            "type": "flag",
+            "key": "crime_caught"
+          },
+          "then": [
+            {
+              "type": "clearFlag",
+              "key": "crime_caught"
+            },
+            {
+              "type": "schedule",
+              "event": "ev_arrest_serious",
+              "inDays": 0
+            }
+          ]
+        },
+        {
+          "type": "stat",
+          "key": "discipline",
+          "delta": -0.3
+        }
+      ]
+    },
+    {
+      "id": "crime_burglary",
+      "label": "Burgle an empty bungalow",
+      "description": "The family is abroad for a month. The neighbours are not.",
+      "location": "backstreets",
+      "energyCost": 16,
+      "requires": {
+        "type": "all",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "mature_on"
+          },
+          {
+            "type": "skill",
+            "key": "streetwise",
+            "op": ">=",
+            "value": 45
+          }
+        ]
+      },
+      "effects": [
+        {
+          "type": "if",
+          "when": {
+            "type": "skill",
+            "key": "streetwise",
+            "op": ">=",
+            "value": 40
+          },
+          "then": [
+            {
+              "type": "roll",
+              "key": "crime_ok",
+              "chance": 0.6
+            }
+          ],
+          "else": [
+            {
+              "type": "roll",
+              "key": "crime_ok",
+              "chance": 0.45
+            }
+          ]
+        },
+        {
+          "type": "if",
+          "when": {
+            "type": "flag",
+            "key": "crime_ok"
+          },
+          "then": [
+            {
+              "type": "money",
+              "amount": 65000,
+              "label": "Burgle an empty bungalow",
+              "category": "crime"
+            },
+            {
+              "type": "skill",
+              "key": "streetwise",
+              "delta": 1.8
+            },
+            {
+              "type": "counter",
+              "key": "heat",
+              "delta": 3
+            },
+            {
+              "type": "counter",
+              "key": "crimes",
+              "delta": 1
+            },
+            {
+              "type": "flag",
+              "key": "crime_any"
+            },
+            {
+              "type": "if",
+              "when": {
+                "type": "counter",
+                "key": "heat",
+                "op": ">=",
+                "value": 6
+              },
+              "then": [
+                {
+                  "type": "roll",
+                  "key": "crime_caught",
+                  "chance": 0.6
+                }
+              ],
+              "else": [
+                {
+                  "type": "if",
+                  "when": {
+                    "type": "counter",
+                    "key": "heat",
+                    "op": ">=",
+                    "value": 3
+                  },
+                  "then": [
+                    {
+                      "type": "roll",
+                      "key": "crime_caught",
+                      "chance": 0.44999999999999996
+                    }
+                  ],
+                  "else": [
+                    {
+                      "type": "roll",
+                      "key": "crime_caught",
+                      "chance": 0.3
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "else": [
+            {
+              "type": "stat",
+              "key": "wellbeing",
+              "delta": -1
+            },
+            {
+              "type": "counter",
+              "key": "heat",
+              "delta": 2
+            },
+            {
+              "type": "if",
+              "when": {
+                "type": "counter",
+                "key": "heat",
+                "op": ">=",
+                "value": 6
+              },
+              "then": [
+                {
+                  "type": "roll",
+                  "key": "crime_caught",
+                  "chance": 0.75
+                }
+              ],
+              "else": [
+                {
+                  "type": "if",
+                  "when": {
+                    "type": "counter",
+                    "key": "heat",
+                    "op": ">=",
+                    "value": 3
+                  },
+                  "then": [
+                    {
+                      "type": "roll",
+                      "key": "crime_caught",
+                      "chance": 0.6
+                    }
+                  ],
+                  "else": [
+                    {
+                      "type": "roll",
+                      "key": "crime_caught",
+                      "chance": 0.44999999999999996
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "if",
+          "when": {
+            "type": "flag",
+            "key": "crime_caught"
+          },
+          "then": [
+            {
+              "type": "clearFlag",
+              "key": "crime_caught"
+            },
+            {
+              "type": "schedule",
+              "event": "ev_arrest_serious",
+              "inDays": 0
+            }
+          ]
+        },
+        {
+          "type": "stat",
+          "key": "discipline",
+          "delta": -0.3
+        }
+      ]
+    },
+    {
+      "id": "crime_lie_low",
+      "label": "Lie low for a few days",
+      "description": "Stay off the streets, change your routes, let things cool down.",
+      "location": "backstreets",
+      "energyCost": 0,
+      "requires": {
+        "type": "all",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "mature_on"
+          },
+          {
+            "type": "counter",
+            "key": "heat",
+            "op": ">=",
+            "value": 1
+          }
+        ]
+      },
+      "effects": [
+        {
+          "type": "counter",
+          "key": "heat",
+          "delta": -2
+        },
+        {
+          "type": "stat",
+          "key": "wellbeing",
+          "delta": -0.5
+        }
+      ]
+    },
+    {
+      "id": "crime_ask_crew",
+      "label": "Ask around about Pappu Bhai's crew",
+      "description": "Word is the man who runs these lanes is always recruiting.",
+      "location": "backstreets",
+      "energyCost": 4,
+      "requires": {
+        "type": "all",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "mature_on"
+          },
+          {
+            "type": "skill",
+            "key": "streetwise",
+            "op": ">=",
+            "value": 25
+          },
+          {
+            "type": "not",
+            "condition": {
+              "type": "career",
+              "value": "crime_syndicate"
+            }
+          },
+          {
+            "type": "not",
+            "condition": {
+              "type": "flag",
+              "key": "gang_associate"
+            }
+          },
+          {
+            "type": "not",
+            "condition": {
+              "type": "flag",
+              "key": "reformed"
+            }
+          }
+        ]
+      },
+      "effects": [
+        {
+          "type": "schedule",
+          "event": "ev_crime_recruit",
+          "inDays": 0
+        },
+        {
+          "type": "stat",
+          "key": "discipline",
+          "delta": -0.2
+        }
+      ]
+    },
+    {
+      "id": "crime_plan_heist",
+      "label": "Plan the bank-vault job",
+      "description": "The crew has a blueprint, a guard on the payroll and a date. They need a planner.",
+      "location": "backstreets",
+      "energyCost": 20,
+      "requires": {
+        "type": "all",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "mature_on"
+          },
+          {
+            "type": "any",
+            "conditions": [
+              {
+                "type": "flag",
+                "key": "gang_associate"
+              },
+              {
+                "type": "career",
+                "value": "crime_syndicate"
+              }
+            ]
+          },
+          {
+            "type": "skill",
+            "key": "streetwise",
+            "op": ">=",
+            "value": 55
+          },
+          {
+            "type": "not",
+            "condition": {
+              "type": "flag",
+              "key": "heist_done"
+            }
+          }
+        ]
+      },
+      "effects": [
+        {
+          "type": "schedule",
+          "event": "ev_crime_heist",
+          "inDays": 0
+        }
+      ]
+    },
+    {
+      "id": "crime_armed_robbery",
+      "label": "Join an armed bank robbery",
+      "description": "A crew wants you on lookout while a masked robbery unfolds. Guns, alarms and panic mean this can ruin a life fast.",
+      "location": "backstreets",
+      "energyCost": 18,
+      "requires": {
+        "type": "all",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "mature_on"
+          },
+          {
+            "type": "any",
+            "conditions": [
+              {
+                "type": "flag",
+                "key": "gang_associate"
+              },
+              {
+                "type": "career",
+                "value": "crime_syndicate"
+              },
+              {
+                "type": "skill",
+                "key": "streetwise",
+                "op": ">=",
+                "value": 45
+              }
+            ]
+          }
+        ]
+      },
+      "effects": [
+        {
+          "type": "counter",
+          "key": "heat",
+          "delta": 3
+        },
+        {
+          "type": "schedule",
+          "event": "ev_armed_bank_robbery",
+          "inDays": 0
+        }
+      ]
+    },
+    {
+      "id": "crime_kidnap_ransom",
+      "label": "Get pulled into a kidnapping plot",
+      "description": "A crew talks about holding a rival's cousin for ransom. You can walk away, warn someone, or cross a line.",
+      "location": "backstreets",
+      "energyCost": 16,
+      "requires": {
+        "type": "all",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "mature_on"
+          },
+          {
+            "type": "skill",
+            "key": "streetwise",
+            "op": ">=",
+            "value": 35
+          }
+        ]
+      },
+      "effects": [
+        {
+          "type": "counter",
+          "key": "heat",
+          "delta": 2
+        },
+        {
+          "type": "schedule",
+          "event": "ev_kidnapping_plot",
+          "inDays": 0
+        }
+      ]
+    },
+    {
+      "id": "police_surrender",
+      "label": "Turn yourself in and confess",
+      "description": "Walk up to the front desk and tell them everything. It might be the bravest thing you do.",
+      "location": "police_station",
+      "energyCost": 6,
+      "moneyCost": 5000,
+      "requires": {
+        "type": "counter",
+        "key": "heat",
+        "op": ">=",
+        "value": 3
+      },
+      "effects": [
+        {
+          "type": "flag",
+          "key": "police_record"
+        },
+        {
+          "type": "counter",
+          "key": "heat",
+          "delta": -10
+        },
+        {
+          "type": "stat",
+          "key": "wellbeing",
+          "delta": 3
+        },
+        {
+          "type": "flag",
+          "key": "confessed"
+        },
+        {
+          "type": "journal",
+          "title": "Came clean",
+          "text": "You confessed at the police station. A record, a fine, and a strange lightness.",
+          "important": true
+        }
+      ]
+    },
+    {
+      "id": "police_rehab",
+      "label": "Rehabilitation & community service",
+      "description": "Sweep parks, mentor kids from your lane, sit with a probation counsellor. Six sessions.",
+      "location": "police_station",
+      "energyCost": 12,
+      "requires": {
+        "type": "all",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "police_record"
+          },
+          {
+            "type": "counter",
+            "key": "heat",
+            "op": "<=",
+            "value": 0
+          },
+          {
+            "type": "not",
+            "condition": {
+              "type": "career",
+              "value": "crime_syndicate"
+            }
+          }
+        ]
+      },
+      "effects": [
+        {
+          "type": "counter",
+          "key": "rehab",
+          "delta": 1
+        },
+        {
+          "type": "stat",
+          "key": "wellbeing",
+          "delta": 1
+        },
+        {
+          "type": "skill",
+          "key": "leadership",
+          "delta": 0.3
+        },
+        {
+          "type": "if",
+          "when": {
+            "type": "counter",
+            "key": "rehab",
+            "op": ">=",
+            "value": 6
+          },
+          "then": [
+            {
+              "type": "clearFlag",
+              "key": "police_record"
+            },
+            {
+              "type": "flag",
+              "key": "reformed"
+            },
+            {
+              "type": "clearFlag",
+              "key": "gang_associate"
+            },
+            {
+              "type": "stat",
+              "key": "wellbeing",
+              "delta": 6
+            },
+            {
+              "type": "journal",
+              "title": "A clean slate",
+              "text": "Six months of community service. The court has sealed your record. People look at you differently now — and so do you.",
+              "important": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "police_volunteer",
+      "label": "Volunteer as a community warden",
+      "description": "Traffic duty at the school gate and night walks with the beat constable.",
+      "location": "police_station",
+      "energyCost": 8,
+      "effects": [
+        {
+          "type": "skill",
+          "key": "leadership",
+          "delta": 0.6
+        },
+        {
+          "type": "stat",
+          "key": "communication",
+          "delta": 0.4
+        },
+        {
+          "type": "stat",
+          "key": "wellbeing",
+          "delta": 1
+        }
+      ]
+    },
+    {
+      "id": "police_report_tip",
+      "label": "Report what you know about the lanes",
+      "description": "An anonymous tip about the stolen-goods racket behind the market.",
+      "location": "police_station",
+      "energyCost": 4,
+      "requires": {
+        "type": "all",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "mature_on"
+          },
+          {
+            "type": "skill",
+            "key": "streetwise",
+            "op": ">=",
+            "value": 15
+          },
+          {
+            "type": "not",
+            "condition": {
+              "type": "career",
+              "value": "crime_syndicate"
+            }
+          },
+          {
+            "type": "not",
+            "condition": {
+              "type": "flag",
+              "key": "gave_tip"
+            }
+          }
+        ]
+      },
+      "effects": [
+        {
+          "type": "stat",
+          "key": "wellbeing",
+          "delta": 1.5
+        },
+        {
+          "type": "skill",
+          "key": "law",
+          "delta": 0.3
+        },
+        {
+          "type": "flag",
+          "key": "gave_tip"
+        }
+      ]
+    },
+    {
+      "id": "gamble_lottery",
+      "label": "Buy a lottery ticket",
+      "description": "₹100 for a dream. The odds are printed very small on the back.",
+      "location": "casino",
+      "energyCost": 0,
+      "moneyCost": 100,
+      "requires": {
+        "type": "all",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "mature_on"
+          },
+          {
+            "type": "not",
+            "condition": {
+              "type": "flag",
+              "key": "gambling_recovered"
+            }
+          }
+        ]
+      },
+      "effects": [
+        {
+          "type": "counter",
+          "key": "gambles",
+          "delta": 1
+        },
+        {
+          "type": "skill",
+          "key": "streetwise",
+          "delta": 0.2
+        },
+        {
+          "type": "roll",
+          "key": "gamble_win_0",
+          "chance": 0.002
+        },
+        {
+          "type": "if",
+          "when": {
+            "type": "flag",
+            "key": "gamble_win_0"
+          },
+          "then": [
+            {
+              "type": "money",
+              "amount": 1000000,
+              "label": "Buy a lottery ticket: winnings",
+              "category": "gambling"
+            },
+            {
+              "type": "stat",
+              "key": "wellbeing",
+              "delta": 2
+            },
+            {
+              "type": "flag",
+              "key": "lottery_jackpot"
+            }
+          ],
+          "else": [
+            {
+              "type": "roll",
+              "key": "gamble_win_1",
+              "chance": 0.05
+            },
+            {
+              "type": "if",
+              "when": {
+                "type": "flag",
+                "key": "gamble_win_1"
+              },
+              "then": [
+                {
+                  "type": "money",
+                  "amount": 1000,
+                  "label": "Buy a lottery ticket: winnings",
+                  "category": "gambling"
+                },
+                {
+                  "type": "stat",
+                  "key": "wellbeing",
+                  "delta": 2
+                }
+              ],
+              "else": [
+                {
+                  "type": "stat",
+                  "key": "wellbeing",
+                  "delta": -1
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gamble_cricket",
+      "label": "Bet ₹2,000 on tonight's cricket match",
+      "description": "Even money on the home side. You know cricket — right?",
+      "location": "casino",
+      "energyCost": 4,
+      "moneyCost": 2000,
+      "requires": {
+        "type": "all",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "mature_on"
+          },
+          {
+            "type": "not",
+            "condition": {
+              "type": "flag",
+              "key": "gambling_recovered"
+            }
+          }
+        ]
+      },
+      "effects": [
+        {
+          "type": "counter",
+          "key": "gambles",
+          "delta": 1
+        },
+        {
+          "type": "skill",
+          "key": "streetwise",
+          "delta": 0.2
+        },
+        {
+          "type": "roll",
+          "key": "gamble_win_0",
+          "chance": 0.46
+        },
+        {
+          "type": "if",
+          "when": {
+            "type": "flag",
+            "key": "gamble_win_0"
+          },
+          "then": [
+            {
+              "type": "money",
+              "amount": 4000,
+              "label": "Bet ₹2,000 on tonight's cricket match: winnings",
+              "category": "gambling"
+            },
+            {
+              "type": "stat",
+              "key": "wellbeing",
+              "delta": 2
+            }
+          ],
+          "else": [
+            {
+              "type": "stat",
+              "key": "wellbeing",
+              "delta": -1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gamble_roulette",
+      "label": "Roulette: ₹5,000 on red",
+      "description": "The wheel spins. Eighteen red, eighteen black — and one green zero for the house.",
+      "location": "casino",
+      "energyCost": 4,
+      "moneyCost": 5000,
+      "requires": {
+        "type": "all",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "mature_on"
+          },
+          {
+            "type": "not",
+            "condition": {
+              "type": "flag",
+              "key": "gambling_recovered"
+            }
+          }
+        ]
+      },
+      "effects": [
+        {
+          "type": "counter",
+          "key": "gambles",
+          "delta": 1
+        },
+        {
+          "type": "skill",
+          "key": "streetwise",
+          "delta": 0.2
+        },
+        {
+          "type": "roll",
+          "key": "gamble_win_0",
+          "chance": 0.47
+        },
+        {
+          "type": "if",
+          "when": {
+            "type": "flag",
+            "key": "gamble_win_0"
+          },
+          "then": [
+            {
+              "type": "money",
+              "amount": 10000,
+              "label": "Roulette: ₹5,000 on red: winnings",
+              "category": "gambling"
+            },
+            {
+              "type": "stat",
+              "key": "wellbeing",
+              "delta": 2
+            }
+          ],
+          "else": [
+            {
+              "type": "stat",
+              "key": "wellbeing",
+              "delta": -1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gamble_slots",
+      "label": "Play the slot machines (₹1,000)",
+      "description": "Lights, sounds and the feeling you are always almost winning.",
+      "location": "casino",
+      "energyCost": 4,
+      "moneyCost": 1000,
+      "requires": {
+        "type": "all",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "mature_on"
+          },
+          {
+            "type": "not",
+            "condition": {
+              "type": "flag",
+              "key": "gambling_recovered"
+            }
+          }
+        ]
+      },
+      "effects": [
+        {
+          "type": "counter",
+          "key": "gambles",
+          "delta": 1
+        },
+        {
+          "type": "skill",
+          "key": "streetwise",
+          "delta": 0.2
+        },
+        {
+          "type": "roll",
+          "key": "gamble_win_0",
+          "chance": 0.01
+        },
+        {
+          "type": "if",
+          "when": {
+            "type": "flag",
+            "key": "gamble_win_0"
+          },
+          "then": [
+            {
+              "type": "money",
+              "amount": 50000,
+              "label": "Play the slot machines (₹1,000): winnings",
+              "category": "gambling"
+            },
+            {
+              "type": "stat",
+              "key": "wellbeing",
+              "delta": 2
+            },
+            {
+              "type": "flag",
+              "key": "big_win"
+            }
+          ],
+          "else": [
+            {
+              "type": "roll",
+              "key": "gamble_win_1",
+              "chance": 0.3
+            },
+            {
+              "type": "if",
+              "when": {
+                "type": "flag",
+                "key": "gamble_win_1"
+              },
+              "then": [
+                {
+                  "type": "money",
+                  "amount": 1500,
+                  "label": "Play the slot machines (₹1,000): winnings",
+                  "category": "gambling"
+                },
+                {
+                  "type": "stat",
+                  "key": "wellbeing",
+                  "delta": 2
+                }
+              ],
+              "else": [
+                {
+                  "type": "stat",
+                  "key": "wellbeing",
+                  "delta": -1
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gamble_horses",
+      "label": "Back a long shot at the races (₹3,000)",
+      "description": "Moonlight Express at 5 to 1. The tipster swears by her.",
+      "location": "casino",
+      "energyCost": 4,
+      "moneyCost": 3000,
+      "requires": {
+        "type": "all",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "mature_on"
+          },
+          {
+            "type": "not",
+            "condition": {
+              "type": "flag",
+              "key": "gambling_recovered"
+            }
+          }
+        ]
+      },
+      "effects": [
+        {
+          "type": "counter",
+          "key": "gambles",
+          "delta": 1
+        },
+        {
+          "type": "skill",
+          "key": "streetwise",
+          "delta": 0.2
+        },
+        {
+          "type": "roll",
+          "key": "gamble_win_0",
+          "chance": 0.18
+        },
+        {
+          "type": "if",
+          "when": {
+            "type": "flag",
+            "key": "gamble_win_0"
+          },
+          "then": [
+            {
+              "type": "money",
+              "amount": 18000,
+              "label": "Back a long shot at the races (₹3,000): winnings",
+              "category": "gambling"
+            },
+            {
+              "type": "stat",
+              "key": "wellbeing",
+              "delta": 2
+            }
+          ],
+          "else": [
+            {
+              "type": "stat",
+              "key": "wellbeing",
+              "delta": -1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gamble_teen_patti",
+      "label": "Teen patti night (₹10,000 buy-in)",
+      "description": "Cards, chai and men who talk too much when they bluff. Street smarts help here.",
+      "location": "casino",
+      "energyCost": 10,
+      "moneyCost": 10000,
+      "requires": {
+        "type": "all",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "mature_on"
+          },
+          {
+            "type": "not",
+            "condition": {
+              "type": "flag",
+              "key": "gambling_recovered"
+            }
+          },
+          {
+            "type": "skill",
+            "key": "streetwise",
+            "op": ">=",
+            "value": 20
+          }
+        ]
+      },
+      "effects": [
+        {
+          "type": "counter",
+          "key": "gambles",
+          "delta": 1
+        },
+        {
+          "type": "skill",
+          "key": "streetwise",
+          "delta": 0.2
+        },
+        {
+          "type": "roll",
+          "key": "gamble_win_0",
+          "chance": 0.12
+        },
+        {
+          "type": "if",
+          "when": {
+            "type": "flag",
+            "key": "gamble_win_0"
+          },
+          "then": [
+            {
+              "type": "money",
+              "amount": 40000,
+              "label": "Teen patti night (₹10,000 buy-in): winnings",
+              "category": "gambling"
+            },
+            {
+              "type": "stat",
+              "key": "wellbeing",
+              "delta": 2
+            },
+            {
+              "type": "flag",
+              "key": "big_win"
+            }
+          ],
+          "else": [
+            {
+              "type": "roll",
+              "key": "gamble_win_1",
+              "chance": 0.35
+            },
+            {
+              "type": "if",
+              "when": {
+                "type": "flag",
+                "key": "gamble_win_1"
+              },
+              "then": [
+                {
+                  "type": "money",
+                  "amount": 20000,
+                  "label": "Teen patti night (₹10,000 buy-in): winnings",
+                  "category": "gambling"
+                },
+                {
+                  "type": "stat",
+                  "key": "wellbeing",
+                  "delta": 2
+                }
+              ],
+              "else": [
+                {
+                  "type": "stat",
+                  "key": "wellbeing",
+                  "delta": -1
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gamble_high_roller",
+      "label": "High-roller baccarat (₹1,00,000)",
+      "description": "A private room, a dealer in a waistcoat and the biggest single bet of your life.",
+      "location": "casino",
+      "energyCost": 8,
+      "moneyCost": 100000,
+      "requires": {
+        "type": "all",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "mature_on"
+          },
+          {
+            "type": "not",
+            "condition": {
+              "type": "flag",
+              "key": "gambling_recovered"
+            }
+          },
+          {
+            "type": "cash",
+            "op": ">=",
+            "value": 100000
+          }
+        ]
+      },
+      "effects": [
+        {
+          "type": "counter",
+          "key": "gambles",
+          "delta": 1
+        },
+        {
+          "type": "skill",
+          "key": "streetwise",
+          "delta": 0.2
+        },
+        {
+          "type": "roll",
+          "key": "gamble_win_0",
+          "chance": 0.46
+        },
+        {
+          "type": "if",
+          "when": {
+            "type": "flag",
+            "key": "gamble_win_0"
+          },
+          "then": [
+            {
+              "type": "money",
+              "amount": 200000,
+              "label": "High-roller baccarat (₹1,00,000): winnings",
+              "category": "gambling"
+            },
+            {
+              "type": "stat",
+              "key": "wellbeing",
+              "delta": 2
+            },
+            {
+              "type": "flag",
+              "key": "big_win"
+            }
+          ],
+          "else": [
+            {
+              "type": "stat",
+              "key": "wellbeing",
+              "delta": -1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gamble_loan_shark",
+      "label": "Borrow ₹50,000 from Shetty",
+      "description": "Shetty lends to anyone at the club. Repayment in thirty days: ₹75,000. He's never been paid late twice.",
+      "location": "casino",
+      "energyCost": 2,
+      "requires": {
+        "type": "all",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "mature_on"
+          },
+          {
+            "type": "not",
+            "condition": {
+              "type": "flag",
+              "key": "shark_debt"
+            }
+          }
+        ]
+      },
+      "effects": [
+        {
+          "type": "money",
+          "amount": 50000,
+          "label": "Shetty's loan",
+          "category": "loan"
+        },
+        {
+          "type": "flag",
+          "key": "shark_debt"
+        },
+        {
+          "type": "stat",
+          "key": "wellbeing",
+          "delta": -2
+        },
+        {
+          "type": "delayed",
+          "inDays": 30,
+          "note": "Shetty's ₹75,000 is due",
+          "effects": [
+            {
+              "type": "if",
+              "when": {
+                "type": "cash",
+                "op": ">=",
+                "value": 75000
+              },
+              "then": [
+                {
+                  "type": "money",
+                  "amount": -75000,
+                  "label": "Repaid Shetty's loan",
+                  "category": "loan"
+                },
+                {
+                  "type": "clearFlag",
+                  "key": "shark_debt"
+                }
+              ],
+              "else": [
+                {
+                  "type": "schedule",
+                  "event": "ev_loan_shark",
+                  "inDays": 0
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gamble_self_exclude",
+      "label": "Ask the club to ban you for good",
+      "description": "Sign the self-exclusion register. The bouncers will turn you away from now on.",
+      "location": "casino",
+      "energyCost": 2,
+      "requires": {
+        "type": "all",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "mature_on"
+          },
+          {
+            "type": "counter",
+            "key": "gambles",
+            "op": ">=",
+            "value": 5
+          },
+          {
+            "type": "not",
+            "condition": {
+              "type": "flag",
+              "key": "gambling_recovered"
+            }
+          }
+        ]
+      },
+      "effects": [
+        {
+          "type": "flag",
+          "key": "gambling_recovered"
+        },
+        {
+          "type": "clearFlag",
+          "key": "gambling_addict"
+        },
+        {
+          "type": "stat",
+          "key": "wellbeing",
+          "delta": 3
+        },
+        {
+          "type": "stat",
+          "key": "discipline",
+          "delta": 2
+        },
+        {
+          "type": "journal",
+          "title": "Walked away",
+          "text": "You signed the self-exclusion register at the Lucky Star Club. No more bets.",
+          "important": true
+        }
+      ]
+    },
+    {
+      "id": "hosp_gambling_help",
+      "label": "Gambling addiction counselling",
+      "description": "Group sessions with people who lost far more than money. Four sessions.",
+      "location": "hospital",
+      "energyCost": 4,
+      "moneyCost": 1500,
+      "requires": {
+        "type": "flag",
+        "key": "gambling_addict"
+      },
+      "effects": [
+        {
+          "type": "counter",
+          "key": "gambling_counselling",
+          "delta": 1
+        },
+        {
+          "type": "stat",
+          "key": "wellbeing",
+          "delta": 1
+        },
+        {
+          "type": "if",
+          "when": {
+            "type": "counter",
+            "key": "gambling_counselling",
+            "op": ">=",
+            "value": 4
+          },
+          "then": [
+            {
+              "type": "clearFlag",
+              "key": "gambling_addict"
+            },
+            {
+              "type": "flag",
+              "key": "gambling_recovered"
+            },
+            {
+              "type": "stat",
+              "key": "wellbeing",
+              "delta": 5
+            },
+            {
+              "type": "journal",
+              "title": "Free of it",
+              "text": "Four sessions, many urges resisted. Gambling no longer runs your life.",
+              "important": true
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "puzzles": [
+    {
+      "id": "street_01",
+      "category": "math",
+      "difficulty": 1,
+      "pools": [
+        "street_smarts"
+      ],
+      "type": "numeric",
+      "prompt": "The take is three bundles of a hundred ₹500 notes and two bundles of a hundred ₹200 notes. How much in total (₹)?",
+      "answer": 190000,
+      "explanation": "3 × 100 × ₹500 = ₹1,50,000. 2 × 100 × ₹200 = ₹40,000. Total ₹1,90,000.",
+      "timeLimitSec": 90,
+      "tolerance": 0,
+      "unit": "₹"
+    },
+    {
+      "id": "street_02",
+      "category": "logic",
+      "difficulty": 2,
+      "pools": [
+        "street_smarts"
+      ],
+      "type": "mcq",
+      "prompt": "The guard changes every 45 minutes starting at 9:00 p.m. Which of these times is NOT a shift change?",
+      "options": [
+        "9:45 p.m.",
+        "10:30 p.m.",
+        "11:00 p.m.",
+        "11:15 p.m."
+      ],
+      "answer": 2,
+      "explanation": "Changes fall at 9:00, 9:45, 10:30, 11:15, 12:00… 11:00 is not one of them.",
+      "timeLimitSec": 90
+    },
+    {
+      "id": "street_03",
+      "category": "math",
+      "difficulty": 2,
+      "pools": [
+        "street_smarts"
+      ],
+      "type": "numeric",
+      "prompt": "Five people split ₹8,00,000. The planner takes 30% and the rest is shared equally among the other four. How much does each of the four get (₹)?",
+      "answer": 140000,
+      "explanation": "The planner takes ₹2,40,000. The remaining ₹5,60,000 ÷ 4 = ₹1,40,000 each.",
+      "timeLimitSec": 90,
+      "tolerance": 0,
+      "unit": "₹"
+    },
+    {
+      "id": "street_04",
+      "category": "case",
+      "difficulty": 2,
+      "pools": [
+        "street_smarts",
+        "crime_interview"
+      ],
+      "type": "mcq",
+      "prompt": "A new crew member brags loudly about the job in a tea shop. What is the safest move?",
+      "options": [
+        "Ignore it",
+        "Pull them out quietly and call off anything they knew about",
+        "Shout at them in the shop",
+        "Bring them along anyway"
+      ],
+      "answer": 1,
+      "explanation": "Loose talk is how jobs are lost. Quietly limit the damage and change what they knew.",
+      "timeLimitSec": 90
+    },
+    {
+      "id": "street_05",
+      "category": "logic",
+      "difficulty": 3,
+      "pools": [
+        "street_smarts",
+        "crime_interview"
+      ],
+      "type": "mcq",
+      "prompt": "Three exits: A is watched every night, B on even dates only, C on odd dates only. Tonight is the 14th. Which exit is unwatched?",
+      "options": [
+        "A",
+        "B",
+        "C",
+        "None"
+      ],
+      "answer": 2,
+      "explanation": "The 14th is even: A and B are watched. C is watched only on odd dates, so it is clear tonight.",
+      "timeLimitSec": 90
+    },
+    {
+      "id": "street_06",
+      "category": "math",
+      "difficulty": 1,
+      "pools": [
+        "crime_interview"
+      ],
+      "type": "numeric",
+      "prompt": "You buy stolen phones at ₹4,000 and sell at ₹6,500. Profit on 12 phones (₹)?",
+      "answer": 30000,
+      "explanation": "₹2,500 profit each × 12 = ₹30,000.",
+      "timeLimitSec": 90,
+      "tolerance": 0,
+      "unit": "₹"
+    }
+  ],
+  "careers": [
+    {
+      "id": "crime_syndicate",
+      "name": "Member of Pappu Bhai's crew",
+      "sector": "Organised crime",
+      "description": "Collections, deliveries and jobs you do not talk about. The money is real; so are the police raids and the rivals.",
+      "requiredPrograms": [],
+      "primarySkill": "streetwise",
+      "minPrimarySkill": 0,
+      "interviewPool": "crime_interview",
+      "weeklyHours": 60,
+      "demand": 0.5,
+      "skillGainsPerMonth": {
+        "streetwise": 1.2,
+        "leadership": 0.4
+      },
+      "listed": false,
+      "employers": [
+        "Pappu Bhai's crew"
+      ],
+      "ladder": [
+        {
+          "title": "Runner",
+          "monthlySalary": 18000,
+          "minMonths": 0,
+          "skillRequired": 0
+        },
+        {
+          "title": "Crew Member",
+          "monthlySalary": 35000,
+          "minMonths": 6,
+          "skillRequired": 25
+        },
+        {
+          "title": "Enforcer",
+          "monthlySalary": 65000,
+          "minMonths": 12,
+          "skillRequired": 38
+        },
+        {
+          "title": "Lieutenant",
+          "monthlySalary": 120000,
+          "minMonths": 18,
+          "skillRequired": 52
+        },
+        {
+          "title": "Underboss",
+          "monthlySalary": 250000,
+          "minMonths": 24,
+          "skillRequired": 66
+        },
+        {
+          "title": "Kingpin",
+          "monthlySalary": 500000,
+          "minMonths": 36,
+          "skillRequired": 80
+        }
+      ]
+    }
+  ],
+  "events": [
+    {
+      "id": "ev_arrest_petty",
+      "chapter": 0,
+      "title": "Caught",
+      "location": "police_station",
+      "summary": "The police catch up with you.",
+      "trigger": {
+        "kind": "scheduled"
+      },
+      "start": "start",
+      "nodes": {
+        "start": {
+          "speaker": "narrator",
+          "text": "A hand on your shoulder. \"Come with us.\" The constable is younger than you, and very pleased.",
+          "choices": [
+            {
+              "id": "c_fine",
+              "label": "Plead guilty and pay the fine (₹5,000).",
+              "next": "fined",
+              "effects": [
+                {
+                  "type": "flag",
+                  "key": "police_record"
+                },
+                {
+                  "type": "counter",
+                  "key": "heat",
+                  "delta": -4
+                },
+                {
+                  "type": "stat",
+                  "key": "wellbeing",
+                  "delta": -4
+                }
+              ],
+              "cost": {
+                "money": 5000
+              }
+            },
+            {
+              "id": "c_bribe",
+              "label": "Quietly offer the officer ₹10,000.",
+              "next": "bribe_fail",
+              "effects": [
+                {
+                  "type": "roll",
+                  "key": "bribe_ok",
+                  "chance": 0.6
+                }
+              ],
+              "cost": {
+                "money": 10000
+              },
+              "routes": [
+                {
+                  "when": {
+                    "type": "flag",
+                    "key": "bribe_ok"
+                  },
+                  "next": "bribe_ok"
+                }
+              ]
+            },
+            {
+              "id": "c_lawyer",
+              "label": "Hire a good criminal lawyer (₹25,000).",
+              "next": "convicted",
+              "effects": [
+                {
+                  "type": "if",
+                  "when": {
+                    "type": "skill",
+                    "key": "law",
+                    "op": ">=",
+                    "value": 40
+                  },
+                  "then": [
+                    {
+                      "type": "roll",
+                      "key": "acquitted",
+                      "chance": 0.75
+                    }
+                  ],
+                  "else": [
+                    {
+                      "type": "roll",
+                      "key": "acquitted",
+                      "chance": 0.6
+                    }
+                  ]
+                }
+              ],
+              "cost": {
+                "money": 25000
+              },
+              "routes": [
+                {
+                  "when": {
+                    "type": "flag",
+                    "key": "acquitted"
+                  },
+                  "next": "acquitted"
+                }
+              ]
+            },
+            {
+              "id": "c_accept",
+              "label": "Accept the charge and serve the sentence (thirty days in the district jail).",
+              "next": "convicted",
+              "hint": "Time passes while you are inside."
+            }
+          ]
+        },
+        "fined": {
+          "speaker": "narrator",
+          "text": "You pay at the counter, sign three forms and walk out with a record in the computer and a lecture in your ears."
+        },
+        "bribe_ok": {
+          "speaker": "narrator",
+          "text": "The officer counts it without looking at you. The paperwork goes missing. You tell yourself it was smart.",
+          "onEnter": [
+            {
+              "type": "counter",
+              "key": "heat",
+              "delta": -3
+            },
+            {
+              "type": "stat",
+              "key": "discipline",
+              "delta": -1
+            }
+          ]
+        },
+        "bribe_fail": {
+          "speaker": "narrator",
+          "text": "Wrong officer. He photographs the cash as evidence and adds a second charge.",
+          "choices": [
+            {
+              "id": "c_serve",
+              "label": "There is nothing left to do but serve the time.",
+              "next": "convicted"
+            }
+          ]
+        },
+        "acquitted": {
+          "speaker": "narrator",
+          "text": "Your lawyer takes the case apart, piece by piece. The judge acquits you. Outside the court, you breathe for the first time in weeks.",
+          "onEnter": [
+            {
+              "type": "counter",
+              "key": "heat",
+              "delta": -5
+            },
+            {
+              "type": "stat",
+              "key": "wellbeing",
+              "delta": 3
+            }
+          ]
+        },
+        "convicted": {
+          "speaker": "narrator",
+          "text": "Thirty days in the district jail. You learn the rhythms of the place: roll call, meals, the one hour of sky.",
+          "onEnter": [
+            {
+              "type": "flag",
+              "key": "police_record"
+            },
+            {
+              "type": "flag",
+              "key": "served_time"
+            },
+            {
+              "type": "counter",
+              "key": "heat",
+              "delta": -12
+            },
+            {
+              "type": "stat",
+              "key": "wellbeing",
+              "delta": -12
+            },
+            {
+              "type": "stat",
+              "key": "health",
+              "delta": -4
+            },
+            {
+              "type": "loseJob",
+              "reason": "Jailed"
+            },
+            {
+              "type": "relationship",
+              "npc": "amma",
+              "trust": -8,
+              "affinity": -4
+            },
+            {
+              "type": "journal",
+              "title": "Prison",
+              "text": "Thirty days in the district jail. The days are long and the nights are longer.",
+              "important": true
+            }
+          ],
+          "choices": [
+            {
+              "id": "c_time",
+              "label": "Do your time.",
+              "next": "released",
+              "cost": {
+                "days": 30
+              }
+            }
+          ]
+        },
+        "released": {
+          "speaker": "narrator",
+          "text": "The gate opens. The city has moved on without you. Whatever you do next is up to you — and it doesn't have to be this.",
+          "onEnter": [
+            {
+              "type": "stat",
+              "key": "discipline",
+              "delta": 2
+            }
+          ]
+        }
+      },
+      "repeatable": true
+    },
+    {
+      "id": "ev_arrest_serious",
+      "chapter": 0,
+      "title": "Arrested",
+      "location": "police_station",
+      "summary": "The police catch up with you.",
+      "trigger": {
+        "kind": "scheduled"
+      },
+      "start": "start",
+      "nodes": {
+        "start": {
+          "speaker": "narrator",
+          "text": "They come at dawn. Two jeeps, one warrant, and a neighbour filming from a balcony.",
+          "choices": [
+            {
+              "id": "c_bribe",
+              "label": "Quietly offer the officer ₹75,000.",
+              "next": "bribe_fail",
+              "effects": [
+                {
+                  "type": "roll",
+                  "key": "bribe_ok",
+                  "chance": 0.4
+                }
+              ],
+              "cost": {
+                "money": 75000
+              },
+              "routes": [
+                {
+                  "when": {
+                    "type": "flag",
+                    "key": "bribe_ok"
+                  },
+                  "next": "bribe_ok"
+                }
+              ]
+            },
+            {
+              "id": "c_lawyer",
+              "label": "Hire a good criminal lawyer (₹100,000).",
+              "next": "convicted",
+              "effects": [
+                {
+                  "type": "if",
+                  "when": {
+                    "type": "skill",
+                    "key": "law",
+                    "op": ">=",
+                    "value": 40
+                  },
+                  "then": [
+                    {
+                      "type": "roll",
+                      "key": "acquitted",
+                      "chance": 0.65
+                    }
+                  ],
+                  "else": [
+                    {
+                      "type": "roll",
+                      "key": "acquitted",
+                      "chance": 0.5
+                    }
+                  ]
+                }
+              ],
+              "cost": {
+                "money": 100000
+              },
+              "routes": [
+                {
+                  "when": {
+                    "type": "flag",
+                    "key": "acquitted"
+                  },
+                  "next": "acquitted"
+                }
+              ]
+            },
+            {
+              "id": "c_accept",
+              "label": "Accept the charge and serve the sentence (a year in prison).",
+              "next": "convicted",
+              "hint": "Time passes while you are inside."
+            }
+          ]
+        },
+        "bribe_ok": {
+          "speaker": "narrator",
+          "text": "The officer counts it without looking at you. The paperwork goes missing. You tell yourself it was smart.",
+          "onEnter": [
+            {
+              "type": "counter",
+              "key": "heat",
+              "delta": -3
+            },
+            {
+              "type": "stat",
+              "key": "discipline",
+              "delta": -1
+            }
+          ]
+        },
+        "bribe_fail": {
+          "speaker": "narrator",
+          "text": "Wrong officer. He photographs the cash as evidence and adds a second charge.",
+          "choices": [
+            {
+              "id": "c_serve",
+              "label": "There is nothing left to do but serve the time.",
+              "next": "convicted"
+            }
+          ]
+        },
+        "acquitted": {
+          "speaker": "narrator",
+          "text": "Your lawyer takes the case apart, piece by piece. The judge acquits you. Outside the court, you breathe for the first time in weeks.",
+          "onEnter": [
+            {
+              "type": "counter",
+              "key": "heat",
+              "delta": -5
+            },
+            {
+              "type": "stat",
+              "key": "wellbeing",
+              "delta": 3
+            }
+          ]
+        },
+        "convicted": {
+          "speaker": "narrator",
+          "text": "A year in prison. You learn the rhythms of the place: roll call, meals, the one hour of sky.",
+          "onEnter": [
+            {
+              "type": "dropOut"
+            },
+            {
+              "type": "flag",
+              "key": "police_record"
+            },
+            {
+              "type": "flag",
+              "key": "served_time"
+            },
+            {
+              "type": "counter",
+              "key": "heat",
+              "delta": -12
+            },
+            {
+              "type": "stat",
+              "key": "wellbeing",
+              "delta": -12
+            },
+            {
+              "type": "stat",
+              "key": "health",
+              "delta": -4
+            },
+            {
+              "type": "loseJob",
+              "reason": "Jailed"
+            },
+            {
+              "type": "relationship",
+              "npc": "amma",
+              "trust": -8,
+              "affinity": -4
+            },
+            {
+              "type": "journal",
+              "title": "Prison",
+              "text": "A year in prison. The days are long and the nights are longer.",
+              "important": true
+            }
+          ],
+          "choices": [
+            {
+              "id": "c_time",
+              "label": "Do your time.",
+              "next": "released",
+              "cost": {
+                "days": 365
+              }
+            }
+          ]
+        },
+        "released": {
+          "speaker": "narrator",
+          "text": "The gate opens. The city has moved on without you. Whatever you do next is up to you — and it doesn't have to be this.",
+          "onEnter": [
+            {
+              "type": "stat",
+              "key": "discipline",
+              "delta": 2
+            }
+          ]
+        }
+      },
+      "repeatable": true
+    },
+    {
+      "id": "ev_arrest_major",
+      "chapter": 0,
+      "title": "The Big Arrest",
+      "location": "police_station",
+      "summary": "The police catch up with you.",
+      "trigger": {
+        "kind": "scheduled"
+      },
+      "start": "start",
+      "nodes": {
+        "start": {
+          "speaker": "narrator",
+          "text": "The heist is on every news channel, and now so is your face.",
+          "choices": [
+            {
+              "id": "c_bribe",
+              "label": "Quietly offer the officer ₹500,000.",
+              "next": "bribe_fail",
+              "effects": [
+                {
+                  "type": "roll",
+                  "key": "bribe_ok",
+                  "chance": 0.2
+                }
+              ],
+              "cost": {
+                "money": 500000
+              },
+              "routes": [
+                {
+                  "when": {
+                    "type": "flag",
+                    "key": "bribe_ok"
+                  },
+                  "next": "bribe_ok"
+                }
+              ]
+            },
+            {
+              "id": "c_lawyer",
+              "label": "Hire a good criminal lawyer (₹400,000).",
+              "next": "convicted",
+              "effects": [
+                {
+                  "type": "if",
+                  "when": {
+                    "type": "skill",
+                    "key": "law",
+                    "op": ">=",
+                    "value": 40
+                  },
+                  "then": [
+                    {
+                      "type": "roll",
+                      "key": "acquitted",
+                      "chance": 0.5
+                    }
+                  ],
+                  "else": [
+                    {
+                      "type": "roll",
+                      "key": "acquitted",
+                      "chance": 0.35
+                    }
+                  ]
+                }
+              ],
+              "cost": {
+                "money": 400000
+              },
+              "routes": [
+                {
+                  "when": {
+                    "type": "flag",
+                    "key": "acquitted"
+                  },
+                  "next": "acquitted"
+                }
+              ]
+            },
+            {
+              "id": "c_accept",
+              "label": "Accept the charge and serve the sentence (three years in prison).",
+              "next": "convicted",
+              "hint": "Time passes while you are inside."
+            }
+          ]
+        },
+        "bribe_ok": {
+          "speaker": "narrator",
+          "text": "The officer counts it without looking at you. The paperwork goes missing. You tell yourself it was smart.",
+          "onEnter": [
+            {
+              "type": "counter",
+              "key": "heat",
+              "delta": -3
+            },
+            {
+              "type": "stat",
+              "key": "discipline",
+              "delta": -1
+            }
+          ]
+        },
+        "bribe_fail": {
+          "speaker": "narrator",
+          "text": "Wrong officer. He photographs the cash as evidence and adds a second charge.",
+          "choices": [
+            {
+              "id": "c_serve",
+              "label": "There is nothing left to do but serve the time.",
+              "next": "convicted"
+            }
+          ]
+        },
+        "acquitted": {
+          "speaker": "narrator",
+          "text": "Your lawyer takes the case apart, piece by piece. The judge acquits you. Outside the court, you breathe for the first time in weeks.",
+          "onEnter": [
+            {
+              "type": "counter",
+              "key": "heat",
+              "delta": -5
+            },
+            {
+              "type": "stat",
+              "key": "wellbeing",
+              "delta": 3
+            }
+          ]
+        },
+        "convicted": {
+          "speaker": "narrator",
+          "text": "Three years in prison. You learn the rhythms of the place: roll call, meals, the one hour of sky.",
+          "onEnter": [
+            {
+              "type": "dropOut"
+            },
+            {
+              "type": "flag",
+              "key": "police_record"
+            },
+            {
+              "type": "flag",
+              "key": "served_time"
+            },
+            {
+              "type": "counter",
+              "key": "heat",
+              "delta": -12
+            },
+            {
+              "type": "stat",
+              "key": "wellbeing",
+              "delta": -12
+            },
+            {
+              "type": "stat",
+              "key": "health",
+              "delta": -4
+            },
+            {
+              "type": "loseJob",
+              "reason": "Jailed"
+            },
+            {
+              "type": "relationship",
+              "npc": "amma",
+              "trust": -8,
+              "affinity": -4
+            },
+            {
+              "type": "journal",
+              "title": "Prison",
+              "text": "Three years in prison. The days are long and the nights are longer.",
+              "important": true
+            }
+          ],
+          "choices": [
+            {
+              "id": "c_time",
+              "label": "Do your time.",
+              "next": "released",
+              "cost": {
+                "days": 1095
+              }
+            }
+          ]
+        },
+        "released": {
+          "speaker": "narrator",
+          "text": "The gate opens. The city has moved on without you. Whatever you do next is up to you — and it doesn't have to be this.",
+          "onEnter": [
+            {
+              "type": "stat",
+              "key": "discipline",
+              "delta": 2
+            }
+          ]
+        }
+      },
+      "repeatable": true
+    },
+    {
+      "id": "ev_crime_recruit",
+      "chapter": 0,
+      "title": "Pappu Bhai",
+      "location": "backstreets",
+      "summary": "The man who runs the lanes wants to meet you.",
+      "trigger": {
+        "kind": "scheduled"
+      },
+      "start": "start",
+      "nodes": {
+        "start": {
+          "speaker": "narrator",
+          "text": "A back room above a mobile-repair shop. Pappu Bhai is smaller than you imagined, and much calmer. 'I hear you're sharp,' he says. 'I pay sharp people well. Weekly, in cash.'",
+          "choices": [
+            {
+              "id": "c_join",
+              "label": "Join the crew full time.",
+              "next": "joined",
+              "effects": [
+                {
+                  "type": "hire",
+                  "career": "crime_syndicate",
+                  "employer": "Pappu Bhai's crew"
+                },
+                {
+                  "type": "flag",
+                  "key": "gang_associate"
+                },
+                {
+                  "type": "counter",
+                  "key": "heat",
+                  "delta": 2
+                }
+              ],
+              "requires": {
+                "type": "not",
+                "condition": {
+                  "type": "educationStatus",
+                  "value": "enrolled"
+                }
+              },
+              "hideIfLocked": true
+            },
+            {
+              "id": "c_side",
+              "label": "Keep your life as it is, but take the odd job.",
+              "next": "side",
+              "effects": [
+                {
+                  "type": "flag",
+                  "key": "gang_associate"
+                }
+              ]
+            },
+            {
+              "id": "c_refuse",
+              "label": "Thank him, and walk away.",
+              "next": "refused",
+              "effects": [
+                {
+                  "type": "stat",
+                  "key": "wellbeing",
+                  "delta": 2
+                },
+                {
+                  "type": "stat",
+                  "key": "discipline",
+                  "delta": 1
+                }
+              ]
+            }
+          ]
+        },
+        "joined": {
+          "speaker": "narrator",
+          "text": "He shakes your hand. 'Runners first. Everyone starts as a runner.'"
+        },
+        "side": {
+          "speaker": "narrator",
+          "text": "'Freelancers,' he sighs. 'Fine. When the big job comes, you'll hear from us.'"
+        },
+        "refused": {
+          "speaker": "narrator",
+          "text": "He shrugs. 'The door stays open.' On the stairs, your heart is pounding — and you're glad."
+        }
+      },
+      "repeatable": true
+    },
+    {
+      "id": "ev_crime_heist",
+      "chapter": 0,
+      "title": "The Vault Job",
+      "location": "backstreets",
+      "summary": "The biggest job the crew has ever tried.",
+      "trigger": {
+        "kind": "scheduled"
+      },
+      "start": "start",
+      "nodes": {
+        "start": {
+          "speaker": "narrator",
+          "text": "Blueprints on a carrom board. A guard schedule. A getaway route through the old market. Everyone is looking at you.",
+          "choices": [
+            {
+              "id": "c_plan",
+              "label": "Plan it to the minute.",
+              "next": "caught",
+              "challenge": {
+                "kind": "puzzle",
+                "pool": "street_smarts",
+                "count": 3,
+                "passFraction": 0.67,
+                "onPass": {
+                  "next": "caught",
+                  "effects": [
+                    {
+                      "type": "roll",
+                      "key": "heist_clean",
+                      "chance": 0.7
+                    },
+                    {
+                      "type": "flag",
+                      "key": "heist_done"
+                    }
+                  ],
+                  "routes": [
+                    {
+                      "when": {
+                        "type": "flag",
+                        "key": "heist_clean"
+                      },
+                      "next": "success"
+                    }
+                  ]
+                },
+                "onFail": {
+                  "next": "caught",
+                  "effects": [
+                    {
+                      "type": "roll",
+                      "key": "heist_clean",
+                      "chance": 0.3
+                    },
+                    {
+                      "type": "flag",
+                      "key": "heist_done"
+                    }
+                  ],
+                  "routes": [
+                    {
+                      "when": {
+                        "type": "flag",
+                        "key": "heist_clean"
+                      },
+                      "next": "empty"
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "id": "c_back_out",
+              "label": "Back out. This is too far.",
+              "next": null,
+              "effects": [
+                {
+                  "type": "stat",
+                  "key": "wellbeing",
+                  "delta": 2
+                },
+                {
+                  "type": "clearFlag",
+                  "key": "gang_associate"
+                }
+              ]
+            }
+          ]
+        },
+        "success": {
+          "speaker": "narrator",
+          "text": "Four minutes inside. Nobody hurt. Your share is in a gym bag under your bed and you cannot sleep.",
+          "onEnter": [
+            {
+              "type": "money",
+              "amount": 800000,
+              "label": "Your share of the vault job",
+              "category": "crime"
+            },
+            {
+              "type": "counter",
+              "key": "heat",
+              "delta": 5
+            },
+            {
+              "type": "flag",
+              "key": "big_score"
+            },
+            {
+              "type": "skill",
+              "key": "streetwise",
+              "delta": 4
+            }
+          ]
+        },
+        "empty": {
+          "speaker": "narrator",
+          "text": "The alarm trips early. You run with nothing, but you run clean.",
+          "onEnter": [
+            {
+              "type": "counter",
+              "key": "heat",
+              "delta": 3
+            }
+          ]
+        },
+        "caught": {
+          "speaker": "narrator",
+          "text": "Sirens before you even reach the vault. Somebody talked.",
+          "onEnter": [
+            {
+              "type": "schedule",
+              "event": "ev_arrest_major",
+              "inDays": 0
+            }
+          ]
+        }
+      },
+      "repeatable": true
+    },
+    {
+      "id": "ev_armed_bank_robbery",
+      "chapter": 0,
+      "title": "Alarms at Kaveri Bank",
+      "location": "bank",
+      "summary": "An armed robbery explodes into sirens and panic.",
+      "trigger": {
+        "kind": "scheduled"
+      },
+      "start": "start",
+      "nodes": {
+        "start": {
+          "speaker": "narrator",
+          "text": "The bank lobby freezes. A weapon flashes under fluorescent lights, someone screams, and the alarm starts its thin, terrible song.",
+          "choices": [
+            {
+              "id": "c_run",
+              "label": "Run before anyone gets hurt.",
+              "next": "ran",
+              "effects": [
+                {
+                  "type": "counter",
+                  "key": "heat",
+                  "delta": 1
+                },
+                {
+                  "type": "stat",
+                  "key": "wellbeing",
+                  "delta": -3
+                },
+                {
+                  "type": "journal",
+                  "title": "Ran from the robbery",
+                  "text": "You ran from an armed robbery before it turned worse.",
+                  "important": true
+                }
+              ]
+            },
+            {
+              "id": "c_hold",
+              "label": "Hold your nerve and follow the crew.",
+              "next": "shootout",
+              "challenge": {
+                "kind": "puzzle",
+                "pool": "street_smarts",
+                "count": 3,
+                "passFraction": 0.67,
+                "onPass": {
+                  "next": "escape",
+                  "effects": [
+                    {
+                      "type": "money",
+                      "amount": 60000,
+                      "label": "Armed robbery cut",
+                      "category": "crime"
+                    },
+                    {
+                      "type": "skill",
+                      "key": "streetwise",
+                      "delta": 2
+                    },
+                    {
+                      "type": "counter",
+                      "key": "crimes",
+                      "delta": 1
+                    },
+                    {
+                      "type": "flag",
+                      "key": "crime_any"
+                    },
+                    {
+                      "type": "flag",
+                      "key": "armed_robbery"
+                    },
+                    {
+                      "type": "counter",
+                      "key": "heat",
+                      "delta": 4
+                    }
+                  ]
+                },
+                "onFail": {
+                  "next": "caught",
+                  "effects": [
+                    {
+                      "type": "counter",
+                      "key": "heat",
+                      "delta": 5
+                    },
+                    {
+                      "type": "flag",
+                      "key": "police_record"
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "id": "c_help",
+              "label": "Help people get down and call the police.",
+              "next": "helped",
+              "effects": [
+                {
+                  "type": "stat",
+                  "key": "wellbeing",
+                  "delta": 2
+                },
+                {
+                  "type": "skill",
+                  "key": "leadership",
+                  "delta": 1
+                },
+                {
+                  "type": "counter",
+                  "key": "heat",
+                  "delta": -3
+                },
+                {
+                  "type": "flag",
+                  "key": "reformed"
+                }
+              ]
+            }
+          ]
+        },
+        "ran": {
+          "speaker": "narrator",
+          "text": "You make it two lanes away before your legs stop shaking. Behind you, sirens fold into the evening traffic."
+        },
+        "shootout": {
+          "speaker": "narrator",
+          "text": "A shot cracks. Glass jumps. Nobody feels brave anymore.",
+          "choices": [
+            {
+              "id": "c_continue",
+              "label": "Keep moving.",
+              "next": "caught"
+            }
+          ]
+        },
+        "escape": {
+          "speaker": "narrator",
+          "text": "You escape with cash and a sound in your memory you cannot wash out. Every police jeep looks slower until it looks directly at you."
+        },
+        "caught": {
+          "speaker": "narrator",
+          "text": "The city locks down faster than the crew expected. By midnight, your name is in a file.",
+          "onEnter": [
+            {
+              "type": "schedule",
+              "event": "ev_arrest_petty",
+              "inDays": 0
+            },
+            {
+              "type": "loseJob",
+              "reason": "Arrested after a violent robbery"
+            }
+          ]
+        },
+        "helped": {
+          "speaker": "narrator",
+          "text": "You keep strangers calm until the police arrive. One old man grips your hand like you are the only solid thing in the room."
+        }
+      },
+      "repeatable": true
+    },
+    {
+      "id": "ev_kidnapping_plot",
+      "chapter": 0,
+      "title": "The Ransom Call",
+      "location": "backstreets",
+      "summary": "A kidnapping plot forces a choice.",
+      "trigger": {
+        "kind": "scheduled"
+      },
+      "start": "start",
+      "nodes": {
+        "start": {
+          "speaker": "narrator",
+          "text": "The plan is uglier when said aloud: hold someone, frighten a family, collect money. The room waits to see who you are.",
+          "choices": [
+            {
+              "id": "c_refuse",
+              "label": "Refuse and walk away.",
+              "next": "refused",
+              "effects": [
+                {
+                  "type": "stat",
+                  "key": "discipline",
+                  "delta": 2
+                },
+                {
+                  "type": "stat",
+                  "key": "wellbeing",
+                  "delta": 1
+                },
+                {
+                  "type": "counter",
+                  "key": "heat",
+                  "delta": -1
+                }
+              ]
+            },
+            {
+              "id": "c_warn",
+              "label": "Tip off the family and the police.",
+              "next": "warned",
+              "effects": [
+                {
+                  "type": "skill",
+                  "key": "law",
+                  "delta": 1
+                },
+                {
+                  "type": "skill",
+                  "key": "leadership",
+                  "delta": 1
+                },
+                {
+                  "type": "flag",
+                  "key": "gave_tip"
+                },
+                {
+                  "type": "counter",
+                  "key": "heat",
+                  "delta": -4
+                },
+                {
+                  "type": "clearFlag",
+                  "key": "gang_associate"
+                }
+              ]
+            },
+            {
+              "id": "c_join",
+              "label": "Join the ransom crew.",
+              "next": "fallout",
+              "effects": [
+                {
+                  "type": "roll",
+                  "key": "kidnap_escape",
+                  "chance": 0.35
+                },
+                {
+                  "type": "counter",
+                  "key": "crimes",
+                  "delta": 1
+                },
+                {
+                  "type": "counter",
+                  "key": "heat",
+                  "delta": 5
+                },
+                {
+                  "type": "flag",
+                  "key": "crime_any"
+                },
+                {
+                  "type": "flag",
+                  "key": "kidnapping_case"
+                },
+                {
+                  "type": "stat",
+                  "key": "wellbeing",
+                  "delta": -8
+                }
+              ]
+            }
+          ]
+        },
+        "refused": {
+          "speaker": "narrator",
+          "text": "They laugh when you leave. The laugh bothers you less than the fact that you almost stayed."
+        },
+        "warned": {
+          "speaker": "narrator",
+          "text": "The family disappears for a week. The crew knows somebody talked. Old Town feels smaller after that."
+        },
+        "fallout": {
+          "speaker": "narrator",
+          "text": "Ransom money changes hands, then so do phone records, CCTV clips and rumours. This is not a secret. It is a fuse.",
+          "choices": [
+            {
+              "id": "c_face",
+              "label": "Face the fallout.",
+              "next": "caught"
+            },
+            {
+              "id": "c_paid",
+              "label": "Take the money and disappear for a while.",
+              "next": "paid",
+              "requires": {
+                "type": "flag",
+                "key": "kidnap_escape"
+              }
+            }
+          ]
+        },
+        "paid": {
+          "speaker": "narrator",
+          "text": "The person is released alive. Your share of the money arrives wrapped in newspaper. It feels heavier than it is.",
+          "onEnter": [
+            {
+              "type": "money",
+              "amount": 80000,
+              "label": "Ransom cut",
+              "category": "crime"
+            },
+            {
+              "type": "skill",
+              "key": "streetwise",
+              "delta": 1.5
+            }
+          ]
+        },
+        "caught": {
+          "speaker": "narrator",
+          "text": "Kidnapping turns every phone tower into a witness. The police arrive before dawn.",
+          "onEnter": [
+            {
+              "type": "flag",
+              "key": "police_record"
+            },
+            {
+              "type": "schedule",
+              "event": "ev_arrest_petty",
+              "inDays": 0
+            },
+            {
+              "type": "loseJob",
+              "reason": "Arrested in a kidnapping case"
+            }
+          ]
+        }
+      },
+      "repeatable": true
+    },
+    {
+      "id": "ev_loan_shark",
+      "chapter": 0,
+      "title": "Shetty's Men",
+      "location": "home",
+      "summary": "Shetty's loan is overdue.",
+      "trigger": {
+        "kind": "scheduled"
+      },
+      "start": "start",
+      "nodes": {
+        "start": {
+          "speaker": "narrator",
+          "text": "Two large men are waiting at your gate. 'Shetty says hello. Shetty says seventy-five thousand.'",
+          "choices": [
+            {
+              "id": "c_pay",
+              "label": "Pay whatever you have, and owe the rest.",
+              "next": "paid",
+              "effects": [
+                {
+                  "type": "money",
+                  "amount": -75000,
+                  "label": "Shetty's loan (overdue)",
+                  "category": "loan"
+                },
+                {
+                  "type": "clearFlag",
+                  "key": "shark_debt"
+                }
+              ]
+            },
+            {
+              "id": "c_police",
+              "label": "Go to the police and file a complaint.",
+              "next": "police",
+              "effects": [
+                {
+                  "type": "clearFlag",
+                  "key": "shark_debt"
+                },
+                {
+                  "type": "stat",
+                  "key": "wellbeing",
+                  "delta": -2
+                }
+              ],
+              "requires": {
+                "type": "not",
+                "condition": {
+                  "type": "flag",
+                  "key": "police_record"
+                }
+              }
+            },
+            {
+              "id": "c_work",
+              "label": "Offer to \"work it off\" for Shetty.",
+              "next": "work",
+              "effects": [
+                {
+                  "type": "clearFlag",
+                  "key": "shark_debt"
+                },
+                {
+                  "type": "counter",
+                  "key": "heat",
+                  "delta": 3
+                },
+                {
+                  "type": "skill",
+                  "key": "streetwise",
+                  "delta": 2
+                },
+                {
+                  "type": "flag",
+                  "key": "gang_associate"
+                }
+              ],
+              "requires": {
+                "type": "flag",
+                "key": "mature_on"
+              }
+            },
+            {
+              "id": "c_refuse",
+              "label": "Tell them to get lost.",
+              "next": "beaten",
+              "effects": [
+                {
+                  "type": "stat",
+                  "key": "health",
+                  "delta": -15
+                },
+                {
+                  "type": "stat",
+                  "key": "wellbeing",
+                  "delta": -8
+                },
+                {
+                  "type": "money",
+                  "amount": -75000,
+                  "label": "Shetty's loan (taken by force)",
+                  "category": "loan"
+                },
+                {
+                  "type": "clearFlag",
+                  "key": "shark_debt"
+                }
+              ]
+            }
+          ]
+        },
+        "paid": {
+          "speaker": "narrator",
+          "text": "They count it on the bonnet of your neighbour’s car. \"Pleasure doing business.\" Any shortfall is now overdue — and Shetty knows where you live."
+        },
+        "police": {
+          "speaker": "narrator",
+          "text": "The inspector takes it seriously. Shetty’s club is raided a week later; the debt quietly disappears. You still check the gate at night."
+        },
+        "work": {
+          "speaker": "narrator",
+          "text": "You spend a month doing collections for Shetty. You are good at it, which frightens you."
+        },
+        "beaten": {
+          "speaker": "narrator",
+          "text": "You wake up in a hospital bed. The money is gone from your account. Some lessons cost more than ₹75,000."
+        }
+      },
+      "repeatable": true
+    }
+  ],
+  "monthlyRules": [
+    {
+      "id": "zz_heat_decay",
+      "label": "Police attention fades",
+      "when": {
+        "type": "counter",
+        "key": "heat",
+        "op": ">=",
+        "value": 1
+      },
+      "effects": [
+        {
+          "type": "counter",
+          "key": "heat",
+          "delta": -1
+        }
+      ]
+    },
+    {
+      "id": "zz_crew_life",
+      "label": "Life in Pappu Bhai's crew",
+      "when": {
+        "type": "career",
+        "value": "crime_syndicate"
+      },
+      "effects": [
+        {
+          "type": "counter",
+          "key": "heat",
+          "delta": 2
+        },
+        {
+          "type": "stat",
+          "key": "wellbeing",
+          "delta": -1
+        },
+        {
+          "type": "roll",
+          "key": "crew_raid",
+          "chance": 0.07
+        },
+        {
+          "type": "if",
+          "when": {
+            "type": "flag",
+            "key": "crew_raid"
+          },
+          "then": [
+            {
+              "type": "clearFlag",
+              "key": "crew_raid"
+            },
+            {
+              "type": "schedule",
+              "event": "ev_arrest_serious",
+              "inDays": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "zz_gambling_habit",
+      "label": "Chasing losses",
+      "when": {
+        "type": "all",
+        "conditions": [
+          {
+            "type": "counter",
+            "key": "gambles",
+            "op": ">=",
+            "value": 20
+          },
+          {
+            "type": "not",
+            "condition": {
+              "type": "flag",
+              "key": "gambling_recovered"
+            }
+          }
+        ]
+      },
+      "effects": [
+        {
+          "type": "flag",
+          "key": "gambling_addict"
+        },
+        {
+          "type": "stat",
+          "key": "wellbeing",
+          "delta": -2
+        },
+        {
+          "type": "stat",
+          "key": "discipline",
+          "delta": -0.5
+        },
+        {
+          "type": "money",
+          "amount": -4000,
+          "label": "Chasing losses at the club",
+          "category": "gambling"
+        }
+      ]
+    }
+  ],
+  "achievements": [
+    {
+      "id": "jackpot",
+      "title": "Jackpot!",
+      "description": "Won the lottery.",
+      "condition": {
+        "type": "flag",
+        "key": "lottery_jackpot"
+      },
+      "hidden": true
+    },
+    {
+      "id": "beat_the_house",
+      "title": "Beat the House",
+      "description": "Won big at the Lucky Star Club.",
+      "condition": {
+        "type": "flag",
+        "key": "big_win"
+      }
+    },
+    {
+      "id": "walked_away",
+      "title": "Walked Away",
+      "description": "Quit gambling for good.",
+      "condition": {
+        "type": "flag",
+        "key": "gambling_recovered"
+      }
+    },
+    {
+      "id": "jailbird",
+      "title": "Behind Bars",
+      "description": "Served time in prison.",
+      "condition": {
+        "type": "flag",
+        "key": "served_time"
+      },
+      "hidden": true
+    },
+    {
+      "id": "big_score",
+      "title": "The Big Score",
+      "description": "Pulled off the vault job.",
+      "condition": {
+        "type": "flag",
+        "key": "big_score"
+      },
+      "hidden": true
+    },
+    {
+      "id": "kingpin",
+      "title": "Kingpin",
+      "description": "Rose to the top of the crew.",
+      "condition": {
+        "type": "all",
+        "conditions": [
+          {
+            "type": "career",
+            "value": "crime_syndicate"
+          },
+          {
+            "type": "careerLevel",
+            "op": ">=",
+            "value": 5
+          }
+        ]
+      },
+      "hidden": true
+    },
+    {
+      "id": "clean_slate",
+      "title": "Clean Slate",
+      "description": "Completed rehabilitation and had your record sealed.",
+      "condition": {
+        "type": "flag",
+        "key": "reformed"
+      }
+    }
+  ],
+  "conclusions": [
+    {
+      "id": "c1_underworld",
+      "chapter": 1,
+      "priority": 58,
+      "title": "The Lanes",
+      "condition": {
+        "type": "career",
+        "value": "crime_syndicate"
+      },
+      "text": "The brochures never mentioned this path. You run errands for a man who pays in cash and never writes anything down. The money is better than your friends' starting salaries; the fear is worse than any exam. Every chapter after this one can still turn — people walk out of the lanes every year. The question is whether you will."
+    }
+  ],
+  "epilogueLines": [
+    {
+      "when": {
+        "type": "flag",
+        "key": "police_record"
+      },
+      "text": "A police record follows you into the next chapter. Some doors are harder to open now — but rehabilitation can seal it."
+    },
+    {
+      "when": {
+        "type": "flag",
+        "key": "gambling_addict"
+      },
+      "text": "The club still calls to you at night. Counselling at the hospital has helped others walk away."
+    }
+  ]
+}

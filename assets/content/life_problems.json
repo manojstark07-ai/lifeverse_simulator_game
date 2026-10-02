@@ -1,0 +1,2179 @@
+{
+  "contentVersion": "2026.10-life-problems",
+  "events": [
+    {
+      "id": "ev_p_spiral",
+      "chapter": 0,
+      "title": "The 3 a.m. Spiral",
+      "location": "home",
+      "summary": "Worry keeps you awake.",
+      "trigger": {
+        "kind": "random",
+        "when": {
+          "type": "stat",
+          "key": "wellbeing",
+          "op": "<",
+          "value": 60
+        },
+        "chancePerMonth": 0.06
+      },
+      "start": "start",
+      "nodes": {
+        "n_worry_list": {
+          "speaker": "narrator",
+          "text": "Twelve worries on the page. Only three have a next step; you write the step beside each. The rest you cross out with a note: \"not mine to control tonight\". Thinking it through: worry feels like problem-solving, but it is only rehearsal. Writing it down moves it from a loop in your head to a list you can act on."
+        },
+        "n_breathing": {
+          "speaker": "narrator",
+          "text": "By round six your shoulders drop. By round ten you are yawning. Thinking it through: you cannot argue a panicking body into calm, but you can slow it down. Slow breathing tells your nervous system that there is no tiger in the room."
+        },
+        "n_call_kavya": {
+          "speaker": "narrator",
+          "text": "She is up (of course she is). You talk until four about nothing, then about everything. Thinking it through: anxiety grows in isolation and shrinks when it is said out loud to someone who cares. Asking for company is not weakness — it is maintenance."
+        },
+        "n_counsellor": {
+          "speaker": "narrator",
+          "text": "The counsellor listens, then teaches you to notice the thought, name it (\"catastrophising again\") and let it pass. Thinking it through: you would see a doctor for a broken arm. A mind under strain deserves the same care, and the earlier, the easier."
+        },
+        "n_doomscroll": {
+          "speaker": "narrator",
+          "text": "Reels, news, other people's holidays. At 6 a.m. you feel worse and you are exhausted. Thinking it through: the phone numbs the feeling for a few minutes and then feeds it. Next time, try putting it in another room."
+        },
+        "start": {
+          "speaker": "narrator",
+          "text": "It's 3 a.m. Your brain has decided now is the perfect time to replay every mistake you've made and every way the future could go wrong. Your heart is racing for no reason you can name.",
+          "choices": [
+            {
+              "id": "c_worry_list",
+              "label": "Turn on the light. Write every worry down, then circle only the ones you can act on.",
+              "next": "n_worry_list",
+              "effects": [
+                {
+                  "type": "stat",
+                  "key": "wellbeing",
+                  "delta": 4
+                },
+                {
+                  "type": "stat",
+                  "key": "discipline",
+                  "delta": 0.5
+                },
+                {
+                  "type": "counter",
+                  "key": "coped_well",
+                  "delta": 1
+                }
+              ]
+            },
+            {
+              "id": "c_breathing",
+              "label": "Try box breathing: in for 4, hold 4, out 4, hold 4. Ten rounds.",
+              "next": "n_breathing",
+              "effects": [
+                {
+                  "type": "stat",
+                  "key": "wellbeing",
+                  "delta": 3
+                },
+                {
+                  "type": "stat",
+                  "key": "energy",
+                  "delta": 5
+                },
+                {
+                  "type": "stat",
+                  "key": "health",
+                  "delta": 0.3
+                },
+                {
+                  "type": "counter",
+                  "key": "coped_well",
+                  "delta": 1
+                }
+              ]
+            },
+            {
+              "id": "c_call_kavya",
+              "label": "Text Kavya: \"you up?\"",
+              "next": "n_call_kavya",
+              "effects": [
+                {
+                  "type": "relationship",
+                  "npc": "kavya",
+                  "affinity": 3,
+                  "trust": 2
+                },
+                {
+                  "type": "stat",
+                  "key": "wellbeing",
+                  "delta": 3
+                },
+                {
+                  "type": "counter",
+                  "key": "coped_well",
+                  "delta": 1
+                }
+              ]
+            },
+            {
+              "id": "c_counsellor",
+              "label": "Tomorrow, book a session with a counsellor (₹1,500).",
+              "next": "n_counsellor",
+              "effects": [
+                {
+                  "type": "stat",
+                  "key": "wellbeing",
+                  "delta": 6
+                },
+                {
+                  "type": "flag",
+                  "key": "sought_therapy"
+                },
+                {
+                  "type": "counter",
+                  "key": "coped_well",
+                  "delta": 1
+                }
+              ],
+              "cost": {
+                "money": 1500
+              }
+            },
+            {
+              "id": "c_doomscroll",
+              "label": "Grab your phone and scroll until the sun comes up.",
+              "next": "n_doomscroll",
+              "effects": [
+                {
+                  "type": "stat",
+                  "key": "energy",
+                  "delta": -15
+                },
+                {
+                  "type": "stat",
+                  "key": "wellbeing",
+                  "delta": -2
+                },
+                {
+                  "type": "counter",
+                  "key": "coped_badly",
+                  "delta": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "repeatable": true
+    },
+    {
+      "id": "ev_p_comparison",
+      "chapter": 0,
+      "title": "Everyone Else's Highlight Reel",
+      "location": "cafe",
+      "summary": "A friend’s success makes you feel behind.",
+      "trigger": {
+        "kind": "random",
+        "when": {
+          "type": "age",
+          "op": ">=",
+          "value": 19
+        },
+        "chancePerMonth": 0.05
+      },
+      "start": "start",
+      "nodes": {
+        "n_reframe": {
+          "speaker": "narrator",
+          "text": "You make a list of what you have learned this year. It is longer than you expected. Thinking it through: social media shows everyone else's best moments next to your ordinary ones. The only fair comparison is between who you are today and who you were a year ago."
+        },
+        "n_congratulate": {
+          "speaker": "narrator",
+          "text": "They reply with a long, honest message: two rejected applications and six months of doubt before the offer. Thinking it through: envy can be a map. It shows you what you want. Turning it into curiosity turns a rival into a teacher."
+        },
+        "n_one_goal": {
+          "speaker": "narrator",
+          "text": "One goal, three steps, a date on the calendar. Thinking it through: you can't control their pace, only your own direction. Small, specific goals beat vague comparisons every time."
+        },
+        "n_spiral": {
+          "speaker": "narrator",
+          "text": "By midnight you are convinced you have wasted your life. You haven't. Thinking it through: comparison is the thief of joy. When you notice it starting, that is the moment to close the app."
+        },
+        "start": {
+          "speaker": "narrator",
+          "text": "An old classmate posts a photo: new job at a big company, a car with a red bow on it, a caption about \"hard work paying off\". You look at your own life and feel very, very behind.",
+          "choices": [
+            {
+              "id": "c_reframe",
+              "label": "Remind yourself: you are comparing your chapter 3 to their chapter 20.",
+              "next": "n_reframe",
+              "effects": [
+                {
+                  "type": "stat",
+                  "key": "wellbeing",
+                  "delta": 3
+                },
+                {
+                  "type": "counter",
+                  "key": "coped_well",
+                  "delta": 1
+                }
+              ]
+            },
+            {
+              "id": "c_congratulate",
+              "label": "Send them a genuine congratulations — and ask how they did it.",
+              "next": "n_congratulate",
+              "effects": [
+                {
+                  "type": "stat",
+                  "key": "communication",
+                  "delta": 1
+                },
+                {
+                  "type": "stat",
+                  "key": "wellbeing",
+                  "delta": 2
+                },
+                {
+                  "type": "skill",
+                  "key": "business",
+                  "delta": 0.3
+                },
+                {
+                  "type": "counter",
+                  "key": "coped_well",
+                  "delta": 1
+                }
+              ]
+            },
+            {
+              "id": "c_one_goal",
+              "label": "Mute the account and write down one goal for the next 90 days.",
+              "next": "n_one_goal",
+              "effects": [
+                {
+                  "type": "stat",
+                  "key": "discipline",
+                  "delta": 1.5
+                },
+                {
+                  "type": "stat",
+                  "key": "wellbeing",
+                  "delta": 2
+                },
+                {
+                  "type": "counter",
+                  "key": "coped_well",
+                  "delta": 1
+                }
+              ]
+            },
+            {
+              "id": "c_spiral",
+              "label": "Spend the evening scrolling through everyone's successes.",
+              "next": "n_spiral",
+              "effects": [
+                {
+                  "type": "stat",
+                  "key": "wellbeing",
+                  "delta": -4
+                },
+                {
+                  "type": "stat",
+                  "key": "energy",
+                  "delta": -5
+                },
+                {
+                  "type": "counter",
+                  "key": "coped_badly",
+                  "delta": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "repeatable": true
+    },
+    {
+      "id": "ev_p_setback",
+      "chapter": 0,
+      "title": "When It Falls Apart",
+      "location": "home",
+      "summary": "A big setback leaves you shaken.",
+      "trigger": {
+        "kind": "random",
+        "when": {
+          "type": "any",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "lost_job"
+            },
+            {
+              "type": "flag",
+              "key": "quit_job"
+            },
+            {
+              "type": "flag",
+              "key": "had_backlog"
+            },
+            {
+              "type": "flag",
+              "key": "dropped_btech_cs"
+            },
+            {
+              "type": "flag",
+              "key": "dropped_bcom"
+            }
+          ]
+        },
+        "chancePerMonth": 0.08
+      },
+      "start": "start",
+      "nodes": {
+        "n_self_compassion": {
+          "speaker": "narrator",
+          "text": "You would tell her one setback is not a verdict on her worth. You would tell her to rest, then try again. So you tell yourself. Thinking it through: self-criticism feels like motivation but works like a weight. People recover faster when they treat themselves like a friend they believe in."
+        },
+        "n_lessons": {
+          "speaker": "narrator",
+          "text": "Lesson one: you ignored early warning signs. Lesson two: you need a backup plan. Lesson three: you survive things. Next step: update your CV tomorrow. Thinking it through: a failure becomes useful the moment you take a lesson from it. The point is not to never fall, but to learn how you fell."
+        },
+        "n_mentor": {
+          "speaker": "narrator",
+          "text": "He tells you he failed his first teaching interview so badly he forgot his own address. 'The people who do well are not the ones who never fall. They are the ones who get bored of lying on the floor.' Thinking it through: people who have lived longer have survived more setbacks. Their stories turn \"the end\" into \"a chapter\"."
+        },
+        "n_numb": {
+          "speaker": "narrator",
+          "text": "A week of sleeping late and not answering calls. It doesn't make anything better; it just makes the world smaller. Thinking it through: rest is healthy; hiding is not. If the heaviness lasts more than two weeks, that is a sign to talk to someone."
+        },
+        "n_drink": {
+          "speaker": "narrator",
+          "text": "The thoughts stop for a few hours and come back louder with a headache. Thinking it through: alcohol borrows calm from tomorrow at a terrible interest rate."
+        },
+        "start": {
+          "speaker": "narrator",
+          "text": "The plan you were sure of has fallen apart. You sit on the edge of your bed and the question comes, loud and cruel: \"What is wrong with you?\"",
+          "choices": [
+            {
+              "id": "c_self_compassion",
+              "label": "Ask a different question: \"What would I tell Kavya if this happened to her?\"",
+              "next": "n_self_compassion",
+              "effects": [
+                {
+                  "type": "stat",
+                  "key": "wellbeing",
+                  "delta": 4
+                },
+                {
+                  "type": "counter",
+                  "key": "coped_well",
+                  "delta": 1
+                }
+              ]
+            },
+            {
+              "id": "c_lessons",
+              "label": "Grieve it for a day — then write down three lessons and one next step.",
+              "next": "n_lessons",
+              "effects": [
+                {
+                  "type": "stat",
+                  "key": "discipline",
+                  "delta": 1.5
+                },
+                {
+                  "type": "stat",
+                  "key": "wellbeing",
+                  "delta": 2
+                },
+                {
+                  "type": "stat",
+                  "key": "knowledge",
+                  "delta": 0.5
+                },
+                {
+                  "type": "counter",
+                  "key": "coped_well",
+                  "delta": 1
+                }
+              ]
+            },
+            {
+              "id": "c_mentor",
+              "label": "Go and see Mr. Fernandes at the library.",
+              "next": "n_mentor",
+              "effects": [
+                {
+                  "type": "relationship",
+                  "npc": "joseph",
+                  "affinity": 3,
+                  "trust": 2
+                },
+                {
+                  "type": "stat",
+                  "key": "wellbeing",
+                  "delta": 3
+                },
+                {
+                  "type": "counter",
+                  "key": "coped_well",
+                  "delta": 1
+                }
+              ]
+            },
+            {
+              "id": "c_numb",
+              "label": "Shut yourself in your room for a week.",
+              "next": "n_numb",
+              "effects": [
+                {
+                  "type": "stat",
+                  "key": "wellbeing",
+                  "delta": -5
+                },
+                {
+                  "type": "stat",
+                  "key": "discipline",
+                  "delta": -1
+                },
+                {
+                  "type": "stat",
+                  "key": "health",
+                  "delta": -1
+                },
+                {
+                  "type": "counter",
+                  "key": "coped_badly",
+                  "delta": 1
+                }
+              ]
+            },
+            {
+              "id": "c_drink",
+              "label": "Go out and drink until you stop thinking.",
+              "next": "n_drink",
+              "effects": [
+                {
+                  "type": "stat",
+                  "key": "wellbeing",
+                  "delta": -3
+                },
+                {
+                  "type": "stat",
+                  "key": "health",
+                  "delta": -3
+                },
+                {
+                  "type": "counter",
+                  "key": "drinks",
+                  "delta": 3
+                },
+                {
+                  "type": "money",
+                  "amount": -2000,
+                  "label": "A night of drinking",
+                  "category": "leisure"
+                },
+                {
+                  "type": "counter",
+                  "key": "coped_badly",
+                  "delta": 1
+                }
+              ],
+              "requires": {
+                "type": "flag",
+                "key": "mature_on"
+              },
+              "hideIfLocked": true
+            }
+          ]
+        }
+      },
+      "repeatable": true
+    },
+    {
+      "id": "ev_p_grief",
+      "chapter": 0,
+      "title": "Loss",
+      "location": "home",
+      "summary": "Someone you loved has died.",
+      "trigger": {
+        "kind": "random",
+        "when": {
+          "type": "age",
+          "op": ">=",
+          "value": 18
+        },
+        "chancePerMonth": 0.03
+      },
+      "start": "start",
+      "nodes": {
+        "n_feel_it": {
+          "speaker": "narrator",
+          "text": "The house is full of relatives, food and stories you never heard. You laugh at the funeral, and nobody minds. Thinking it through: grief is love with nowhere to go. It is not something to fix or rush; it moves through you in waves, and the waves get further apart."
+        },
+        "n_letter": {
+          "speaker": "narrator",
+          "text": "Three pages. The last line is \"Thank you for the crosswords.\" You keep it in your wallet. Thinking it through: finishing an unfinished conversation, even on paper, helps the mind accept a loss."
+        },
+        "n_carry_on": {
+          "speaker": "narrator",
+          "text": "You are very productive for two weeks. Then you cry in a supermarket queue over a brand of biscuits he liked. Thinking it through: grief that is postponed doesn't disappear; it waits. Make a little room for it."
+        },
+        "start": {
+          "speaker": "narrator",
+          "text": "Amma's voice on the phone is very quiet. Your grandfather passed away in his sleep last night. You remember his radio, his terrible jokes, the way he saved the newspaper crossword for you.",
+          "choices": [
+            {
+              "id": "c_feel_it",
+              "label": "Let yourself cry. Go home for the funeral and sit with the family.",
+              "next": "n_feel_it",
+              "effects": [
+                {
+                  "type": "stat",
+                  "key": "wellbeing",
+                  "delta": 2
+                },
+                {
+                  "type": "relationship",
+                  "npc": "amma",
+                  "affinity": 4,
+                  "trust": 3
+                },
+                {
+                  "type": "counter",
+                  "key": "coped_well",
+                  "delta": 1
+                }
+              ],
+              "cost": {
+                "days": 3
+              }
+            },
+            {
+              "id": "c_letter",
+              "label": "Write him a letter with everything you never said.",
+              "next": "n_letter",
+              "effects": [
+                {
+                  "type": "stat",
+                  "key": "wellbeing",
+                  "delta": 3
+                },
+                {
+                  "type": "counter",
+                  "key": "coped_well",
+                  "delta": 1
+                }
+              ]
+            },
+            {
+              "id": "c_carry_on",
+              "label": "Bury yourself in work so you don't have to feel it.",
+              "next": "n_carry_on",
+              "effects": [
+                {
+                  "type": "stat",
+                  "key": "wellbeing",
+                  "delta": -3
+                },
+                {
+                  "type": "stat",
+                  "key": "discipline",
+                  "delta": 1
+                },
+                {
+                  "type": "counter",
+                  "key": "coped_badly",
+                  "delta": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "repeatable": true
+    },
+    {
+      "id": "ev_p_sunday_dread",
+      "chapter": 0,
+      "title": "Sunday Dread",
+      "location": "home",
+      "summary": "Work is grinding you down.",
+      "trigger": {
+        "kind": "random",
+        "when": {
+          "type": "all",
+          "conditions": [
+            {
+              "type": "career",
+              "value": true
+            },
+            {
+              "type": "stat",
+              "key": "wellbeing",
+              "op": "<",
+              "value": 55
+            }
+          ]
+        },
+        "chancePerMonth": 0.07
+      },
+      "start": "start",
+      "nodes": {
+        "n_boundaries": {
+          "speaker": "narrator",
+          "text": "The first week, nobody notices. The second, you notice: you sleep better and you are sharper at work. Thinking it through: being always available is not the same as being valuable. Rest is part of doing good work, not the opposite of it."
+        },
+        "n_talk_manager": {
+          "speaker": "narrator",
+          "text": "Your manager had no idea. Two of your tasks move to someone else. Thinking it through: people cannot fix problems they don't know about. Saying \"this isn't sustainable\" calmly, with specifics, is a professional skill."
+        },
+        "n_purpose": {
+          "speaker": "narrator",
+          "text": "Half the reasons still hold. Half don't. You start quietly looking at other roles, without panic. Thinking it through: dread is information. Sometimes it means \"rest\", sometimes \"change something\", sometimes \"move on\". Ask which one it is."
+        },
+        "n_push_through": {
+          "speaker": "narrator",
+          "text": "You push through. Then through again. Your body starts keeping the score: headaches, bad sleep. Thinking it through: \"everyone feels like this\" is not a reason to keep feeling like this."
+        },
+        "start": {
+          "speaker": "narrator",
+          "text": "Sunday evening. The thought of Monday sits on your chest like a bag of cement. You haven't really had a weekend in a month.",
+          "choices": [
+            {
+              "id": "c_boundaries",
+              "label": "Set boundaries: no work messages after 8 p.m., and one full day off a week.",
+              "next": "n_boundaries",
+              "effects": [
+                {
+                  "type": "stat",
+                  "key": "wellbeing",
+                  "delta": 5
+                },
+                {
+                  "type": "stat",
+                  "key": "energy",
+                  "delta": 5
+                },
+                {
+                  "type": "counter",
+                  "key": "coped_well",
+                  "delta": 1
+                }
+              ]
+            },
+            {
+              "id": "c_talk_manager",
+              "label": "Ask your manager for a frank conversation about workload.",
+              "next": "n_talk_manager",
+              "effects": [
+                {
+                  "type": "stat",
+                  "key": "communication",
+                  "delta": 1.5
+                },
+                {
+                  "type": "stat",
+                  "key": "wellbeing",
+                  "delta": 3
+                },
+                {
+                  "type": "counter",
+                  "key": "coped_well",
+                  "delta": 1
+                }
+              ]
+            },
+            {
+              "id": "c_purpose",
+              "label": "Write down why you took this job — and whether that is still true.",
+              "next": "n_purpose",
+              "effects": [
+                {
+                  "type": "stat",
+                  "key": "wellbeing",
+                  "delta": 2
+                },
+                {
+                  "type": "stat",
+                  "key": "discipline",
+                  "delta": 1
+                },
+                {
+                  "type": "counter",
+                  "key": "coped_well",
+                  "delta": 1
+                }
+              ]
+            },
+            {
+              "id": "c_push_through",
+              "label": "Push through. Everyone feels like this.",
+              "next": "n_push_through",
+              "effects": [
+                {
+                  "type": "stat",
+                  "key": "wellbeing",
+                  "delta": -4
+                },
+                {
+                  "type": "stat",
+                  "key": "health",
+                  "delta": -2
+                },
+                {
+                  "type": "counter",
+                  "key": "coped_badly",
+                  "delta": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "repeatable": true
+    },
+    {
+      "id": "ev_p_money_stress",
+      "chapter": 0,
+      "title": "Drowning in Bills",
+      "location": "home",
+      "summary": "Money worries pile up.",
+      "trigger": {
+        "kind": "random",
+        "when": {
+          "type": "any",
+          "conditions": [
+            {
+              "type": "arrears",
+              "op": ">",
+              "value": 0
+            },
+            {
+              "type": "debt",
+              "op": ">=",
+              "value": 150000
+            }
+          ]
+        },
+        "chancePerMonth": 0.08
+      },
+      "start": "start",
+      "nodes": {
+        "n_budget": {
+          "speaker": "narrator",
+          "text": "Income, fixed costs, debts — in a single sheet. Seeing the whole picture is frightening for ten minutes and calming for a month. Thinking it through: money anxiety feeds on vagueness. Numbers on paper, however bad, give you something to act on: cut, earn, renegotiate."
+        },
+        "n_family_talk": {
+          "speaker": "narrator",
+          "text": "Amma is quiet, then says: 'Why didn't you tell us sooner?' Help is smaller than you hoped and bigger than you expected. Thinking it through: shame keeps money problems secret, and secrets make them bigger. The people who love you would rather know."
+        },
+        "n_side_income": {
+          "speaker": "narrator",
+          "text": "No eating out, no new clothes, weekend shifts. It is tiring and it works. Thinking it through: short sacrifices with a clear end date are bearable. Pick the date, and celebrate when you reach it."
+        },
+        "n_bet_it_back": {
+          "speaker": "narrator",
+          "text": "You lose ₹10,000 in forty minutes. The debt is bigger. The hole is deeper. Thinking it through: gambling to escape debt is the most expensive way to feel hopeful. The house always wins."
+        },
+        "start": {
+          "speaker": "narrator",
+          "text": "The EMI reminders arrive in a cheerful font. Your bank balance does not match the cheer. You lie awake doing sums that never come out right.",
+          "choices": [
+            {
+              "id": "c_budget",
+              "label": "Sit down with every bill and make a real budget.",
+              "next": "n_budget",
+              "effects": [
+                {
+                  "type": "stat",
+                  "key": "discipline",
+                  "delta": 2
+                },
+                {
+                  "type": "stat",
+                  "key": "wellbeing",
+                  "delta": 3
+                },
+                {
+                  "type": "skill",
+                  "key": "accounting",
+                  "delta": 0.5
+                },
+                {
+                  "type": "counter",
+                  "key": "coped_well",
+                  "delta": 1
+                }
+              ]
+            },
+            {
+              "id": "c_family_talk",
+              "label": "Tell your family honestly how bad it is.",
+              "next": "n_family_talk",
+              "effects": [
+                {
+                  "type": "relationship",
+                  "npc": "amma",
+                  "trust": 4,
+                  "affinity": 2
+                },
+                {
+                  "type": "stat",
+                  "key": "wellbeing",
+                  "delta": 4
+                },
+                {
+                  "type": "counter",
+                  "key": "coped_well",
+                  "delta": 1
+                }
+              ]
+            },
+            {
+              "id": "c_side_income",
+              "label": "Pick up extra work and cut every non-essential expense for three months.",
+              "next": "n_side_income",
+              "effects": [
+                {
+                  "type": "stat",
+                  "key": "discipline",
+                  "delta": 2
+                },
+                {
+                  "type": "stat",
+                  "key": "energy",
+                  "delta": -8
+                },
+                {
+                  "type": "stat",
+                  "key": "wellbeing",
+                  "delta": 1
+                },
+                {
+                  "type": "counter",
+                  "key": "coped_well",
+                  "delta": 1
+                }
+              ]
+            },
+            {
+              "id": "c_bet_it_back",
+              "label": "Win it back at the Lucky Star Club. How hard can it be?",
+              "next": "n_bet_it_back",
+              "effects": [
+                {
+                  "type": "counter",
+                  "key": "gambles",
+                  "delta": 3
+                },
+                {
+                  "type": "money",
+                  "amount": -10000,
+                  "label": "Trying to win it back",
+                  "category": "gambling"
+                },
+                {
+                  "type": "stat",
+                  "key": "wellbeing",
+                  "delta": -5
+                },
+                {
+                  "type": "counter",
+                  "key": "coped_badly",
+                  "delta": 1
+                }
+              ],
+              "requires": {
+                "type": "flag",
+                "key": "mature_on"
+              },
+              "hideIfLocked": true
+            }
+          ]
+        }
+      },
+      "repeatable": true
+    },
+    {
+      "id": "ev_p_family_fight",
+      "chapter": 0,
+      "title": "The Argument at Dinner",
+      "location": "home",
+      "summary": "Family expectations clash with your choices.",
+      "trigger": {
+        "kind": "random",
+        "when": {
+          "type": "age",
+          "op": ">=",
+          "value": 18
+        },
+        "chancePerMonth": 0.04
+      },
+      "start": "start",
+      "nodes": {
+        "n_listen_first": {
+          "speaker": "narrator",
+          "text": "Underneath the anger is fear: she grew up with very little and she is scared you'll struggle. When she feels heard, she asks about your plan — and listens. Thinking it through: most family fights are two people defending their fears. Asking \"what are you worried about?\" turns an argument into a conversation."
+        },
+        "n_letter_amma": {
+          "speaker": "narrator",
+          "text": "She reads it twice. The next morning there is coffee by your bed. Nothing is fully solved, but the door is open. Thinking it through: when talking keeps turning into fighting, writing gives both people time to think instead of react."
+        },
+        "n_silent": {
+          "speaker": "narrator",
+          "text": "A week of polite, painful silence. The house feels colder. Thinking it through: silence punishes both people. Someone has to go first — it may as well be the one who wants things to get better."
+        },
+        "start": {
+          "speaker": "amma",
+          "text": "It starts with a relative's son who 'got settled'. It ends with Amma saying you never listen and you saying she never understands. Doors are closed. Loudly.",
+          "choices": [
+            {
+              "id": "c_listen_first",
+              "label": "Go back. Listen to her fears first, before explaining yours.",
+              "next": "n_listen_first",
+              "effects": [
+                {
+                  "type": "relationship",
+                  "npc": "amma",
+                  "affinity": 4,
+                  "trust": 3,
+                  "conflict": -6
+                },
+                {
+                  "type": "stat",
+                  "key": "communication",
+                  "delta": 1
+                },
+                {
+                  "type": "counter",
+                  "key": "coped_well",
+                  "delta": 1
+                }
+              ]
+            },
+            {
+              "id": "c_letter_amma",
+              "label": "Write her a letter: what you want, why, and what you need from her.",
+              "next": "n_letter_amma",
+              "effects": [
+                {
+                  "type": "relationship",
+                  "npc": "amma",
+                  "affinity": 3,
+                  "trust": 3,
+                  "conflict": -4
+                },
+                {
+                  "type": "stat",
+                  "key": "wellbeing",
+                  "delta": 2
+                },
+                {
+                  "type": "counter",
+                  "key": "coped_well",
+                  "delta": 1
+                }
+              ]
+            },
+            {
+              "id": "c_silent",
+              "label": "Give her the silent treatment for a week.",
+              "next": "n_silent",
+              "effects": [
+                {
+                  "type": "relationship",
+                  "npc": "amma",
+                  "affinity": -4,
+                  "conflict": 8
+                },
+                {
+                  "type": "stat",
+                  "key": "wellbeing",
+                  "delta": -3
+                },
+                {
+                  "type": "counter",
+                  "key": "coped_badly",
+                  "delta": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "repeatable": true
+    },
+    {
+      "id": "ev_p_lonely",
+      "chapter": 0,
+      "title": "Alone in a Crowded City",
+      "location": "park",
+      "summary": "Loneliness creeps in.",
+      "trigger": {
+        "kind": "random",
+        "when": {
+          "type": "any",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "living_independently"
+            },
+            {
+              "type": "age",
+              "op": ">=",
+              "value": 22
+            }
+          ]
+        },
+        "chancePerMonth": 0.05
+      },
+      "start": "start",
+      "nodes": {
+        "n_club": {
+          "speaker": "narrator",
+          "text": "The book club is six people and a lot of biscuits. By the third week someone saves you a seat. Thinking it through: friendship comes from repeated, low-pressure time together. Show up to the same place regularly and it grows on its own."
+        },
+        "n_reach_out": {
+          "speaker": "narrator",
+          "text": "Two reply within the hour. One says \"I was literally just thinking about you.\" Thinking it through: other people are lonely too, and are waiting for someone else to message first. Be the one who goes first."
+        },
+        "n_volunteer": {
+          "speaker": "narrator",
+          "text": "Chopping onions next to strangers who become regulars. You leave tired and lighter. Thinking it through: helping others is one of the most reliable cures for loneliness — it gives you people, purpose and perspective at once."
+        },
+        "n_stay_in": {
+          "speaker": "narrator",
+          "text": "Comfortable, and the quiet afterwards is louder. Thinking it through: rest is good; isolation dressed up as rest is not. Notice which one this is."
+        },
+        "start": {
+          "speaker": "narrator",
+          "text": "You realise you have not had a real conversation in days. The city is full of people and none of them know your name.",
+          "choices": [
+            {
+              "id": "c_club",
+              "label": "Join something: a running group, a book club, a cricket team.",
+              "next": "n_club",
+              "effects": [
+                {
+                  "type": "stat",
+                  "key": "communication",
+                  "delta": 1.5
+                },
+                {
+                  "type": "stat",
+                  "key": "wellbeing",
+                  "delta": 4
+                },
+                {
+                  "type": "stat",
+                  "key": "health",
+                  "delta": 0.5
+                },
+                {
+                  "type": "counter",
+                  "key": "coped_well",
+                  "delta": 1
+                }
+              ]
+            },
+            {
+              "id": "c_reach_out",
+              "label": "Message three old friends just to ask how they are.",
+              "next": "n_reach_out",
+              "effects": [
+                {
+                  "type": "relationship",
+                  "npc": "kavya",
+                  "affinity": 3
+                },
+                {
+                  "type": "stat",
+                  "key": "wellbeing",
+                  "delta": 3
+                },
+                {
+                  "type": "counter",
+                  "key": "coped_well",
+                  "delta": 1
+                }
+              ]
+            },
+            {
+              "id": "c_volunteer",
+              "label": "Volunteer at the community kitchen on weekends.",
+              "next": "n_volunteer",
+              "effects": [
+                {
+                  "type": "stat",
+                  "key": "wellbeing",
+                  "delta": 5
+                },
+                {
+                  "type": "skill",
+                  "key": "leadership",
+                  "delta": 0.5
+                },
+                {
+                  "type": "skill",
+                  "key": "cooking",
+                  "delta": 0.3
+                },
+                {
+                  "type": "counter",
+                  "key": "coped_well",
+                  "delta": 1
+                }
+              ]
+            },
+            {
+              "id": "c_stay_in",
+              "label": "Stay in. Order food. Watch something.",
+              "next": "n_stay_in",
+              "effects": [
+                {
+                  "type": "stat",
+                  "key": "wellbeing",
+                  "delta": -2
+                },
+                {
+                  "type": "counter",
+                  "key": "coped_badly",
+                  "delta": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "repeatable": true
+    },
+    {
+      "id": "ev_p_purpose",
+      "chapter": 0,
+      "title": "What Am I Even Doing?",
+      "location": "park",
+      "summary": "A quarter-life crisis.",
+      "trigger": {
+        "kind": "random",
+        "when": {
+          "type": "age",
+          "op": ">=",
+          "value": 22
+        },
+        "chancePerMonth": 0.04
+      },
+      "start": "start",
+      "nodes": {
+        "n_values": {
+          "speaker": "narrator",
+          "text": "Family, learning, health, freedom, making things. Your week is mostly scrolling and commuting. Now you know what to change. Thinking it through: a meaningful life is less about one big purpose than about spending your days on things you value. The gap between the two lists is your to-do list."
+        },
+        "n_experiment": {
+          "speaker": "narrator",
+          "text": "Pottery is a disaster. Coding a small game is surprisingly fun. You keep doing the fun one. Thinking it through: you rarely find your passion by thinking. You find it by trying things and noticing what you lose track of time doing."
+        },
+        "n_ask_joseph": {
+          "speaker": "narrator",
+          "text": "'I never found it,' he says. 'I built it, one small useful thing at a time. Meaning is not a treasure you dig up. It is a house you build.' Thinking it through: purpose grows from contribution — being useful to people, getting better at something, and caring for those around you."
+        },
+        "n_drift": {
+          "speaker": "narrator",
+          "text": "Nothing changes, which is its own kind of decision. Thinking it through: not choosing is still a choice. The question will come back; next time, sit with it a little longer."
+        },
+        "start": {
+          "speaker": "narrator",
+          "text": "Sitting on a park bench, you wonder whether this — the routine, the plan, all of it — is really your life or just the one you drifted into.",
+          "choices": [
+            {
+              "id": "c_values",
+              "label": "Write down the five things that matter most to you, then check how you actually spend your week.",
+              "next": "n_values",
+              "effects": [
+                {
+                  "type": "stat",
+                  "key": "wellbeing",
+                  "delta": 4
+                },
+                {
+                  "type": "stat",
+                  "key": "discipline",
+                  "delta": 1
+                },
+                {
+                  "type": "counter",
+                  "key": "coped_well",
+                  "delta": 1
+                }
+              ]
+            },
+            {
+              "id": "c_experiment",
+              "label": "Try one new thing a month for six months. No pressure to be good at it.",
+              "next": "n_experiment",
+              "effects": [
+                {
+                  "type": "stat",
+                  "key": "wellbeing",
+                  "delta": 3
+                },
+                {
+                  "type": "skill",
+                  "key": "content",
+                  "delta": 0.3
+                },
+                {
+                  "type": "skill",
+                  "key": "cooking",
+                  "delta": 0.3
+                },
+                {
+                  "type": "stat",
+                  "key": "communication",
+                  "delta": 0.5
+                },
+                {
+                  "type": "counter",
+                  "key": "coped_well",
+                  "delta": 1
+                }
+              ]
+            },
+            {
+              "id": "c_ask_joseph",
+              "label": "Ask Mr. Fernandes how he found his way.",
+              "next": "n_ask_joseph",
+              "effects": [
+                {
+                  "type": "relationship",
+                  "npc": "joseph",
+                  "affinity": 3,
+                  "trust": 2
+                },
+                {
+                  "type": "stat",
+                  "key": "wellbeing",
+                  "delta": 3
+                },
+                {
+                  "type": "stat",
+                  "key": "knowledge",
+                  "delta": 0.5
+                },
+                {
+                  "type": "counter",
+                  "key": "coped_well",
+                  "delta": 1
+                }
+              ]
+            },
+            {
+              "id": "c_drift",
+              "label": "Shrug and keep going as you are.",
+              "next": "n_drift",
+              "effects": [
+                {
+                  "type": "stat",
+                  "key": "wellbeing",
+                  "delta": -1
+                },
+                {
+                  "type": "counter",
+                  "key": "coped_badly",
+                  "delta": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "repeatable": true
+    },
+    {
+      "id": "ev_p_procrastination",
+      "chapter": 0,
+      "title": "The Deadline You Ignored",
+      "location": "home",
+      "summary": "Procrastination catches up with you.",
+      "trigger": {
+        "kind": "random",
+        "when": {
+          "type": "stat",
+          "key": "discipline",
+          "op": "<",
+          "value": 45
+        },
+        "chancePerMonth": 0.06
+      },
+      "start": "start",
+      "nodes": {
+        "n_pomodoro": {
+          "speaker": "narrator",
+          "text": "The first 25 minutes are painful. The next four fly by. It gets done — not perfectly, but done. Thinking it through: procrastination is usually about avoiding a feeling, not the task. Starting small makes the feeling shrink; momentum does the rest."
+        },
+        "n_tiny_steps": {
+          "speaker": "narrator",
+          "text": "Open the file. Write a title. Write one bad sentence. Suddenly you are working. Thinking it through: big vague tasks paralyse; tiny concrete ones invite action. \"What is the very next physical step?\" is a powerful question."
+        },
+        "n_all_nighter": {
+          "speaker": "narrator",
+          "text": "It gets done at 5:40 a.m. You spend the next two days recovering. Thinking it through: all-nighters work once and cost twice. The panic is the price of the delay."
+        },
+        "start": {
+          "speaker": "narrator",
+          "text": "The deadline is tomorrow. You have known about it for three weeks. You have reorganised your desk twice today.",
+          "choices": [
+            {
+              "id": "c_pomodoro",
+              "label": "Set a 25-minute timer. Work until it rings. Five-minute break. Repeat.",
+              "next": "n_pomodoro",
+              "effects": [
+                {
+                  "type": "stat",
+                  "key": "discipline",
+                  "delta": 2
+                },
+                {
+                  "type": "stat",
+                  "key": "knowledge",
+                  "delta": 0.5
+                },
+                {
+                  "type": "stat",
+                  "key": "wellbeing",
+                  "delta": 2
+                },
+                {
+                  "type": "counter",
+                  "key": "coped_well",
+                  "delta": 1
+                }
+              ]
+            },
+            {
+              "id": "c_tiny_steps",
+              "label": "Break it into steps so small they feel silly. Step one: open the file.",
+              "next": "n_tiny_steps",
+              "effects": [
+                {
+                  "type": "stat",
+                  "key": "discipline",
+                  "delta": 1.5
+                },
+                {
+                  "type": "stat",
+                  "key": "wellbeing",
+                  "delta": 2
+                },
+                {
+                  "type": "counter",
+                  "key": "coped_well",
+                  "delta": 1
+                }
+              ]
+            },
+            {
+              "id": "c_all_nighter",
+              "label": "Pull an all-nighter on coffee and panic.",
+              "next": "n_all_nighter",
+              "effects": [
+                {
+                  "type": "stat",
+                  "key": "energy",
+                  "delta": -20
+                },
+                {
+                  "type": "stat",
+                  "key": "health",
+                  "delta": -1
+                },
+                {
+                  "type": "stat",
+                  "key": "wellbeing",
+                  "delta": -2
+                },
+                {
+                  "type": "counter",
+                  "key": "coped_badly",
+                  "delta": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "repeatable": true
+    },
+    {
+      "id": "ev_p_betrayal",
+      "chapter": 0,
+      "title": "Borrowed and Gone",
+      "location": "cafe",
+      "summary": "A friend breaks your trust.",
+      "trigger": {
+        "kind": "random",
+        "when": {
+          "type": "cash",
+          "op": ">=",
+          "value": 10000
+        },
+        "chancePerMonth": 0.03
+      },
+      "start": "start",
+      "nodes": {
+        "n_boundary": {
+          "speaker": "narrator",
+          "text": "Whether or not the money comes back, you said what you needed to say — clearly, without cruelty. Thinking it through: boundaries aren't walls. They tell people how to treat you, and they protect the relationships worth keeping."
+        },
+        "n_let_go": {
+          "speaker": "narrator",
+          "text": "You decide the lesson was worth ₹10,000 and stop rehearsing angry speeches in the shower. Thinking it through: forgiveness is not saying it was fine. It is deciding that the resentment costs you more than they do."
+        },
+        "n_revenge": {
+          "speaker": "narrator",
+          "text": "A satisfying ten minutes. Then a messy week of mutual friends picking sides. Thinking it through: public revenge rarely gets the money back and always costs you peace."
+        },
+        "start": {
+          "speaker": "narrator",
+          "text": "A friend borrowed ₹10,000 \"for two weeks\" three months ago. Today you see their holiday photos. They have stopped replying to you.",
+          "choices": [
+            {
+              "id": "c_boundary",
+              "label": "Message them calmly: you need the money back by a date, and you won't lend again.",
+              "next": "n_boundary",
+              "effects": [
+                {
+                  "type": "stat",
+                  "key": "communication",
+                  "delta": 1
+                },
+                {
+                  "type": "stat",
+                  "key": "wellbeing",
+                  "delta": 2
+                },
+                {
+                  "type": "roll",
+                  "key": "repaid",
+                  "chance": 0.5
+                },
+                {
+                  "type": "if",
+                  "when": {
+                    "type": "flag",
+                    "key": "repaid"
+                  },
+                  "then": [
+                    {
+                      "type": "money",
+                      "amount": 10000,
+                      "label": "Friend repaid the loan"
+                    }
+                  ]
+                },
+                {
+                  "type": "counter",
+                  "key": "coped_well",
+                  "delta": 1
+                }
+              ]
+            },
+            {
+              "id": "c_let_go",
+              "label": "Write it off as the price of learning who they are. Let it go.",
+              "next": "n_let_go",
+              "effects": [
+                {
+                  "type": "stat",
+                  "key": "wellbeing",
+                  "delta": 3
+                },
+                {
+                  "type": "counter",
+                  "key": "coped_well",
+                  "delta": 1
+                }
+              ]
+            },
+            {
+              "id": "c_revenge",
+              "label": "Post about it publicly and tag them.",
+              "next": "n_revenge",
+              "effects": [
+                {
+                  "type": "stat",
+                  "key": "wellbeing",
+                  "delta": -2
+                },
+                {
+                  "type": "stat",
+                  "key": "communication",
+                  "delta": -0.5
+                },
+                {
+                  "type": "counter",
+                  "key": "coped_badly",
+                  "delta": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "repeatable": true
+    },
+    {
+      "id": "ev_p_mirror",
+      "chapter": 0,
+      "title": "The Mirror",
+      "location": "home",
+      "summary": "You feel bad about how you look.",
+      "trigger": {
+        "kind": "random",
+        "when": {
+          "type": "stat",
+          "key": "looks",
+          "op": "<",
+          "value": 40
+        },
+        "chancePerMonth": 0.04
+      },
+      "start": "start",
+      "nodes": {
+        "n_health_focus": {
+          "speaker": "narrator",
+          "text": "In a month you feel better before you look different — and then you look different too. Thinking it through: goals built on self-respect last longer than goals built on self-dislike."
+        },
+        "n_kind_words": {
+          "speaker": "narrator",
+          "text": "It climbs stairs, hugs Amma, carries groceries, dances badly at weddings, and got you here. Thinking it through: you would never speak to a friend the way you speak to your reflection. Practise using the friend voice."
+        },
+        "n_crash_diet": {
+          "speaker": "narrator",
+          "text": "Day four, you are dizzy and furious. Day nine, you give up and feel worse. Thinking it through: extreme fixes come from panic, not care. Slow changes stick."
+        },
+        "start": {
+          "speaker": "narrator",
+          "text": "A photo from a family function. You hate how you look in it. You zoom in and find six more things to hate.",
+          "choices": [
+            {
+              "id": "c_health_focus",
+              "label": "Shift the goal from \"look different\" to \"feel strong\": walk daily, sleep properly, eat real food.",
+              "next": "n_health_focus",
+              "effects": [
+                {
+                  "type": "stat",
+                  "key": "health",
+                  "delta": 1.5
+                },
+                {
+                  "type": "stat",
+                  "key": "wellbeing",
+                  "delta": 3
+                },
+                {
+                  "type": "stat",
+                  "key": "discipline",
+                  "delta": 1
+                },
+                {
+                  "type": "counter",
+                  "key": "coped_well",
+                  "delta": 1
+                }
+              ]
+            },
+            {
+              "id": "c_kind_words",
+              "label": "List five things your body lets you do, not how it looks.",
+              "next": "n_kind_words",
+              "effects": [
+                {
+                  "type": "stat",
+                  "key": "wellbeing",
+                  "delta": 3
+                },
+                {
+                  "type": "counter",
+                  "key": "coped_well",
+                  "delta": 1
+                }
+              ]
+            },
+            {
+              "id": "c_crash_diet",
+              "label": "Start a crash diet tomorrow. Nothing but salad for a month.",
+              "next": "n_crash_diet",
+              "effects": [
+                {
+                  "type": "stat",
+                  "key": "health",
+                  "delta": -3
+                },
+                {
+                  "type": "stat",
+                  "key": "energy",
+                  "delta": -10
+                },
+                {
+                  "type": "stat",
+                  "key": "wellbeing",
+                  "delta": -2
+                },
+                {
+                  "type": "counter",
+                  "key": "coped_badly",
+                  "delta": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "repeatable": true
+    },
+    {
+      "id": "ev_p_peer_pressure",
+      "chapter": 0,
+      "title": "Just This Once",
+      "location": "cafe",
+      "summary": "Friends push you toward something you don’t want.",
+      "trigger": {
+        "kind": "random",
+        "when": {
+          "type": "age",
+          "op": ">=",
+          "value": 18
+        },
+        "chancePerMonth": 0.04
+      },
+      "start": "start",
+      "nodes": {
+        "n_say_no": {
+          "speaker": "narrator",
+          "text": "A few groans, then someone says 'fair'. Next weekend, they actually plan it around you. Thinking it through: real friends respect a clear, friendly no. A \"no\" to one thing is a \"yes\" to something you value more."
+        },
+        "n_compromise": {
+          "speaker": "narrator",
+          "text": "Dinner is loud and lovely, and you finish your work in the morning. Thinking it through: it is rarely \"them or me\". There is often a third option where nobody has to lose."
+        },
+        "n_cave": {
+          "speaker": "narrator",
+          "text": "The trip is fun. Monday is not: you are behind and someone covered for you, again. Thinking it through: when you keep saying yes to others and no to yourself, you slowly stop trusting your own word."
+        },
+        "start": {
+          "speaker": "narrator",
+          "text": "Your friends want to skip work and take a 'quick' trip out of town — on a day you promised to finish something important. 'Don't be boring,' they say. Everyone is looking at you.",
+          "choices": [
+            {
+              "id": "c_say_no",
+              "label": "Say no with a smile: \"Not this time — but I'm in next weekend.\"",
+              "next": "n_say_no",
+              "effects": [
+                {
+                  "type": "stat",
+                  "key": "discipline",
+                  "delta": 1.5
+                },
+                {
+                  "type": "stat",
+                  "key": "wellbeing",
+                  "delta": 2
+                },
+                {
+                  "type": "stat",
+                  "key": "communication",
+                  "delta": 0.5
+                },
+                {
+                  "type": "counter",
+                  "key": "coped_well",
+                  "delta": 1
+                }
+              ]
+            },
+            {
+              "id": "c_compromise",
+              "label": "Offer a compromise: dinner together tonight instead.",
+              "next": "n_compromise",
+              "effects": [
+                {
+                  "type": "stat",
+                  "key": "communication",
+                  "delta": 1
+                },
+                {
+                  "type": "stat",
+                  "key": "wellbeing",
+                  "delta": 2
+                },
+                {
+                  "type": "counter",
+                  "key": "coped_well",
+                  "delta": 1
+                }
+              ]
+            },
+            {
+              "id": "c_cave",
+              "label": "Go along with it. You don't want to seem boring.",
+              "next": "n_cave",
+              "effects": [
+                {
+                  "type": "stat",
+                  "key": "wellbeing",
+                  "delta": 1
+                },
+                {
+                  "type": "stat",
+                  "key": "discipline",
+                  "delta": -1.5
+                },
+                {
+                  "type": "stat",
+                  "key": "energy",
+                  "delta": -8
+                },
+                {
+                  "type": "counter",
+                  "key": "coped_badly",
+                  "delta": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "repeatable": true
+    },
+    {
+      "id": "ev_p_reflect",
+      "chapter": 0,
+      "title": "A Quiet Hour",
+      "location": "park",
+      "summary": "Time to think about your life.",
+      "trigger": {
+        "kind": "scheduled"
+      },
+      "start": "start",
+      "nodes": {
+        "start": {
+          "speaker": "narrator",
+          "text": "You switch off your phone and sit with a notebook. One question at the top of the page. Which one do you write?",
+          "choices": [
+            {
+              "id": "c_fear",
+              "label": "\"What would I do if I weren't afraid of failing?\"",
+              "next": "fear",
+              "effects": [
+                {
+                  "type": "stat",
+                  "key": "wellbeing",
+                  "delta": 2
+                },
+                {
+                  "type": "stat",
+                  "key": "discipline",
+                  "delta": 1
+                }
+              ]
+            },
+            {
+              "id": "c_grateful",
+              "label": "\"What am I grateful for right now?\"",
+              "next": "grateful",
+              "effects": [
+                {
+                  "type": "stat",
+                  "key": "wellbeing",
+                  "delta": 4
+                }
+              ]
+            },
+            {
+              "id": "c_people",
+              "label": "\"Who do I want to be for the people I love?\"",
+              "next": "people",
+              "effects": [
+                {
+                  "type": "relationship",
+                  "npc": "amma",
+                  "affinity": 2
+                },
+                {
+                  "type": "stat",
+                  "key": "wellbeing",
+                  "delta": 2
+                },
+                {
+                  "type": "stat",
+                  "key": "communication",
+                  "delta": 0.5
+                }
+              ]
+            },
+            {
+              "id": "c_five_years",
+              "label": "\"Where do I want to be in five years — and what is one step toward it this week?\"",
+              "next": "five",
+              "effects": [
+                {
+                  "type": "stat",
+                  "key": "discipline",
+                  "delta": 2
+                },
+                {
+                  "type": "stat",
+                  "key": "knowledge",
+                  "delta": 0.5
+                }
+              ]
+            },
+            {
+              "id": "c_letting_go",
+              "label": "\"What am I holding onto that I should let go of?\"",
+              "next": "letting_go",
+              "effects": [
+                {
+                  "type": "stat",
+                  "key": "wellbeing",
+                  "delta": 3
+                }
+              ]
+            }
+          ]
+        },
+        "fear": {
+          "speaker": "narrator",
+          "text": "The answer surprises you. It is not huge — just something you have been postponing for years. You circle it. Thinking it through: fear of failure often protects us from small embarrassments at the cost of big regrets. Most of what we fear is survivable."
+        },
+        "grateful": {
+          "speaker": "narrator",
+          "text": "Amma's coffee. Kavya's terrible jokes. Working legs. A roof. The list keeps going. Thinking it through: gratitude does not deny problems; it puts them in proportion. People who practise it regularly report better sleep and steadier moods."
+        },
+        "people": {
+          "speaker": "narrator",
+          "text": "Patient. Present. Someone who calls back. You realise you can start being that tonight. Thinking it through: at the end of a life, people rarely wish they had worked more. They wish they had shown up more for the people they loved."
+        },
+        "five": {
+          "speaker": "narrator",
+          "text": "The five-year picture is fuzzy, but this week's step is clear. That is enough. Thinking it through: long-term goals give direction; weekly steps give momentum. You need both, but only the step is in your hands today."
+        },
+        "letting_go": {
+          "speaker": "narrator",
+          "text": "An old grudge. A plan that stopped fitting. The need to have everything figured out by 25. You write them down and tear out the page. Thinking it through: some weight we carry was never ours, or was ours once and isn't any more. Putting it down is a skill, not a defeat."
+        }
+      },
+      "repeatable": true
+    }
+  ],
+  "actions": [
+    {
+      "id": "home_journal",
+      "label": "Journal your thoughts",
+      "description": "Ten minutes, a notebook, no rules. Get it out of your head and onto paper.",
+      "location": "home",
+      "energyCost": 3,
+      "effects": [
+        {
+          "type": "stat",
+          "key": "wellbeing",
+          "delta": 2
+        },
+        {
+          "type": "stat",
+          "key": "discipline",
+          "delta": 0.3
+        },
+        {
+          "type": "counter",
+          "key": "reflections",
+          "delta": 1
+        }
+      ]
+    },
+    {
+      "id": "park_meditate",
+      "label": "Meditate under the banyan tree",
+      "description": "Fifteen minutes of breathing and noticing. The traffic noise becomes background.",
+      "location": "park",
+      "energyCost": 2,
+      "effects": [
+        {
+          "type": "stat",
+          "key": "wellbeing",
+          "delta": 2.5
+        },
+        {
+          "type": "stat",
+          "key": "health",
+          "delta": 0.3
+        },
+        {
+          "type": "counter",
+          "key": "reflections",
+          "delta": 1
+        }
+      ]
+    },
+    {
+      "id": "park_phone_free",
+      "label": "Take a phone-free walk",
+      "description": "Leave the phone at home. Notice the trees, the dogs, the chai stalls.",
+      "location": "park",
+      "energyCost": 6,
+      "effects": [
+        {
+          "type": "stat",
+          "key": "wellbeing",
+          "delta": 2
+        },
+        {
+          "type": "stat",
+          "key": "health",
+          "delta": 0.8
+        }
+      ]
+    },
+    {
+      "id": "park_big_question",
+      "label": "Sit with a big question",
+      "description": "An hour alone with a notebook and one honest question about your life.",
+      "location": "park",
+      "energyCost": 4,
+      "requires": {
+        "type": "any",
+        "conditions": [
+          {
+            "type": "not",
+            "condition": {
+              "type": "eventDone",
+              "value": "ev_p_reflect"
+            }
+          },
+          {
+            "type": "daysSinceEvent",
+            "event": "ev_p_reflect",
+            "op": ">=",
+            "value": 21
+          }
+        ]
+      },
+      "effects": [
+        {
+          "type": "schedule",
+          "event": "ev_p_reflect",
+          "inDays": 0
+        },
+        {
+          "type": "counter",
+          "key": "reflections",
+          "delta": 1
+        }
+      ]
+    },
+    {
+      "id": "hosp_therapy",
+      "label": "Talk to a therapist",
+      "description": "An hour with someone trained to help you untangle things. No problem is too small.",
+      "location": "hospital",
+      "energyCost": 4,
+      "moneyCost": 1500,
+      "effects": [
+        {
+          "type": "stat",
+          "key": "wellbeing",
+          "delta": 5
+        },
+        {
+          "type": "stat",
+          "key": "communication",
+          "delta": 0.4
+        },
+        {
+          "type": "counter",
+          "key": "therapy",
+          "delta": 1
+        },
+        {
+          "type": "flag",
+          "key": "sought_therapy"
+        },
+        {
+          "type": "if",
+          "when": {
+            "type": "counter",
+            "key": "therapy",
+            "op": ">=",
+            "value": 6
+          },
+          "then": [
+            {
+              "type": "flag",
+              "key": "therapy_done"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "library_mind_book",
+      "label": "Read a book about habits and the mind",
+      "description": "Psychology, stoicism, a memoir of someone who started over.",
+      "location": "library",
+      "energyCost": 6,
+      "effects": [
+        {
+          "type": "stat",
+          "key": "knowledge",
+          "delta": 0.4
+        },
+        {
+          "type": "stat",
+          "key": "discipline",
+          "delta": 0.6
+        },
+        {
+          "type": "stat",
+          "key": "wellbeing",
+          "delta": 1
+        }
+      ]
+    },
+    {
+      "id": "home_plan_week",
+      "label": "Plan your week and pick one goal",
+      "description": "Sunday evening, a calendar and one thing that would make this week a good one.",
+      "location": "home",
+      "energyCost": 2,
+      "effects": [
+        {
+          "type": "stat",
+          "key": "discipline",
+          "delta": 1
+        },
+        {
+          "type": "stat",
+          "key": "wellbeing",
+          "delta": 0.5
+        }
+      ]
+    },
+    {
+      "id": "home_gratitude_call",
+      "label": "Call someone just to say thank you",
+      "description": "A teacher, a relative, an old friend. Tell them what they meant to you.",
+      "location": "home",
+      "energyCost": 3,
+      "effects": [
+        {
+          "type": "stat",
+          "key": "wellbeing",
+          "delta": 2.5
+        },
+        {
+          "type": "stat",
+          "key": "communication",
+          "delta": 0.5
+        },
+        {
+          "type": "relationship",
+          "npc": "joseph",
+          "affinity": 1
+        }
+      ]
+    }
+  ],
+  "monthlyRules": [
+    {
+      "id": "resilience",
+      "label": "The resilience you have built",
+      "when": {
+        "type": "counter",
+        "key": "coped_well",
+        "op": ">=",
+        "value": 5
+      },
+      "effects": [
+        {
+          "type": "stat",
+          "key": "wellbeing",
+          "delta": 0.8
+        },
+        {
+          "type": "stat",
+          "key": "discipline",
+          "delta": 0.2
+        }
+      ]
+    }
+  ],
+  "achievements": [
+    {
+      "id": "resilient",
+      "title": "Resilient",
+      "description": "Faced five of life’s problems in healthy ways.",
+      "condition": {
+        "type": "counter",
+        "key": "coped_well",
+        "op": ">=",
+        "value": 5
+      }
+    },
+    {
+      "id": "unshakeable",
+      "title": "Unshakeable",
+      "description": "Faced fifteen of life’s problems in healthy ways.",
+      "condition": {
+        "type": "counter",
+        "key": "coped_well",
+        "op": ">=",
+        "value": 15
+      }
+    },
+    {
+      "id": "asked_for_help",
+      "title": "Asking Is Strength",
+      "description": "Talked to a counsellor or therapist.",
+      "condition": {
+        "type": "flag",
+        "key": "sought_therapy"
+      }
+    },
+    {
+      "id": "examined_life",
+      "title": "The Examined Life",
+      "description": "Journalled, meditated or reflected 20 times.",
+      "condition": {
+        "type": "counter",
+        "key": "reflections",
+        "op": ">=",
+        "value": 20
+      }
+    }
+  ],
+  "epilogueLines": [
+    {
+      "when": {
+        "type": "counter",
+        "key": "coped_well",
+        "op": ">=",
+        "value": 5
+      },
+      "text": "Life has thrown real problems at you, and you have learned to meet them with honesty instead of escape. That resilience is the most valuable thing you carry forward."
+    },
+    {
+      "when": {
+        "type": "counter",
+        "key": "coped_badly",
+        "op": ">=",
+        "value": 5
+      },
+      "text": "When things got hard, you often reached for escape. It is never too late to try a different way: talk to someone, write it down, take the next small step."
+    }
+  ]
+}

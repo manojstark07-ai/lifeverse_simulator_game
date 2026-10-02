@@ -1,0 +1,416 @@
+{
+  "contentVersion": "2026.10-ch1",
+  "locations": [
+    {
+      "id": "home",
+      "name": "Home",
+      "description": "Family, rest, and your weekly routine.",
+      "gridX": 4,
+      "gridY": 2,
+      "kind": "house",
+      "mapLabel": "Home"
+    },
+    {
+      "id": "library",
+      "name": "Community Library",
+      "description": "Quiet desks, practice papers and Mr. Fernandes.",
+      "gridX": 0,
+      "gridY": 4,
+      "kind": "library",
+      "mapLabel": "Library"
+    },
+    {
+      "id": "campus",
+      "name": "Campus",
+      "description": "Classes, labs and clubs.",
+      "gridX": 2,
+      "gridY": 2,
+      "kind": "campus",
+      "mapLabel": "Campus"
+    },
+    {
+      "id": "cafe",
+      "name": "Filter Kaapi Corner",
+      "description": "Coffee, Kavya, and possibly a part-time job.",
+      "gridX": 2,
+      "gridY": 4,
+      "kind": "cafe",
+      "mapLabel": "Café"
+    },
+    {
+      "id": "park",
+      "name": "Park",
+      "description": "Running track, banyan trees, thinking benches.",
+      "gridX": 4,
+      "gridY": 4,
+      "kind": "park",
+      "mapLabel": "Park"
+    },
+    {
+      "id": "bank",
+      "name": "Kaveri Co-operative Bank",
+      "description": "Your account, loans and statements.",
+      "gridX": 4,
+      "gridY": 0,
+      "kind": "bank",
+      "mapLabel": "Bank"
+    },
+    {
+      "id": "exam_hall",
+      "name": "Exam Centre",
+      "description": "Practice sessions, mock tests and real exams.",
+      "gridX": 3,
+      "gridY": 1,
+      "kind": "hall",
+      "mapLabel": "Exams"
+    },
+    {
+      "id": "office",
+      "name": "Career Centre",
+      "description": "Job openings, interviews and — eventually — your workplace.",
+      "gridX": 1,
+      "gridY": 3,
+      "kind": "office",
+      "mapLabel": "Careers"
+    },
+    {
+      "id": "hospital",
+      "name": "General Hospital",
+      "description": "Hopefully you won't need it.",
+      "gridX": 1,
+      "gridY": 0,
+      "kind": "hospital",
+      "mapLabel": "Hospital"
+    }
+  ],
+  "actions": [
+    {
+      "id": "home_rest",
+      "label": "Rest and recharge",
+      "description": "Sleep in, eat properly, do nothing useful. It's useful.",
+      "location": "home",
+      "energyCost": 0,
+      "effects": [
+        {
+          "type": "stat",
+          "key": "energy",
+          "delta": 18
+        },
+        {
+          "type": "stat",
+          "key": "wellbeing",
+          "delta": 1
+        }
+      ]
+    },
+    {
+      "id": "home_family",
+      "label": "Time with Amma",
+      "description": "Help in the kitchen and hear the neighbourhood news.",
+      "location": "home",
+      "energyCost": 4,
+      "effects": [
+        {
+          "type": "relationship",
+          "npc": "amma",
+          "affinity": 2,
+          "trust": 0.5
+        },
+        {
+          "type": "stat",
+          "key": "wellbeing",
+          "delta": 1.5
+        }
+      ]
+    },
+    {
+      "id": "home_self_study",
+      "label": "Self-study at home",
+      "description": "Books open on the bed. Distractions everywhere.",
+      "location": "home",
+      "energyCost": 10,
+      "effects": [
+        {
+          "type": "stat",
+          "key": "knowledge",
+          "delta": 0.6
+        },
+        {
+          "type": "stat",
+          "key": "discipline",
+          "delta": 0.2
+        }
+      ]
+    },
+    {
+      "id": "lib_study",
+      "label": "Focused library session",
+      "description": "Three silent hours at a corner desk.",
+      "location": "library",
+      "energyCost": 12,
+      "effects": [
+        {
+          "type": "stat",
+          "key": "knowledge",
+          "delta": 0.9
+        },
+        {
+          "type": "stat",
+          "key": "discipline",
+          "delta": 0.3
+        }
+      ]
+    },
+    {
+      "id": "lib_mentor",
+      "label": "Ask Mr. Fernandes for help",
+      "description": "Bring your hardest problem. Leave with a better question.",
+      "location": "library",
+      "energyCost": 6,
+      "requires": {
+        "type": "flag",
+        "key": "mentor_open"
+      },
+      "effects": [
+        {
+          "type": "relationship",
+          "npc": "joseph",
+          "affinity": 2,
+          "trust": 1
+        },
+        {
+          "type": "stat",
+          "key": "knowledge",
+          "delta": 0.5
+        }
+      ]
+    },
+    {
+      "id": "cafe_hangout",
+      "label": "Hang out with Kavya",
+      "description": "Two coffees, one argument about cricket.",
+      "location": "cafe",
+      "energyCost": 5,
+      "moneyCost": 150,
+      "effects": [
+        {
+          "type": "relationship",
+          "npc": "kavya",
+          "affinity": 3,
+          "trust": 0.5
+        },
+        {
+          "type": "stat",
+          "key": "wellbeing",
+          "delta": 2
+        },
+        {
+          "type": "stat",
+          "key": "communication",
+          "delta": 0.2
+        }
+      ]
+    },
+    {
+      "id": "cafe_extra_shift",
+      "label": "Pick up an extra shift",
+      "description": "Cover a colleague's evening for extra pay.",
+      "location": "cafe",
+      "energyCost": 14,
+      "requires": {
+        "type": "partTime",
+        "value": "cafe_counter"
+      },
+      "effects": [
+        {
+          "type": "money",
+          "amount": 450,
+          "category": "salary",
+          "label": "Extra café shift"
+        },
+        {
+          "type": "stat",
+          "key": "communication",
+          "delta": 0.2
+        }
+      ]
+    },
+    {
+      "id": "cafe_ask_job",
+      "label": "Ask Mr. Sundaram about the job",
+      "description": "The 'Help Wanted' sign is still in the window.",
+      "location": "cafe",
+      "energyCost": 2,
+      "requires": {
+        "type": "all",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "cafe_offer_open"
+          },
+          {
+            "type": "partTime",
+            "value": false
+          },
+          {
+            "type": "career",
+            "value": false
+          }
+        ]
+      },
+      "effects": [
+        {
+          "type": "startPartTime",
+          "job": "cafe_counter"
+        },
+        {
+          "type": "clearFlag",
+          "key": "cafe_offer_open"
+        }
+      ]
+    },
+    {
+      "id": "cafe_quit_job",
+      "label": "Quit the café job",
+      "description": "Hand in your apron and get sixteen hours a week back.",
+      "location": "cafe",
+      "energyCost": 0,
+      "requires": {
+        "type": "partTime",
+        "value": "cafe_counter"
+      },
+      "effects": [
+        {
+          "type": "quitPartTime"
+        },
+        {
+          "type": "flag",
+          "key": "cafe_offer_open"
+        }
+      ]
+    },
+    {
+      "id": "park_run",
+      "label": "Morning run",
+      "description": "Three laps before the walkers take over the track.",
+      "location": "park",
+      "energyCost": 8,
+      "effects": [
+        {
+          "type": "stat",
+          "key": "wellbeing",
+          "delta": 2.5
+        },
+        {
+          "type": "stat",
+          "key": "discipline",
+          "delta": 0.2
+        }
+      ]
+    },
+    {
+      "id": "park_reflect",
+      "label": "Walk and reflect",
+      "description": "No phone. Just the banyan trees and your thoughts.",
+      "location": "park",
+      "energyCost": 2,
+      "effects": [
+        {
+          "type": "stat",
+          "key": "wellbeing",
+          "delta": 1.5
+        }
+      ]
+    },
+    {
+      "id": "campus_lab",
+      "label": "Extra lab hours",
+      "description": "Practise what the lectures only describe.",
+      "location": "campus",
+      "energyCost": 12,
+      "requires": {
+        "type": "educationStatus",
+        "value": "enrolled"
+      },
+      "effects": [
+        {
+          "type": "programSkill",
+          "delta": 0.8
+        },
+        {
+          "type": "stat",
+          "key": "discipline",
+          "delta": 0.2
+        }
+      ]
+    },
+    {
+      "id": "campus_club",
+      "label": "Club activity",
+      "description": "Events, debates, hackathons and too much tea.",
+      "location": "campus",
+      "energyCost": 8,
+      "requires": {
+        "type": "educationStatus",
+        "value": "enrolled"
+      },
+      "effects": [
+        {
+          "type": "stat",
+          "key": "communication",
+          "delta": 0.5
+        },
+        {
+          "type": "stat",
+          "key": "wellbeing",
+          "delta": 1
+        }
+      ]
+    },
+    {
+      "id": "office_network",
+      "label": "Network with colleagues",
+      "description": "Lunch with people from other teams.",
+      "location": "office",
+      "energyCost": 6,
+      "requires": {
+        "type": "career",
+        "value": true
+      },
+      "effects": [
+        {
+          "type": "stat",
+          "key": "communication",
+          "delta": 0.4
+        },
+        {
+          "type": "skill",
+          "key": "business",
+          "delta": 0.3
+        }
+      ]
+    },
+    {
+      "id": "office_upskill",
+      "label": "Upskill after hours",
+      "description": "An online course, a side project, a manual nobody reads.",
+      "location": "office",
+      "energyCost": 12,
+      "requires": {
+        "type": "career",
+        "value": true
+      },
+      "effects": [
+        {
+          "type": "programSkill",
+          "delta": 0.6
+        },
+        {
+          "type": "stat",
+          "key": "knowledge",
+          "delta": 0.3
+        }
+      ]
+    }
+  ]
+}

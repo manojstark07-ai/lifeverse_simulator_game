@@ -1,0 +1,93 @@
+{
+  "contentVersion": "2026.10-world",
+  "hometowns": [
+    {
+      "id": "mumbai",
+      "name": "Mumbai",
+      "kind": "metro",
+      "description": "A dense coastal city of studios, finance desks and impossible-to-ignore ambition.",
+      "livingCostMonthly": 6500,
+      "rentMonthly": 18000,
+      "wageMultiplier": 1.2,
+      "commuteHoursWeekly": 11
+    },
+    {
+      "id": "hyderabad",
+      "name": "Hyderabad",
+      "kind": "metro",
+      "description": "A growing technology and life-sciences hub where old neighbourhoods meet new labs.",
+      "livingCostMonthly": 4800,
+      "rentMonthly": 11000,
+      "wageMultiplier": 1.08,
+      "commuteHoursWeekly": 8
+    },
+    {
+      "id": "kochi",
+      "name": "Kochi",
+      "kind": "metro",
+      "description": "A port city with design studios, independent restaurants and a slower rhythm.",
+      "livingCostMonthly": 3900,
+      "rentMonthly": 8500,
+      "wageMultiplier": 0.96,
+      "commuteHoursWeekly": 6
+    },
+    {
+      "id": "new_delhi",
+      "name": "New Delhi",
+      "kind": "metro",
+      "description": "A capital of institutions, media, policy and very competitive interviews.",
+      "livingCostMonthly": 5700,
+      "rentMonthly": 14500,
+      "wageMultiplier": 1.12,
+      "commuteHoursWeekly": 9
+    },
+    {
+      "id": "pune",
+      "name": "Pune",
+      "kind": "metro",
+      "description": "A student city with engineering offices, music venues and an unusually good lunch break.",
+      "livingCostMonthly": 4500,
+      "rentMonthly": 10500,
+      "wageMultiplier": 1.05,
+      "commuteHoursWeekly": 7
+    }
+  ],
+  "locations": [
+    {
+      "id": "airport",
+      "name": "City Airport",
+      "description": "Flights, goodbyes and the occasional life-changing relocation.",
+      "gridX": 0,
+      "gridY": 0,
+      "kind": "airport",
+      "mapLabel": "Airport"
+    },
+    {
+      "id": "court",
+      "name": "District Court",
+      "description": "Hearings, paperwork and the long consequences of old decisions.",
+      "gridX": 0,
+      "gridY": 2,
+      "kind": "hall",
+      "mapLabel": "Court"
+    },
+    {
+      "id": "government_office",
+      "name": "Civic Services Office",
+      "description": "Licences, registrations, tax filings and queues that test your discipline.",
+      "gridX": 3,
+      "gridY": 4,
+      "kind": "office",
+      "mapLabel": "Civic Office"
+    },
+    {
+      "id": "boxing_gym",
+      "name": "Northside Boxing Gym",
+      "description": "Training, authorised bouts and coaches who notice whether you show up.",
+      "gridX": 4,
+      "gridY": 3,
+      "kind": "gym",
+      "mapLabel": "Boxing Gym"
+    }
+  ]
+}

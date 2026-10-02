@@ -1,0 +1,38 @@
+{
+  "contentVersion": "2026.10-ch1",
+  "loanProducts": [
+    {
+      "id": "kaveri_education",
+      "name": "Vidya Education Loan",
+      "lender": "Kaveri Co-operative Bank (fictional)",
+      "kind": "education",
+      "annualRatePct": 9.5,
+      "maxAmount": 600000,
+      "termMonths": 84,
+      "graceMonths": 6,
+      "description": "Covers course fees. Nothing to pay while you study plus six months; interest accrues throughout and is added to the loan when repayment starts."
+    },
+    {
+      "id": "kaveri_personal",
+      "name": "Personal Loan",
+      "lender": "Kaveri Co-operative Bank (fictional)",
+      "kind": "personal",
+      "annualRatePct": 15.0,
+      "maxAmount": 100000,
+      "termMonths": 24,
+      "graceMonths": 0,
+      "description": "Fast, unsecured, expensive. Repayments start next month."
+    },
+    {
+      "id": "consumer_emi",
+      "name": "'No-cost' EMI",
+      "lender": "Showroom finance partner (fictional)",
+      "kind": "consumer",
+      "annualRatePct": 0.0,
+      "maxAmount": 60000,
+      "termMonths": 12,
+      "graceMonths": 0,
+      "description": "Zero interest — the cost hides in the processing fee and in the discount you didn't get for paying cash."
+    }
+  ]
+}

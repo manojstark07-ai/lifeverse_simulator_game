@@ -1,0 +1,1125 @@
+{
+  "contentVersion": "2026.10-life",
+  "creatorNiches": [
+    {
+      "id": "tech",
+      "name": "Tech reviews",
+      "description": "Phones, laptops and gadgets, reviewed honestly. Good ad rates, picky audience.",
+      "rpm": 160,
+      "reach": 0.9,
+      "sponsorRate": 0.5,
+      "skillWeights": {
+        "programming": 0.4,
+        "communication": 0.4,
+        "knowledge": 0.2
+      },
+      "titles": [
+        "PearPhone 17 vs Nimbus 8: the honest truth",
+        "I used a ₹12,000 phone for 30 days",
+        "Best laptop under ₹40K? I tested five",
+        "Unboxing #{n}: is it worth the hype?",
+        "Don't buy this gadget (yet)",
+        "My desk setup tour, episode {n}"
+      ]
+    },
+    {
+      "id": "comedy",
+      "name": "Comedy sketches",
+      "description": "Relatable sketches about family, college and office life. Huge reach, low ad rates.",
+      "rpm": 50,
+      "reach": 1.5,
+      "sponsorRate": 0.25,
+      "skillWeights": {
+        "communication": 0.6,
+        "looks": 0.2,
+        "wellbeing": 0.2
+      },
+      "titles": [
+        "When Amma finds your report card",
+        "Every Indian wedding ever",
+        "Types of people in a group project",
+        "Office meetings be like (part {n})",
+        "When the Wi-Fi goes down at home",
+        "Relatives at a family function"
+      ]
+    },
+    {
+      "id": "cooking",
+      "name": "Cooking",
+      "description": "Home recipes, street food recreations and kitchen hacks.",
+      "rpm": 90,
+      "reach": 1.0,
+      "sponsorRate": 0.35,
+      "skillWeights": {
+        "cooking": 0.6,
+        "communication": 0.3,
+        "looks": 0.1
+      },
+      "titles": [
+        "Hostel-room biryani in a rice cooker",
+        "5 breakfasts under ₹50",
+        "Amma's sambar (the real recipe)",
+        "Street-style pav bhaji at home",
+        "Meal prep for the week, episode {n}",
+        "I cooked only with ₹100 for a day"
+      ]
+    },
+    {
+      "id": "fitness",
+      "name": "Fitness",
+      "description": "Workouts, transformations and honest nutrition. Brands love fit creators.",
+      "rpm": 100,
+      "reach": 1.0,
+      "sponsorRate": 0.45,
+      "skillWeights": {
+        "health": 0.5,
+        "looks": 0.3,
+        "discipline": 0.2
+      },
+      "titles": [
+        "90-day transformation: day {n}",
+        "Home workout, no equipment",
+        "What I eat in a day",
+        "5 gym mistakes beginners make",
+        "I tried yoga every day for a month",
+        "Protein on a student budget"
+      ]
+    },
+    {
+      "id": "finance",
+      "name": "Personal finance",
+      "description": "Budgets, loans and investing, explained simply. Small audience, top ad rates.",
+      "rpm": 280,
+      "reach": 0.6,
+      "sponsorRate": 0.7,
+      "skillWeights": {
+        "accounting": 0.4,
+        "knowledge": 0.3,
+        "communication": 0.3
+      },
+      "titles": [
+        "How I saved my first ₹1 lakh",
+        "EMI or cash? The maths nobody shows you",
+        "Your first salary: do these 5 things",
+        "Credit scores explained in 8 minutes",
+        "SIP vs FD: what should a 22-year-old pick?",
+        "Money mistakes I made at {n}"
+      ]
+    },
+    {
+      "id": "gaming",
+      "name": "Gaming",
+      "description": "Let's-plays, live reactions and esports banter. Big, young audience.",
+      "rpm": 45,
+      "reach": 1.3,
+      "sponsorRate": 0.25,
+      "skillWeights": {
+        "communication": 0.5,
+        "programming": 0.2,
+        "wellbeing": 0.3
+      },
+      "titles": [
+        "I played this game for 24 hours straight",
+        "Clutch moments compilation #{n}",
+        "Ranking every weapon in the game",
+        "Playing with subscribers!",
+        "Rage quit counter: {n}",
+        "The hardest level ever made?"
+      ]
+    },
+    {
+      "id": "beauty",
+      "name": "Beauty & style",
+      "description": "Hair, skincare, fashion hauls and makeovers.",
+      "rpm": 110,
+      "reach": 1.1,
+      "sponsorRate": 0.6,
+      "skillWeights": {
+        "styling": 0.4,
+        "looks": 0.4,
+        "communication": 0.2
+      },
+      "titles": [
+        "Monsoon hair care routine",
+        "Wedding-season looks under ₹2,000",
+        "I let a stranger style me",
+        "Skincare for oily skin, honestly",
+        "Salon vs home haircut",
+        "Thrift haul #{n}"
+      ]
+    },
+    {
+      "id": "vlogs",
+      "name": "Travel & vlogs",
+      "description": "Day-in-the-life, road trips and city diaries.",
+      "rpm": 70,
+      "reach": 1.1,
+      "sponsorRate": 0.4,
+      "skillWeights": {
+        "communication": 0.5,
+        "looks": 0.25,
+        "wellbeing": 0.25
+      },
+      "titles": [
+        "A day in my life, episode {n}",
+        "₹5,000 weekend trip challenge",
+        "Hidden food spots in my city",
+        "Moving into my first flat",
+        "Overnight train vlog",
+        "24 hours in the hills"
+      ]
+    },
+    {
+      "id": "study",
+      "name": "Study & exams",
+      "description": "Exam strategies, explainers and study-with-me streams.",
+      "rpm": 130,
+      "reach": 0.8,
+      "sponsorRate": 0.35,
+      "skillWeights": {
+        "knowledge": 0.4,
+        "mathematics": 0.3,
+        "communication": 0.3
+      },
+      "titles": [
+        "How I studied 10 hours a day",
+        "Maths tricks they don't teach in school",
+        "Study with me: 3-hour session #{n}",
+        "My entrance-exam strategy",
+        "Topper's notes: reading them right",
+        "Stop wasting time on these study habits"
+      ]
+    }
+  ],
+  "events": [
+    {
+      "id": "ev_c_comments",
+      "chapter": 0,
+      "title": "The Comment Section",
+      "location": "home",
+      "summary": "Your first hater shows up.",
+      "trigger": {
+        "kind": "auto",
+        "when": {
+          "type": "all",
+          "conditions": [
+            {
+              "type": "creator"
+            },
+            {
+              "type": "creator",
+              "field": "subscribers",
+              "op": ">=",
+              "value": 300
+            }
+          ]
+        },
+        "priority": 26
+      },
+      "start": "start",
+      "nodes": {
+        "start": {
+          "speaker": "narrator",
+          "text": "Three hundred subscribers. Then a comment: 'cringe content, quit while you can.' It has twelve likes. You read it nine times.",
+          "choices": [
+            {
+              "id": "c_joke",
+              "label": "Reply with a joke — and pin it.",
+              "next": "joke",
+              "effects": [
+                {
+                  "type": "stat",
+                  "key": "communication",
+                  "delta": 1
+                },
+                {
+                  "type": "creator",
+                  "subsPercent": 2
+                }
+              ]
+            },
+            {
+              "id": "c_block",
+              "label": "Delete and block. Move on.",
+              "next": "block",
+              "effects": [
+                {
+                  "type": "stat",
+                  "key": "wellbeing",
+                  "delta": 1
+                }
+              ]
+            },
+            {
+              "id": "c_argue",
+              "label": "Write a long, angry reply.",
+              "next": "argue",
+              "effects": [
+                {
+                  "type": "stat",
+                  "key": "wellbeing",
+                  "delta": -3
+                },
+                {
+                  "type": "creator",
+                  "subsPercent": 1
+                }
+              ]
+            },
+            {
+              "id": "c_break",
+              "label": "Stop reading comments for a week.",
+              "next": "rest",
+              "effects": [
+                {
+                  "type": "stat",
+                  "key": "wellbeing",
+                  "delta": 2
+                }
+              ]
+            }
+          ]
+        },
+        "joke": {
+          "speaker": "narrator",
+          "text": "Your reply gets more likes than the insult. Your regulars start defending you. Turns out a sense of humour is content too."
+        },
+        "block": {
+          "speaker": "narrator",
+          "text": "Gone. The other ninety-nine comments were kind. You decide to read those twice instead."
+        },
+        "argue": {
+          "speaker": "narrator",
+          "text": "Your reply gets screenshotted. A few people laugh at you; a few more subscribe for the drama. You feel worse than the views suggest."
+        },
+        "rest": {
+          "speaker": "narrator",
+          "text": "A week without comments. You film better when you're not editing in your head for strangers."
+        }
+      }
+    },
+    {
+      "id": "ev_c_collab",
+      "chapter": 0,
+      "title": "Collab Offer",
+      "location": "cafe",
+      "summary": "A bigger creator wants to work with you.",
+      "trigger": {
+        "kind": "auto",
+        "when": {
+          "type": "all",
+          "conditions": [
+            {
+              "type": "creator"
+            },
+            {
+              "type": "creator",
+              "field": "subscribers",
+              "op": ">=",
+              "value": 5000
+            }
+          ]
+        },
+        "priority": 27
+      },
+      "start": "start",
+      "nodes": {
+        "start": {
+          "speaker": "narrator",
+          "text": "Rhea, who runs a channel ten times your size, DMs you: 'Love your stuff. Collab? I'm in Bengaluru next weekend.'",
+          "choices": [
+            {
+              "id": "c_go",
+              "label": "Go — travel and stay cost ₹3,000.",
+              "next": "go",
+              "effects": [
+                {
+                  "type": "creator",
+                  "subsPercent": 15
+                },
+                {
+                  "type": "stat",
+                  "key": "communication",
+                  "delta": 1.5
+                },
+                {
+                  "type": "stat",
+                  "key": "wellbeing",
+                  "delta": 3
+                }
+              ],
+              "cost": {
+                "money": 3000,
+                "energy": 10
+              }
+            },
+            {
+              "id": "c_remote",
+              "label": "Suggest a remote collab instead.",
+              "next": "remote",
+              "effects": [
+                {
+                  "type": "creator",
+                  "subsPercent": 6
+                },
+                {
+                  "type": "stat",
+                  "key": "communication",
+                  "delta": 0.5
+                }
+              ]
+            },
+            {
+              "id": "c_no",
+              "label": "Politely decline — you're not ready.",
+              "next": "no",
+              "effects": [
+                {
+                  "type": "stat",
+                  "key": "wellbeing",
+                  "delta": -1
+                }
+              ]
+            }
+          ]
+        },
+        "go": {
+          "speaker": "narrator",
+          "text": "Two days of filming, one disastrous street-food challenge, and a video that does numbers on both channels. Rhea says you're a natural. You almost believe her."
+        },
+        "remote": {
+          "speaker": "narrator",
+          "text": "The split-screen collab is fine. Not magic, but fine. A few hundred of Rhea's viewers find you."
+        },
+        "no": {
+          "speaker": "narrator",
+          "text": "Rhea says 'next time!' You wonder if there will be one."
+        }
+      }
+    },
+    {
+      "id": "ev_c_sponsor",
+      "chapter": 0,
+      "title": "Easy Money",
+      "location": "home",
+      "summary": "A sponsor with deep pockets and a dodgy product.",
+      "trigger": {
+        "kind": "auto",
+        "when": {
+          "type": "all",
+          "conditions": [
+            {
+              "type": "creator"
+            },
+            {
+              "type": "creator",
+              "field": "subscribers",
+              "op": ">=",
+              "value": 20000
+            }
+          ]
+        },
+        "priority": 28
+      },
+      "start": "start",
+      "nodes": {
+        "start": {
+          "speaker": "narrator",
+          "text": "An agency emails: ₹1,50,000 for a 60-second promo of 'LuckyPlay', a fantasy-betting app. 'Just say it's fun and link it below.' Half your audience is under twenty.",
+          "choices": [
+            {
+              "id": "c_take",
+              "label": "Take the money.",
+              "next": "take",
+              "effects": [
+                {
+                  "type": "money",
+                  "amount": 150000,
+                  "label": "LuckyPlay sponsorship",
+                  "category": "creator"
+                },
+                {
+                  "type": "flag",
+                  "key": "shady_promo"
+                },
+                {
+                  "type": "delayed",
+                  "inDays": 60,
+                  "note": "The LuckyPlay backlash",
+                  "effects": [
+                    {
+                      "type": "creator",
+                      "subsPercent": -12
+                    },
+                    {
+                      "type": "stat",
+                      "key": "wellbeing",
+                      "delta": -4
+                    }
+                  ]
+                }
+              ],
+              "hint": "Fast money. Your audience may not forgive it."
+            },
+            {
+              "id": "c_refuse",
+              "label": "Refuse and tell your audience why.",
+              "next": "refuse",
+              "effects": [
+                {
+                  "type": "flag",
+                  "key": "principled_creator"
+                },
+                {
+                  "type": "creator",
+                  "subsPercent": 4
+                },
+                {
+                  "type": "stat",
+                  "key": "wellbeing",
+                  "delta": 2
+                }
+              ]
+            },
+            {
+              "id": "c_ignore",
+              "label": "Ignore the email.",
+              "next": "ignore",
+              "effects": []
+            }
+          ]
+        },
+        "take": {
+          "speaker": "narrator",
+          "text": "The money lands in two days. The comments take a little longer: 'sold out', 'my brother lost ₹20K on this app'. You tell yourself everyone does it."
+        },
+        "refuse": {
+          "speaker": "narrator",
+          "text": "Your 'why I said no' video becomes your most-shared upload. A legitimate brand reaches out the next week, citing it."
+        },
+        "ignore": {
+          "speaker": "narrator",
+          "text": "The agency sends three follow-ups, then gives up. So does the guilt."
+        }
+      }
+    },
+    {
+      "id": "ev_c_controversy",
+      "chapter": 0,
+      "title": "Out of Context",
+      "location": "home",
+      "summary": "An old clip, cut badly, goes around.",
+      "trigger": {
+        "kind": "random",
+        "when": {
+          "type": "all",
+          "conditions": [
+            {
+              "type": "creator"
+            },
+            {
+              "type": "creator",
+              "field": "subscribers",
+              "op": ">=",
+              "value": 2000
+            }
+          ]
+        },
+        "chancePerMonth": 0.06
+      },
+      "start": "start",
+      "nodes": {
+        "start": {
+          "speaker": "narrator",
+          "text": "Someone has clipped eight seconds of an old video so you sound cruel. It's trending. Your notifications are a wall of red.",
+          "choices": [
+            {
+              "id": "c_sorry",
+              "label": "Post a sincere apology anyway.",
+              "next": "sorry",
+              "effects": [
+                {
+                  "type": "creator",
+                  "subsPercent": -3
+                },
+                {
+                  "type": "stat",
+                  "key": "wellbeing",
+                  "delta": -2
+                }
+              ]
+            },
+            {
+              "id": "c_explain",
+              "label": "Post the full clip and explain calmly.",
+              "next": "explained",
+              "effects": [
+                {
+                  "type": "roll",
+                  "key": "controversy_cleared",
+                  "chance": 0.6
+                }
+              ],
+              "routes": [
+                {
+                  "when": {
+                    "type": "flag",
+                    "key": "controversy_cleared"
+                  },
+                  "next": "cleared"
+                }
+              ]
+            },
+            {
+              "id": "c_silent",
+              "label": "Go silent for a month.",
+              "next": "silent",
+              "effects": [
+                {
+                  "type": "creator",
+                  "subsPercent": -6
+                },
+                {
+                  "type": "stat",
+                  "key": "wellbeing",
+                  "delta": 1
+                }
+              ]
+            },
+            {
+              "id": "c_double",
+              "label": "Double down — attention is attention.",
+              "next": "double",
+              "effects": [
+                {
+                  "type": "creator",
+                  "subsPercent": 5
+                },
+                {
+                  "type": "delayed",
+                  "inDays": 45,
+                  "note": "The controversy catches up",
+                  "effects": [
+                    {
+                      "type": "creator",
+                      "subsPercent": -15
+                    },
+                    {
+                      "type": "stat",
+                      "key": "wellbeing",
+                      "delta": -5
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "sorry": {
+          "speaker": "narrator",
+          "text": "The apology is gracious and some people still don't accept it. Most of your regulars do."
+        },
+        "explained": {
+          "speaker": "narrator",
+          "text": "The full clip helps a little, but the internet has moved on to being angry about something else. You lose a few subscribers and some sleep.",
+          "onEnter": [
+            {
+              "type": "creator",
+              "subsPercent": -4
+            },
+            {
+              "type": "stat",
+              "key": "wellbeing",
+              "delta": -2
+            }
+          ]
+        },
+        "cleared": {
+          "speaker": "narrator",
+          "text": "The full clip goes around faster than the edit did. 'Okay, that's a hit piece,' says a big account. You end the week with more subscribers than you started.",
+          "onEnter": [
+            {
+              "type": "creator",
+              "subsPercent": 5
+            },
+            {
+              "type": "stat",
+              "key": "communication",
+              "delta": 1
+            }
+          ]
+        },
+        "silent": {
+          "speaker": "narrator",
+          "text": "A month away. When you return, the people who stayed are the ones who matter."
+        },
+        "double": {
+          "speaker": "narrator",
+          "text": "The views spike. So does the hate. For a few days it feels like winning."
+        }
+      }
+    },
+    {
+      "id": "ev_c_burnout",
+      "chapter": 0,
+      "title": "Running on Empty",
+      "location": "home",
+      "summary": "Full-time creating is grinding you down.",
+      "trigger": {
+        "kind": "auto",
+        "when": {
+          "type": "all",
+          "conditions": [
+            {
+              "type": "creator",
+              "field": "fullTime",
+              "value": true
+            },
+            {
+              "type": "stat",
+              "key": "wellbeing",
+              "op": "<",
+              "value": 35
+            }
+          ]
+        },
+        "priority": 45
+      },
+      "start": "start",
+      "nodes": {
+        "start": {
+          "speaker": "narrator",
+          "text": "Six uploads a month, every month. You can't remember the last time you did something without thinking 'this could be content'.",
+          "choices": [
+            {
+              "id": "c_break",
+              "label": "Announce a one-month break.",
+              "next": "break",
+              "effects": [
+                {
+                  "type": "creator",
+                  "subsPercent": -5
+                },
+                {
+                  "type": "stat",
+                  "key": "wellbeing",
+                  "delta": 12
+                },
+                {
+                  "type": "stat",
+                  "key": "energy",
+                  "delta": 20
+                }
+              ]
+            },
+            {
+              "id": "c_editor",
+              "label": "Hire a freelance editor (₹15,000).",
+              "next": "editor",
+              "effects": [
+                {
+                  "type": "stat",
+                  "key": "wellbeing",
+                  "delta": 6
+                },
+                {
+                  "type": "stat",
+                  "key": "energy",
+                  "delta": 10
+                }
+              ],
+              "cost": {
+                "money": 15000
+              }
+            },
+            {
+              "id": "c_push",
+              "label": "Push through.",
+              "next": "push",
+              "effects": [
+                {
+                  "type": "stat",
+                  "key": "wellbeing",
+                  "delta": -5
+                },
+                {
+                  "type": "stat",
+                  "key": "health",
+                  "delta": -3
+                }
+              ]
+            }
+          ]
+        },
+        "break": {
+          "speaker": "narrator",
+          "text": "You post a short, honest video about burnout. It gets more kind comments than anything you've made. The break helps more than the views ever did."
+        },
+        "editor": {
+          "speaker": "narrator",
+          "text": "Handing over the timeline feels like giving away a child. Then you sleep eight hours, and it feels great."
+        },
+        "push": {
+          "speaker": "narrator",
+          "text": "You keep going. The videos get a little worse, and so do you."
+        }
+      }
+    },
+    {
+      "id": "ev_c_silver",
+      "chapter": 0,
+      "title": "The Silver Plaque",
+      "location": "home",
+      "summary": "One hundred thousand people chose to follow you.",
+      "trigger": {
+        "kind": "auto",
+        "when": {
+          "type": "flag",
+          "key": "creator_100k"
+        },
+        "priority": 50
+      },
+      "start": "start",
+      "nodes": {
+        "start": {
+          "speaker": "amma",
+          "text": "A parcel from ViewTube: a silver plaque with your channel's name on it. Amma holds it like it might break.",
+          "onEnter": [
+            {
+              "type": "relationship",
+              "npc": "amma",
+              "affinity": 6,
+              "trust": 4
+            },
+            {
+              "type": "memory",
+              "npc": "amma",
+              "tag": "silver_plaque",
+              "text": "The day the silver plaque came home.",
+              "weight": 2
+            }
+          ],
+          "variants": [
+            {
+              "when": {
+                "type": "flag",
+                "key": "principled_creator"
+              },
+              "text": "'Your cousin showed me the video where you refused that betting app,' she says. 'That one I watched three times.'"
+            }
+          ],
+          "choices": [
+            {
+              "id": "c_party",
+              "label": "Throw a party for everyone who helped (₹20,000).",
+              "next": "party",
+              "effects": [
+                {
+                  "type": "relationship",
+                  "npc": "kavya",
+                  "affinity": 4,
+                  "trust": 2
+                },
+                {
+                  "type": "stat",
+                  "key": "wellbeing",
+                  "delta": 6
+                }
+              ],
+              "cost": {
+                "money": 20000
+              }
+            },
+            {
+              "id": "c_frame",
+              "label": "Hang it in the living room, quietly.",
+              "next": "frame",
+              "effects": [
+                {
+                  "type": "stat",
+                  "key": "wellbeing",
+                  "delta": 4
+                }
+              ]
+            }
+          ]
+        },
+        "party": {
+          "speaker": "narrator",
+          "text": "Kavya gives a speech that's mostly insults and ends with her crying. The best night in years."
+        },
+        "frame": {
+          "speaker": "narrator",
+          "text": "It hangs next to your school certificates. Amma dusts it every morning."
+        }
+      }
+    },
+    {
+      "id": "ev_c_gold",
+      "chapter": 0,
+      "title": "One Million",
+      "location": "home",
+      "summary": "The Gold Plaque, and a merch offer.",
+      "trigger": {
+        "kind": "auto",
+        "when": {
+          "type": "flag",
+          "key": "creator_1m"
+        },
+        "priority": 55
+      },
+      "start": "start",
+      "nodes": {
+        "start": {
+          "speaker": "narrator",
+          "text": "A million subscribers. A merch company proposes a collection: you invest ₹2,00,000 for the first run and split the profits.",
+          "choices": [
+            {
+              "id": "c_merch",
+              "label": "Invest in the merch line.",
+              "next": "merch",
+              "effects": [
+                {
+                  "type": "flag",
+                  "key": "merch_line"
+                },
+                {
+                  "type": "roll",
+                  "key": "merch_hit",
+                  "chance": 0.65
+                },
+                {
+                  "type": "delayed",
+                  "inDays": 90,
+                  "note": "Merch sales are in",
+                  "effects": [
+                    {
+                      "type": "if",
+                      "when": {
+                        "type": "flag",
+                        "key": "merch_hit"
+                      },
+                      "then": [
+                        {
+                          "type": "money",
+                          "amount": 600000,
+                          "label": "Merch profits",
+                          "category": "creator"
+                        }
+                      ],
+                      "else": [
+                        {
+                          "type": "money",
+                          "amount": 50000,
+                          "label": "Merch: unsold stock cleared",
+                          "category": "creator"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "cost": {
+                "money": 200000
+              }
+            },
+            {
+              "id": "c_no",
+              "label": "Celebrate, but skip the merch.",
+              "next": "no",
+              "effects": [
+                {
+                  "type": "stat",
+                  "key": "wellbeing",
+                  "delta": 4
+                }
+              ]
+            }
+          ]
+        },
+        "merch": {
+          "speaker": "narrator",
+          "text": "Hoodies, mugs, a tote bag with your catchphrase. The first run ships in three months."
+        },
+        "no": {
+          "speaker": "narrator",
+          "text": "You frame the gold plaque next to the silver one. Some milestones are just for you."
+        }
+      }
+    },
+    {
+      "id": "ev_c_nudge",
+      "chapter": 0,
+      "title": "Hit Record?",
+      "location": "cafe",
+      "summary": "Kavya has an idea for you.",
+      "trigger": {
+        "kind": "auto",
+        "when": {
+          "type": "all",
+          "conditions": [
+            {
+              "type": "age",
+              "op": ">=",
+              "value": 19
+            },
+            {
+              "type": "not",
+              "condition": {
+                "type": "creator"
+              }
+            },
+            {
+              "type": "flag",
+              "key": "chapter1_complete"
+            },
+            {
+              "type": "not",
+              "condition": {
+                "type": "flag",
+                "key": "creator_nudged"
+              }
+            }
+          ]
+        },
+        "priority": 12
+      },
+      "start": "start",
+      "nodes": {
+        "start": {
+          "speaker": "kavya",
+          "text": "'You know what you should do?' Kavya says, stealing your fries. 'Start a channel. You're funnier than half the people I watch. And they're making money.'",
+          "choices": [
+            {
+              "id": "c_yes",
+              "label": "'Maybe I will.' (Open Creator Studio from the home screen.)",
+              "next": "yes",
+              "effects": [
+                {
+                  "type": "flag",
+                  "key": "creator_nudged"
+                },
+                {
+                  "type": "relationship",
+                  "npc": "kavya",
+                  "affinity": 1
+                }
+              ]
+            },
+            {
+              "id": "c_no",
+              "label": "'Not my thing.'",
+              "next": "no",
+              "effects": [
+                {
+                  "type": "flag",
+                  "key": "creator_nudged"
+                }
+              ]
+            }
+          ]
+        },
+        "yes": {
+          "speaker": "narrator",
+          "text": "Kavya is already suggesting channel names, all terrible. Creator Studio is on your home screen whenever you're ready."
+        },
+        "no": {
+          "speaker": "narrator",
+          "text": "'Your loss,' she says, and steals another fry."
+        }
+      }
+    }
+  ],
+  "achievements": [
+    {
+      "id": "hit_record",
+      "title": "Hit Record",
+      "description": "Started a ViewTube channel.",
+      "condition": {
+        "type": "creator"
+      }
+    },
+    {
+      "id": "paid_to_post",
+      "title": "Paid to Post",
+      "description": "Got your channel monetised.",
+      "condition": {
+        "type": "flag",
+        "key": "creator_monetized"
+      }
+    },
+    {
+      "id": "silver_plaque",
+      "title": "Silver Plaque",
+      "description": "Reached 100,000 subscribers.",
+      "condition": {
+        "type": "flag",
+        "key": "creator_100k"
+      }
+    },
+    {
+      "id": "gold_plaque",
+      "title": "Gold Plaque",
+      "description": "Reached one million subscribers.",
+      "condition": {
+        "type": "flag",
+        "key": "creator_1m"
+      },
+      "hidden": true
+    },
+    {
+      "id": "gone_viral",
+      "title": "Gone Viral",
+      "description": "Had a video go viral.",
+      "condition": {
+        "type": "counter",
+        "key": "viralVideos",
+        "op": ">=",
+        "value": 1
+      }
+    },
+    {
+      "id": "principled",
+      "title": "Not For Sale",
+      "description": "Turned down a shady sponsor.",
+      "condition": {
+        "type": "flag",
+        "key": "principled_creator"
+      },
+      "hidden": true
+    }
+  ],
+  "epilogueLines": [
+    {
+      "when": {
+        "type": "flag",
+        "key": "creator_100k"
+      },
+      "text": "A silver plaque hangs in your parents' living room. Amma still doesn't understand the algorithm, but she watches every video."
+    },
+    {
+      "when": {
+        "type": "all",
+        "conditions": [
+          {
+            "type": "creator"
+          },
+          {
+            "type": "creator",
+            "field": "subscribers",
+            "op": "<",
+            "value": 1000
+          }
+        ]
+      },
+      "text": "Your channel is small and stubborn. A few hundred people wait for every upload — that's a real audience."
+    },
+    {
+      "when": {
+        "type": "flag",
+        "key": "shady_promo"
+      },
+      "text": "Some viewers never forgave the LuckyPlay promo. The internet remembers what you sell."
+    }
+  ]
+}

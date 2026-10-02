@@ -1,0 +1,27 @@
+{
+  "documents": [
+    "character.json",
+    "education.json",
+    "exams.json",
+    "puzzles.json",
+    "careers.json",
+    "finance.json",
+    "npcs.json",
+    "world.json",
+    "story_ch1.json",
+    "progression.json",
+    "story_mature.json",
+    "careers_more.json",
+    "lifestyle.json",
+    "creator.json",
+    "story_life.json",
+    "exams_expanded.json",
+    "careers_expanded.json",
+    "crime_gambling.json",
+    "life_problems.json",
+    "cyber_bio_underworld.json",
+    "life_situations_expanded.json",
+    "world_expansion.json",
+    "chapters_late.json"
+  ]
+}

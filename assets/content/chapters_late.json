@@ -1,0 +1,112 @@
+{
+  "contentVersion": "2026.10-chapters-late",
+  "events": [
+    {
+      "id": "chapter3_reinvention",
+      "chapter": 3,
+      "title": "The Second Shape",
+      "location": "office",
+      "summary": "Your work is stable, but stability is not the same as meaning.",
+      "trigger": {"kind": "random", "when": {"type": "chapter", "op": ">=", "value": 3}, "chancePerMonth": 0.22},
+      "start": "start",
+      "nodes": {
+        "start": {
+          "speaker": "narrator",
+          "text": "A former colleague offers you a role on a difficult project in a new city. The salary is only slightly better. The learning curve is not.",
+          "choices": [
+            {"id": "c3_jump", "label": "Take the leap and move for the project.", "next": "jump", "effects": [{"type": "flag", "key": "career_reinvention"}, {"type": "stat", "key": "wellbeing", "delta": 2}, {"type": "skill", "key": "leadership", "delta": 1.5}]},
+            {"id": "c3_negotiate", "label": "Negotiate time, pay and a clear exit plan.", "next": "negotiate", "effects": [{"type": "skill", "key": "business", "delta": 1}, {"type": "stat", "key": "communication", "delta": 1}]},
+            {"id": "c3_stay", "label": "Stay. Your life here has value too.", "next": "stay", "effects": [{"type": "stat", "key": "wellbeing", "delta": 1}, {"type": "flag", "key": "chose_stability"}]}
+          ]
+        },
+        "jump": {"speaker": "narrator", "text": "The first month is messy. By the third, you know exactly which kind of difficult work makes you feel more alive."},
+        "negotiate": {"speaker": "narrator", "text": "The revised offer is not perfect, but it respects the shape of the life you are already building."},
+        "stay": {"speaker": "narrator", "text": "You turn down a story other people would have admired. The ordinary life you keep becomes more intentional."}
+      },
+      "repeatable": false,
+      "worldEvent": true
+    },
+    {
+      "id": "chapter4_care",
+      "chapter": 4,
+      "title": "The Call at 6:10",
+      "location": "hospital",
+      "summary": "Care becomes a practical decision, not an abstract virtue.",
+      "trigger": {"kind": "random", "when": {"type": "chapter", "op": ">=", "value": 4}, "chancePerMonth": 0.2},
+      "start": "start",
+      "nodes": {
+        "start": {
+          "speaker": "narrator",
+          "text": "A family member needs help coordinating appointments and paperwork. Everyone cares. Nobody has a plan.",
+          "choices": [
+            {"id": "c4_share", "label": "Build a schedule and share the work across the family.", "next": "share", "effects": [{"type": "stat", "key": "discipline", "delta": 1.5}, {"type": "relationship", "npc": "amma", "trust": 2}]},
+            {"id": "c4_pay", "label": "Pay for a service and protect everyone's time.", "next": "pay", "effects": [{"type": "money", "amount": -12000, "label": "Care support", "category": "family"}, {"type": "stat", "key": "wellbeing", "delta": 1}]},
+            {"id": "c4_burnout", "label": "Take everything on yourself.", "next": "burnout", "effects": [{"type": "stat", "key": "health", "delta": -3}, {"type": "stat", "key": "wellbeing", "delta": -4}, {"type": "flag", "key": "caregiver_burnout"}]}
+          ]
+        },
+        "share": {"speaker": "narrator", "text": "The work is still tiring, but no one becomes invisible inside it. A family calendar turns out to be a form of love."},
+        "pay": {"speaker": "narrator", "text": "Money does not solve the hard parts. It does buy breathing room, which is sometimes the hard part you needed."},
+        "burnout": {"speaker": "narrator", "text": "You become the person who knows every detail and has no energy left to speak. Eventually, the family notices."}
+      },
+      "repeatable": false,
+      "worldEvent": true
+    },
+    {
+      "id": "chapter5_meaning",
+      "chapter": 5,
+      "title": "What the Money Is For",
+      "location": "bank",
+      "summary": "A financial milestone asks what you want it to change.",
+      "trigger": {"kind": "random", "when": {"type": "chapter", "op": ">=", "value": 5}, "chancePerMonth": 0.2},
+      "start": "start",
+      "nodes": {
+        "start": {
+          "speaker": "narrator",
+          "text": "Your accounts are finally comfortable. A younger person asks how you made it, expecting a trick. You remember the years when every decision had a face.",
+          "choices": [
+            {"id": "c5_mentor", "label": "Mentor someone and make the path less lonely.", "next": "mentor", "effects": [{"type": "skill", "key": "leadership", "delta": 2}, {"type": "stat", "key": "wellbeing", "delta": 2}, {"type": "flag", "key": "mentor_generation"}]},
+            {"id": "c5_give", "label": "Fund a practical scholarship or community project.", "next": "give", "effects": [{"type": "money", "amount": -25000, "label": "Community fund", "category": "giving"}, {"type": "stat", "key": "fame", "delta": 2}]},
+            {"id": "c5_keep", "label": "Keep building security for your household.", "next": "keep", "effects": [{"type": "flag", "key": "protected_household"}, {"type": "stat", "key": "wellbeing", "delta": 1}]}
+          ]
+        },
+        "mentor": {"speaker": "narrator", "text": "The advice is less glamorous than the question wanted: keep records, ask for help, and do not confuse speed with progress."},
+        "give": {"speaker": "narrator", "text": "The project is small enough to understand and useful enough to outlive the photo from its launch day."},
+        "keep": {"speaker": "narrator", "text": "Security is not selfish when it gives the people you love room to breathe. You keep your promises quietly."}
+      },
+      "repeatable": false,
+      "worldEvent": true
+    },
+    {
+      "id": "chapter6_legacy",
+      "chapter": 6,
+      "title": "The Empty Desk",
+      "location": "home",
+      "summary": "The future arrives as a room you are no longer required to fill.",
+      "trigger": {"kind": "random", "when": {"type": "chapter", "op": ">=", "value": 6}, "chancePerMonth": 0.25},
+      "start": "start",
+      "nodes": {
+        "start": {
+          "speaker": "narrator",
+          "text": "Your calendar has more empty space than it has in decades. The first morning feels like freedom. The second feels like a question.",
+          "choices": [
+            {"id": "c6_create", "label": "Start one last creative project with no growth target.", "next": "create", "effects": [{"type": "skill", "key": "content", "delta": 1}, {"type": "stat", "key": "wellbeing", "delta": 2}, {"type": "flag", "key": "late_creative_life"}]},
+            {"id": "c6_family", "label": "Make time the main thing and be present with family.", "next": "family", "effects": [{"type": "relationship", "npc": "amma", "affinity": 3}, {"type": "stat", "key": "wellbeing", "delta": 2}]},
+            {"id": "c6_teach", "label": "Teach the skills you once had to learn alone.", "next": "teach", "effects": [{"type": "stat", "key": "communication", "delta": 2}, {"type": "flag", "key": "late_teacher"}]}
+          ]
+        },
+        "create": {"speaker": "narrator", "text": "Without a market to impress, the work becomes honest. You finish it because finishing feels good."},
+        "family": {"speaker": "narrator", "text": "The photographs are ordinary. That is why you keep them."},
+        "teach": {"speaker": "narrator", "text": "A student asks a question you once thought was obvious. You remember how much kindness lives inside a good explanation."}
+      },
+      "repeatable": false,
+      "worldEvent": true
+    }
+  ],
+  "conclusions": [
+    {"id": "c2_open_horizon", "chapter": 2, "priority": 0, "title": "Open Horizon", "condition": {"type": "always"}, "text": "The first adult choices have become a pattern: work, love, money, health, and the occasional surprise that changes the route. The horizon opens."},
+    {"id": "c3_second_shape", "chapter": 3, "priority": 0, "title": "A Second Shape", "condition": {"type": "always"}, "text": "You stop treating your first plan as a contract. A life can keep its values while changing its shape."},
+    {"id": "c4_the_care_year", "chapter": 4, "priority": 0, "title": "The Care Year", "condition": {"type": "always"}, "text": "You learn that responsibility is not a single brave act. It is a system built so nobody has to be brave every day."},
+    {"id": "c5_enough_to_share", "chapter": 5, "priority": 0, "title": "Enough to Share", "condition": {"type": "always"}, "text": "The numbers matter. So do the people the numbers made possible."},
+    {"id": "c6_the_long_view", "chapter": 6, "priority": 0, "title": "The Long View", "condition": {"type": "always"}, "text": "A life is not measured only by what it accumulates. It is also the questions it makes easier for someone else to ask."}
+  ]
+}

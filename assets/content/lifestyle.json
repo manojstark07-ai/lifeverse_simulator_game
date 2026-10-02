@@ -1,0 +1,1969 @@
+{
+  "contentVersion": "2026.10-life",
+  "loanProducts": [
+    {
+      "id": "two_wheeler_loan",
+      "name": "Two-wheeler Loan",
+      "lender": "Highway Motors Finance (fictional)",
+      "kind": "vehicle",
+      "annualRatePct": 11.5,
+      "maxAmount": 300000,
+      "termMonths": 36,
+      "graceMonths": 0,
+      "description": "For scooters and motorcycles. 10% down; the bike is the collateral."
+    },
+    {
+      "id": "car_loan",
+      "name": "Car Loan",
+      "lender": "Highway Motors Finance (fictional)",
+      "kind": "vehicle",
+      "annualRatePct": 9.0,
+      "maxAmount": 5000000,
+      "termMonths": 60,
+      "graceMonths": 0,
+      "description": "Five years at 9%. 20% down. Fuel, insurance and servicing are on you."
+    },
+    {
+      "id": "home_loan",
+      "name": "Home Loan",
+      "lender": "Kaveri Housing Finance (fictional)",
+      "kind": "home",
+      "annualRatePct": 8.5,
+      "maxAmount": 15000000,
+      "termMonths": 240,
+      "graceMonths": 0,
+      "description": "Twenty years at 8.5%. The cheapest money you'll ever borrow, and the longest promise you'll ever make."
+    }
+  ],
+  "shopItems": [
+    {
+      "id": "kiwi_note",
+      "name": "Kiwi Note 13",
+      "brand": "Kiwi",
+      "category": "phone",
+      "price": 11999,
+      "description": "A sensible budget phone. Good battery, forgettable camera.",
+      "slot": "phone",
+      "annualDepreciationPct": 35,
+      "creatorQuality": 0.25,
+      "perks": [
+        "Better camera than your cracked old phone"
+      ]
+    },
+    {
+      "id": "nimbus_8",
+      "name": "Nimbus 8 Pro",
+      "brand": "Nimbus",
+      "category": "phone",
+      "price": 32999,
+      "description": "The mid-range phone reviewers call 'the smart choice'.",
+      "slot": "phone",
+      "annualDepreciationPct": 30,
+      "creatorQuality": 0.4,
+      "loanProduct": "consumer_emi",
+      "downPaymentPct": 0.2,
+      "onBuy": [
+        {
+          "type": "stat",
+          "key": "wellbeing",
+          "delta": 2
+        }
+      ],
+      "perks": [
+        "Solid camera for videos",
+        "Available on no-cost EMI"
+      ]
+    },
+    {
+      "id": "pearphone_17",
+      "name": "PearPhone 17",
+      "brand": "Pear",
+      "category": "phone",
+      "price": 79900,
+      "description": "The phone everyone calls 'the iPhone'. Glass, aluminium and a very good camera.",
+      "slot": "phone",
+      "annualDepreciationPct": 22,
+      "creatorQuality": 0.55,
+      "loanProduct": "consumer_emi",
+      "downPaymentPct": 0.25,
+      "onBuy": [
+        {
+          "type": "stat",
+          "key": "wellbeing",
+          "delta": 4
+        },
+        {
+          "type": "stat",
+          "key": "looks",
+          "delta": 2
+        }
+      ],
+      "perks": [
+        "Great camera for creators",
+        "Holds its resale value",
+        "Status symbol"
+      ]
+    },
+    {
+      "id": "pearphone_17_pro",
+      "name": "PearPhone 17 Pro Max",
+      "brand": "Pear",
+      "category": "phone",
+      "price": 149900,
+      "description": "Titanium, three cameras, and a price tag that starts conversations.",
+      "slot": "phone",
+      "annualDepreciationPct": 22,
+      "creatorQuality": 0.65,
+      "loanProduct": "consumer_emi",
+      "downPaymentPct": 0.6,
+      "onBuy": [
+        {
+          "type": "stat",
+          "key": "wellbeing",
+          "delta": 5
+        },
+        {
+          "type": "stat",
+          "key": "looks",
+          "delta": 3
+        }
+      ],
+      "perks": [
+        "Pro video recording",
+        "The ultimate status symbol"
+      ]
+    },
+    {
+      "id": "lumio_laptop",
+      "name": "Lumio 14 laptop",
+      "brand": "Lumio",
+      "category": "gadget",
+      "price": 38000,
+      "description": "A dependable laptop for coursework, coding and editing.",
+      "slot": "laptop",
+      "annualDepreciationPct": 25,
+      "monthlyEffects": [
+        {
+          "type": "skill",
+          "key": "programming",
+          "delta": 0.3
+        },
+        {
+          "type": "skill",
+          "key": "content",
+          "delta": 0.2
+        }
+      ],
+      "perks": [
+        "+ Programming and content skills every month"
+      ]
+    },
+    {
+      "id": "pearbook_air",
+      "name": "PearBook Air",
+      "brand": "Pear",
+      "category": "gadget",
+      "price": 114900,
+      "description": "Thin, silent, and fast enough to edit 4K video on a train.",
+      "slot": "laptop",
+      "annualDepreciationPct": 18,
+      "loanProduct": "consumer_emi",
+      "downPaymentPct": 0.5,
+      "monthlyEffects": [
+        {
+          "type": "skill",
+          "key": "programming",
+          "delta": 0.5
+        },
+        {
+          "type": "skill",
+          "key": "content",
+          "delta": 0.4
+        }
+      ],
+      "onBuy": [
+        {
+          "type": "stat",
+          "key": "wellbeing",
+          "delta": 3
+        }
+      ],
+      "creatorQuality": 0.45,
+      "perks": [
+        "+ Programming and content skills every month",
+        "Edits video beautifully"
+      ]
+    },
+    {
+      "id": "pulse_watch",
+      "name": "Pulse Watch 3",
+      "brand": "Pulse",
+      "category": "gadget",
+      "price": 24900,
+      "description": "Counts your steps and judges your sleep.",
+      "annualDepreciationPct": 30,
+      "monthlyEffects": [
+        {
+          "type": "stat",
+          "key": "health",
+          "delta": 0.4
+        },
+        {
+          "type": "stat",
+          "key": "discipline",
+          "delta": 0.1
+        }
+      ],
+      "perks": [
+        "+ Health and discipline every month"
+      ]
+    },
+    {
+      "id": "pearpods",
+      "name": "PearPods Pro",
+      "brand": "Pear",
+      "category": "gadget",
+      "price": 24900,
+      "description": "Noise cancelling for the bus, the office and the neighbours' wedding.",
+      "annualDepreciationPct": 40,
+      "monthlyEffects": [
+        {
+          "type": "stat",
+          "key": "wellbeing",
+          "delta": 0.3
+        }
+      ],
+      "onBuy": [
+        {
+          "type": "stat",
+          "key": "looks",
+          "delta": 1
+        }
+      ],
+      "perks": [
+        "+ Well-being every month"
+      ]
+    },
+    {
+      "id": "playbox_5",
+      "name": "PlayBox 5",
+      "brand": "PlayBox",
+      "category": "gadget",
+      "price": 54990,
+      "description": "Next-gen console. 'Just one more match.'",
+      "annualDepreciationPct": 25,
+      "monthlyEffects": [
+        {
+          "type": "stat",
+          "key": "wellbeing",
+          "delta": 0.8
+        },
+        {
+          "type": "stat",
+          "key": "discipline",
+          "delta": -0.3
+        }
+      ],
+      "perks": [
+        "+ Well-being every month",
+        "− Discipline every month",
+        "Unlocks gaming nights at home"
+      ]
+    },
+    {
+      "id": "kanon_r50",
+      "name": "Kanon R50 camera kit",
+      "brand": "Kanon",
+      "category": "gadget",
+      "price": 72000,
+      "description": "A mirrorless camera, two lenses and a gimbal. Your videos will look expensive.",
+      "annualDepreciationPct": 18,
+      "creatorQuality": 0.85,
+      "perks": [
+        "Professional video quality for creators"
+      ]
+    },
+    {
+      "id": "creator_kit",
+      "name": "Ring light & mic kit",
+      "brand": "StudioLite",
+      "category": "gadget",
+      "price": 6500,
+      "description": "Light your face, clean up your audio. The cheapest upgrade in content creation.",
+      "annualDepreciationPct": 40,
+      "creatorQuality": 0.35,
+      "perks": [
+        "Better video quality, even on an old phone"
+      ]
+    },
+    {
+      "id": "zippy_scooter",
+      "name": "Zippy 110 scooter",
+      "brand": "Hondo",
+      "category": "vehicle",
+      "price": 92000,
+      "description": "Reliable, economical, impossible to kill. Every second family has one.",
+      "slot": "two_wheeler",
+      "annualDepreciationPct": 12,
+      "monthlyUpkeep": 1800,
+      "upkeepLabel": "Fuel & insurance",
+      "commuteHoursSaved": 3,
+      "loanProduct": "two_wheeler_loan",
+      "downPaymentPct": 0.1,
+      "requires": {
+        "type": "flag",
+        "key": "driving_licence"
+      },
+      "onBuy": [
+        {
+          "type": "stat",
+          "key": "wellbeing",
+          "delta": 3
+        }
+      ],
+      "perks": [
+        "Saves 3 h of commuting a week",
+        "Unlocks delivery work"
+      ]
+    },
+    {
+      "id": "thunder_350",
+      "name": "Thunder 350 motorcycle",
+      "brand": "Royal Thunder",
+      "category": "vehicle",
+      "price": 215000,
+      "description": "A thumping single-cylinder classic. Weekend rides to the hills included.",
+      "slot": "two_wheeler",
+      "annualDepreciationPct": 10,
+      "monthlyUpkeep": 2800,
+      "upkeepLabel": "Fuel & insurance",
+      "commuteHoursSaved": 3.5,
+      "loanProduct": "two_wheeler_loan",
+      "downPaymentPct": 0.1,
+      "requires": {
+        "type": "flag",
+        "key": "driving_licence"
+      },
+      "onBuy": [
+        {
+          "type": "stat",
+          "key": "wellbeing",
+          "delta": 4
+        },
+        {
+          "type": "stat",
+          "key": "looks",
+          "delta": 3
+        }
+      ],
+      "monthlyEffects": [
+        {
+          "type": "stat",
+          "key": "wellbeing",
+          "delta": 0.3
+        }
+      ],
+      "perks": [
+        "Saves 3.5 h of commuting a week",
+        "Weekend rides lift your mood"
+      ]
+    },
+    {
+      "id": "kestrel_hatch",
+      "name": "Kestrel hatchback",
+      "brand": "Maruva",
+      "category": "vehicle",
+      "price": 690000,
+      "description": "India's favourite first car. Cheap to run, easy to park, fits a family of five (just).",
+      "slot": "car",
+      "annualDepreciationPct": 13,
+      "monthlyUpkeep": 6500,
+      "upkeepLabel": "Fuel, insurance & service",
+      "commuteHoursSaved": 4,
+      "loanProduct": "car_loan",
+      "downPaymentPct": 0.2,
+      "requires": {
+        "type": "flag",
+        "key": "driving_licence"
+      },
+      "onBuy": [
+        {
+          "type": "stat",
+          "key": "wellbeing",
+          "delta": 5
+        },
+        {
+          "type": "flag",
+          "key": "car_owner"
+        }
+      ],
+      "perks": [
+        "Saves 4 h of commuting a week",
+        "Unlocks cab driving"
+      ]
+    },
+    {
+      "id": "volt_ev",
+      "name": "Volt EV",
+      "brand": "Tatva Motors",
+      "category": "vehicle",
+      "price": 1250000,
+      "description": "An electric hatch. Charging costs less than a cup of tea per day.",
+      "slot": "car",
+      "annualDepreciationPct": 15,
+      "monthlyUpkeep": 3500,
+      "upkeepLabel": "Charging, insurance & service",
+      "commuteHoursSaved": 4,
+      "loanProduct": "car_loan",
+      "downPaymentPct": 0.2,
+      "requires": {
+        "type": "flag",
+        "key": "driving_licence"
+      },
+      "onBuy": [
+        {
+          "type": "stat",
+          "key": "wellbeing",
+          "delta": 5
+        },
+        {
+          "type": "flag",
+          "key": "car_owner"
+        },
+        {
+          "type": "flag",
+          "key": "ev_owner"
+        }
+      ],
+      "perks": [
+        "Saves 4 h of commuting a week",
+        "Lowest running costs of any car"
+      ]
+    },
+    {
+      "id": "meridian_sedan",
+      "name": "Meridian sedan",
+      "brand": "Hondo",
+      "category": "vehicle",
+      "price": 1380000,
+      "description": "Leather seats, a big boot, and the quiet confidence of a sedan.",
+      "slot": "car",
+      "annualDepreciationPct": 12,
+      "monthlyUpkeep": 9500,
+      "upkeepLabel": "Fuel, insurance & service",
+      "commuteHoursSaved": 4.5,
+      "loanProduct": "car_loan",
+      "downPaymentPct": 0.2,
+      "requires": {
+        "type": "flag",
+        "key": "driving_licence"
+      },
+      "onBuy": [
+        {
+          "type": "stat",
+          "key": "wellbeing",
+          "delta": 6
+        },
+        {
+          "type": "stat",
+          "key": "looks",
+          "delta": 2
+        },
+        {
+          "type": "flag",
+          "key": "car_owner"
+        }
+      ],
+      "perks": [
+        "Saves 4.5 h of commuting a week",
+        "Comfortable long drives"
+      ]
+    },
+    {
+      "id": "ranger_suv",
+      "name": "Ranger X7 SUV",
+      "brand": "Mahendra",
+      "category": "vehicle",
+      "price": 2250000,
+      "description": "Seven seats, high ground clearance, and road presence that parts traffic.",
+      "slot": "car",
+      "annualDepreciationPct": 11,
+      "monthlyUpkeep": 13000,
+      "upkeepLabel": "Fuel, insurance & service",
+      "commuteHoursSaved": 4.5,
+      "loanProduct": "car_loan",
+      "downPaymentPct": 0.2,
+      "requires": {
+        "type": "flag",
+        "key": "driving_licence"
+      },
+      "onBuy": [
+        {
+          "type": "stat",
+          "key": "wellbeing",
+          "delta": 7
+        },
+        {
+          "type": "stat",
+          "key": "looks",
+          "delta": 4
+        },
+        {
+          "type": "flag",
+          "key": "car_owner"
+        }
+      ],
+      "perks": [
+        "Saves 4.5 h of commuting a week",
+        "Fits the whole family"
+      ]
+    },
+    {
+      "id": "bavaria_3",
+      "name": "Bavaria 3 Series",
+      "brand": "Bavaria",
+      "category": "vehicle",
+      "price": 5800000,
+      "description": "German engineering and a badge that makes the building watchman salute.",
+      "slot": "car",
+      "annualDepreciationPct": 18,
+      "monthlyUpkeep": 28000,
+      "upkeepLabel": "Fuel, insurance & service",
+      "commuteHoursSaved": 5,
+      "loanProduct": "car_loan",
+      "downPaymentPct": 0.3,
+      "requires": {
+        "type": "flag",
+        "key": "driving_licence"
+      },
+      "onBuy": [
+        {
+          "type": "stat",
+          "key": "wellbeing",
+          "delta": 8
+        },
+        {
+          "type": "stat",
+          "key": "looks",
+          "delta": 7
+        },
+        {
+          "type": "flag",
+          "key": "car_owner"
+        },
+        {
+          "type": "flag",
+          "key": "luxury_car"
+        }
+      ],
+      "perks": [
+        "Saves 5 h of commuting a week",
+        "Maximum status",
+        "Expensive to run"
+      ]
+    },
+    {
+      "id": "designer_sneakers",
+      "name": "Designer sneakers",
+      "brand": "Strider",
+      "category": "fashion",
+      "price": 12000,
+      "description": "Limited-edition kicks. Please don't wear them in the rain.",
+      "annualDepreciationPct": 50,
+      "onBuy": [
+        {
+          "type": "stat",
+          "key": "looks",
+          "delta": 4
+        },
+        {
+          "type": "stat",
+          "key": "wellbeing",
+          "delta": 1
+        }
+      ],
+      "perks": [
+        "Looks +4"
+      ]
+    },
+    {
+      "id": "wardrobe_upgrade",
+      "name": "Wardrobe upgrade",
+      "brand": "Mehra & Sons Tailors",
+      "category": "fashion",
+      "price": 25000,
+      "description": "Two tailored suits, smart casuals, and shoes that fit.",
+      "annualDepreciationPct": 60,
+      "onBuy": [
+        {
+          "type": "stat",
+          "key": "looks",
+          "delta": 7
+        },
+        {
+          "type": "stat",
+          "key": "communication",
+          "delta": 1
+        }
+      ],
+      "perks": [
+        "Looks +7",
+        "Interviews and dates go better when you look the part"
+      ]
+    },
+    {
+      "id": "tisse_watch",
+      "name": "Tissé automatic watch",
+      "brand": "Tissé",
+      "category": "fashion",
+      "price": 48000,
+      "description": "Swiss-made, sapphire glass, ticks without a battery.",
+      "annualDepreciationPct": 8,
+      "onBuy": [
+        {
+          "type": "stat",
+          "key": "looks",
+          "delta": 5
+        }
+      ],
+      "perks": [
+        "Looks +5",
+        "Holds its value"
+      ]
+    },
+    {
+      "id": "gold_chain",
+      "name": "22K gold chain (20 g)",
+      "brand": "Lakshmi Jewellers",
+      "category": "fashion",
+      "price": 140000,
+      "description": "Jewellery and savings in one. Every aunty at every wedding will notice.",
+      "annualDepreciationPct": -7,
+      "onBuy": [
+        {
+          "type": "stat",
+          "key": "looks",
+          "delta": 2
+        }
+      ],
+      "perks": [
+        "Gold tends to gain value over time",
+        "Looks +2"
+      ]
+    },
+    {
+      "id": "flat_1bhk",
+      "name": "1BHK apartment",
+      "brand": "Greenfield Homes",
+      "category": "property",
+      "price": 4500000,
+      "description": "A one-bedroom flat on the eighth floor. Lift works most days. It's yours.",
+      "slot": "home",
+      "annualDepreciationPct": -5,
+      "monthlyUpkeep": 3000,
+      "upkeepLabel": "Maintenance & property tax",
+      "loanProduct": "home_loan",
+      "downPaymentPct": 0.2,
+      "requires": {
+        "type": "age",
+        "op": ">=",
+        "value": 21
+      },
+      "onBuy": [
+        {
+          "type": "flag",
+          "key": "homeowner"
+        },
+        {
+          "type": "flag",
+          "key": "living_independently"
+        },
+        {
+          "type": "stat",
+          "key": "wellbeing",
+          "delta": 8
+        }
+      ],
+      "onSell": [
+        {
+          "type": "clearFlag",
+          "key": "homeowner"
+        }
+      ],
+      "perks": [
+        "No more rent",
+        "Property tends to gain value",
+        "Home loan available"
+      ]
+    },
+    {
+      "id": "flat_3bhk",
+      "name": "3BHK family apartment",
+      "brand": "Greenfield Homes",
+      "category": "property",
+      "price": 12000000,
+      "description": "Three bedrooms, a balcony for the plants, and a school five minutes away.",
+      "slot": "home",
+      "annualDepreciationPct": -5,
+      "monthlyUpkeep": 7000,
+      "upkeepLabel": "Maintenance & property tax",
+      "loanProduct": "home_loan",
+      "downPaymentPct": 0.2,
+      "requires": {
+        "type": "age",
+        "op": ">=",
+        "value": 21
+      },
+      "onBuy": [
+        {
+          "type": "flag",
+          "key": "homeowner"
+        },
+        {
+          "type": "flag",
+          "key": "living_independently"
+        },
+        {
+          "type": "stat",
+          "key": "wellbeing",
+          "delta": 10
+        }
+      ],
+      "onSell": [
+        {
+          "type": "clearFlag",
+          "key": "homeowner"
+        }
+      ],
+      "perks": [
+        "No more rent",
+        "Room for a growing family",
+        "Property tends to gain value"
+      ]
+    },
+    {
+      "id": "gym_membership",
+      "name": "IronCore Gym membership",
+      "brand": "IronCore",
+      "category": "subscription",
+      "price": 0,
+      "description": "Unlimited workouts, a trainer who shouts encouragingly, and showers that work.",
+      "monthlyUpkeep": 1500,
+      "upkeepLabel": "Membership",
+      "perks": [
+        "Free workouts at the gym"
+      ]
+    },
+    {
+      "id": "streamplus",
+      "name": "StreamPlus bundle",
+      "brand": "StreamPlus",
+      "category": "subscription",
+      "price": 0,
+      "description": "Every series everyone is talking about, and some nobody is.",
+      "monthlyUpkeep": 649,
+      "upkeepLabel": "Subscription",
+      "monthlyEffects": [
+        {
+          "type": "stat",
+          "key": "wellbeing",
+          "delta": 0.4
+        }
+      ],
+      "perks": [
+        "+ Well-being every month",
+        "Unlocks binge-watching at home"
+      ]
+    },
+    {
+      "id": "country_club",
+      "name": "Palm Grove Country Club",
+      "brand": "Palm Grove",
+      "category": "subscription",
+      "price": 250000,
+      "description": "Joining fee, a pool, a bar, and people who know people.",
+      "monthlyUpkeep": 5000,
+      "upkeepLabel": "Club dues",
+      "requires": {
+        "type": "age",
+        "op": ">=",
+        "value": 21
+      },
+      "monthlyEffects": [
+        {
+          "type": "stat",
+          "key": "communication",
+          "delta": 0.4
+        },
+        {
+          "type": "stat",
+          "key": "wellbeing",
+          "delta": 0.4
+        }
+      ],
+      "perks": [
+        "+ Communication and well-being every month",
+        "Networking"
+      ]
+    }
+  ],
+  "locations": [
+    {
+      "id": "mall",
+      "name": "Galaxy Mall",
+      "mapLabel": "Mall",
+      "description": "Five floors of shops, a multiplex and a food court that smells of everything at once.",
+      "gridX": 0,
+      "gridY": 2,
+      "kind": "mall"
+    },
+    {
+      "id": "salon",
+      "name": "Glow & Go Salon",
+      "mapLabel": "Salon",
+      "description": "Haircuts, beard trims, spa days, makeovers — and gossip, free of charge.",
+      "gridX": 2,
+      "gridY": 0,
+      "kind": "salon"
+    },
+    {
+      "id": "gym",
+      "name": "IronCore Gym",
+      "mapLabel": "Gym",
+      "description": "Weights, treadmills, yoga at seven, and a mirror for every angle.",
+      "gridX": 3,
+      "gridY": 4,
+      "kind": "gym"
+    },
+    {
+      "id": "showroom",
+      "name": "Highway Motors",
+      "mapLabel": "Motors",
+      "description": "Cars and bikes, a driving school out back, and salespeople who call you 'sir/madam' a lot.",
+      "gridX": 0,
+      "gridY": 0,
+      "kind": "showroom"
+    }
+  ],
+  "actions": [
+    {
+      "id": "salon_haircut",
+      "label": "Haircut & grooming",
+      "description": "A fresh cut, a neat trim, and fifteen minutes of someone else's problems.",
+      "location": "salon",
+      "energyCost": 2,
+      "moneyCost": 400,
+      "effects": [
+        {
+          "type": "stat",
+          "key": "looks",
+          "delta": 5
+        },
+        {
+          "type": "stat",
+          "key": "wellbeing",
+          "delta": 1
+        }
+      ]
+    },
+    {
+      "id": "salon_spa",
+      "label": "Spa & massage",
+      "description": "An hour of hot stones and zero notifications.",
+      "location": "salon",
+      "energyCost": 0,
+      "moneyCost": 2500,
+      "effects": [
+        {
+          "type": "stat",
+          "key": "energy",
+          "delta": 12
+        },
+        {
+          "type": "stat",
+          "key": "wellbeing",
+          "delta": 5
+        },
+        {
+          "type": "stat",
+          "key": "looks",
+          "delta": 2
+        },
+        {
+          "type": "stat",
+          "key": "health",
+          "delta": 0.5
+        }
+      ]
+    },
+    {
+      "id": "salon_ask_job",
+      "label": "Ask about assistant work",
+      "description": "The salon needs someone to wash hair, sweep up and learn.",
+      "location": "salon",
+      "energyCost": 2,
+      "requires": {
+        "type": "all",
+        "conditions": [
+          {
+            "type": "partTime",
+            "value": false
+          },
+          {
+            "type": "career",
+            "value": false
+          }
+        ]
+      },
+      "effects": [
+        {
+          "type": "startPartTime",
+          "job": "salon_assistant"
+        }
+      ]
+    },
+    {
+      "id": "salon_learn",
+      "label": "Shadow the senior stylist",
+      "description": "Watch, ask, practise on the mannequin called Mohan.",
+      "location": "salon",
+      "energyCost": 10,
+      "requires": {
+        "type": "any",
+        "conditions": [
+          {
+            "type": "partTime",
+            "value": "salon_assistant"
+          },
+          {
+            "type": "career",
+            "value": "hair_stylist"
+          }
+        ]
+      },
+      "effects": [
+        {
+          "type": "skill",
+          "key": "styling",
+          "delta": 1.2
+        },
+        {
+          "type": "stat",
+          "key": "communication",
+          "delta": 0.2
+        }
+      ]
+    },
+    {
+      "id": "salon_quit_job",
+      "label": "Quit the salon job",
+      "description": "Hang up the apron.",
+      "location": "salon",
+      "energyCost": 0,
+      "requires": {
+        "type": "partTime",
+        "value": "salon_assistant"
+      },
+      "effects": [
+        {
+          "type": "quitPartTime"
+        }
+      ]
+    },
+    {
+      "id": "gym_workout",
+      "label": "Workout",
+      "description": "Weights and cardio. Your membership covers it.",
+      "location": "gym",
+      "energyCost": 15,
+      "requires": {
+        "type": "owns",
+        "value": "gym_membership"
+      },
+      "effects": [
+        {
+          "type": "stat",
+          "key": "health",
+          "delta": 1.5
+        },
+        {
+          "type": "stat",
+          "key": "looks",
+          "delta": 0.8
+        },
+        {
+          "type": "stat",
+          "key": "wellbeing",
+          "delta": 2
+        },
+        {
+          "type": "stat",
+          "key": "discipline",
+          "delta": 0.3
+        }
+      ]
+    },
+    {
+      "id": "gym_daypass",
+      "label": "Day-pass workout",
+      "description": "No membership? ₹300 gets you in for the day.",
+      "location": "gym",
+      "energyCost": 15,
+      "moneyCost": 300,
+      "requires": {
+        "type": "not",
+        "condition": {
+          "type": "owns",
+          "value": "gym_membership"
+        }
+      },
+      "effects": [
+        {
+          "type": "stat",
+          "key": "health",
+          "delta": 1.5
+        },
+        {
+          "type": "stat",
+          "key": "looks",
+          "delta": 0.8
+        },
+        {
+          "type": "stat",
+          "key": "wellbeing",
+          "delta": 2
+        },
+        {
+          "type": "stat",
+          "key": "discipline",
+          "delta": 0.3
+        }
+      ]
+    },
+    {
+      "id": "gym_yoga",
+      "label": "Yoga class",
+      "description": "Breathe in. Breathe out. Try not to fall over.",
+      "location": "gym",
+      "energyCost": 6,
+      "moneyCost": 200,
+      "effects": [
+        {
+          "type": "stat",
+          "key": "wellbeing",
+          "delta": 3
+        },
+        {
+          "type": "stat",
+          "key": "health",
+          "delta": 0.8
+        },
+        {
+          "type": "stat",
+          "key": "energy",
+          "delta": 4
+        }
+      ]
+    },
+    {
+      "id": "gym_trainer",
+      "label": "Personal training session",
+      "description": "An hour with a trainer who believes in you more than you do.",
+      "location": "gym",
+      "energyCost": 18,
+      "moneyCost": 1200,
+      "effects": [
+        {
+          "type": "stat",
+          "key": "health",
+          "delta": 2.5
+        },
+        {
+          "type": "stat",
+          "key": "looks",
+          "delta": 1.5
+        },
+        {
+          "type": "stat",
+          "key": "discipline",
+          "delta": 0.5
+        }
+      ]
+    },
+    {
+      "id": "mall_window",
+      "label": "Window shopping",
+      "description": "Look at everything. Buy nothing. Feel oddly satisfied.",
+      "location": "mall",
+      "energyCost": 4,
+      "effects": [
+        {
+          "type": "stat",
+          "key": "wellbeing",
+          "delta": 1
+        }
+      ]
+    },
+    {
+      "id": "mall_movie",
+      "label": "Catch a movie",
+      "description": "Popcorn, a three-hour epic and an interval argument about the plot.",
+      "location": "mall",
+      "energyCost": 4,
+      "moneyCost": 450,
+      "effects": [
+        {
+          "type": "stat",
+          "key": "wellbeing",
+          "delta": 4
+        }
+      ]
+    },
+    {
+      "id": "mall_friends",
+      "label": "Food court with Kavya",
+      "description": "Two plates of momos and a long talk.",
+      "location": "mall",
+      "energyCost": 5,
+      "moneyCost": 500,
+      "effects": [
+        {
+          "type": "relationship",
+          "npc": "kavya",
+          "affinity": 2,
+          "trust": 0.5
+        },
+        {
+          "type": "stat",
+          "key": "wellbeing",
+          "delta": 2
+        }
+      ]
+    },
+    {
+      "id": "mall_date",
+      "label": "Date night",
+      "description": "Dinner, a movie, and the long way home.",
+      "location": "mall",
+      "energyCost": 6,
+      "moneyCost": 1500,
+      "requires": {
+        "type": "flag",
+        "key": "has_partner"
+      },
+      "effects": [
+        {
+          "type": "relationship",
+          "npc": "partner",
+          "affinity": 4,
+          "trust": 1,
+          "conflict": -5
+        },
+        {
+          "type": "stat",
+          "key": "wellbeing",
+          "delta": 3
+        }
+      ]
+    },
+    {
+      "id": "mall_spree",
+      "label": "Shopping spree",
+      "description": "Clothes, shoes, things you didn't know you needed.",
+      "location": "mall",
+      "energyCost": 6,
+      "moneyCost": 5000,
+      "effects": [
+        {
+          "type": "stat",
+          "key": "looks",
+          "delta": 4
+        },
+        {
+          "type": "stat",
+          "key": "wellbeing",
+          "delta": 3
+        },
+        {
+          "type": "stat",
+          "key": "discipline",
+          "delta": -0.5
+        },
+        {
+          "type": "counter",
+          "key": "sprees",
+          "delta": 1
+        }
+      ]
+    },
+    {
+      "id": "mall_ask_job",
+      "label": "Ask about kitchen work at the food court",
+      "description": "The biryani counter needs a helper for evening shifts.",
+      "location": "mall",
+      "energyCost": 2,
+      "requires": {
+        "type": "all",
+        "conditions": [
+          {
+            "type": "partTime",
+            "value": false
+          },
+          {
+            "type": "career",
+            "value": false
+          }
+        ]
+      },
+      "effects": [
+        {
+          "type": "startPartTime",
+          "job": "kitchen_helper"
+        }
+      ]
+    },
+    {
+      "id": "mall_quit_job",
+      "label": "Quit the food-court job",
+      "description": "Return the hairnet.",
+      "location": "mall",
+      "energyCost": 0,
+      "requires": {
+        "type": "partTime",
+        "value": "kitchen_helper"
+      },
+      "effects": [
+        {
+          "type": "quitPartTime"
+        }
+      ]
+    },
+    {
+      "id": "mall_ask_delivery",
+      "label": "Sign up as a weekend delivery rider",
+      "description": "Your own two-wheeler, a delivery bag, and a rating that follows you everywhere.",
+      "location": "mall",
+      "energyCost": 2,
+      "requires": {
+        "type": "all",
+        "conditions": [
+          {
+            "type": "partTime",
+            "value": false
+          },
+          {
+            "type": "career",
+            "value": false
+          },
+          {
+            "type": "owns",
+            "slot": "two_wheeler"
+          }
+        ]
+      },
+      "effects": [
+        {
+          "type": "startPartTime",
+          "job": "delivery_rider"
+        }
+      ]
+    },
+    {
+      "id": "mall_quit_delivery",
+      "label": "Stop delivery riding",
+      "description": "Log off the app for good.",
+      "location": "mall",
+      "energyCost": 0,
+      "requires": {
+        "type": "partTime",
+        "value": "delivery_rider"
+      },
+      "effects": [
+        {
+          "type": "quitPartTime"
+        }
+      ]
+    },
+    {
+      "id": "motors_lessons",
+      "label": "Driving lessons",
+      "description": "An hour with Instructor Pillai, who has seen everything and fears nothing. Four lessons, then the test.",
+      "location": "showroom",
+      "energyCost": 8,
+      "moneyCost": 1500,
+      "consumesDailySlot": false,
+      "requires": {
+        "type": "all",
+        "conditions": [
+          {
+            "type": "not",
+            "condition": {
+              "type": "flag",
+              "key": "driving_licence"
+            }
+          },
+          {
+            "type": "age",
+            "op": ">=",
+            "value": 18
+          }
+        ]
+      },
+      "effects": [
+        {
+          "type": "counter",
+          "key": "driving_lessons",
+          "delta": 1
+        },
+        {
+          "type": "stat",
+          "key": "discipline",
+          "delta": 0.2
+        },
+        {
+          "type": "if",
+          "when": {
+            "type": "counter",
+            "key": "driving_lessons",
+            "op": ">=",
+            "value": 4
+          },
+          "then": [
+            {
+              "type": "flag",
+              "key": "driving_licence"
+            },
+            {
+              "type": "journal",
+              "title": "Driving licence",
+              "text": "You passed the driving test. Reverse parking remains a matter of faith."
+            },
+            {
+              "type": "stat",
+              "key": "wellbeing",
+              "delta": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "motors_test_drive",
+      "label": "Test drive",
+      "description": "Take a car you can't afford around the block. Twice.",
+      "location": "showroom",
+      "energyCost": 3,
+      "requires": {
+        "type": "flag",
+        "key": "driving_licence"
+      },
+      "effects": [
+        {
+          "type": "stat",
+          "key": "wellbeing",
+          "delta": 1
+        }
+      ]
+    },
+    {
+      "id": "motors_road_trip",
+      "label": "Weekend road trip",
+      "description": "Highway, playlists, roadside chai. Fuel and a cheap hotel included.",
+      "location": "showroom",
+      "energyCost": 10,
+      "moneyCost": 4000,
+      "requires": {
+        "type": "owns",
+        "category": "vehicle"
+      },
+      "effects": [
+        {
+          "type": "stat",
+          "key": "wellbeing",
+          "delta": 7
+        },
+        {
+          "type": "stat",
+          "key": "energy",
+          "delta": 5
+        },
+        {
+          "type": "relationship",
+          "npc": "partner",
+          "affinity": 3,
+          "trust": 1
+        }
+      ]
+    },
+    {
+      "id": "home_cook",
+      "label": "Cook a proper meal",
+      "description": "Rice, dal, a vegetable that isn't potato. Your future self thanks you.",
+      "location": "home",
+      "energyCost": 6,
+      "moneyCost": 150,
+      "effects": [
+        {
+          "type": "skill",
+          "key": "cooking",
+          "delta": 1
+        },
+        {
+          "type": "stat",
+          "key": "health",
+          "delta": 0.4
+        },
+        {
+          "type": "stat",
+          "key": "wellbeing",
+          "delta": 1
+        },
+        {
+          "type": "relationship",
+          "npc": "partner",
+          "affinity": 1
+        }
+      ]
+    },
+    {
+      "id": "home_kids",
+      "label": "Play with the kids",
+      "description": "Blocks, stories, a tea party with invisible tea.",
+      "location": "home",
+      "energyCost": 8,
+      "requires": {
+        "type": "children",
+        "op": ">=",
+        "value": 1
+      },
+      "effects": [
+        {
+          "type": "stat",
+          "key": "wellbeing",
+          "delta": 4
+        },
+        {
+          "type": "stat",
+          "key": "energy",
+          "delta": -2
+        },
+        {
+          "type": "relationship",
+          "npc": "partner",
+          "affinity": 1
+        }
+      ]
+    },
+    {
+      "id": "home_series",
+      "label": "Binge a series",
+      "description": "One more episode. One more. One more.",
+      "location": "home",
+      "energyCost": 0,
+      "requires": {
+        "type": "owns",
+        "value": "streamplus"
+      },
+      "effects": [
+        {
+          "type": "stat",
+          "key": "wellbeing",
+          "delta": 3
+        },
+        {
+          "type": "stat",
+          "key": "energy",
+          "delta": 4
+        },
+        {
+          "type": "stat",
+          "key": "discipline",
+          "delta": -0.3
+        }
+      ]
+    },
+    {
+      "id": "home_gaming",
+      "label": "Gaming night",
+      "description": "Headset on, world off.",
+      "location": "home",
+      "energyCost": 4,
+      "requires": {
+        "type": "owns",
+        "value": "playbox_5"
+      },
+      "effects": [
+        {
+          "type": "stat",
+          "key": "wellbeing",
+          "delta": 3
+        },
+        {
+          "type": "stat",
+          "key": "discipline",
+          "delta": -0.3
+        },
+        {
+          "type": "stat",
+          "key": "communication",
+          "delta": 0.2
+        }
+      ]
+    },
+    {
+      "id": "home_drink_alone",
+      "label": "Drink alone at home",
+      "description": "A bottle from the shop downstairs. Nobody needs to know.",
+      "location": "home",
+      "energyCost": 0,
+      "moneyCost": 400,
+      "requires": {
+        "type": "all",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "mature_on"
+          },
+          {
+            "type": "age",
+            "op": ">=",
+            "value": 21
+          },
+          {
+            "type": "not",
+            "condition": {
+              "type": "flag",
+              "key": "sober"
+            }
+          }
+        ]
+      },
+      "effects": [
+        {
+          "type": "stat",
+          "key": "wellbeing",
+          "delta": 1
+        },
+        {
+          "type": "stat",
+          "key": "health",
+          "delta": -1
+        },
+        {
+          "type": "stat",
+          "key": "discipline",
+          "delta": -0.5
+        },
+        {
+          "type": "counter",
+          "key": "drinks",
+          "delta": 2
+        },
+        {
+          "type": "if",
+          "when": {
+            "type": "all",
+            "conditions": [
+              {
+                "type": "counter",
+                "key": "drinks",
+                "op": ">=",
+                "value": 20
+              },
+              {
+                "type": "not",
+                "condition": {
+                  "type": "flag",
+                  "key": "heavy_drinker"
+                }
+              },
+              {
+                "type": "not",
+                "condition": {
+                  "type": "flag",
+                  "key": "sober"
+                }
+              }
+            ]
+          },
+          "then": [
+            {
+              "type": "flag",
+              "key": "heavy_drinker"
+            },
+            {
+              "type": "journal",
+              "title": "A habit",
+              "text": "You've started drinking most nights. It no longer feels like a choice."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cafe_try_smoke",
+      "label": "Accept a cigarette",
+      "description": "A friend offers one outside the café. 'Just one.'",
+      "location": "cafe",
+      "energyCost": 1,
+      "requires": {
+        "type": "all",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "mature_on"
+          },
+          {
+            "type": "not",
+            "condition": {
+              "type": "flag",
+              "key": "smoker"
+            }
+          }
+        ]
+      },
+      "effects": [
+        {
+          "type": "stat",
+          "key": "wellbeing",
+          "delta": 0.5
+        },
+        {
+          "type": "stat",
+          "key": "health",
+          "delta": -0.5
+        },
+        {
+          "type": "counter",
+          "key": "cigarettes",
+          "delta": 1
+        },
+        {
+          "type": "if",
+          "when": {
+            "type": "counter",
+            "key": "cigarettes",
+            "op": ">=",
+            "value": 6
+          },
+          "then": [
+            {
+              "type": "flag",
+              "key": "smoker"
+            },
+            {
+              "type": "journal",
+              "title": "Hooked",
+              "text": "'Just one' has become a pack a day."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hosp_checkup",
+      "label": "Full health check-up",
+      "description": "Blood tests, an ECG, and a doctor who asks how much you really exercise.",
+      "location": "hospital",
+      "energyCost": 4,
+      "moneyCost": 1500,
+      "effects": [
+        {
+          "type": "stat",
+          "key": "health",
+          "delta": 1
+        },
+        {
+          "type": "stat",
+          "key": "wellbeing",
+          "delta": 1
+        }
+      ]
+    },
+    {
+      "id": "hosp_nicotine",
+      "label": "Nicotine-replacement programme",
+      "description": "Patches, gum and a counsellor. Three sessions to quit for good.",
+      "location": "hospital",
+      "energyCost": 3,
+      "moneyCost": 1200,
+      "requires": {
+        "type": "flag",
+        "key": "smoker"
+      },
+      "effects": [
+        {
+          "type": "counter",
+          "key": "quit_sessions",
+          "delta": 1
+        },
+        {
+          "type": "stat",
+          "key": "health",
+          "delta": 0.5
+        },
+        {
+          "type": "if",
+          "when": {
+            "type": "counter",
+            "key": "quit_sessions",
+            "op": ">=",
+            "value": 3
+          },
+          "then": [
+            {
+              "type": "clearFlag",
+              "key": "smoker"
+            },
+            {
+              "type": "flag",
+              "key": "quit_smoking"
+            },
+            {
+              "type": "journal",
+              "title": "Smoke-free",
+              "text": "You finished the programme. Your lungs start the slow work of forgiving you."
+            },
+            {
+              "type": "stat",
+              "key": "wellbeing",
+              "delta": 4
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hosp_counselling",
+      "label": "De-addiction counselling",
+      "description": "An honest hour with a counsellor. Four sessions, one day at a time.",
+      "location": "hospital",
+      "energyCost": 4,
+      "moneyCost": 2000,
+      "consumesDailySlot": false,
+      "requires": {
+        "type": "flag",
+        "key": "heavy_drinker"
+      },
+      "effects": [
+        {
+          "type": "counter",
+          "key": "counselling",
+          "delta": 1
+        },
+        {
+          "type": "stat",
+          "key": "wellbeing",
+          "delta": 1
+        },
+        {
+          "type": "if",
+          "when": {
+            "type": "counter",
+            "key": "counselling",
+            "op": ">=",
+            "value": 4
+          },
+          "then": [
+            {
+              "type": "clearFlag",
+              "key": "heavy_drinker"
+            },
+            {
+              "type": "flag",
+              "key": "sober"
+            },
+            {
+              "type": "flag",
+              "key": "heavy_drinker_addressed"
+            },
+            {
+              "type": "journal",
+              "title": "Sober",
+              "text": "Four sessions, many hard evenings. You've stopped drinking."
+            },
+            {
+              "type": "stat",
+              "key": "wellbeing",
+              "delta": 5
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "monthlyRules": [
+    {
+      "id": "zz_poor_health",
+      "label": "Feeling unwell",
+      "when": {
+        "type": "stat",
+        "key": "health",
+        "op": "<",
+        "value": 35
+      },
+      "effects": [
+        {
+          "type": "stat",
+          "key": "wellbeing",
+          "delta": -2
+        },
+        {
+          "type": "stat",
+          "key": "discipline",
+          "delta": -0.3
+        },
+        {
+          "type": "money",
+          "amount": -1200,
+          "label": "Medicines & doctor visits",
+          "category": "health"
+        }
+      ]
+    }
+  ],
+  "interviewModifiers": [
+    {
+      "id": "well_groomed",
+      "when": {
+        "type": "stat",
+        "key": "looks",
+        "op": ">=",
+        "value": 70
+      },
+      "delta": 0.02,
+      "reason": "Well-groomed and confident"
+    },
+    {
+      "id": "recognised",
+      "when": {
+        "type": "stat",
+        "key": "fame",
+        "op": ">=",
+        "value": 50
+      },
+      "delta": 0.03,
+      "reason": "The interviewer recognises you from ViewTube"
+    },
+    {
+      "id": "unwell",
+      "when": {
+        "type": "stat",
+        "key": "health",
+        "op": "<",
+        "value": 30
+      },
+      "delta": -0.04,
+      "reason": "You look unwell and tired"
+    }
+  ],
+  "achievements": [
+    {
+      "id": "licensed",
+      "title": "L-Plate No More",
+      "description": "Earned a driving licence.",
+      "condition": {
+        "type": "flag",
+        "key": "driving_licence"
+      }
+    },
+    {
+      "id": "first_wheels",
+      "title": "First Wheels",
+      "description": "Bought your first vehicle.",
+      "condition": {
+        "type": "owns",
+        "category": "vehicle"
+      }
+    },
+    {
+      "id": "pear_life",
+      "title": "Pear Life",
+      "description": "Bought a PearPhone.",
+      "condition": {
+        "type": "any",
+        "conditions": [
+          {
+            "type": "owns",
+            "value": "pearphone_17"
+          },
+          {
+            "type": "owns",
+            "value": "pearphone_17_pro"
+          }
+        ]
+      }
+    },
+    {
+      "id": "homeowner",
+      "title": "Keys to the Kingdom",
+      "description": "Bought a home.",
+      "condition": {
+        "type": "flag",
+        "key": "homeowner"
+      }
+    },
+    {
+      "id": "luxury_ride",
+      "title": "Badge Value",
+      "description": "Bought a luxury car.",
+      "condition": {
+        "type": "flag",
+        "key": "luxury_car"
+      },
+      "hidden": true
+    },
+    {
+      "id": "peak_fitness",
+      "title": "Peak Fitness",
+      "description": "Reached 90 health.",
+      "condition": {
+        "type": "stat",
+        "key": "health",
+        "op": ">=",
+        "value": 90
+      }
+    },
+    {
+      "id": "sober_up",
+      "title": "One Day at a Time",
+      "description": "Got sober.",
+      "condition": {
+        "type": "flag",
+        "key": "sober"
+      }
+    }
+  ],
+  "epilogueLines": [
+    {
+      "when": {
+        "type": "flag",
+        "key": "homeowner"
+      },
+      "text": "Your name is on the deed of a home. The EMI is long; the view from the balcony is worth it."
+    },
+    {
+      "when": {
+        "type": "flag",
+        "key": "luxury_car"
+      },
+      "text": "There's a Bavaria in the parking lot with your name on the papers. The neighbours have opinions."
+    },
+    {
+      "when": {
+        "type": "flag",
+        "key": "sober"
+      },
+      "text": "You don't drink any more. Some evenings are still hard. Most mornings are better."
+    },
+    {
+      "when": {
+        "type": "stat",
+        "key": "health",
+        "op": "<",
+        "value": 35
+      },
+      "text": "Your health is fraying. The doctor's advice is simple and hard: sleep, move, quit what hurts you."
+    }
+  ]
+}

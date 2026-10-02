@@ -1,0 +1,2730 @@
+{
+ "contentVersion": "2026.10-mature",
+ "npcs": [
+  {
+   "id": "arjun",
+   "name": "Arjun Menon",
+   "role": "Musician; plays at college fests",
+   "isFamily": false,
+   "routineBond": "social",
+   "colorIndex": 4,
+   "bio": "21, guitarist, terrible at eating before gigs. Earnest, funny, wants to teach music someday.",
+   "personality": [
+    "earnest",
+    "funny",
+    "anxious"
+   ],
+   "interests": [
+    "guitar",
+    "old films",
+    "street food"
+   ],
+   "startAffinity": 10,
+   "startTrust": 20
+  },
+  {
+   "id": "nila",
+   "name": "Nila Varghese",
+   "role": "Runs the college photography club",
+   "isFamily": false,
+   "routineBond": "social",
+   "colorIndex": 5,
+   "bio": "21, design student, photographs hands instead of faces. Dry wit, fierce about her work.",
+   "personality": [
+    "observant",
+    "dry wit",
+    "independent"
+   ],
+   "interests": [
+    "photography",
+    "design",
+    "monsoon walks"
+   ],
+   "startAffinity": 10,
+   "startTrust": 20
+  }
+ ],
+ "locations": [
+  {
+   "id": "bar",
+   "name": "The Copper Mug",
+   "mapLabel": "Bar",
+   "description": "Live music, overpriced drinks, decent mocktails. 21+.",
+   "gridX": 3,
+   "gridY": 3,
+   "kind": "bar",
+   "requires": {
+    "type": "all",
+    "conditions": [
+     {
+      "type": "flag",
+      "key": "mature_on"
+     },
+     {
+      "type": "age",
+      "op": ">=",
+      "value": 21
+     }
+    ]
+   }
+  }
+ ],
+ "actions": [
+  {
+   "id": "bar_drinks",
+   "label": "Drinks with friends",
+   "description": "A couple of beers and loud conversation.",
+   "location": "bar",
+   "energyCost": 8,
+   "moneyCost": 600,
+   "requires": {
+    "type": "all",
+    "conditions": [
+     {
+      "type": "flag",
+      "key": "mature_on"
+     },
+     {
+      "type": "age",
+      "op": ">=",
+      "value": 21
+     }
+    ]
+   },
+   "effects": [
+    {
+     "type": "stat",
+     "key": "wellbeing",
+     "delta": 3
+    },
+    {
+     "type": "stat",
+     "key": "communication",
+     "delta": 0.4
+    },
+    {
+     "type": "stat",
+     "key": "discipline",
+     "delta": -0.3
+    },
+    {
+     "type": "counter",
+     "key": "drinks",
+     "delta": 1
+    }
+   ]
+  },
+  {
+   "id": "bar_mocktails",
+   "label": "Mocktails & karaoke",
+   "description": "All of the fun, none of the hangover.",
+   "location": "bar",
+   "energyCost": 6,
+   "moneyCost": 300,
+   "requires": {
+    "type": "all",
+    "conditions": [
+     {
+      "type": "flag",
+      "key": "mature_on"
+     },
+     {
+      "type": "age",
+      "op": ">=",
+      "value": 21
+     }
+    ]
+   },
+   "effects": [
+    {
+     "type": "stat",
+     "key": "wellbeing",
+     "delta": 2
+    },
+    {
+     "type": "stat",
+     "key": "communication",
+     "delta": 0.6
+    }
+   ]
+  },
+  {
+   "id": "cafe_smoke",
+   "label": "Smoke break",
+   "description": "Five minutes of relief. A lifetime of interest.",
+   "location": "cafe",
+   "energyCost": 2,
+   "moneyCost": 40,
+   "requires": {
+    "type": "all",
+    "conditions": [
+     {
+      "type": "flag",
+      "key": "mature_on"
+     },
+     {
+      "type": "flag",
+      "key": "smoker"
+     }
+    ]
+   },
+   "effects": [
+    {
+     "type": "stat",
+     "key": "wellbeing",
+     "delta": 0.8
+    },
+    {
+     "type": "counter",
+     "key": "cigarettes",
+     "delta": 1
+    }
+   ]
+  },
+  {
+   "id": "park_date",
+   "label": "Evening walk with your partner",
+   "description": "No agenda. Just time together.",
+   "location": "park",
+   "energyCost": 4,
+   "requires": {
+    "type": "all",
+    "conditions": [
+     {
+      "type": "flag",
+      "key": "mature_on"
+     },
+     {
+      "type": "flag",
+      "key": "has_partner"
+     }
+    ]
+   },
+   "effects": [
+    {
+     "type": "stat",
+     "key": "wellbeing",
+     "delta": 3
+    },
+    {
+     "type": "relationship",
+     "npc": "partner",
+     "affinity": 3,
+     "trust": 1
+    }
+   ]
+  }
+ ],
+ "monthlyRules": [
+  {
+   "id": "smoking",
+   "label": "Cigarettes",
+   "when": {
+    "type": "all",
+    "conditions": [
+     {
+      "type": "flag",
+      "key": "smoker"
+     }
+    ]
+   },
+   "effects": [
+    {
+     "type": "money",
+     "amount": -1500,
+     "label": "Cigarettes",
+     "category": "habit"
+    },
+    {
+     "type": "stat",
+     "key": "wellbeing",
+     "delta": -1.0
+    },
+    {
+     "type": "stat",
+     "key": "discipline",
+     "delta": -0.2
+    },
+    {
+     "type": "stat",
+     "key": "health",
+     "delta": -1.5
+    }
+   ]
+  },
+  {
+   "id": "heavy_drinking",
+   "label": "Drinking",
+   "when": {
+    "type": "all",
+    "conditions": [
+     {
+      "type": "flag",
+      "key": "heavy_drinker"
+     }
+    ]
+   },
+   "effects": [
+    {
+     "type": "money",
+     "amount": -2500,
+     "label": "Drinking",
+     "category": "habit"
+    },
+    {
+     "type": "stat",
+     "key": "wellbeing",
+     "delta": -1.5
+    },
+    {
+     "type": "stat",
+     "key": "discipline",
+     "delta": -0.4
+    },
+    {
+     "type": "stat",
+     "key": "health",
+     "delta": -2.0
+    }
+   ]
+  },
+  {
+   "id": "dating",
+   "label": "Dates",
+   "when": {
+    "type": "all",
+    "conditions": [
+     {
+      "type": "flag",
+      "key": "dating"
+     }
+    ]
+   },
+   "effects": [
+    {
+     "type": "money",
+     "amount": -1000,
+     "label": "Dates and small gifts",
+     "category": "leisure"
+    },
+    {
+     "type": "stat",
+     "key": "wellbeing",
+     "delta": 1.2
+    }
+   ]
+  }
+ ],
+ "interviewModifiers": [
+  {
+   "id": "police_record",
+   "when": {
+    "type": "flag",
+    "key": "police_record"
+   },
+   "delta": -0.12,
+   "reason": "Background check: a police case on record"
+  },
+  {
+   "id": "malpractice",
+   "when": {
+    "type": "flag",
+    "key": "malpractice"
+   },
+   "delta": -0.06,
+   "reason": "Academic record: exam malpractice"
+  },
+  {
+   "id": "reference",
+   "when": {
+    "type": "flag",
+    "key": "has_reference"
+   },
+   "delta": 0.03,
+   "reason": "A strong reference letter"
+  }
+ ],
+ "achievements": [
+  {
+   "id": "clean_lungs",
+   "title": "Clean Lungs",
+   "description": "Quit smoking.",
+   "condition": {
+    "type": "flag",
+    "key": "quit_smoking"
+   }
+  },
+  {
+   "id": "designated_friend",
+   "title": "Designated Friend",
+   "description": "Stayed sober to look after everyone.",
+   "condition": {
+    "type": "flag",
+    "key": "designated_friend"
+   }
+  },
+  {
+   "id": "took_the_keys",
+   "title": "Friends Don't Let Friends",
+   "description": "Took the keys from a drunk friend.",
+   "condition": {
+    "type": "flag",
+    "key": "took_the_keys"
+   },
+   "hidden": true
+  },
+  {
+   "id": "two_of_us",
+   "title": "Two of Us",
+   "description": "Committed to a relationship.",
+   "condition": {
+    "type": "flag",
+    "key": "committed_relationship"
+   }
+  },
+  {
+   "id": "whistleblower",
+   "title": "Whistleblower",
+   "description": "Reported a leaked exam paper.",
+   "condition": {
+    "type": "flag",
+    "key": "reported_leak"
+   },
+   "hidden": true
+  },
+  {
+   "id": "second_chances",
+   "title": "Second Chances",
+   "description": "Graduated despite a police record.",
+   "condition": {
+    "type": "all",
+    "conditions": [
+     {
+      "type": "flag",
+      "key": "police_record"
+     },
+     {
+      "type": "graduated"
+     }
+    ]
+   },
+   "hidden": true
+  }
+ ],
+ "epilogueLines": [
+  {
+   "when": {
+    "type": "flag",
+    "key": "police_record"
+   },
+   "text": "There's a police case on your record now. It follows you into every background check — but records are not the whole of a person, and you know it."
+  },
+  {
+   "when": {
+    "type": "flag",
+    "key": "malpractice"
+   },
+   "text": "The leaked paper cost you more than ₹2,000. Trust, it turns out, is slow to re-earn and quick to spend."
+  },
+  {
+   "when": {
+    "type": "flag",
+    "key": "quit_smoking"
+   },
+   "text": "You quit smoking before it quit you. Your lungs — and Amma — are grateful."
+  },
+  {
+   "when": {
+    "type": "flag",
+    "key": "smoker"
+   },
+   "text": "You still smoke. It's ₹1,500 a month and a little breath at a time. Quitting is always an option."
+  },
+  {
+   "when": {
+    "type": "flag",
+    "key": "heavy_drinker"
+   },
+   "text": "Drinking takes more of your weekends — and your money — than you admit. The people who love you have noticed."
+  },
+  {
+   "when": {
+    "type": "all",
+    "conditions": [
+     {
+      "type": "flag",
+      "key": "committed_relationship"
+     },
+     {
+      "type": "flag",
+      "key": "dating_arjun"
+     }
+    ]
+   },
+   "text": "Arjun plays you a new song every time you visit. Most are about you. Some are about food."
+  },
+  {
+   "when": {
+    "type": "all",
+    "conditions": [
+     {
+      "type": "flag",
+      "key": "committed_relationship"
+     },
+     {
+      "type": "flag",
+      "key": "dating_nila"
+     }
+    ]
+   },
+   "text": "Nila's first exhibition has one portrait with a face in it. It's yours."
+  },
+  {
+   "when": {
+    "type": "flag",
+    "key": "amicable_breakup"
+   },
+   "text": "You and your ex still send each other birthday wishes. Some endings are done well."
+  },
+  {
+   "when": {
+    "type": "flag",
+    "key": "had_accident"
+   },
+   "text": "You never get on a bike with someone who's been drinking again. Not once."
+  }
+ ],
+ "events": [
+  {
+   "id": "ev_m_fest",
+   "chapter": 1,
+   "title": "Culture Fest",
+   "location": "campus",
+   "summary": "The college culture fest — music, photographs and new people.",
+   "trigger": {
+    "kind": "auto",
+    "when": {
+     "type": "all",
+     "conditions": [
+      {
+       "type": "flag",
+       "key": "mature_on"
+      },
+      {
+       "type": "monthsEnrolled",
+       "op": ">=",
+       "value": 7
+      }
+     ]
+    },
+    "priority": 58
+   },
+   "start": "start",
+   "nodes": {
+    "start": {
+     "speaker": "narrator",
+     "text": "The culture fest takes over campus: a band soundchecking on the main stage, a photo-walk sign-up desk, food stalls selling everything fried. Two people keep crossing your path tonight.",
+     "choices": [
+      {
+       "id": "c_music",
+       "label": "Hang around the music stage.",
+       "next": "arjun",
+       "effects": [
+        {
+         "type": "meet",
+         "npc": "arjun"
+        },
+        {
+         "type": "relationship",
+         "npc": "arjun",
+         "affinity": 6,
+         "trust": 3
+        }
+       ],
+       "cost": {
+        "energy": 4
+       }
+      },
+      {
+       "id": "c_photo",
+       "label": "Join the photo walk.",
+       "next": "nila",
+       "effects": [
+        {
+         "type": "meet",
+         "npc": "nila"
+        },
+        {
+         "type": "relationship",
+         "npc": "nila",
+         "affinity": 6,
+         "trust": 3
+        }
+       ],
+       "cost": {
+        "energy": 4
+       }
+      },
+      {
+       "id": "c_friends",
+       "label": "Stick with your own friends all night.",
+       "next": "friends",
+       "effects": [
+        {
+         "type": "relationship",
+         "npc": "kavya",
+         "affinity": 3
+        },
+        {
+         "type": "stat",
+         "key": "wellbeing",
+         "delta": 2
+        }
+       ]
+      }
+     ]
+    },
+    "arjun": {
+     "speaker": "arjun",
+     "text": "Arjun Menon, 21, plays guitar for the closing act and is too nervous to eat. You talk him through it; he plays well and finds you afterwards to say thanks. 'Same time next fest?'"
+    },
+    "nila": {
+     "speaker": "nila",
+     "text": "Nila Varghese, 21, runs the photography club and photographs strangers' hands, never faces. She shows you her favourite shot of the night. It's your hands, holding a paper cup of chai."
+    },
+    "friends": {
+     "speaker": "narrator",
+     "text": "You dance badly with your friends until the generator gives up. Some nights don't need to be anything more."
+    }
+   }
+  },
+  {
+   "id": "ev_m_ask_out",
+   "chapter": 1,
+   "title": "Something More?",
+   "location": "cafe",
+   "summary": "Do you want to ask someone out? (Completely optional.)",
+   "trigger": {
+    "kind": "auto",
+    "when": {
+     "type": "all",
+     "conditions": [
+      {
+       "type": "flag",
+       "key": "mature_on"
+      },
+      {
+       "type": "all",
+       "conditions": [
+        {
+         "type": "not",
+         "condition": {
+          "type": "flag",
+          "key": "dating"
+         }
+        },
+        {
+         "type": "not",
+         "condition": {
+          "type": "flag",
+          "key": "not_seeking_romance"
+         }
+        },
+        {
+         "type": "any",
+         "conditions": [
+          {
+           "type": "relationship",
+           "npc": "arjun",
+           "field": "affinity",
+           "op": ">=",
+           "value": 25
+          },
+          {
+           "type": "relationship",
+           "npc": "nila",
+           "field": "affinity",
+           "op": ">=",
+           "value": 25
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    "priority": 44
+   },
+   "start": "start",
+   "nodes": {
+    "start": {
+     "speaker": "narrator",
+     "text": "You've been thinking about someone more than usual. Romance is entirely optional — some people want a partner at twenty, some don't, both are fine.",
+     "choices": [
+      {
+       "id": "c_arjun",
+       "label": "Ask Arjun out for coffee.",
+       "next": "no",
+       "effects": [
+        {
+         "type": "relationship",
+         "npc": "arjun",
+         "trust": 1
+        }
+       ],
+       "requires": {
+        "type": "relationship",
+        "npc": "arjun",
+        "field": "affinity",
+        "op": ">=",
+        "value": 25
+       },
+       "hideIfLocked": true,
+       "cost": {
+        "money": 400,
+        "energy": 4
+       },
+       "routes": [
+        {
+         "when": {
+          "type": "all",
+          "conditions": [
+           {
+            "type": "relationship",
+            "npc": "arjun",
+            "field": "affinity",
+            "op": ">=",
+            "value": 35
+           },
+           {
+            "type": "relationship",
+            "npc": "arjun",
+            "field": "trust",
+            "op": ">=",
+            "value": 35
+           }
+          ]
+         },
+         "next": "yes_arjun"
+        }
+       ],
+       "hint": "Only works if the feeling is mutual."
+      },
+      {
+       "id": "c_nila",
+       "label": "Ask Nila out for coffee.",
+       "next": "no",
+       "effects": [
+        {
+         "type": "relationship",
+         "npc": "nila",
+         "trust": 1
+        }
+       ],
+       "requires": {
+        "type": "relationship",
+        "npc": "nila",
+        "field": "affinity",
+        "op": ">=",
+        "value": 25
+       },
+       "hideIfLocked": true,
+       "cost": {
+        "money": 400,
+        "energy": 4
+       },
+       "routes": [
+        {
+         "when": {
+          "type": "all",
+          "conditions": [
+           {
+            "type": "relationship",
+            "npc": "nila",
+            "field": "affinity",
+            "op": ">=",
+            "value": 35
+           },
+           {
+            "type": "relationship",
+            "npc": "nila",
+            "field": "trust",
+            "op": ">=",
+            "value": 35
+           }
+          ]
+         },
+         "next": "yes_nila"
+        }
+       ],
+       "hint": "Only works if the feeling is mutual."
+      },
+      {
+       "id": "c_none",
+       "label": "Not looking for romance right now.",
+       "next": "none",
+       "effects": [
+        {
+         "type": "flag",
+         "key": "not_seeking_romance"
+        },
+        {
+         "type": "stat",
+         "key": "wellbeing",
+         "delta": 1
+        }
+       ]
+      }
+     ]
+    },
+    "yes_arjun": {
+     "speaker": "arjun",
+     "text": "Arjun says yes before you've finished the question, then blushes about it. Coffee turns into a long walk. You're dating now — carefully, happily, at your own pace.",
+     "onEnter": [
+      {
+       "type": "partner",
+       "npc": "arjun",
+       "status": "dating"
+      },
+      {
+       "type": "flag",
+       "key": "dating"
+      },
+      {
+       "type": "flag",
+       "key": "dating_arjun"
+      },
+      {
+       "type": "relationship",
+       "npc": "arjun",
+       "affinity": 8,
+       "trust": 6
+      },
+      {
+       "type": "memory",
+       "npc": "arjun",
+       "tag": "first_date",
+       "text": "Your first date: coffee that became a three-hour walk.",
+       "weight": 2
+      },
+      {
+       "type": "stat",
+       "key": "wellbeing",
+       "delta": 4
+      }
+     ]
+    },
+    "yes_nila": {
+     "speaker": "nila",
+     "text": "Nila smiles slowly. 'I was going to ask you next week. You beat me.' You're dating now — no rush, no labels you don't both want.",
+     "onEnter": [
+      {
+       "type": "partner",
+       "npc": "nila",
+       "status": "dating"
+      },
+      {
+       "type": "flag",
+       "key": "dating"
+      },
+      {
+       "type": "flag",
+       "key": "dating_nila"
+      },
+      {
+       "type": "relationship",
+       "npc": "nila",
+       "affinity": 8,
+       "trust": 6
+      },
+      {
+       "type": "memory",
+       "npc": "nila",
+       "tag": "first_date",
+       "text": "Your first date: she photographed the rain instead of you, then you.",
+       "weight": 2
+      },
+      {
+       "type": "stat",
+       "key": "wellbeing",
+       "delta": 4
+      }
+     ]
+    },
+    "no": {
+     "speaker": "narrator",
+     "text": "They say no — kindly, clearly. 'I like you a lot. Just not like that.' It stings. It's also theirs to decide, and you thank them for being honest. The friendship survives, maybe even stronger.",
+     "onEnter": [
+      {
+       "type": "stat",
+       "key": "wellbeing",
+       "delta": -3
+      },
+      {
+       "type": "flag",
+       "key": "respected_no"
+      }
+     ]
+    },
+    "none": {
+     "speaker": "narrator",
+     "text": "You let the thought go. Your life is already full, and that's a choice too."
+    }
+   }
+  },
+  {
+   "id": "ev_m_birthday",
+   "chapter": 1,
+   "title": "Two Places at Once",
+   "location": "cafe",
+   "summary": "Your partner's birthday lands on a hard day.",
+   "trigger": {
+    "kind": "auto",
+    "when": {
+     "type": "all",
+     "conditions": [
+      {
+       "type": "flag",
+       "key": "mature_on"
+      },
+      {
+       "type": "all",
+       "conditions": [
+        {
+         "type": "flag",
+         "key": "dating"
+        },
+        {
+         "type": "daysSinceEvent",
+         "event": "ev_m_ask_out",
+         "op": ">=",
+         "value": 90
+        }
+       ]
+      }
+     ]
+    },
+    "priority": 46
+   },
+   "start": "start",
+   "nodes": {
+    "start": {
+     "speaker": "narrator",
+     "text": "Your partner's birthday is on Friday. So is a deadline you've been dreading — and, if you have one, a café shift you promised to cover.",
+     "choices": [
+      {
+       "id": "c_celebrate",
+       "label": "Drop everything and celebrate properly.",
+       "next": "celebrate",
+       "effects": [
+        {
+         "type": "if",
+         "when": {
+          "type": "flag",
+          "key": "dating_arjun"
+         },
+         "then": [
+          {
+           "type": "relationship",
+           "npc": "arjun",
+           "affinity": 8,
+           "trust": 4
+          }
+         ],
+         "else": [
+          {
+           "type": "relationship",
+           "npc": "nila",
+           "affinity": 8,
+           "trust": 4
+          }
+         ]
+        },
+        {
+         "type": "money",
+         "amount": -1500,
+         "label": "Birthday dinner and gift",
+         "category": "leisure"
+        },
+        {
+         "type": "flag",
+         "key": "semester_penalty"
+        },
+        {
+         "type": "stat",
+         "key": "wellbeing",
+         "delta": 3
+        }
+       ],
+       "cost": {
+        "energy": 10
+       }
+      },
+      {
+       "id": "c_honest",
+       "label": "Explain honestly and plan a proper celebration for Sunday.",
+       "next": "honest",
+       "effects": [
+        {
+         "type": "if",
+         "when": {
+          "type": "flag",
+          "key": "dating_arjun"
+         },
+         "then": [
+          {
+           "type": "relationship",
+           "npc": "arjun",
+           "affinity": 2,
+           "trust": 6
+          }
+         ],
+         "else": [
+          {
+           "type": "relationship",
+           "npc": "nila",
+           "affinity": 2,
+           "trust": 6
+          }
+         ]
+        },
+        {
+         "type": "money",
+         "amount": -800,
+         "label": "Sunday celebration",
+         "category": "leisure"
+        }
+       ]
+      },
+      {
+       "id": "c_forget",
+       "label": "Let it slide — you're swamped.",
+       "next": "forgot",
+       "effects": [
+        {
+         "type": "if",
+         "when": {
+          "type": "flag",
+          "key": "dating_arjun"
+         },
+         "then": [
+          {
+           "type": "relationship",
+           "npc": "arjun",
+           "affinity": -10,
+           "trust": -8,
+           "conflict": 20
+          },
+          {
+           "type": "memory",
+           "npc": "arjun",
+           "tag": "forgot_birthday",
+           "text": "You forgot their birthday.",
+           "weight": -2
+          }
+         ],
+         "else": [
+          {
+           "type": "relationship",
+           "npc": "nila",
+           "affinity": -10,
+           "trust": -8,
+           "conflict": 20
+          },
+          {
+           "type": "memory",
+           "npc": "nila",
+           "tag": "forgot_birthday",
+           "text": "You forgot their birthday.",
+           "weight": -2
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    "celebrate": {
+     "speaker": "narrator",
+     "text": "Candles, cheap cake, very good company. Your deadline suffers a little. You'd do it again."
+    },
+    "honest": {
+     "speaker": "narrator",
+     "text": "'Sunday it is,' they say, and mean it. Sunday turns out to be the best day of the month."
+    },
+    "forgot": {
+     "speaker": "narrator",
+     "text": "A quiet message on Saturday: 'it's fine.' It isn't, quite. Some things you have to rebuild."
+    }
+   }
+  },
+  {
+   "id": "ev_m_commitment",
+   "chapter": 1,
+   "title": "What Are We?",
+   "location": "park",
+   "summary": "Distance, futures and a real conversation.",
+   "trigger": {
+    "kind": "auto",
+    "when": {
+     "type": "all",
+     "conditions": [
+      {
+       "type": "flag",
+       "key": "mature_on"
+      },
+      {
+       "type": "all",
+       "conditions": [
+        {
+         "type": "flag",
+         "key": "dating"
+        },
+        {
+         "type": "any",
+         "conditions": [
+          {
+           "type": "flag",
+           "key": "target_bengaluru"
+          },
+          {
+           "type": "daysSinceEvent",
+           "event": "ev_m_birthday",
+           "op": ">=",
+           "value": 200
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    "priority": 48
+   },
+   "start": "start",
+   "nodes": {
+    "start": {
+     "speaker": "narrator",
+     "text": "Final term changes every conversation. Jobs in different cities, families asking questions, a future that won't stay vague. Your partner asks what you want.",
+     "choices": [
+      {
+       "id": "c_commit",
+       "label": "Commit — distance or not, you want this.",
+       "next": "commit",
+       "effects": [
+        {
+         "type": "flag",
+         "key": "committed_relationship"
+        },
+        {
+         "type": "if",
+         "when": {
+          "type": "flag",
+          "key": "dating_arjun"
+         },
+         "then": [
+          {
+           "type": "relationship",
+           "npc": "arjun",
+           "affinity": 8,
+           "trust": 8
+          },
+          {
+           "type": "memory",
+           "npc": "arjun",
+           "tag": "committed",
+           "text": "You chose each other, on purpose.",
+           "weight": 2
+          }
+         ],
+         "else": [
+          {
+           "type": "relationship",
+           "npc": "nila",
+           "affinity": 8,
+           "trust": 8
+          },
+          {
+           "type": "memory",
+           "npc": "nila",
+           "tag": "committed",
+           "text": "You chose each other, on purpose.",
+           "weight": 2
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "id": "c_slow",
+       "label": "Keep it going, but no big promises yet.",
+       "next": "slow",
+       "effects": [
+        {
+         "type": "stat",
+         "key": "wellbeing",
+         "delta": 1
+        }
+       ]
+      },
+      {
+       "id": "c_end",
+       "label": "End it kindly — your lives are pulling in different directions.",
+       "next": "end",
+       "effects": [
+        {
+         "type": "partnerStatus",
+         "status": "single"
+        },
+        {
+         "type": "clearFlag",
+         "key": "dating"
+        },
+        {
+         "type": "clearFlag",
+         "key": "dating_arjun"
+        },
+        {
+         "type": "clearFlag",
+         "key": "dating_nila"
+        },
+        {
+         "type": "stat",
+         "key": "wellbeing",
+         "delta": -5
+        },
+        {
+         "type": "flag",
+         "key": "amicable_breakup"
+        }
+       ]
+      }
+     ]
+    },
+    "commit": {
+     "speaker": "narrator",
+     "text": "You say it out loud, which is the hard part. The rest — train tickets, video calls, two families' opinions — you'll solve together."
+    },
+    "slow": {
+     "speaker": "narrator",
+     "text": "'Okay,' they say. 'One semester at a time.' It's honest. It's enough for now."
+    },
+    "end": {
+     "speaker": "narrator",
+     "text": "It's the kindest hard conversation you've ever had. You both cry a bit, then share the last samosa. Some endings are done well."
+    }
+   }
+  },
+  {
+   "id": "ev_m_tea_stall",
+   "chapter": 1,
+   "title": "Tea Stall Break",
+   "location": "cafe",
+   "summary": "Friends pass around cigarettes at the tea stall.",
+   "trigger": {
+    "kind": "auto",
+    "when": {
+     "type": "all",
+     "conditions": [
+      {
+       "type": "flag",
+       "key": "mature_on"
+      },
+      {
+       "type": "any",
+       "conditions": [
+        {
+         "type": "monthsEnrolled",
+         "op": ">=",
+         "value": 2
+        },
+        {
+         "type": "day",
+         "op": ">=",
+         "value": 120
+        }
+       ]
+      }
+     ]
+    },
+    "priority": 42
+   },
+   "start": "start",
+   "nodes": {
+    "start": {
+     "speaker": "narrator",
+     "text": "Between classes, the gang gathers at the tea stall behind the bus stop. Someone holds out a packet. 'Just one, machan. Relax.'",
+     "choices": [
+      {
+       "id": "c_try",
+       "label": "Take one.",
+       "next": "once",
+       "effects": [
+        {
+         "type": "flag",
+         "key": "tried_smoking"
+        },
+        {
+         "type": "counter",
+         "key": "cigarettes",
+         "delta": 1
+        },
+        {
+         "type": "roll",
+         "key": "hooked",
+         "chance": 0.45
+        }
+       ],
+       "cost": {
+        "money": 20
+       },
+       "routes": [
+        {
+         "when": {
+          "type": "flag",
+          "key": "hooked"
+         },
+         "next": "hooked"
+        }
+       ]
+      },
+      {
+       "id": "c_no",
+       "label": "'No thanks' — and order another chai.",
+       "next": "no",
+       "effects": [
+        {
+         "type": "stat",
+         "key": "discipline",
+         "delta": 1
+        }
+       ]
+      },
+      {
+       "id": "c_tease",
+       "label": "Decline and change the subject with a terrible joke.",
+       "next": "no",
+       "effects": [
+        {
+         "type": "stat",
+         "key": "communication",
+         "delta": 1
+        }
+       ]
+      }
+     ]
+    },
+    "hooked": {
+     "speaker": "narrator",
+     "text": "It tastes awful. The next one tastes less awful. Within a month you're buying your own packets, and the tea stall uncle knows your brand.",
+     "onEnter": [
+      {
+       "type": "flag",
+       "key": "smoker"
+      }
+     ]
+    },
+    "once": {
+     "speaker": "narrator",
+     "text": "You cough, everyone laughs, and you decide once was enough. Mostly."
+    },
+    "no": {
+     "speaker": "narrator",
+     "text": "Nobody really cares. Peer pressure is louder in your head than in real life."
+    }
+   }
+  },
+  {
+   "id": "ev_m_quit_smoking",
+   "chapter": 1,
+   "title": "The Cough",
+   "location": "home",
+   "summary": "Your smoking is catching up with you.",
+   "trigger": {
+    "kind": "auto",
+    "when": {
+     "type": "all",
+     "conditions": [
+      {
+       "type": "flag",
+       "key": "mature_on"
+      },
+      {
+       "type": "all",
+       "conditions": [
+        {
+         "type": "flag",
+         "key": "smoker"
+        },
+        {
+         "type": "daysSinceEvent",
+         "event": "ev_m_tea_stall",
+         "op": ">=",
+         "value": 120
+        }
+       ]
+      }
+     ]
+    },
+    "priority": 70
+   },
+   "start": "start",
+   "nodes": {
+    "start": {
+     "speaker": "narrator",
+     "text": "You get breathless climbing the stairs to the bus stand. That evening Amma finds a packet in your bag and puts it on the table without a word. That's worse than shouting.",
+     "choices": [
+      {
+       "id": "c_cold",
+       "label": "Quit cold turkey, starting now.",
+       "next": "relapse",
+       "effects": [
+        {
+         "type": "roll",
+         "key": "quit_luck",
+         "chance": 0.35
+        }
+       ],
+       "routes": [
+        {
+         "when": {
+          "type": "any",
+          "conditions": [
+           {
+            "type": "stat",
+            "key": "discipline",
+            "op": ">=",
+            "value": 50
+           },
+           {
+            "type": "flag",
+            "key": "quit_luck"
+           }
+          ]
+         },
+         "next": "quit"
+        }
+       ],
+       "hint": "Easier with high discipline."
+      },
+      {
+       "id": "c_patch",
+       "label": "Buy nicotine patches and quit properly (₹2,000).",
+       "next": "relapse",
+       "effects": [
+        {
+         "type": "roll",
+         "key": "quit_luck",
+         "chance": 0.7
+        }
+       ],
+       "cost": {
+        "money": 2000
+       },
+       "routes": [
+        {
+         "when": {
+          "type": "flag",
+          "key": "quit_luck"
+         },
+         "next": "quit"
+        }
+       ]
+      },
+      {
+       "id": "c_later",
+       "label": "Promise you'll quit 'soon'.",
+       "next": "later",
+       "effects": [
+        {
+         "type": "relationship",
+         "npc": "amma",
+         "affinity": -3,
+         "trust": -6
+        }
+       ]
+      }
+     ]
+    },
+    "quit": {
+     "speaker": "narrator",
+     "text": "The first week is irritable, the second is boring, the third is quietly triumphant. You've quit. Amma buys you a box of sweets and says nothing about it, which says everything.",
+     "onEnter": [
+      {
+       "type": "clearFlag",
+       "key": "smoker"
+      },
+      {
+       "type": "flag",
+       "key": "quit_smoking"
+      },
+      {
+       "type": "stat",
+       "key": "wellbeing",
+       "delta": 5
+      },
+      {
+       "type": "relationship",
+       "npc": "amma",
+       "affinity": 5,
+       "trust": 8
+      },
+      {
+       "type": "memory",
+       "npc": "amma",
+       "tag": "quit_smoking",
+       "text": "You quit smoking.",
+       "weight": 2
+      }
+     ]
+    },
+    "relapse": {
+     "speaker": "narrator",
+     "text": "You last nine days. Then a bad afternoon, a borrowed cigarette, and you're back. Quitting often takes more than one try — you can try again.",
+     "onEnter": [
+      {
+       "type": "stat",
+       "key": "wellbeing",
+       "delta": -2
+      }
+     ]
+    },
+    "later": {
+     "speaker": "amma",
+     "text": "'Soon,' Amma repeats, in the voice she uses for 'never'."
+    }
+   },
+   "repeatable": true
+  },
+  {
+   "id": "ev_m_party",
+   "chapter": 1,
+   "title": "The Seniors' Party",
+   "location": "campus",
+   "summary": "A party with plenty of alcohol and plenty of pressure.",
+   "trigger": {
+    "kind": "auto",
+    "when": {
+     "type": "all",
+     "conditions": [
+      {
+       "type": "flag",
+       "key": "mature_on"
+      },
+      {
+       "type": "monthsEnrolled",
+       "op": ">=",
+       "value": 4
+      }
+     ]
+    },
+    "priority": 50
+   },
+   "start": "start",
+   "nodes": {
+    "start": {
+     "speaker": "narrator",
+     "text": "A senior's flat, loud music, a kitchen counter full of bottles. Someone presses a glass into your hand.",
+     "choices": [
+      {
+       "id": "c_one",
+       "label": "Have one drink and pace yourself.",
+       "next": "one",
+       "effects": [
+        {
+         "type": "counter",
+         "key": "drinks",
+         "delta": 1
+        },
+        {
+         "type": "stat",
+         "key": "wellbeing",
+         "delta": 2
+        },
+        {
+         "type": "if",
+         "when": {
+          "type": "age",
+          "op": "<",
+          "value": 21
+         },
+         "then": [
+          {
+           "type": "roll",
+           "key": "caught_underage",
+           "chance": 0.25
+          }
+         ]
+        }
+       ],
+       "routes": [
+        {
+         "when": {
+          "type": "flag",
+          "key": "caught_underage"
+         },
+         "next": "warden"
+        }
+       ]
+      },
+      {
+       "id": "c_binge",
+       "label": "Keep up with everyone else.",
+       "next": "hangover",
+       "effects": [
+        {
+         "type": "counter",
+         "key": "drinks",
+         "delta": 3
+        },
+        {
+         "type": "stat",
+         "key": "energy",
+         "delta": -25
+        },
+        {
+         "type": "stat",
+         "key": "wellbeing",
+         "delta": -3
+        },
+        {
+         "type": "roll",
+         "key": "party_trouble",
+         "chance": 0.4
+        },
+        {
+         "type": "if",
+         "when": {
+          "type": "age",
+          "op": "<",
+          "value": 21
+         },
+         "then": [
+          {
+           "type": "roll",
+           "key": "caught_underage",
+           "chance": 0.35
+          }
+         ]
+        }
+       ],
+       "routes": [
+        {
+         "when": {
+          "type": "flag",
+          "key": "caught_underage"
+         },
+         "next": "warden"
+        },
+        {
+         "when": {
+          "type": "flag",
+          "key": "party_trouble"
+         },
+         "next": "trouble"
+        }
+       ]
+      },
+      {
+       "id": "c_sober",
+       "label": "Stay sober and look after your friends.",
+       "next": "sober",
+       "effects": [
+        {
+         "type": "stat",
+         "key": "communication",
+         "delta": 2
+        },
+        {
+         "type": "flag",
+         "key": "designated_friend"
+        },
+        {
+         "type": "relationship",
+         "npc": "kavya",
+         "affinity": 3,
+         "trust": 4
+        }
+       ]
+      },
+      {
+       "id": "c_leave",
+       "label": "Leave early.",
+       "next": "leave",
+       "effects": [
+        {
+         "type": "stat",
+         "key": "energy",
+         "delta": 5
+        }
+       ]
+      }
+     ],
+     "variants": [
+      {
+       "when": {
+        "type": "age",
+        "op": "<",
+        "value": 21
+       },
+       "text": "You're under 21 — the legal drinking age here. Wardens and parents have long memories."
+      }
+     ]
+    },
+    "one": {
+     "speaker": "narrator",
+     "text": "One drink, lots of water, good conversations on the balcony. You get home at a sensible hour feeling like an adult."
+    },
+    "hangover": {
+     "speaker": "narrator",
+     "text": "The next morning feels like a construction site inside your skull. You miss your first class and most of your dignity."
+    },
+    "trouble": {
+     "speaker": "narrator",
+     "text": "Somewhere between the third and fifth drink, your phone disappears. Replacing it costs ₹6,000 you'd planned for other things.",
+     "onEnter": [
+      {
+       "type": "money",
+       "amount": -6000,
+       "label": "Replacing a lost phone",
+       "category": "shopping"
+      },
+      {
+       "type": "clearFlag",
+       "key": "party_trouble"
+      }
+     ]
+    },
+    "warden": {
+     "speaker": "narrator",
+     "text": "The hostel warden is waiting at the gate with a register. Your name goes in it, and a letter goes home. Amma calls. It is a long call.",
+     "onEnter": [
+      {
+       "type": "flag",
+       "key": "disciplinary_notice"
+      },
+      {
+       "type": "flag",
+       "key": "semester_penalty"
+      },
+      {
+       "type": "relationship",
+       "npc": "amma",
+       "affinity": -4,
+       "trust": -8
+      },
+      {
+       "type": "clearFlag",
+       "key": "caught_underage"
+      }
+     ]
+    },
+    "sober": {
+     "speaker": "narrator",
+     "text": "You spend the night refilling water glasses, finding lost shoes and booking autos. Three people text you thanks the next day."
+    },
+    "leave": {
+     "speaker": "narrator",
+     "text": "You're in bed by eleven. Some of the stories you missed sound fun; most sound like you made the right call."
+    }
+   }
+  },
+  {
+   "id": "ev_m_drinking",
+   "chapter": 1,
+   "title": "Too Many Nights",
+   "location": "home",
+   "summary": "Your drinking has become a pattern.",
+   "trigger": {
+    "kind": "auto",
+    "when": {
+     "type": "all",
+     "conditions": [
+      {
+       "type": "flag",
+       "key": "mature_on"
+      },
+      {
+       "type": "all",
+       "conditions": [
+        {
+         "type": "counter",
+         "key": "drinks",
+         "op": ">=",
+         "value": 8
+        },
+        {
+         "type": "not",
+         "condition": {
+          "type": "flag",
+          "key": "heavy_drinker_addressed"
+         }
+        }
+       ]
+      }
+     ]
+    },
+    "priority": 72
+   },
+   "start": "start",
+   "nodes": {
+    "start": {
+     "speaker": "kavya",
+     "text": "Kavya says it first, carefully: 'You've been drunk four weekends out of five. I'm not judging. I'm worried.' Your bank statement says something similar, less carefully.",
+     "choices": [
+      {
+       "id": "c_cut",
+       "label": "Cut down: weekends only, two-drink limit.",
+       "next": "cut",
+       "effects": [
+        {
+         "type": "flag",
+         "key": "heavy_drinker_addressed"
+        },
+        {
+         "type": "stat",
+         "key": "discipline",
+         "delta": 2
+        },
+        {
+         "type": "relationship",
+         "npc": "kavya",
+         "affinity": 3,
+         "trust": 6
+        }
+       ]
+      },
+      {
+       "id": "c_help",
+       "label": "Talk to the college counsellor.",
+       "next": "help",
+       "effects": [
+        {
+         "type": "flag",
+         "key": "heavy_drinker_addressed"
+        },
+        {
+         "type": "stat",
+         "key": "wellbeing",
+         "delta": 6
+        },
+        {
+         "type": "memory",
+         "npc": "kavya",
+         "tag": "got_help",
+         "text": "You listened, and got help.",
+         "weight": 2
+        }
+       ]
+      },
+      {
+       "id": "c_deny",
+       "label": "Laugh it off. Everyone drinks.",
+       "next": "deny",
+       "effects": [
+        {
+         "type": "flag",
+         "key": "heavy_drinker"
+        },
+        {
+         "type": "flag",
+         "key": "heavy_drinker_addressed"
+        },
+        {
+         "type": "relationship",
+         "npc": "kavya",
+         "affinity": -5,
+         "trust": -6,
+         "conflict": 10
+        }
+       ]
+      }
+     ]
+    },
+    "cut": {
+     "speaker": "narrator",
+     "text": "It's easier than you feared and harder than you hoped. Your mornings come back first."
+    },
+    "help": {
+     "speaker": "narrator",
+     "text": "The counsellor is unshockable and kind. You leave with a plan, a phone number, and less shame than you walked in with."
+    },
+    "deny": {
+     "speaker": "narrator",
+     "text": "Kavya drops it. The drinks don't. The cost shows up every month — in money, in mornings, in how people look at you."
+    }
+   }
+  },
+  {
+   "id": "ev_m_drunk_ride",
+   "chapter": 1,
+   "title": "A Ride Home",
+   "location": "bar",
+   "summary": "A friend who's been drinking offers to drive you home.",
+   "trigger": {
+    "kind": "random",
+    "when": {
+     "type": "all",
+     "conditions": [
+      {
+       "type": "flag",
+       "key": "mature_on"
+      },
+      {
+       "type": "counter",
+       "key": "drinks",
+       "op": ">=",
+       "value": 3
+      }
+     ]
+    },
+    "chancePerMonth": 0.15
+   },
+   "start": "start",
+   "nodes": {
+    "start": {
+     "speaker": "narrator",
+     "text": "Midnight. Your friend jingles his bike keys. He's had four drinks and insists he's 'totally fine'.",
+     "choices": [
+      {
+       "id": "c_auto",
+       "label": "Refuse, and take an auto home.",
+       "next": "safe",
+       "effects": [
+        {
+         "type": "money",
+         "amount": -350,
+         "label": "Late-night auto",
+         "category": "living"
+        }
+       ]
+      },
+      {
+       "id": "c_keys",
+       "label": "Take his keys and put you both in an auto.",
+       "next": "keys",
+       "effects": [
+        {
+         "type": "money",
+         "amount": -450,
+         "label": "Auto for two",
+         "category": "living"
+        },
+        {
+         "type": "stat",
+         "key": "communication",
+         "delta": 2
+        },
+        {
+         "type": "flag",
+         "key": "took_the_keys"
+        }
+       ]
+      },
+      {
+       "id": "c_ride",
+       "label": "Get on the bike.",
+       "next": "lucky",
+       "effects": [
+        {
+         "type": "roll",
+         "key": "accident",
+         "chance": 0.3
+        }
+       ],
+       "routes": [
+        {
+         "when": {
+          "type": "flag",
+          "key": "accident"
+         },
+         "next": "crash"
+        }
+       ]
+      }
+     ]
+    },
+    "safe": {
+     "speaker": "narrator",
+     "text": "The auto driver plays old Ilaiyaraaja songs all the way home. Best ₹350 you ever spent."
+    },
+    "keys": {
+     "speaker": "narrator",
+     "text": "He's furious for ten minutes and grateful for ten years."
+    },
+    "lucky": {
+     "speaker": "narrator",
+     "text": "You get home. Nothing happened. You lie awake anyway, thinking about how easily something could have."
+    },
+    "crash": {
+     "speaker": "narrator",
+     "text": "A pothole, a skid, and the road arrives very fast. Two weeks in a cast and a hospital bill. It could have been far worse; you know that every time you see a bike.",
+     "onEnter": [
+      {
+       "type": "money",
+       "amount": -15000,
+       "label": "Hospital bill after the accident",
+       "category": "medical"
+      },
+      {
+       "type": "stat",
+       "key": "wellbeing",
+       "delta": -10
+      },
+      {
+       "type": "stat",
+       "key": "energy",
+       "delta": -30
+      },
+      {
+       "type": "flag",
+       "key": "had_accident"
+      },
+      {
+       "type": "clearFlag",
+       "key": "accident"
+      }
+     ]
+    }
+   },
+   "repeatable": true,
+   "worldEvent": true
+  },
+  {
+   "id": "ev_m_leaked_paper",
+   "chapter": 1,
+   "title": "The Leaked Paper",
+   "location": "campus",
+   "summary": "Someone is selling the semester question paper.",
+   "trigger": {
+    "kind": "auto",
+    "when": {
+     "type": "all",
+     "conditions": [
+      {
+       "type": "flag",
+       "key": "mature_on"
+      },
+      {
+       "type": "monthsEnrolled",
+       "op": ">=",
+       "value": 11
+      }
+     ]
+    },
+    "priority": 52
+   },
+   "start": "start",
+   "nodes": {
+    "start": {
+     "speaker": "narrator",
+     "text": "A WhatsApp message from an unknown number: 'Sem paper. 100% genuine. ₹2,000. Limited.' Half your class seems to have received it.",
+     "choices": [
+      {
+       "id": "c_buy",
+       "label": "Buy it.",
+       "next": "got_away",
+       "effects": [
+        {
+         "type": "money",
+         "amount": -2000,
+         "label": "Leaked paper",
+         "category": "crime"
+        },
+        {
+         "type": "flag",
+         "key": "cheated"
+        },
+        {
+         "type": "roll",
+         "key": "malpractice_caught",
+         "chance": 0.35
+        }
+       ],
+       "routes": [
+        {
+         "when": {
+          "type": "flag",
+          "key": "malpractice_caught"
+         },
+         "next": "caught"
+        }
+       ]
+      },
+      {
+       "id": "c_ignore",
+       "label": "Delete the message and study.",
+       "next": "ignore",
+       "effects": [
+        {
+         "type": "stat",
+         "key": "discipline",
+         "delta": 1
+        }
+       ]
+      },
+      {
+       "id": "c_report",
+       "label": "Report it to the exam cell anonymously.",
+       "next": "report",
+       "effects": [
+        {
+         "type": "flag",
+         "key": "reported_leak"
+        },
+        {
+         "type": "relationship",
+         "npc": "joseph",
+         "affinity": 3,
+         "trust": 4
+        }
+       ]
+      }
+     ]
+    },
+    "got_away": {
+     "speaker": "narrator",
+     "text": "The paper is genuine. You do well. You also find you can't quite enjoy the grade, and you notice how many classmates now trust you less than they did.",
+     "onEnter": [
+      {
+       "type": "flag",
+       "key": "semester_boost"
+      },
+      {
+       "type": "stat",
+       "key": "wellbeing",
+       "delta": -2
+      }
+     ]
+    },
+    "caught": {
+     "speaker": "narrator",
+     "text": "The exam cell traces the payments. Malpractice: your paper is cancelled, you'll repeat it as a backlog, and the incident goes on your file. Mr. Fernandes hears about it. He doesn't say anything. He doesn't have to.",
+     "onEnter": [
+      {
+       "type": "flag",
+       "key": "malpractice"
+      },
+      {
+       "type": "flag",
+       "key": "semester_penalty"
+      },
+      {
+       "type": "flag",
+       "key": "semester_penalty"
+      },
+      {
+       "type": "relationship",
+       "npc": "joseph",
+       "affinity": -8,
+       "trust": -12
+      },
+      {
+       "type": "memory",
+       "npc": "joseph",
+       "tag": "malpractice",
+       "text": "You were caught buying a leaked paper.",
+       "weight": -2
+      },
+      {
+       "type": "clearFlag",
+       "key": "malpractice_caught"
+      }
+     ]
+    },
+    "ignore": {
+     "speaker": "narrator",
+     "text": "You study the old way. The rumour later turns out to be half true, half scam. You're glad you never found out which half you'd have bought."
+    },
+    "report": {
+     "speaker": "narrator",
+     "text": "Two days later the exam is rescheduled with a new paper. Nobody knows who reported it. Mr. Fernandes, somehow, gives you a very slight nod."
+    }
+   }
+  },
+  {
+   "id": "ev_m_hot_phones",
+   "chapter": 1,
+   "title": "No Bills, No Questions",
+   "location": "cafe",
+   "summary": "An easy-money offer that's too easy.",
+   "trigger": {
+    "kind": "auto",
+    "when": {
+     "type": "all",
+     "conditions": [
+      {
+       "type": "flag",
+       "key": "mature_on"
+      },
+      {
+       "type": "all",
+       "conditions": [
+        {
+         "type": "day",
+         "op": ">=",
+         "value": 240
+        },
+        {
+         "type": "any",
+         "conditions": [
+          {
+           "type": "cash",
+           "op": "<",
+           "value": 15000
+          },
+          {
+           "type": "arrears",
+           "op": ">",
+           "value": 0
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    "priority": 48
+   },
+   "start": "start",
+   "nodes": {
+    "start": {
+     "speaker": "narrator",
+     "text": "Shiva, a friend of a friend, has a bag of brand-new phones with no boxes and no bills. 'You sell them to your college crowd, we split fifty-fifty. Twelve thousand for you, easy.' Nobody asks where they came from. That's the point.",
+     "choices": [
+      {
+       "id": "c_in",
+       "label": "Do it — you need the money.",
+       "next": "clean",
+       "effects": [
+        {
+         "type": "money",
+         "amount": 12000,
+         "label": "Phone resale cut",
+         "category": "crime"
+        },
+        {
+         "type": "flag",
+         "key": "sold_stolen_goods"
+        },
+        {
+         "type": "roll",
+         "key": "raid",
+         "chance": 0.4
+        }
+       ],
+       "routes": [
+        {
+         "when": {
+          "type": "flag",
+          "key": "raid"
+         },
+         "next": "raid"
+        }
+       ]
+      },
+      {
+       "id": "c_no",
+       "label": "Walk away.",
+       "next": "no",
+       "effects": [
+        {
+         "type": "stat",
+         "key": "discipline",
+         "delta": 1
+        }
+       ]
+      },
+      {
+       "id": "c_warn",
+       "label": "Walk away, and warn Kavya not to buy anything from him.",
+       "next": "warn",
+       "effects": [
+        {
+         "type": "relationship",
+         "npc": "kavya",
+         "affinity": 3,
+         "trust": 5
+        },
+        {
+         "type": "memory",
+         "npc": "kavya",
+         "tag": "warned_her",
+         "text": "You warned her about stolen phones.",
+         "weight": 1
+        }
+       ]
+      }
+     ]
+    },
+    "clean": {
+     "speaker": "narrator",
+     "text": "Every phone sells in a week. The money's real. So is the knot in your stomach whenever a police jeep passes."
+    },
+    "raid": {
+     "speaker": "narrator",
+     "text": "Three weeks later the police raid Shiva's room and find your number everywhere. Receiving and selling stolen property: a case is filed. A lawyer, a fine and months of court dates follow, and your family finds out the worst way.",
+     "onEnter": [
+      {
+       "type": "flag",
+       "key": "police_record"
+      },
+      {
+       "type": "money",
+       "amount": -20000,
+       "label": "Lawyer's fees and fine",
+       "category": "crime"
+      },
+      {
+       "type": "relationship",
+       "npc": "amma",
+       "affinity": -10,
+       "trust": -15,
+       "conflict": 25
+      },
+      {
+       "type": "memory",
+       "npc": "amma",
+       "tag": "police_case",
+       "text": "You got involved in a police case.",
+       "weight": -2
+      },
+      {
+       "type": "stat",
+       "key": "wellbeing",
+       "delta": -10
+      },
+      {
+       "type": "clearFlag",
+       "key": "raid"
+      }
+     ]
+    },
+    "no": {
+     "speaker": "narrator",
+     "text": "Shiva shrugs and finds someone else. A month later you hear he's been arrested."
+    },
+    "warn": {
+     "speaker": "narrator",
+     "text": "Kavya had already been offered a 'cheap' phone. She sends you a single word: 'thanks'. A month later Shiva is arrested."
+    }
+   }
+  },
+  {
+   "id": "ev_m_traffic_stop",
+   "chapter": 1,
+   "title": "Stopped at the Signal",
+   "location": "park",
+   "summary": "No licence, no helmet, one traffic constable.",
+   "trigger": {
+    "kind": "random",
+    "when": {
+     "type": "all",
+     "conditions": [
+      {
+       "type": "flag",
+       "key": "mature_on"
+      },
+      {
+       "type": "day",
+       "op": ">=",
+       "value": 60
+      }
+     ]
+    },
+    "chancePerMonth": 0.08
+   },
+   "start": "start",
+   "nodes": {
+    "start": {
+     "speaker": "narrator",
+     "text": "You're riding a friend's scooter — no helmet, licence at home. A constable waves you over.",
+     "choices": [
+      {
+       "id": "c_fine",
+       "label": "Accept the official fine and get a receipt (₹1,000).",
+       "next": "fine",
+       "effects": [
+        {
+         "type": "money",
+         "amount": -1000,
+         "label": "Traffic fine",
+         "category": "fines"
+        },
+        {
+         "type": "stat",
+         "key": "discipline",
+         "delta": 1
+        }
+       ]
+      },
+      {
+       "id": "c_bribe",
+       "label": "Quietly offer ₹300 to 'settle it here'.",
+       "next": "bribe",
+       "effects": [
+        {
+         "type": "money",
+         "amount": -300,
+         "label": "Bribe",
+         "category": "crime"
+        },
+        {
+         "type": "flag",
+         "key": "paid_bribe"
+        },
+        {
+         "type": "roll",
+         "key": "bribe_reported",
+         "chance": 0.2
+        }
+       ],
+       "routes": [
+        {
+         "when": {
+          "type": "flag",
+          "key": "bribe_reported"
+         },
+         "next": "caught"
+        }
+       ]
+      },
+      {
+       "id": "c_argue",
+       "label": "Argue that you were 'only going nearby'.",
+       "next": "argue",
+       "effects": [
+        {
+         "type": "money",
+         "amount": -1000,
+         "label": "Traffic fine",
+         "category": "fines"
+        },
+        {
+         "type": "stat",
+         "key": "wellbeing",
+         "delta": -2
+        }
+       ]
+      }
+     ]
+    },
+    "fine": {
+     "speaker": "narrator",
+     "text": "The receipt is printed on paper thinner than a samosa wrapper. You buy a helmet the same evening."
+    },
+    "bribe": {
+     "speaker": "narrator",
+     "text": "He pockets it without looking at you. It worked. It also cost something that isn't on any receipt."
+    },
+    "caught": {
+     "speaker": "narrator",
+     "text": "An inspector was watching. Offering a bribe turns a ₹1,000 fine into a case. You spend a terrible afternoon at the station before a stern warning and a much bigger fine.",
+     "onEnter": [
+      {
+       "type": "money",
+       "amount": -5000,
+       "label": "Fine for offering a bribe",
+       "category": "fines"
+      },
+      {
+       "type": "flag",
+       "key": "police_record"
+      },
+      {
+       "type": "stat",
+       "key": "wellbeing",
+       "delta": -6
+      },
+      {
+       "type": "clearFlag",
+       "key": "bribe_reported"
+      }
+     ]
+    },
+    "argue": {
+     "speaker": "narrator",
+     "text": "He listens, nods, and writes the fine anyway. Arguing is free; it's just not useful."
+    }
+   },
+   "repeatable": true,
+   "worldEvent": true
+  },
+  {
+   "id": "ev_m_betting",
+   "chapter": 1,
+   "title": "Fantasy Cricket Riches",
+   "location": "home",
+   "summary": "A betting app promises easy money.",
+   "trigger": {
+    "kind": "random",
+    "when": {
+     "type": "all",
+     "conditions": [
+      {
+       "type": "flag",
+       "key": "mature_on"
+      },
+      {
+       "type": "all",
+       "conditions": [
+        {
+         "type": "cash",
+         "op": ">=",
+         "value": 5000
+        },
+        {
+         "type": "career",
+         "value": false
+        }
+       ]
+      }
+     ]
+    },
+    "chancePerMonth": 0.1
+   },
+   "start": "start",
+   "nodes": {
+    "start": {
+     "speaker": "narrator",
+     "text": "A friend shows you his screen: ₹40,000 won on an online betting app 'in one night'. He doesn't show you the screens from the other nights.",
+     "choices": [
+      {
+       "id": "c_bet",
+       "label": "Put in ₹3,000 on tonight's match.",
+       "next": "lose",
+       "effects": [
+        {
+         "type": "money",
+         "amount": -3000,
+         "label": "Online bet",
+         "category": "gambling"
+        },
+        {
+         "type": "counter",
+         "key": "bets",
+         "delta": 1
+        },
+        {
+         "type": "roll",
+         "key": "bet_win",
+         "chance": 0.4
+        }
+       ],
+       "routes": [
+        {
+         "when": {
+          "type": "flag",
+          "key": "bet_win"
+         },
+         "next": "win"
+        }
+       ]
+      },
+      {
+       "id": "c_skip",
+       "label": "Watch the match without betting.",
+       "next": "skip",
+       "effects": [
+        {
+         "type": "stat",
+         "key": "wellbeing",
+         "delta": 1
+        }
+       ]
+      }
+     ]
+    },
+    "win": {
+     "speaker": "narrator",
+     "text": "You win ₹6,000. Your heart races for an hour. The app immediately suggests a bigger bet. That's how it works.",
+     "onEnter": [
+      {
+       "type": "money",
+       "amount": 6000,
+       "label": "Betting winnings",
+       "category": "gambling"
+      },
+      {
+       "type": "clearFlag",
+       "key": "bet_win"
+      }
+     ]
+    },
+    "lose": {
+     "speaker": "narrator",
+     "text": "The team collapses in the final over and so does your ₹3,000. The app sends you a 'better luck next time' bonus to try again. That's how it works."
+    },
+    "skip": {
+     "speaker": "narrator",
+     "text": "The match is just as exciting without money on it. More, even — you can enjoy both teams' good shots."
+    }
+   },
+   "repeatable": true,
+   "worldEvent": true
+  },
+  {
+   "id": "ev_m_bar_fight",
+   "chapter": 1,
+   "title": "Closing Time",
+   "location": "bar",
+   "summary": "Someone won't take no for an answer.",
+   "trigger": {
+    "kind": "random",
+    "when": {
+     "type": "all",
+     "conditions": [
+      {
+       "type": "flag",
+       "key": "mature_on"
+      },
+      {
+       "type": "all",
+       "conditions": [
+        {
+         "type": "counter",
+         "key": "drinks",
+         "op": ">=",
+         "value": 4
+        },
+        {
+         "type": "age",
+         "op": ">=",
+         "value": 21
+        }
+       ]
+      }
+     ]
+    },
+    "chancePerMonth": 0.12
+   },
+   "start": "start",
+   "nodes": {
+    "start": {
+     "speaker": "narrator",
+     "text": "At The Copper Mug, a drunk man keeps bothering Kavya after she's told him twice to leave her alone. He grabs her wrist.",
+     "choices": [
+      {
+       "id": "c_bouncer",
+       "label": "Step between them and wave over the bouncer.",
+       "next": "bouncer",
+       "effects": [
+        {
+         "type": "relationship",
+         "npc": "kavya",
+         "affinity": 6,
+         "trust": 8
+        },
+        {
+         "type": "memory",
+         "npc": "kavya",
+         "tag": "stood_up",
+         "text": "You stood up for her — and kept your head.",
+         "weight": 2
+        }
+       ]
+      },
+      {
+       "id": "c_leave",
+       "label": "Pull Kavya away and leave together.",
+       "next": "leave",
+       "effects": [
+        {
+         "type": "relationship",
+         "npc": "kavya",
+         "affinity": 4,
+         "trust": 5
+        }
+       ]
+      },
+      {
+       "id": "c_fight",
+       "label": "Hit him.",
+       "next": "bruised",
+       "effects": [
+        {
+         "type": "roll",
+         "key": "fight_police",
+         "chance": 0.5
+        },
+        {
+         "type": "relationship",
+         "npc": "kavya",
+         "affinity": 2,
+         "trust": -2
+        }
+       ],
+       "routes": [
+        {
+         "when": {
+          "type": "flag",
+          "key": "fight_police"
+         },
+         "next": "police"
+        }
+       ]
+      }
+     ]
+    },
+    "bouncer": {
+     "speaker": "kavya",
+     "text": "The bouncer removes him in under a minute. Kavya is shaken but fine. 'Thank you for not making it worse,' she says, which is a strange and accurate compliment."
+    },
+    "leave": {
+     "speaker": "narrator",
+     "text": "You walk her home. Neither of you goes back to that bar."
+    },
+    "bruised": {
+     "speaker": "narrator",
+     "text": "It's over in seconds. You have a split lip and a sprained hand; he has a bloody nose. The manager throws you both out.",
+     "onEnter": [
+      {
+       "type": "money",
+       "amount": -3000,
+       "label": "Doctor's visit",
+       "category": "medical"
+      },
+      {
+       "type": "stat",
+       "key": "wellbeing",
+       "delta": -6
+      }
+     ]
+    },
+    "police": {
+     "speaker": "narrator",
+     "text": "Someone calls the police. Both of you spend the night at the station, and a case is registered for the fight. Kavya waits outside until morning.",
+     "onEnter": [
+      {
+       "type": "flag",
+       "key": "police_record"
+      },
+      {
+       "type": "money",
+       "amount": -8000,
+       "label": "Bail and lawyer",
+       "category": "crime"
+      },
+      {
+       "type": "stat",
+       "key": "wellbeing",
+       "delta": -10
+      },
+      {
+       "type": "relationship",
+       "npc": "amma",
+       "affinity": -6,
+       "trust": -10
+      },
+      {
+       "type": "clearFlag",
+       "key": "fight_police"
+      }
+     ]
+    }
+   },
+   "repeatable": true,
+   "worldEvent": true
+  }
+ ]
+}

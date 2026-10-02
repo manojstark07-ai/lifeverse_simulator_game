@@ -1,0 +1,66 @@
+{
+  "contentVersion": "2026.10-ch1",
+  "npcs": [
+    {
+      "id": "amma",
+      "name": "Lakshmi (Amma)",
+      "role": "Your mother",
+      "isFamily": true,
+      "routineBond": "family",
+      "colorIndex": 0,
+      "bio": "Practical, proud, a professional worrier. Keeps the household accounts in a notebook older than you.",
+      "personality": [
+        "practical",
+        "proud",
+        "worrier"
+      ],
+      "interests": [
+        "cooking",
+        "temple music",
+        "neighbourhood news"
+      ],
+      "startAffinity": 45,
+      "startTrust": 50
+    },
+    {
+      "id": "kavya",
+      "name": "Kavya Raman",
+      "role": "Best friend since Class 6",
+      "routineBond": "social",
+      "colorIndex": 1,
+      "bio": "Sharp, impatient, funny. Wants to build something of her own — and to prove her relatives wrong.",
+      "personality": [
+        "ambitious",
+        "loyal",
+        "restless"
+      ],
+      "interests": [
+        "coding",
+        "cricket",
+        "startups"
+      ],
+      "startAffinity": 40,
+      "startTrust": 45
+    },
+    {
+      "id": "joseph",
+      "name": "Mr. Joseph Fernandes",
+      "role": "Retired maths teacher; runs the community library",
+      "routineBond": "none",
+      "colorIndex": 2,
+      "bio": "Taught for thirty-four years. Believes anyone can learn anything — slowly, and with good questions.",
+      "personality": [
+        "patient",
+        "dry humour",
+        "principled"
+      ],
+      "interests": [
+        "chess",
+        "old radios",
+        "teaching"
+      ],
+      "startAffinity": 10,
+      "startTrust": 20
+    }
+  ]
+}

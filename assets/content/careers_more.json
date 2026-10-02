@@ -1,0 +1,733 @@
+{
+  "contentVersion": "2026.10-life",
+  "careers": [
+    {
+      "id": "hair_stylist",
+      "name": "Hair stylist",
+      "sector": "Beauty & grooming",
+      "description": "Cut, colour and style. Regulars become friends, and a loyal chair can become your own salon.",
+      "requiredPrograms": [],
+      "primarySkill": "styling",
+      "minPrimarySkill": 20,
+      "interviewPool": "interview_service",
+      "weeklyHours": 48,
+      "demand": 0.65,
+      "skillGainsPerMonth": {
+        "styling": 1.0,
+        "business": 0.3
+      },
+      "employers": [
+        "Glow & Go Salon",
+        "Mirror Mirror Unisex Salon",
+        "Shear Genius Studio",
+        "Lakmé Salon",
+        "Naturals",
+        "Jawed Habib",
+        "Toni&Guy"
+      ],
+      "ladder": [
+        {
+          "title": "Junior Stylist",
+          "monthlySalary": 13000,
+          "minMonths": 0,
+          "skillRequired": 0
+        },
+        {
+          "title": "Stylist",
+          "monthlySalary": 21000,
+          "minMonths": 12,
+          "skillRequired": 40
+        },
+        {
+          "title": "Senior Stylist",
+          "monthlySalary": 32000,
+          "minMonths": 24,
+          "skillRequired": 55
+        },
+        {
+          "title": "Salon Manager",
+          "monthlySalary": 48000,
+          "minMonths": 24,
+          "skillRequired": 68
+        },
+        {
+          "title": "Salon Owner",
+          "monthlySalary": 110000,
+          "minMonths": 36,
+          "skillRequired": 82
+        }
+      ]
+    },
+    {
+      "id": "chef",
+      "name": "Chef",
+      "sector": "Hospitality",
+      "description": "Long hours, hot kitchens, and the joy of a full restaurant. Skill is everything; degrees optional.",
+      "requiredPrograms": [],
+      "primarySkill": "cooking",
+      "minPrimarySkill": 20,
+      "interviewPool": "interview_service",
+      "weeklyHours": 54,
+      "demand": 0.6,
+      "skillGainsPerMonth": {
+        "cooking": 1.1,
+        "business": 0.2
+      },
+      "employers": [
+        "Spice Route Restaurant",
+        "The Banyan Hotel",
+        "Coastal Curry Co.",
+        "Taj Hotels",
+        "ITC Hotels",
+        "The Oberoi",
+        "Marriott"
+      ],
+      "ladder": [
+        {
+          "title": "Commis Chef",
+          "monthlySalary": 14000,
+          "minMonths": 0,
+          "skillRequired": 0
+        },
+        {
+          "title": "Chef de Partie",
+          "monthlySalary": 24000,
+          "minMonths": 12,
+          "skillRequired": 40
+        },
+        {
+          "title": "Sous Chef",
+          "monthlySalary": 42000,
+          "minMonths": 24,
+          "skillRequired": 58
+        },
+        {
+          "title": "Head Chef",
+          "monthlySalary": 75000,
+          "minMonths": 24,
+          "skillRequired": 72
+        },
+        {
+          "title": "Executive Chef",
+          "monthlySalary": 140000,
+          "minMonths": 36,
+          "skillRequired": 85
+        }
+      ]
+    },
+    {
+      "id": "sales_executive",
+      "name": "Sales executive",
+      "sector": "Sales & marketing",
+      "description": "Targets, travel, and commission. The fastest-moving ladder for people who can talk to anyone.",
+      "requiredPrograms": [],
+      "primarySkill": "business",
+      "minPrimarySkill": 15,
+      "interviewPool": "interview_sales",
+      "weeklyHours": 48,
+      "demand": 0.8,
+      "skillGainsPerMonth": {
+        "business": 1.0
+      },
+      "requires": {
+        "type": "stat",
+        "key": "communication",
+        "op": ">=",
+        "value": 40
+      },
+      "requirementNote": "Needs Communication 40+",
+      "employers": [
+        "Brightline Consumer Goods",
+        "Nimbus Mobiles",
+        "Kaveri Paints",
+        "Hindustan Unilever",
+        "ITC",
+        "Dabur",
+        "Asian Paints",
+        "Samsung India"
+      ],
+      "ladder": [
+        {
+          "title": "Sales Executive",
+          "monthlySalary": 17000,
+          "minMonths": 0,
+          "skillRequired": 0
+        },
+        {
+          "title": "Senior Sales Executive",
+          "monthlySalary": 28000,
+          "minMonths": 12,
+          "skillRequired": 35
+        },
+        {
+          "title": "Area Sales Manager",
+          "monthlySalary": 52000,
+          "minMonths": 24,
+          "skillRequired": 52
+        },
+        {
+          "title": "Regional Sales Manager",
+          "monthlySalary": 95000,
+          "minMonths": 24,
+          "skillRequired": 68
+        },
+        {
+          "title": "Sales Director",
+          "monthlySalary": 190000,
+          "minMonths": 36,
+          "skillRequired": 82
+        }
+      ]
+    },
+    {
+      "id": "delivery_partner",
+      "name": "Delivery partner",
+      "sector": "Gig economy",
+      "description": "Food and parcels across the city. Flexible, physical, and paid by the drop. Needs your own two-wheeler.",
+      "requiredPrograms": [],
+      "primarySkill": "business",
+      "minPrimarySkill": 0,
+      "interviewPool": "interview_service",
+      "weeklyHours": 50,
+      "demand": 0.9,
+      "skillGainsPerMonth": {
+        "business": 0.3
+      },
+      "requires": {
+        "type": "owns",
+        "slot": "two_wheeler"
+      },
+      "requirementNote": "Needs your own scooter or motorcycle",
+      "employers": [
+        "Zipto",
+        "QuickBasket",
+        "DabbaDash",
+        "Swiggy",
+        "Zomato",
+        "Zepto",
+        "Blinkit",
+        "Amazon"
+      ],
+      "ladder": [
+        {
+          "title": "Delivery Partner",
+          "monthlySalary": 19000,
+          "minMonths": 0,
+          "skillRequired": 0
+        },
+        {
+          "title": "Top-rated Partner",
+          "monthlySalary": 24000,
+          "minMonths": 12,
+          "skillRequired": 15
+        },
+        {
+          "title": "Fleet Captain",
+          "monthlySalary": 32000,
+          "minMonths": 24,
+          "skillRequired": 30
+        }
+      ]
+    },
+    {
+      "id": "cab_driver",
+      "name": "Cab driver",
+      "sector": "Gig economy",
+      "description": "Drive for a ride-hailing app in your own car. The car's EMI comes out of the fares.",
+      "requiredPrograms": [],
+      "primarySkill": "business",
+      "minPrimarySkill": 0,
+      "interviewPool": "interview_service",
+      "weeklyHours": 56,
+      "demand": 0.8,
+      "skillGainsPerMonth": {
+        "business": 0.4
+      },
+      "requires": {
+        "type": "owns",
+        "slot": "car"
+      },
+      "requirementNote": "Needs your own car",
+      "employers": [
+        "Ryde",
+        "GoCab",
+        "Uber",
+        "Ola",
+        "Rapido"
+      ],
+      "ladder": [
+        {
+          "title": "Cab Driver",
+          "monthlySalary": 26000,
+          "minMonths": 0,
+          "skillRequired": 0
+        },
+        {
+          "title": "Premium Driver",
+          "monthlySalary": 34000,
+          "minMonths": 12,
+          "skillRequired": 20
+        },
+        {
+          "title": "Fleet Owner",
+          "monthlySalary": 65000,
+          "minMonths": 36,
+          "skillRequired": 45
+        }
+      ]
+    },
+    {
+      "id": "bank_po",
+      "name": "Bank officer",
+      "sector": "Banking (public sector)",
+      "description": "A secure job with a pension, transfers every few years, and endless customers. Open to graduates.",
+      "requiredPrograms": [
+        "btech_cs",
+        "bcom"
+      ],
+      "primarySkill": "mathematics",
+      "minPrimarySkill": 35,
+      "interviewPool": "interview_bank",
+      "weeklyHours": 42,
+      "demand": 0.4,
+      "skillGainsPerMonth": {
+        "accounting": 0.6,
+        "business": 0.4,
+        "mathematics": 0.2
+      },
+      "employers": [
+        "Kaveri Co-operative Bank",
+        "Bharat Union Bank",
+        "State Bank of India",
+        "Bank of Baroda",
+        "Punjab National Bank",
+        "HDFC Bank",
+        "ICICI Bank"
+      ],
+      "ladder": [
+        {
+          "title": "Probationary Officer",
+          "monthlySalary": 41000,
+          "minMonths": 0,
+          "skillRequired": 0
+        },
+        {
+          "title": "Assistant Manager",
+          "monthlySalary": 52000,
+          "minMonths": 24,
+          "skillRequired": 45
+        },
+        {
+          "title": "Branch Manager",
+          "monthlySalary": 75000,
+          "minMonths": 36,
+          "skillRequired": 58
+        },
+        {
+          "title": "Chief Manager",
+          "monthlySalary": 105000,
+          "minMonths": 36,
+          "skillRequired": 70
+        },
+        {
+          "title": "General Manager",
+          "monthlySalary": 160000,
+          "minMonths": 48,
+          "skillRequired": 82
+        }
+      ]
+    },
+    {
+      "id": "digital_marketer",
+      "name": "Digital marketer",
+      "sector": "Sales & marketing",
+      "description": "Run brands' social media, ads and campaigns. Creators who understand audiences thrive here.",
+      "requiredPrograms": [],
+      "primarySkill": "content",
+      "minPrimarySkill": 25,
+      "interviewPool": "interview_digital",
+      "weeklyHours": 45,
+      "demand": 0.7,
+      "skillGainsPerMonth": {
+        "content": 0.8,
+        "business": 0.5
+      },
+      "employers": [
+        "Pixel & Pitch Agency",
+        "Brightline Consumer Goods",
+        "Zipto",
+        "Ogilvy India",
+        "Dentsu India",
+        "Nykaa",
+        "boAt",
+        "Mamaearth"
+      ],
+      "ladder": [
+        {
+          "title": "Social Media Executive",
+          "monthlySalary": 20000,
+          "minMonths": 0,
+          "skillRequired": 0
+        },
+        {
+          "title": "Digital Marketing Specialist",
+          "monthlySalary": 35000,
+          "minMonths": 12,
+          "skillRequired": 40
+        },
+        {
+          "title": "Marketing Manager",
+          "monthlySalary": 65000,
+          "minMonths": 24,
+          "skillRequired": 55
+        },
+        {
+          "title": "Head of Growth",
+          "monthlySalary": 120000,
+          "minMonths": 24,
+          "skillRequired": 70
+        },
+        {
+          "title": "Chief Marketing Officer",
+          "monthlySalary": 240000,
+          "minMonths": 36,
+          "skillRequired": 85
+        }
+      ]
+    }
+  ],
+  "partTimeJobs": [
+    {
+      "id": "salon_assistant",
+      "name": "Salon assistant",
+      "employer": "Glow & Go Salon",
+      "description": "Wash hair, sweep floors, hand over towels — and watch the stylists work.",
+      "weeklyHours": 18,
+      "monthlyPay": 7500,
+      "skillGainsPerMonth": {
+        "styling": 1.0
+      },
+      "statGainsPerMonth": {
+        "communication": 0.3,
+        "looks": 0.5
+      }
+    },
+    {
+      "id": "kitchen_helper",
+      "name": "Kitchen helper",
+      "employer": "Biryani Bros, Galaxy Mall food court",
+      "description": "Chop onions, stir pots, plate orders. Evenings and weekends.",
+      "weeklyHours": 18,
+      "monthlyPay": 8000,
+      "skillGainsPerMonth": {
+        "cooking": 1.0
+      },
+      "statGainsPerMonth": {
+        "discipline": 0.3
+      }
+    },
+    {
+      "id": "delivery_rider",
+      "name": "Weekend delivery rider",
+      "employer": "Zipto",
+      "description": "Two-wheeler, delivery bag, weekend rush hours.",
+      "weeklyHours": 16,
+      "monthlyPay": 9500,
+      "skillGainsPerMonth": {
+        "business": 0.3
+      },
+      "statGainsPerMonth": {
+        "health": -0.2
+      }
+    }
+  ],
+  "puzzles": [
+    {
+      "id": "svc_bill_01",
+      "category": "math",
+      "difficulty": 1,
+      "pools": [
+        "interview_service"
+      ],
+      "type": "numeric",
+      "prompt": "A customer's haircut costs ₹350 and a beard trim ₹150. They pay with a ₹1,000 note. How much change do you give?",
+      "answer": 500,
+      "explanation": "₹350 + ₹150 = ₹500. ₹1,000 − ₹500 = ₹500 change.",
+      "timeLimitSec": 90,
+      "tolerance": 0,
+      "unit": "₹"
+    },
+    {
+      "id": "svc_people_01",
+      "category": "interview",
+      "difficulty": 1,
+      "pools": [
+        "interview_service"
+      ],
+      "type": "mcq",
+      "prompt": "A regular customer is unhappy with their haircut and raising their voice. What do you do first?",
+      "options": [
+        "Tell them it looks fine",
+        "Listen calmly, ask what they wanted, and offer to fix it",
+        "Call the manager immediately",
+        "Offer a full refund without discussion"
+      ],
+      "answer": 1,
+      "explanation": "Listening first calms the situation and tells you what went wrong. Most unhappy customers want to be heard and want a fix; escalation or instant refunds come later if needed.",
+      "timeLimitSec": 90
+    },
+    {
+      "id": "svc_recipe_01",
+      "category": "math",
+      "difficulty": 2,
+      "pools": [
+        "interview_service"
+      ],
+      "type": "numeric",
+      "prompt": "A recipe for 4 people uses 300 g of rice. How many grams do you need for 14 people?",
+      "answer": 1050,
+      "explanation": "300 g ÷ 4 = 75 g per person. 75 g × 14 = 1,050 g.",
+      "timeLimitSec": 90,
+      "tolerance": 0,
+      "unit": "g"
+    },
+    {
+      "id": "svc_route_01",
+      "category": "logic",
+      "difficulty": 2,
+      "pools": [
+        "interview_service"
+      ],
+      "type": "numeric",
+      "prompt": "You start at the depot. Drops are 3 km east, 5 km east and 2 km west along the same road, and you must end back at the depot. What is the shortest total distance in km?",
+      "answer": 14,
+      "explanation": "Whatever the order, you must reach the farthest points 5 km east and 2 km west and come back. Going to one end and back (10 km) and to the other end and back (4 km) is 14 km; the 3 km drop is on the way.",
+      "timeLimitSec": 90,
+      "tolerance": 0,
+      "unit": "km"
+    },
+    {
+      "id": "svc_time_01",
+      "category": "time",
+      "difficulty": 1,
+      "pools": [
+        "interview_service"
+      ],
+      "type": "mcq",
+      "prompt": "Your shift starts at 4 pm. Each order takes 25 minutes. How many full orders can you complete by 6:30 pm?",
+      "options": [
+        "5",
+        "6",
+        "4",
+        "7"
+      ],
+      "answer": 1,
+      "explanation": "From 4:00 to 6:30 is 150 minutes. 150 ÷ 25 = 6 full orders.",
+      "timeLimitSec": 90
+    },
+    {
+      "id": "sales_commission_01",
+      "category": "math",
+      "difficulty": 1,
+      "pools": [
+        "interview_sales"
+      ],
+      "type": "numeric",
+      "prompt": "You earn 4% commission. This month you sold ₹3,50,000 worth of goods. What is your commission in rupees?",
+      "answer": 14000,
+      "explanation": "4% of 3,50,000 = 0.04 × 3,50,000 = ₹14,000.",
+      "timeLimitSec": 90,
+      "tolerance": 0,
+      "unit": "₹"
+    },
+    {
+      "id": "sales_obj_01",
+      "category": "interview",
+      "difficulty": 1,
+      "pools": [
+        "interview_sales"
+      ],
+      "type": "mcq",
+      "prompt": "A shopkeeper says your product is 'too expensive'. The best response is:",
+      "options": [
+        "Immediately offer a discount",
+        "Ask what they're comparing it with and explain the value it brings",
+        "Tell them the competitor's product is bad",
+        "Leave and try the next shop"
+      ],
+      "answer": 1,
+      "explanation": "Understanding the objection lets you address it with value. Discounting immediately trains customers to always ask; badmouthing competitors damages trust.",
+      "timeLimitSec": 90
+    },
+    {
+      "id": "sales_target_01",
+      "category": "math",
+      "difficulty": 2,
+      "pools": [
+        "interview_sales"
+      ],
+      "type": "numeric",
+      "prompt": "Your quarterly target is ₹9,00,000. You sold ₹2,40,000 in month 1 and ₹2,90,000 in month 2. How much must you sell in month 3 to hit the target?",
+      "answer": 370000,
+      "explanation": "2,40,000 + 2,90,000 = 5,30,000. 9,00,000 − 5,30,000 = ₹3,70,000.",
+      "timeLimitSec": 90,
+      "tolerance": 0,
+      "unit": "₹"
+    },
+    {
+      "id": "sales_case_01",
+      "category": "case",
+      "difficulty": 2,
+      "pools": [
+        "interview_sales"
+      ],
+      "type": "mcq",
+      "prompt": "Two distributors: X buys ₹50,000/month and always pays on time; Y buys ₹80,000/month but pays 90 days late. With limited stock, who should get priority?",
+      "options": [
+        "Y — they buy more",
+        "X — reliable cash flow matters more than headline sales",
+        "Split exactly 50/50",
+        "Neither, wait for new distributors"
+      ],
+      "answer": 1,
+      "explanation": "Sales that aren't paid for don't fund the business. A reliable payer protects cash flow; Y's late payments tie up money for three months, which can cost more than the extra volume earns.",
+      "timeLimitSec": 90
+    },
+    {
+      "id": "bank_si_01",
+      "category": "accounting",
+      "difficulty": 1,
+      "pools": [
+        "interview_bank"
+      ],
+      "type": "numeric",
+      "prompt": "A customer deposits ₹50,000 at 6% simple interest per year. How much interest do they earn in 3 years?",
+      "answer": 9000,
+      "explanation": "Simple interest = principal × rate × time = 50,000 × 0.06 × 3 = ₹9,000.",
+      "timeLimitSec": 90,
+      "tolerance": 0,
+      "unit": "₹"
+    },
+    {
+      "id": "bank_kyc_01",
+      "category": "interview",
+      "difficulty": 1,
+      "pools": [
+        "interview_bank"
+      ],
+      "type": "mcq",
+      "prompt": "A customer wants to open an account but has no address proof. What should you do?",
+      "options": [
+        "Open it anyway — they seem honest",
+        "Explain which documents are accepted and how to get one",
+        "Refuse and ask them to leave",
+        "Use another customer's address"
+      ],
+      "answer": 1,
+      "explanation": "KYC rules exist to prevent fraud and money laundering. Explaining the accepted documents helps the customer without breaking the rules.",
+      "timeLimitSec": 90
+    },
+    {
+      "id": "bank_ratio_01",
+      "category": "math",
+      "difficulty": 2,
+      "pools": [
+        "interview_bank"
+      ],
+      "type": "numeric",
+      "prompt": "A branch has 840 savings accounts and 210 current accounts. What percentage of all accounts are current accounts?",
+      "answer": 20,
+      "explanation": "Total = 840 + 210 = 1,050. 210 ÷ 1,050 = 0.2 = 20%.",
+      "timeLimitSec": 90,
+      "tolerance": 0,
+      "unit": "%"
+    },
+    {
+      "id": "bank_logic_01",
+      "category": "logic",
+      "difficulty": 2,
+      "pools": [
+        "interview_bank"
+      ],
+      "type": "mcq",
+      "prompt": "All officers attend training. Some officers are managers. Which statement must be true?",
+      "options": [
+        "All managers attend training",
+        "Some people who attend training are managers",
+        "No manager attends training",
+        "All who attend training are officers"
+      ],
+      "answer": 1,
+      "explanation": "Some officers are managers, and every officer attends training, so those officer-managers attend training: some trainees are managers. We don't know about managers who aren't officers, so 'all managers' is not guaranteed.",
+      "timeLimitSec": 90
+    },
+    {
+      "id": "dig_ctr_01",
+      "category": "math",
+      "difficulty": 1,
+      "pools": [
+        "interview_digital"
+      ],
+      "type": "numeric",
+      "prompt": "An ad was shown 20,000 times and clicked 500 times. What is the click-through rate in percent?",
+      "answer": 2.5,
+      "explanation": "Click-through rate = clicks ÷ impressions = 500 ÷ 20,000 = 0.025 = 2.5%.",
+      "timeLimitSec": 90,
+      "tolerance": 0,
+      "unit": "%"
+    },
+    {
+      "id": "dig_case_01",
+      "category": "case",
+      "difficulty": 2,
+      "pools": [
+        "interview_digital"
+      ],
+      "type": "mcq",
+      "prompt": "A brand's Instagram has 200K followers but posts get ~300 likes. What is the most likely problem?",
+      "options": [
+        "The posts are too colourful",
+        "Many followers are inactive or bought, or the content doesn't fit the audience",
+        "Instagram is hiding all posts",
+        "200K is too few followers"
+      ],
+      "answer": 1,
+      "explanation": "0.15% engagement is extremely low. It usually means fake or inactive followers, or content that doesn't match what the audience followed for. Fixing audience quality and content fit matters more than follower count.",
+      "timeLimitSec": 90
+    },
+    {
+      "id": "dig_cpa_01",
+      "category": "math",
+      "difficulty": 2,
+      "pools": [
+        "interview_digital"
+      ],
+      "type": "numeric",
+      "prompt": "You spent ₹24,000 on ads that produced 160 sales. What was the cost per sale in rupees?",
+      "answer": 150,
+      "explanation": "Cost per acquisition = spend ÷ conversions = 24,000 ÷ 160 = ₹150.",
+      "timeLimitSec": 90,
+      "tolerance": 0,
+      "unit": "₹"
+    },
+    {
+      "id": "dig_pattern_01",
+      "category": "pattern",
+      "difficulty": 1,
+      "pools": [
+        "interview_digital"
+      ],
+      "type": "mcq",
+      "prompt": "Weekly video views: 1,000; 1,500; 2,250; 3,375; … What comes next (same pattern)?",
+      "options": [
+        "4,500",
+        "5,062",
+        "4,000",
+        "5,500"
+      ],
+      "answer": 1,
+      "explanation": "Each week is 1.5× the previous week. 3,375 × 1.5 = 5,062.5, so about 5,062.",
+      "timeLimitSec": 90
+    }
+  ]
+}

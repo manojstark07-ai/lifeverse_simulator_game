@@ -1,0 +1,109 @@
+{
+  "contentVersion": "2026.10-ch1",
+  "programs": [
+    {
+      "id": "btech_cs",
+      "name": "B.Tech in Computer Science & Engineering",
+      "shortName": "B.Tech CSE",
+      "field": "Engineering",
+      "description": "Four years of programming, mathematics and systems. Entry through the fictional UTAT entrance exam.",
+      "durationMonths": 48,
+      "weeklyHours": 32,
+      "admission": {
+        "type": "exam",
+        "examId": "utat"
+      },
+      "tiers": [
+        {
+          "id": "premier",
+          "name": "Premier Institute of Technology",
+          "feesPerYear": 220000,
+          "reputation": 0.97
+        },
+        {
+          "id": "government",
+          "name": "Government engineering college",
+          "feesPerYear": 55000,
+          "reputation": 0.8
+        },
+        {
+          "id": "private",
+          "name": "Private engineering college",
+          "feesPerYear": 160000,
+          "reputation": 0.55
+        }
+      ],
+      "knowledgeGainPerMonth": 1.1,
+      "skillGainsPerMonth": {
+        "programming": 1.4,
+        "mathematics": 0.8
+      },
+      "gradeSkill": "programming",
+      "careerIds": [
+        "software_developer"
+      ],
+      "practicePool": "sem_cs"
+    },
+    {
+      "id": "bcom",
+      "name": "B.Com in Accounting & Finance",
+      "shortName": "B.Com",
+      "field": "Commerce",
+      "description": "Three years of accounting, taxation, economics and business law. Open admission on school results.",
+      "durationMonths": 36,
+      "weeklyHours": 24,
+      "admission": {
+        "type": "open"
+      },
+      "tiers": [
+        {
+          "id": "aided",
+          "name": "Government-aided arts & science college",
+          "feesPerYear": 22000,
+          "reputation": 0.6
+        }
+      ],
+      "knowledgeGainPerMonth": 0.9,
+      "skillGainsPerMonth": {
+        "accounting": 1.5,
+        "business": 0.6,
+        "mathematics": 0.3
+      },
+      "gradeSkill": "accounting",
+      "careerIds": [
+        "accountant"
+      ],
+      "practicePool": "sem_commerce"
+    },
+    {
+      "id": "iti_electrician",
+      "name": "ITI Electrician Trade",
+      "shortName": "ITI Electrician",
+      "field": "Vocational",
+      "description": "Two years of hands-on electrical work, safety and wiring practice at a government Industrial Training Institute.",
+      "durationMonths": 24,
+      "weeklyHours": 35,
+      "admission": {
+        "type": "open"
+      },
+      "tiers": [
+        {
+          "id": "govt_iti",
+          "name": "Government ITI",
+          "feesPerYear": 6000,
+          "reputation": 0.6
+        }
+      ],
+      "knowledgeGainPerMonth": 0.6,
+      "skillGainsPerMonth": {
+        "electrical": 2.2,
+        "mathematics": 0.3
+      },
+      "gradeSkill": "electrical",
+      "careerIds": [
+        "electrician"
+      ],
+      "practicePool": "sem_trade"
+    }
+  ]
+}

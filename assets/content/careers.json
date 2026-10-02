@@ -1,0 +1,249 @@
+{
+  "contentVersion": "2026.10-ch1",
+  "careers": [
+    {
+      "id": "software_developer",
+      "name": "Software developer",
+      "sector": "Technology",
+      "description": "Build and maintain software. Strong demand, steep learning curve, salaries that rise with skill.",
+      "requiredPrograms": [
+        "btech_cs"
+      ],
+      "primarySkill": "programming",
+      "minPrimarySkill": 30,
+      "interviewPool": "interview_software",
+      "weeklyHours": 45,
+      "demand": 0.7,
+      "skillGainsPerMonth": {
+        "programming": 1.0,
+        "business": 0.2
+      },
+      "ladder": [
+        {
+          "title": "Trainee Software Engineer",
+          "monthlySalary": 28000,
+          "minMonths": 0,
+          "skillRequired": 0
+        },
+        {
+          "title": "Software Engineer",
+          "monthlySalary": 45000,
+          "minMonths": 12,
+          "skillRequired": 45
+        },
+        {
+          "title": "Senior Software Engineer",
+          "monthlySalary": 80000,
+          "minMonths": 24,
+          "skillRequired": 62
+        },
+        {
+          "title": "Technical Lead",
+          "monthlySalary": 120000,
+          "minMonths": 24,
+          "skillRequired": 75
+        },
+        {
+          "title": "Engineering Manager",
+          "monthlySalary": 170000,
+          "minMonths": 24,
+          "skillRequired": 82
+        },
+        {
+          "title": "Chief Technology Officer",
+          "monthlySalary": 300000,
+          "minMonths": 36,
+          "skillRequired": 90
+        }
+      ],
+      "employers": [
+        "Tata Consultancy Services",
+        "Infosys",
+        "Wipro",
+        "HCLTech",
+        "Tech Mahindra",
+        "Accenture",
+        "Cognizant",
+        "Zoho",
+        "Freshworks",
+        "Google",
+        "Microsoft",
+        "Amazon"
+      ]
+    },
+    {
+      "id": "accountant",
+      "name": "Accountant",
+      "sector": "Finance & business",
+      "description": "Keep organisations' books honest. Steady demand; professional exams (later chapters) open senior roles.",
+      "requiredPrograms": [
+        "bcom"
+      ],
+      "primarySkill": "accounting",
+      "minPrimarySkill": 25,
+      "interviewPool": "interview_accounting",
+      "weeklyHours": 45,
+      "demand": 0.6,
+      "skillGainsPerMonth": {
+        "accounting": 1.0,
+        "business": 0.4
+      },
+      "ladder": [
+        {
+          "title": "Accounts Trainee",
+          "monthlySalary": 18000,
+          "minMonths": 0,
+          "skillRequired": 0
+        },
+        {
+          "title": "Accounts Executive",
+          "monthlySalary": 28000,
+          "minMonths": 12,
+          "skillRequired": 40
+        },
+        {
+          "title": "Senior Accountant",
+          "monthlySalary": 45000,
+          "minMonths": 24,
+          "skillRequired": 55
+        },
+        {
+          "title": "Finance Manager",
+          "monthlySalary": 80000,
+          "minMonths": 36,
+          "skillRequired": 70
+        },
+        {
+          "title": "Financial Controller",
+          "monthlySalary": 130000,
+          "minMonths": 36,
+          "skillRequired": 80
+        },
+        {
+          "title": "Chief Financial Officer",
+          "monthlySalary": 250000,
+          "minMonths": 48,
+          "skillRequired": 90
+        }
+      ],
+      "employers": [
+        "Deloitte",
+        "EY",
+        "KPMG",
+        "PwC",
+        "Grant Thornton Bharat",
+        "Hindustan Unilever",
+        "ITC"
+      ]
+    },
+    {
+      "id": "electrician",
+      "name": "Electrician",
+      "sector": "Skilled trades",
+      "description": "Install, maintain and repair electrical systems. High demand, physical work, and a clear path to running your own contracting business.",
+      "requiredPrograms": [
+        "iti_electrician"
+      ],
+      "primarySkill": "electrical",
+      "minPrimarySkill": 30,
+      "interviewPool": "interview_electrical",
+      "weeklyHours": 48,
+      "demand": 0.75,
+      "skillGainsPerMonth": {
+        "electrical": 1.0,
+        "business": 0.3
+      },
+      "ladder": [
+        {
+          "title": "Apprentice Electrician",
+          "monthlySalary": 14000,
+          "minMonths": 0,
+          "skillRequired": 0
+        },
+        {
+          "title": "Electrician",
+          "monthlySalary": 22000,
+          "minMonths": 12,
+          "skillRequired": 45
+        },
+        {
+          "title": "Senior Electrician",
+          "monthlySalary": 32000,
+          "minMonths": 24,
+          "skillRequired": 58
+        },
+        {
+          "title": "Site Supervisor",
+          "monthlySalary": 45000,
+          "minMonths": 24,
+          "skillRequired": 68
+        },
+        {
+          "title": "Electrical Contractor",
+          "monthlySalary": 70000,
+          "minMonths": 36,
+          "skillRequired": 80
+        }
+      ],
+      "employers": [
+        "Larsen & Toubro",
+        "Tata Power",
+        "Adani Electricity",
+        "Havells",
+        "Siemens"
+      ]
+    },
+    {
+      "id": "fixlab_founder",
+      "name": "Co-founder, FixLab",
+      "sector": "Entrepreneurship",
+      "listed": false,
+      "description": "Run a small repair-and-services collective with Kavya. Income is a modest founder's draw that grows only if the business does.",
+      "requiredPrograms": [],
+      "primarySkill": "business",
+      "minPrimarySkill": 0,
+      "interviewPool": "venture_case",
+      "weeklyHours": 50,
+      "demand": 0.5,
+      "skillGainsPerMonth": {
+        "business": 1.2
+      },
+      "ladder": [
+        {
+          "title": "Co-founder",
+          "monthlySalary": 15000,
+          "minMonths": 0,
+          "skillRequired": 0
+        },
+        {
+          "title": "Co-founder (profitable)",
+          "monthlySalary": 30000,
+          "minMonths": 12,
+          "skillRequired": 40
+        },
+        {
+          "title": "Managing Partner",
+          "monthlySalary": 60000,
+          "minMonths": 24,
+          "skillRequired": 60
+        }
+      ]
+    }
+  ],
+  "partTimeJobs": [
+    {
+      "id": "cafe_counter",
+      "name": "Café counter assistant",
+      "employer": "Filter Kaapi Corner",
+      "description": "Weekends and three evenings: orders, change, and a temperamental coffee machine.",
+      "weeklyHours": 16,
+      "monthlyPay": 7000,
+      "skillGainsPerMonth": {
+        "business": 0.4
+      },
+      "statGainsPerMonth": {
+        "communication": 0.5
+      }
+    }
+  ]
+}

@@ -1,0 +1,2669 @@
+{
+  "contentVersion": "2026.10-life",
+  "npcs": [
+    {
+      "id": "divya",
+      "name": "Divya Nair",
+      "role": "Architect; an 'alliance' Amma found",
+      "routineBond": "none",
+      "colorIndex": 3,
+      "bio": "25, designs bus shelters nobody notices and libraries everybody does. Opinionated about chairs.",
+      "personality": [
+        "thoughtful",
+        "stubborn",
+        "warm"
+      ],
+      "interests": [
+        "architecture",
+        "Carnatic music",
+        "long walks"
+      ],
+      "startAffinity": 10,
+      "startTrust": 20
+    },
+    {
+      "id": "rohan",
+      "name": "Rohan Iyer",
+      "role": "Doctor; an 'alliance' Amma found",
+      "routineBond": "none",
+      "colorIndex": 2,
+      "bio": "26, junior resident at the government hospital. Sleeps four hours, laughs easily, cooks one dish extremely well.",
+      "personality": [
+        "kind",
+        "tired",
+        "funny"
+      ],
+      "interests": [
+        "cricket",
+        "cooking",
+        "bad puns"
+      ],
+      "startAffinity": 10,
+      "startTrust": 20
+    },
+    {
+      "id": "zoya",
+      "name": "Zoya Sheikh",
+      "role": "Product designer you matched with online",
+      "routineBond": "none",
+      "colorIndex": 5,
+      "bio": "26, designs banking apps by day and draws comics by night. Will judge your phone's font size.",
+      "personality": [
+        "witty",
+        "direct",
+        "curious"
+      ],
+      "interests": [
+        "comics",
+        "design",
+        "biryani"
+      ],
+      "startAffinity": 5,
+      "startTrust": 15
+    },
+    {
+      "id": "kabir",
+      "name": "Kabir Malhotra",
+      "role": "Journalist you matched with online",
+      "routineBond": "none",
+      "colorIndex": 4,
+      "bio": "27, covers city politics, reads three newspapers a day and still thinks print will make a comeback.",
+      "personality": [
+        "curious",
+        "principled",
+        "restless"
+      ],
+      "interests": [
+        "journalism",
+        "old Hindi films",
+        "football"
+      ],
+      "startAffinity": 5,
+      "startTrust": 15
+    }
+  ],
+  "childNames": [
+    "Aarav",
+    "Anaya",
+    "Kiran",
+    "Meera",
+    "Vihaan",
+    "Ishaan",
+    "Diya",
+    "Advik",
+    "Saanvi",
+    "Arjun",
+    "Tara",
+    "Nikhil"
+  ],
+  "events": [
+    {
+      "id": "ev_l_arranged",
+      "chapter": 2,
+      "title": "The Biodata File",
+      "location": "home",
+      "summary": "Amma has found 'a good alliance'.",
+      "trigger": {
+        "kind": "auto",
+        "when": {
+          "type": "all",
+          "conditions": [
+            {
+              "type": "age",
+              "op": ">=",
+              "value": 24
+            },
+            {
+              "type": "relationshipStatus",
+              "value": "single"
+            },
+            {
+              "type": "not",
+              "condition": {
+                "type": "flag",
+                "key": "arranged_done"
+              }
+            },
+            {
+              "type": "not",
+              "condition": {
+                "type": "flag",
+                "key": "not_seeking_marriage"
+              }
+            }
+          ]
+        },
+        "priority": 30
+      },
+      "start": "start",
+      "nodes": {
+        "start": {
+          "speaker": "amma",
+          "text": "Amma puts a plastic folder on the table with ceremony. 'Just look,' she says. 'Looking is free.' Inside: two biodatas with photos taken in very good lighting.",
+          "choices": [
+            {
+              "id": "c_divya",
+              "label": "Meet Divya Nair — architect, 25, 'loves reading'.",
+              "next": "divya",
+              "effects": [
+                {
+                  "type": "flag",
+                  "key": "arranged_done"
+                },
+                {
+                  "type": "partner",
+                  "npc": "divya",
+                  "status": "dating"
+                },
+                {
+                  "type": "relationship",
+                  "npc": "divya",
+                  "affinity": 15,
+                  "trust": 10
+                },
+                {
+                  "type": "relationship",
+                  "npc": "amma",
+                  "affinity": 3
+                }
+              ]
+            },
+            {
+              "id": "c_rohan",
+              "label": "Meet Rohan Iyer — doctor, 26, 'family-oriented'.",
+              "next": "rohan",
+              "effects": [
+                {
+                  "type": "flag",
+                  "key": "arranged_done"
+                },
+                {
+                  "type": "partner",
+                  "npc": "rohan",
+                  "status": "dating"
+                },
+                {
+                  "type": "relationship",
+                  "npc": "rohan",
+                  "affinity": 15,
+                  "trust": 10
+                },
+                {
+                  "type": "relationship",
+                  "npc": "amma",
+                  "affinity": 3
+                }
+              ]
+            },
+            {
+              "id": "c_self",
+              "label": "'I'll find someone myself, Amma.'",
+              "next": "self",
+              "effects": [
+                {
+                  "type": "flag",
+                  "key": "arranged_done"
+                },
+                {
+                  "type": "relationship",
+                  "npc": "amma",
+                  "conflict": 5
+                }
+              ]
+            },
+            {
+              "id": "c_none",
+              "label": "'I'm not sure I want to get married at all.'",
+              "next": "none",
+              "effects": [
+                {
+                  "type": "flag",
+                  "key": "arranged_done"
+                },
+                {
+                  "type": "flag",
+                  "key": "not_seeking_marriage"
+                },
+                {
+                  "type": "relationship",
+                  "npc": "amma",
+                  "affinity": -2,
+                  "conflict": 10
+                }
+              ]
+            }
+          ]
+        },
+        "divya": {
+          "speaker": "divya",
+          "text": "Coffee at a quiet café, both families pretending not to hover. Divya asks what you'd change about your city. You talk for two hours about footpaths. It's the best first meeting you could have hoped for.",
+          "onEnter": [
+            {
+              "type": "memory",
+              "npc": "divya",
+              "tag": "first_meeting",
+              "text": "Two hours talking about footpaths.",
+              "weight": 1
+            }
+          ]
+        },
+        "rohan": {
+          "speaker": "rohan",
+          "text": "Rohan arrives late from a hospital shift, apologises three times, then makes you laugh so hard you spill your tea. 'I'm better when I've slept,' he says. You'd like to find out.",
+          "onEnter": [
+            {
+              "type": "memory",
+              "npc": "rohan",
+              "tag": "first_meeting",
+              "text": "He came straight from a night shift and still made you laugh.",
+              "weight": 1
+            }
+          ]
+        },
+        "self": {
+          "speaker": "narrator",
+          "text": "Amma sighs the sigh of every mother in history. 'Fine. But not too late.' The folder goes back in the cupboard, not the bin."
+        },
+        "none": {
+          "speaker": "narrator",
+          "text": "Amma doesn't speak to you for the rest of the evening. The next morning there's coffee made the way you like it. That's how she says 'I'm trying'."
+        }
+      }
+    },
+    {
+      "id": "ev_l_arranged_answer",
+      "chapter": 2,
+      "title": "The Families Want an Answer",
+      "location": "home",
+      "summary": "After weeks of meetings, both families are waiting.",
+      "trigger": {
+        "kind": "auto",
+        "when": {
+          "type": "all",
+          "conditions": [
+            {
+              "type": "relationshipStatus",
+              "value": "dating"
+            },
+            {
+              "type": "any",
+              "conditions": [
+                {
+                  "type": "partner",
+                  "npc": "divya"
+                },
+                {
+                  "type": "partner",
+                  "npc": "rohan"
+                }
+              ]
+            },
+            {
+              "type": "daysSinceEvent",
+              "event": "ev_l_arranged",
+              "op": ">=",
+              "value": 60
+            }
+          ]
+        },
+        "priority": 31
+      },
+      "start": "start",
+      "nodes": {
+        "start": {
+          "speaker": "narrator",
+          "text": "Weeks of phone calls, two dinners and one disastrous family lunch later, the question arrives: 'So? Shall we fix a date?'",
+          "choices": [
+            {
+              "id": "c_yes",
+              "label": "Say yes — let's get engaged.",
+              "next": "yes",
+              "effects": [],
+              "routes": [
+                {
+                  "when": {
+                    "type": "partner",
+                    "field": "affinity",
+                    "op": ">=",
+                    "value": 30
+                  },
+                  "next": "engaged"
+                }
+              ]
+            },
+            {
+              "id": "c_time",
+              "label": "Ask for more time to get to know each other.",
+              "next": "time",
+              "effects": [
+                {
+                  "type": "relationship",
+                  "npc": "partner",
+                  "affinity": 2
+                }
+              ]
+            },
+            {
+              "id": "c_no",
+              "label": "It doesn't feel right. Say no, kindly.",
+              "next": "no",
+              "effects": [
+                {
+                  "type": "partnerStatus",
+                  "status": "single"
+                },
+                {
+                  "type": "relationship",
+                  "npc": "amma",
+                  "affinity": -3
+                },
+                {
+                  "type": "stat",
+                  "key": "wellbeing",
+                  "delta": -2
+                }
+              ]
+            }
+          ]
+        },
+        "yes": {
+          "speaker": "narrator",
+          "text": "They hesitate. 'I like you,' they say, 'but I don't know you yet. Can we keep meeting before anyone fixes anything?' The families grumble. You're both relieved.",
+          "onEnter": [
+            {
+              "type": "relationship",
+              "npc": "partner",
+              "affinity": 2,
+              "trust": 2
+            }
+          ]
+        },
+        "engaged": {
+          "speaker": "narrator",
+          "text": "Two families, one living room, too many sweets. A small ring ceremony, and a wedding date the astrologer and the calendar finally agree on.",
+          "onEnter": [
+            {
+              "type": "partnerStatus",
+              "status": "engaged"
+            },
+            {
+              "type": "relationship",
+              "npc": "partner",
+              "affinity": 8,
+              "trust": 6
+            },
+            {
+              "type": "relationship",
+              "npc": "amma",
+              "affinity": 6
+            },
+            {
+              "type": "memory",
+              "npc": "partner",
+              "tag": "engaged",
+              "text": "The day you both said yes.",
+              "weight": 2
+            },
+            {
+              "type": "schedule",
+              "event": "ev_l_wedding",
+              "inDays": 90
+            }
+          ]
+        },
+        "time": {
+          "speaker": "narrator",
+          "text": "They agree, gratefully. Getting to know someone properly turns out to be a series of small evenings."
+        },
+        "no": {
+          "speaker": "narrator",
+          "text": "It's an awkward phone call and a kind one. The families exchange polite messages and move on. Amma doesn't say 'I told you so', loudly."
+        }
+      },
+      "repeatable": true
+    },
+    {
+      "id": "ev_m_dating_app",
+      "chapter": 0,
+      "title": "Swipe Right?",
+      "location": "home",
+      "summary": "A dating app, two promising profiles.",
+      "trigger": {
+        "kind": "auto",
+        "when": {
+          "type": "all",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "mature_on"
+            },
+            {
+              "type": "age",
+              "op": ">=",
+              "value": 21
+            },
+            {
+              "type": "relationshipStatus",
+              "value": "single"
+            },
+            {
+              "type": "owns",
+              "category": "phone"
+            },
+            {
+              "type": "not",
+              "condition": {
+                "type": "flag",
+                "key": "not_seeking_romance"
+              }
+            },
+            {
+              "type": "not",
+              "condition": {
+                "type": "flag",
+                "key": "deleted_dating_app"
+              }
+            },
+            {
+              "type": "flag",
+              "key": "chapter1_complete"
+            }
+          ]
+        },
+        "priority": 22
+      },
+      "start": "start",
+      "nodes": {
+        "start": {
+          "speaker": "narrator",
+          "text": "Kavya installs a dating app on your phone 'for research' and hands it back. Two profiles stand out.",
+          "choices": [
+            {
+              "id": "c_zoya",
+              "label": "Swipe right on Zoya — product designer, 26, 'will draw you as a cartoon'.",
+              "next": "nomatch",
+              "effects": [
+                {
+                  "type": "roll",
+                  "key": "app_match",
+                  "chance": 0.5
+                }
+              ],
+              "routes": [
+                {
+                  "when": {
+                    "type": "any",
+                    "conditions": [
+                      {
+                        "type": "flag",
+                        "key": "app_match"
+                      },
+                      {
+                        "type": "stat",
+                        "key": "looks",
+                        "op": ">=",
+                        "value": 65
+                      }
+                    ]
+                  },
+                  "next": "zoya"
+                }
+              ]
+            },
+            {
+              "id": "c_kabir",
+              "label": "Swipe right on Kabir — journalist, 27, 'ask me about local politics (or don't)'.",
+              "next": "nomatch",
+              "effects": [
+                {
+                  "type": "roll",
+                  "key": "app_match",
+                  "chance": 0.5
+                }
+              ],
+              "routes": [
+                {
+                  "when": {
+                    "type": "any",
+                    "conditions": [
+                      {
+                        "type": "flag",
+                        "key": "app_match"
+                      },
+                      {
+                        "type": "stat",
+                        "key": "looks",
+                        "op": ">=",
+                        "value": 65
+                      }
+                    ]
+                  },
+                  "next": "kabir"
+                }
+              ]
+            },
+            {
+              "id": "c_delete",
+              "label": "Delete the app. Not your thing.",
+              "next": "delete",
+              "effects": [
+                {
+                  "type": "flag",
+                  "key": "deleted_dating_app"
+                }
+              ]
+            }
+          ]
+        },
+        "zoya": {
+          "speaker": "zoya",
+          "text": "It's a match. Zoya messages first: a cartoon of you, unflattering and accurate. Your first date is a comic-book store and a plate of biryani. You're seeing each other now.",
+          "onEnter": [
+            {
+              "type": "partner",
+              "npc": "zoya",
+              "status": "dating"
+            },
+            {
+              "type": "relationship",
+              "npc": "zoya",
+              "affinity": 22,
+              "trust": 15
+            },
+            {
+              "type": "memory",
+              "npc": "zoya",
+              "tag": "first_date",
+              "text": "A comic-book store and a plate of biryani.",
+              "weight": 2
+            },
+            {
+              "type": "stat",
+              "key": "wellbeing",
+              "delta": 4
+            }
+          ]
+        },
+        "kabir": {
+          "speaker": "kabir",
+          "text": "It's a match. Kabir's first message is a three-paragraph opinion about your city's bus routes. Your first date lasts until the café closes. You're seeing each other now.",
+          "onEnter": [
+            {
+              "type": "partner",
+              "npc": "kabir",
+              "status": "dating"
+            },
+            {
+              "type": "relationship",
+              "npc": "kabir",
+              "affinity": 22,
+              "trust": 15
+            },
+            {
+              "type": "memory",
+              "npc": "kabir",
+              "tag": "first_date",
+              "text": "You talked until the café closed.",
+              "weight": 2
+            },
+            {
+              "type": "stat",
+              "key": "wellbeing",
+              "delta": 4
+            }
+          ]
+        },
+        "nomatch": {
+          "speaker": "narrator",
+          "text": "No match. The app suggests forty-seven other people you might like. You close it and go for a walk instead.",
+          "onEnter": [
+            {
+              "type": "stat",
+              "key": "wellbeing",
+              "delta": -1
+            }
+          ]
+        },
+        "delete": {
+          "speaker": "narrator",
+          "text": "Deleted. Kavya calls you a dinosaur. You call it peace."
+        }
+      },
+      "repeatable": true
+    },
+    {
+      "id": "ev_l_proposal",
+      "chapter": 2,
+      "title": "The Question",
+      "location": "park",
+      "summary": "You've been together a long time. Is this forever?",
+      "trigger": {
+        "kind": "auto",
+        "when": {
+          "type": "all",
+          "conditions": [
+            {
+              "type": "relationshipStatus",
+              "value": "dating"
+            },
+            {
+              "type": "partner",
+              "field": "affinity",
+              "op": ">=",
+              "value": 50
+            },
+            {
+              "type": "partner",
+              "field": "trust",
+              "op": ">=",
+              "value": 45
+            },
+            {
+              "type": "age",
+              "op": ">=",
+              "value": 22
+            }
+          ]
+        },
+        "priority": 35
+      },
+      "start": "start",
+      "nodes": {
+        "start": {
+          "speaker": "narrator",
+          "text": "An ordinary evening, and the thought arrives fully formed: you want to marry this person.",
+          "variants": [
+            {
+              "when": {
+                "type": "partner",
+                "npc": "arjun"
+              },
+              "text": "Arjun is tuning his guitar and humming the song he wrote about samosas."
+            },
+            {
+              "when": {
+                "type": "partner",
+                "npc": "nila"
+              },
+              "text": "Nila is photographing the light on your hands, again."
+            }
+          ],
+          "choices": [
+            {
+              "id": "c_ring",
+              "label": "Propose with a diamond ring (₹85,000).",
+              "next": "yes",
+              "effects": [
+                {
+                  "type": "stat",
+                  "key": "wellbeing",
+                  "delta": 3
+                }
+              ],
+              "cost": {
+                "money": 85000
+              },
+              "routes": [
+                {
+                  "when": {
+                    "type": "partner",
+                    "field": "conflict",
+                    "op": ">=",
+                    "value": 40
+                  },
+                  "next": "wait"
+                }
+              ]
+            },
+            {
+              "id": "c_simple",
+              "label": "Propose with your grandmother's old ring.",
+              "next": "yes",
+              "effects": [
+                {
+                  "type": "relationship",
+                  "npc": "amma",
+                  "affinity": 2
+                }
+              ],
+              "routes": [
+                {
+                  "when": {
+                    "type": "partner",
+                    "field": "conflict",
+                    "op": ">=",
+                    "value": 40
+                  },
+                  "next": "wait"
+                }
+              ]
+            },
+            {
+              "id": "c_notyet",
+              "label": "Not yet. There's time.",
+              "next": "later",
+              "effects": []
+            },
+            {
+              "id": "c_end",
+              "label": "Admit it isn't working, and end it kindly.",
+              "next": "end",
+              "effects": [
+                {
+                  "type": "partnerStatus",
+                  "status": "single"
+                },
+                {
+                  "type": "flag",
+                  "key": "amicable_breakup"
+                },
+                {
+                  "type": "clearFlag",
+                  "key": "dating"
+                },
+                {
+                  "type": "clearFlag",
+                  "key": "dating_arjun"
+                },
+                {
+                  "type": "clearFlag",
+                  "key": "dating_nila"
+                },
+                {
+                  "type": "stat",
+                  "key": "wellbeing",
+                  "delta": -6
+                }
+              ]
+            }
+          ]
+        },
+        "yes": {
+          "speaker": "narrator",
+          "text": "You barely get the words out. They say yes before you finish, then make you ask properly so they can say yes again.",
+          "onEnter": [
+            {
+              "type": "partnerStatus",
+              "status": "engaged"
+            },
+            {
+              "type": "relationship",
+              "npc": "partner",
+              "affinity": 10,
+              "trust": 8
+            },
+            {
+              "type": "memory",
+              "npc": "partner",
+              "tag": "proposal",
+              "text": "You proposed. They said yes — twice.",
+              "weight": 3
+            },
+            {
+              "type": "stat",
+              "key": "wellbeing",
+              "delta": 8
+            },
+            {
+              "type": "schedule",
+              "event": "ev_l_wedding",
+              "inDays": 120
+            }
+          ]
+        },
+        "wait": {
+          "speaker": "narrator",
+          "text": "They hold your hands and say, gently, 'Not while we're fighting this much. Ask me again when we're better.' It hurts, and it's fair.",
+          "onEnter": [
+            {
+              "type": "relationship",
+              "npc": "partner",
+              "trust": 2
+            },
+            {
+              "type": "stat",
+              "key": "wellbeing",
+              "delta": -3
+            }
+          ]
+        },
+        "later": {
+          "speaker": "narrator",
+          "text": "You keep the thought to yourself, for now. It'll still be true later."
+        },
+        "end": {
+          "speaker": "narrator",
+          "text": "It's the hardest conversation of your life so far. You both cry, then share the last cup of chai. Some endings are done well."
+        }
+      },
+      "repeatable": true
+    },
+    {
+      "id": "ev_l_wedding",
+      "chapter": 2,
+      "title": "The Wedding",
+      "location": "home",
+      "summary": "Two families, one budget, a hundred opinions.",
+      "trigger": {
+        "kind": "scheduled",
+        "when": {
+          "type": "flag",
+          "key": "engaged"
+        }
+      },
+      "start": "start",
+      "nodes": {
+        "start": {
+          "speaker": "amma",
+          "text": "The wedding is three weeks away and the budget meeting has become a negotiation between two families, one caterer and an astrologer.",
+          "variants": [
+            {
+              "when": {
+                "type": "flag",
+                "key": "bg_affluent_business"
+              },
+              "text": "Your father has already spoken to a five-star hotel 'just to ask'."
+            },
+            {
+              "when": {
+                "type": "flag",
+                "key": "bg_rural_farming"
+              },
+              "text": "The whole village expects to be invited. The whole village."
+            }
+          ],
+          "choices": [
+            {
+              "id": "c_registry",
+              "label": "A registry wedding, just close family (₹2,000).",
+              "next": "married",
+              "effects": [
+                {
+                  "type": "money",
+                  "amount": -2000,
+                  "label": "Registry wedding",
+                  "category": "family"
+                },
+                {
+                  "type": "relationship",
+                  "npc": "amma",
+                  "affinity": -3
+                },
+                {
+                  "type": "flag",
+                  "key": "simple_wedding"
+                }
+              ]
+            },
+            {
+              "id": "c_court",
+              "label": "Court wedding and a dinner for fifty (₹25,000).",
+              "next": "married",
+              "effects": [
+                {
+                  "type": "relationship",
+                  "npc": "amma",
+                  "affinity": -1
+                },
+                {
+                  "type": "flag",
+                  "key": "simple_wedding"
+                }
+              ],
+              "cost": {
+                "money": 25000
+              }
+            },
+            {
+              "id": "c_temple",
+              "label": "Temple wedding and a reception (₹3,00,000).",
+              "next": "married",
+              "effects": [
+                {
+                  "type": "relationship",
+                  "npc": "amma",
+                  "affinity": 5
+                },
+                {
+                  "type": "stat",
+                  "key": "wellbeing",
+                  "delta": 3
+                }
+              ],
+              "cost": {
+                "money": 300000
+              }
+            },
+            {
+              "id": "c_loan",
+              "label": "Mid-size wedding, part-funded by a ₹1,00,000 personal loan.",
+              "next": "married",
+              "effects": [
+                {
+                  "type": "openBankAccount"
+                },
+                {
+                  "type": "takeLoan",
+                  "product": "kaveri_personal",
+                  "amount": 100000
+                },
+                {
+                  "type": "money",
+                  "amount": -300000,
+                  "label": "Wedding expenses",
+                  "category": "family"
+                },
+                {
+                  "type": "relationship",
+                  "npc": "amma",
+                  "affinity": 5
+                }
+              ],
+              "requires": {
+                "type": "cash",
+                "op": ">=",
+                "value": 200000
+              },
+              "hint": "A loan for a party: a familiar Indian story."
+            },
+            {
+              "id": "c_big",
+              "label": "The big fat wedding — 800 guests, three days (₹15,00,000).",
+              "next": "married",
+              "effects": [
+                {
+                  "type": "relationship",
+                  "npc": "amma",
+                  "affinity": 8
+                },
+                {
+                  "type": "stat",
+                  "key": "wellbeing",
+                  "delta": 6
+                },
+                {
+                  "type": "stat",
+                  "key": "communication",
+                  "delta": 2
+                },
+                {
+                  "type": "flag",
+                  "key": "big_wedding"
+                }
+              ],
+              "cost": {
+                "money": 1500000
+              }
+            }
+          ]
+        },
+        "married": {
+          "speaker": "narrator",
+          "text": "Garlands, rice, a hundred photographs and one aunty crying the entire time. You're married.",
+          "onEnter": [
+            {
+              "type": "partnerStatus",
+              "status": "married"
+            },
+            {
+              "type": "relationship",
+              "npc": "partner",
+              "affinity": 10,
+              "trust": 10
+            },
+            {
+              "type": "memory",
+              "npc": "partner",
+              "tag": "wedding",
+              "text": "Your wedding day.",
+              "weight": 3
+            },
+            {
+              "type": "memory",
+              "npc": "amma",
+              "tag": "wedding",
+              "text": "Your wedding day.",
+              "weight": 2
+            },
+            {
+              "type": "stat",
+              "key": "wellbeing",
+              "delta": 8
+            }
+          ],
+          "variants": [
+            {
+              "when": {
+                "type": "flag",
+                "key": "big_wedding"
+              },
+              "text": "Eight hundred guests, three caterers, one horse that refused to cooperate. People will talk about it for years."
+            },
+            {
+              "when": {
+                "type": "flag",
+                "key": "simple_wedding"
+              },
+              "text": "Small, quiet and entirely yours. You remember every face in the room."
+            }
+          ],
+          "choices": [
+            {
+              "id": "c_goa",
+              "label": "Honeymoon in Goa for a week (₹45,000).",
+              "next": "honeymoon",
+              "effects": [
+                {
+                  "type": "stat",
+                  "key": "wellbeing",
+                  "delta": 6
+                },
+                {
+                  "type": "stat",
+                  "key": "energy",
+                  "delta": 15
+                },
+                {
+                  "type": "relationship",
+                  "npc": "partner",
+                  "affinity": 4
+                }
+              ],
+              "cost": {
+                "money": 45000
+              }
+            },
+            {
+              "id": "c_abroad",
+              "label": "An island resort abroad (₹2,50,000).",
+              "next": "honeymoon",
+              "effects": [
+                {
+                  "type": "stat",
+                  "key": "wellbeing",
+                  "delta": 9
+                },
+                {
+                  "type": "stat",
+                  "key": "energy",
+                  "delta": 20
+                },
+                {
+                  "type": "relationship",
+                  "npc": "partner",
+                  "affinity": 6
+                },
+                {
+                  "type": "flag",
+                  "key": "honeymoon_abroad"
+                }
+              ],
+              "cost": {
+                "money": 250000
+              }
+            },
+            {
+              "id": "c_hills",
+              "label": "A weekend in the hills (₹12,000).",
+              "next": "honeymoon",
+              "effects": [
+                {
+                  "type": "stat",
+                  "key": "wellbeing",
+                  "delta": 4
+                },
+                {
+                  "type": "stat",
+                  "key": "energy",
+                  "delta": 10
+                },
+                {
+                  "type": "relationship",
+                  "npc": "partner",
+                  "affinity": 3
+                }
+              ],
+              "cost": {
+                "money": 12000
+              }
+            },
+            {
+              "id": "c_skip",
+              "label": "Skip it — save the money.",
+              "next": "skip",
+              "effects": [
+                {
+                  "type": "stat",
+                  "key": "discipline",
+                  "delta": 1
+                }
+              ]
+            }
+          ]
+        },
+        "honeymoon": {
+          "speaker": "narrator",
+          "text": "Sea or hills, the best part is the same: nobody asking when you'll have children. (They ask the day you get back.)",
+          "onEnter": [
+            {
+              "type": "achievement",
+              "id": "just_married"
+            }
+          ]
+        },
+        "skip": {
+          "speaker": "narrator",
+          "text": "You spend the money on a sofa. It's a very good sofa.",
+          "onEnter": [
+            {
+              "type": "achievement",
+              "id": "just_married"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ev_l_kids",
+      "chapter": 2,
+      "title": "Talking About Children",
+      "location": "home",
+      "summary": "A big conversation.",
+      "trigger": {
+        "kind": "auto",
+        "when": {
+          "type": "all",
+          "conditions": [
+            {
+              "type": "relationshipStatus",
+              "value": "married"
+            },
+            {
+              "type": "yearsMarried",
+              "op": ">=",
+              "value": 1
+            },
+            {
+              "type": "children",
+              "op": "==",
+              "value": 0
+            },
+            {
+              "type": "age",
+              "op": ">=",
+              "value": 24
+            },
+            {
+              "type": "not",
+              "condition": {
+                "type": "flag",
+                "key": "childfree"
+              }
+            },
+            {
+              "type": "not",
+              "condition": {
+                "type": "flag",
+                "key": "trying_for_baby"
+              }
+            },
+            {
+              "type": "not",
+              "condition": {
+                "type": "flag",
+                "key": "kids_later"
+              }
+            },
+            {
+              "type": "not",
+              "condition": {
+                "type": "flag",
+                "key": "adopting"
+              }
+            }
+          ]
+        },
+        "priority": 33
+      },
+      "start": "start",
+      "nodes": {
+        "start": {
+          "speaker": "narrator",
+          "text": "A year into marriage, every relative has asked the question. Tonight, your partner does too — gently. 'What do we want?'",
+          "choices": [
+            {
+              "id": "c_try",
+              "label": "Start trying for a baby.",
+              "next": "try",
+              "effects": [
+                {
+                  "type": "flag",
+                  "key": "trying_for_baby"
+                },
+                {
+                  "type": "relationship",
+                  "npc": "partner",
+                  "affinity": 3,
+                  "trust": 2
+                },
+                {
+                  "type": "schedule",
+                  "event": "ev_l_baby",
+                  "inDays": 300
+                }
+              ]
+            },
+            {
+              "id": "c_adopt",
+              "label": "Talk about adopting.",
+              "next": "adopt",
+              "effects": [
+                {
+                  "type": "flag",
+                  "key": "adopting"
+                },
+                {
+                  "type": "relationship",
+                  "npc": "partner",
+                  "affinity": 3,
+                  "trust": 3
+                },
+                {
+                  "type": "schedule",
+                  "event": "ev_l_adoption",
+                  "inDays": 240
+                }
+              ]
+            },
+            {
+              "id": "c_later",
+              "label": "Not yet — in a couple of years.",
+              "next": "later",
+              "effects": [
+                {
+                  "type": "flag",
+                  "key": "kids_later"
+                },
+                {
+                  "type": "delayed",
+                  "inDays": 730,
+                  "note": "Time to talk about children again",
+                  "effects": [
+                    {
+                      "type": "clearFlag",
+                      "key": "kids_later"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "c_none",
+              "label": "We don't want children.",
+              "next": "none",
+              "effects": [
+                {
+                  "type": "flag",
+                  "key": "childfree"
+                },
+                {
+                  "type": "relationship",
+                  "npc": "amma",
+                  "conflict": 6
+                }
+              ]
+            }
+          ]
+        },
+        "try": {
+          "speaker": "narrator",
+          "text": "You both agree. Terrified and excited, in roughly equal measure."
+        },
+        "adopt": {
+          "speaker": "narrator",
+          "text": "You start the paperwork with an agency. It will take months. You're both sure."
+        },
+        "later": {
+          "speaker": "narrator",
+          "text": "You agree to wait. The relatives do not agree. That's their problem."
+        },
+        "none": {
+          "speaker": "narrator",
+          "text": "You're on the same page, which is what matters. Amma takes a while to accept it."
+        }
+      },
+      "repeatable": true
+    },
+    {
+      "id": "ev_l_baby",
+      "chapter": 2,
+      "title": "A New Arrival",
+      "location": "hospital",
+      "summary": "The baby is coming.",
+      "trigger": {
+        "kind": "scheduled",
+        "when": {
+          "type": "flag",
+          "key": "trying_for_baby"
+        }
+      },
+      "start": "start",
+      "nodes": {
+        "start": {
+          "speaker": "narrator",
+          "text": "3:40 a.m., a hospital corridor, a nurse who has done this a thousand times saying 'Congratulations'. Small, loud and perfect.",
+          "onEnter": [
+            {
+              "type": "money",
+              "amount": -35000,
+              "label": "Hospital delivery",
+              "category": "health"
+            },
+            {
+              "type": "clearFlag",
+              "key": "trying_for_baby"
+            },
+            {
+              "type": "stat",
+              "key": "energy",
+              "delta": -15
+            }
+          ],
+          "choices": [
+            {
+              "id": "c_a",
+              "label": "Name the baby Aarav.",
+              "next": "born",
+              "effects": [
+                {
+                  "type": "haveChild",
+                  "name": "Aarav"
+                }
+              ]
+            },
+            {
+              "id": "c_b",
+              "label": "Name the baby Anaya.",
+              "next": "born",
+              "effects": [
+                {
+                  "type": "haveChild",
+                  "name": "Anaya"
+                }
+              ]
+            },
+            {
+              "id": "c_c",
+              "label": "Name the baby Kiran.",
+              "next": "born",
+              "effects": [
+                {
+                  "type": "haveChild",
+                  "name": "Kiran"
+                }
+              ]
+            },
+            {
+              "id": "c_d",
+              "label": "Let your partner pick the name.",
+              "next": "born",
+              "effects": [
+                {
+                  "type": "haveChild",
+                  "name": "auto"
+                },
+                {
+                  "type": "relationship",
+                  "npc": "partner",
+                  "affinity": 3
+                }
+              ]
+            }
+          ]
+        },
+        "born": {
+          "speaker": "narrator",
+          "text": "Amma holds the baby and cries. Then she starts giving advice and doesn't stop for eighteen years.",
+          "onEnter": [
+            {
+              "type": "relationship",
+              "npc": "partner",
+              "affinity": 6,
+              "trust": 4
+            },
+            {
+              "type": "relationship",
+              "npc": "amma",
+              "affinity": 8,
+              "trust": 3
+            },
+            {
+              "type": "memory",
+              "npc": "amma",
+              "tag": "grandchild",
+              "text": "Holding her first grandchild.",
+              "weight": 3
+            },
+            {
+              "type": "stat",
+              "key": "wellbeing",
+              "delta": 10
+            }
+          ]
+        }
+      },
+      "repeatable": true
+    },
+    {
+      "id": "ev_l_adoption",
+      "chapter": 2,
+      "title": "Welcome Home",
+      "location": "home",
+      "summary": "The agency calls.",
+      "trigger": {
+        "kind": "scheduled",
+        "when": {
+          "type": "flag",
+          "key": "adopting"
+        }
+      },
+      "start": "start",
+      "nodes": {
+        "start": {
+          "speaker": "narrator",
+          "text": "The agency calls on a Tuesday afternoon. A toddler with enormous eyes and a stuffed elephant. 'Whenever you're ready,' the social worker says. You've been ready for months.",
+          "onEnter": [
+            {
+              "type": "money",
+              "amount": -40000,
+              "label": "Adoption fees",
+              "category": "family"
+            },
+            {
+              "type": "clearFlag",
+              "key": "adopting"
+            }
+          ],
+          "choices": [
+            {
+              "id": "c_a",
+              "label": "Name the baby Aarav.",
+              "next": "born",
+              "effects": [
+                {
+                  "type": "haveChild",
+                  "name": "Aarav"
+                }
+              ]
+            },
+            {
+              "id": "c_b",
+              "label": "Name the baby Anaya.",
+              "next": "born",
+              "effects": [
+                {
+                  "type": "haveChild",
+                  "name": "Anaya"
+                }
+              ]
+            },
+            {
+              "id": "c_c",
+              "label": "Name the baby Kiran.",
+              "next": "born",
+              "effects": [
+                {
+                  "type": "haveChild",
+                  "name": "Kiran"
+                }
+              ]
+            },
+            {
+              "id": "c_d",
+              "label": "Let your partner pick the name.",
+              "next": "born",
+              "effects": [
+                {
+                  "type": "haveChild",
+                  "name": "auto"
+                },
+                {
+                  "type": "relationship",
+                  "npc": "partner",
+                  "affinity": 3
+                }
+              ]
+            }
+          ]
+        },
+        "born": {
+          "speaker": "narrator",
+          "text": "The elephant gets its own pillow. Amma knits it a sweater.",
+          "onEnter": [
+            {
+              "type": "relationship",
+              "npc": "partner",
+              "affinity": 6,
+              "trust": 4
+            },
+            {
+              "type": "relationship",
+              "npc": "amma",
+              "affinity": 8,
+              "trust": 3
+            },
+            {
+              "type": "memory",
+              "npc": "amma",
+              "tag": "grandchild",
+              "text": "The day the grandchild came home.",
+              "weight": 3
+            },
+            {
+              "type": "stat",
+              "key": "wellbeing",
+              "delta": 10
+            },
+            {
+              "type": "flag",
+              "key": "adopted_child"
+            }
+          ]
+        }
+      },
+      "repeatable": true
+    },
+    {
+      "id": "ev_l_second_child",
+      "chapter": 2,
+      "title": "Another One?",
+      "location": "home",
+      "summary": "Your family might grow again.",
+      "trigger": {
+        "kind": "auto",
+        "when": {
+          "type": "all",
+          "conditions": [
+            {
+              "type": "relationshipStatus",
+              "value": "married"
+            },
+            {
+              "type": "children",
+              "op": "==",
+              "value": 1
+            },
+            {
+              "type": "yearsMarried",
+              "op": ">=",
+              "value": 3
+            },
+            {
+              "type": "not",
+              "condition": {
+                "type": "flag",
+                "key": "one_is_enough"
+              }
+            },
+            {
+              "type": "not",
+              "condition": {
+                "type": "flag",
+                "key": "trying_for_baby"
+              }
+            },
+            {
+              "type": "not",
+              "condition": {
+                "type": "flag",
+                "key": "childfree"
+              }
+            }
+          ]
+        },
+        "priority": 32
+      },
+      "start": "start",
+      "nodes": {
+        "start": {
+          "speaker": "narrator",
+          "text": "Your child asks for a sibling — specifically 'a baby brother or a puppy'. Your partner looks at you.",
+          "choices": [
+            {
+              "id": "c_yes",
+              "label": "Try for a second child.",
+              "next": "yes",
+              "effects": [
+                {
+                  "type": "flag",
+                  "key": "trying_for_baby"
+                },
+                {
+                  "type": "schedule",
+                  "event": "ev_l_baby",
+                  "inDays": 300
+                }
+              ]
+            },
+            {
+              "id": "c_no",
+              "label": "One is perfect.",
+              "next": "no",
+              "effects": [
+                {
+                  "type": "flag",
+                  "key": "one_is_enough"
+                }
+              ]
+            }
+          ]
+        },
+        "yes": {
+          "speaker": "narrator",
+          "text": "Here we go again."
+        },
+        "no": {
+          "speaker": "narrator",
+          "text": "You compromise on a goldfish. It is named after a cricketer."
+        }
+      }
+    },
+    {
+      "id": "ev_l_strain",
+      "chapter": 2,
+      "title": "Cracks",
+      "location": "home",
+      "summary": "An argument that isn't really about the dishes.",
+      "trigger": {
+        "kind": "random",
+        "when": {
+          "type": "all",
+          "conditions": [
+            {
+              "type": "relationshipStatus",
+              "value": "married"
+            },
+            {
+              "type": "any",
+              "conditions": [
+                {
+                  "type": "partner",
+                  "field": "conflict",
+                  "op": ">=",
+                  "value": 20
+                },
+                {
+                  "type": "stat",
+                  "key": "wellbeing",
+                  "op": "<",
+                  "value": 40
+                },
+                {
+                  "type": "arrears",
+                  "op": ">",
+                  "value": 0
+                }
+              ]
+            }
+          ]
+        },
+        "chancePerMonth": 0.12
+      },
+      "start": "start",
+      "nodes": {
+        "start": {
+          "speaker": "narrator",
+          "text": "It starts with the dishes and ends somewhere much older: money, time, who gives up more. You both go to bed angry.",
+          "onEnter": [
+            {
+              "type": "relationship",
+              "npc": "partner",
+              "affinity": -4,
+              "conflict": 10
+            }
+          ],
+          "choices": [
+            {
+              "id": "c_counsel",
+              "label": "Book couples counselling (₹8,000).",
+              "next": "counsel",
+              "effects": [
+                {
+                  "type": "relationship",
+                  "npc": "partner",
+                  "affinity": 6,
+                  "trust": 4,
+                  "conflict": -25
+                }
+              ],
+              "cost": {
+                "money": 8000
+              }
+            },
+            {
+              "id": "c_trip",
+              "label": "Plan a weekend away together (₹15,000).",
+              "next": "trip",
+              "effects": [
+                {
+                  "type": "relationship",
+                  "npc": "partner",
+                  "affinity": 6,
+                  "trust": 2,
+                  "conflict": -15
+                },
+                {
+                  "type": "stat",
+                  "key": "wellbeing",
+                  "delta": 3
+                }
+              ],
+              "cost": {
+                "money": 15000
+              }
+            },
+            {
+              "id": "c_talk",
+              "label": "Have the honest conversation tonight.",
+              "next": "bad",
+              "effects": [
+                {
+                  "type": "roll",
+                  "key": "talk_ok",
+                  "chance": 0.6
+                }
+              ],
+              "routes": [
+                {
+                  "when": {
+                    "type": "flag",
+                    "key": "talk_ok"
+                  },
+                  "next": "good"
+                }
+              ]
+            },
+            {
+              "id": "c_ignore",
+              "label": "Let it blow over.",
+              "next": "ignore",
+              "effects": [
+                {
+                  "type": "relationship",
+                  "npc": "partner",
+                  "affinity": -6,
+                  "conflict": 12
+                }
+              ]
+            }
+          ]
+        },
+        "counsel": {
+          "speaker": "narrator",
+          "text": "The counsellor makes you each say what you need without saying 'you always'. It's harder than any exam you've sat."
+        },
+        "trip": {
+          "speaker": "narrator",
+          "text": "Two days away from everything. You remember you actually like each other."
+        },
+        "good": {
+          "speaker": "narrator",
+          "text": "It's a long night. By the end of it you understand each other better than you have in months.",
+          "onEnter": [
+            {
+              "type": "relationship",
+              "npc": "partner",
+              "affinity": 5,
+              "trust": 3,
+              "conflict": -15
+            }
+          ]
+        },
+        "bad": {
+          "speaker": "narrator",
+          "text": "The conversation goes in circles and ends in silence. Tomorrow you'll try again.",
+          "onEnter": [
+            {
+              "type": "relationship",
+              "npc": "partner",
+              "affinity": -2,
+              "conflict": 8
+            }
+          ]
+        },
+        "ignore": {
+          "speaker": "narrator",
+          "text": "It blows over. Things that blow over tend to blow back."
+        }
+      },
+      "repeatable": true
+    },
+    {
+      "id": "ev_l_divorce",
+      "chapter": 2,
+      "title": "The End of Something",
+      "location": "home",
+      "summary": "Your marriage is breaking down.",
+      "trigger": {
+        "kind": "auto",
+        "when": {
+          "type": "all",
+          "conditions": [
+            {
+              "type": "relationshipStatus",
+              "value": "married"
+            },
+            {
+              "type": "partner",
+              "field": "affinity",
+              "op": "<=",
+              "value": 0
+            },
+            {
+              "type": "partner",
+              "field": "conflict",
+              "op": ">=",
+              "value": 40
+            }
+          ]
+        },
+        "priority": 60
+      },
+      "start": "start",
+      "nodes": {
+        "start": {
+          "speaker": "narrator",
+          "text": "Neither of you remembers the last good day. The silence in the flat has a weight to it.",
+          "variants": [
+            {
+              "when": {
+                "type": "children",
+                "op": ">=",
+                "value": 1
+              },
+              "text": "The children have started asking why everyone is so quiet."
+            }
+          ],
+          "choices": [
+            {
+              "id": "c_save",
+              "label": "One last try: intensive counselling (₹15,000).",
+              "next": "saved",
+              "effects": [
+                {
+                  "type": "relationship",
+                  "npc": "partner",
+                  "affinity": 20,
+                  "trust": 10,
+                  "conflict": -30
+                }
+              ],
+              "cost": {
+                "money": 15000
+              }
+            },
+            {
+              "id": "c_amicable",
+              "label": "Separate amicably.",
+              "next": "amicable",
+              "effects": [
+                {
+                  "type": "money",
+                  "amount": -50000,
+                  "label": "Divorce lawyer & settlement",
+                  "category": "legal"
+                },
+                {
+                  "type": "partnerStatus",
+                  "status": "single"
+                },
+                {
+                  "type": "flag",
+                  "key": "amicable_divorce"
+                },
+                {
+                  "type": "stat",
+                  "key": "wellbeing",
+                  "delta": -10
+                }
+              ]
+            },
+            {
+              "id": "c_fight",
+              "label": "Fight it out in court.",
+              "next": "fight",
+              "effects": [
+                {
+                  "type": "money",
+                  "amount": -200000,
+                  "label": "Divorce litigation",
+                  "category": "legal"
+                },
+                {
+                  "type": "partnerStatus",
+                  "status": "single"
+                },
+                {
+                  "type": "flag",
+                  "key": "bitter_divorce"
+                },
+                {
+                  "type": "stat",
+                  "key": "wellbeing",
+                  "delta": -15
+                },
+                {
+                  "type": "stat",
+                  "key": "discipline",
+                  "delta": -1
+                }
+              ]
+            }
+          ]
+        },
+        "saved": {
+          "speaker": "narrator",
+          "text": "It's not a fairytale fix. It's slow, deliberate work. But you're both still at the table."
+        },
+        "amicable": {
+          "speaker": "narrator",
+          "text": "Lawyers, paperwork, the division of a life into two piles. You manage to stay kind. That will matter for years.",
+          "variants": [
+            {
+              "when": {
+                "type": "children",
+                "op": ">=",
+                "value": 1
+              },
+              "text": "You agree on shared custody and a rule: never fight in front of the kids."
+            }
+          ]
+        },
+        "fight": {
+          "speaker": "narrator",
+          "text": "Months of hearings and bills. When it's over, nobody feels like they won."
+        }
+      }
+    },
+    {
+      "id": "ev_l_phone_stolen",
+      "chapter": 0,
+      "title": "Gone in a Second",
+      "location": "cafe",
+      "summary": "Your phone disappears on a crowded bus.",
+      "trigger": {
+        "kind": "random",
+        "when": {
+          "type": "all",
+          "conditions": [
+            {
+              "type": "owns",
+              "category": "phone"
+            },
+            {
+              "type": "not",
+              "condition": {
+                "type": "flag",
+                "key": "phone_stolen_once"
+              }
+            }
+          ]
+        },
+        "chancePerMonth": 0.03
+      },
+      "start": "start",
+      "nodes": {
+        "start": {
+          "speaker": "narrator",
+          "text": "A crowded bus, a sudden lurch, and your pocket is lighter. Your phone is gone — photos, contacts, everything.",
+          "onEnter": [
+            {
+              "type": "loseItem",
+              "category": "phone"
+            },
+            {
+              "type": "flag",
+              "key": "phone_stolen_once"
+            },
+            {
+              "type": "stat",
+              "key": "wellbeing",
+              "delta": -4
+            }
+          ],
+          "choices": [
+            {
+              "id": "c_fir",
+              "label": "File a police complaint and block the IMEI.",
+              "next": "fir",
+              "effects": [
+                {
+                  "type": "roll",
+                  "key": "phone_recovered",
+                  "chance": 0.2
+                }
+              ],
+              "routes": [
+                {
+                  "when": {
+                    "type": "flag",
+                    "key": "phone_recovered"
+                  },
+                  "next": "recovered"
+                }
+              ]
+            },
+            {
+              "id": "c_buy",
+              "label": "Buy a Kiwi Note to get by (₹11,999).",
+              "next": "bought",
+              "effects": [
+                {
+                  "type": "giveItem",
+                  "item": "kiwi_note"
+                }
+              ],
+              "cost": {
+                "money": 11999
+              }
+            },
+            {
+              "id": "c_live",
+              "label": "Live without a smartphone for a while.",
+              "next": "live",
+              "effects": [
+                {
+                  "type": "stat",
+                  "key": "wellbeing",
+                  "delta": -2
+                },
+                {
+                  "type": "stat",
+                  "key": "discipline",
+                  "delta": 1
+                }
+              ]
+            }
+          ]
+        },
+        "fir": {
+          "speaker": "narrator",
+          "text": "The constable writes everything down slowly and says 'we will inform you'. They never do. At least nobody can use it now."
+        },
+        "recovered": {
+          "speaker": "narrator",
+          "text": "Three weeks later, the police call: they caught a gang with forty phones. Yours is one of them, screen cracked but alive.",
+          "onEnter": [
+            {
+              "type": "giveItem",
+              "item": "kiwi_note"
+            },
+            {
+              "type": "stat",
+              "key": "wellbeing",
+              "delta": 4
+            }
+          ]
+        },
+        "bought": {
+          "speaker": "narrator",
+          "text": "A cheap phone and a long evening restoring your contacts. Lesson learned: front pocket on buses."
+        },
+        "live": {
+          "speaker": "narrator",
+          "text": "No phone. It's inconvenient for a week, then strangely peaceful."
+        }
+      }
+    },
+    {
+      "id": "ev_l_car_accident",
+      "chapter": 0,
+      "title": "Fender Bender",
+      "location": "office",
+      "summary": "A scooter cuts across, you swerve into a divider.",
+      "trigger": {
+        "kind": "random",
+        "when": {
+          "type": "owns",
+          "slot": "car"
+        },
+        "chancePerMonth": 0.025
+      },
+      "start": "start",
+      "nodes": {
+        "start": {
+          "speaker": "narrator",
+          "text": "A scooter cuts across without looking. You swerve, and the divider wins. Nobody's hurt; your bumper is in two pieces.",
+          "onEnter": [
+            {
+              "type": "stat",
+              "key": "wellbeing",
+              "delta": -3
+            }
+          ],
+          "choices": [
+            {
+              "id": "c_claim",
+              "label": "Claim insurance (₹5,000 deductible, 10 days without the car).",
+              "next": "claim",
+              "effects": [
+                {
+                  "type": "money",
+                  "amount": -5000,
+                  "label": "Insurance deductible",
+                  "category": "upkeep"
+                }
+              ]
+            },
+            {
+              "id": "c_cash",
+              "label": "Pay the garage in cash and keep your no-claim bonus (₹38,000).",
+              "next": "cash",
+              "effects": [],
+              "cost": {
+                "money": 38000
+              }
+            }
+          ]
+        },
+        "claim": {
+          "speaker": "narrator",
+          "text": "Forms, photographs, a surveyor who sighs a lot. Ten days later the car comes back looking almost new."
+        },
+        "cash": {
+          "speaker": "narrator",
+          "text": "Expensive, but next year's insurance premium will thank you."
+        }
+      },
+      "repeatable": true
+    },
+    {
+      "id": "ev_l_challan",
+      "chapter": 0,
+      "title": "Traffic Challan",
+      "location": "office",
+      "summary": "A traffic cop flags you down.",
+      "trigger": {
+        "kind": "random",
+        "when": {
+          "type": "owns",
+          "category": "vehicle"
+        },
+        "chancePerMonth": 0.05
+      },
+      "start": "start",
+      "nodes": {
+        "start": {
+          "speaker": "narrator",
+          "text": "A traffic constable waves you over. Signal jump, apparently. The camera agrees. ₹1,000.",
+          "choices": [
+            {
+              "id": "c_pay",
+              "label": "Pay the fine online.",
+              "next": "pay",
+              "effects": [
+                {
+                  "type": "money",
+                  "amount": -1000,
+                  "label": "Traffic fine",
+                  "category": "legal"
+                },
+                {
+                  "type": "stat",
+                  "key": "discipline",
+                  "delta": 0.5
+                }
+              ]
+            },
+            {
+              "id": "c_contest",
+              "label": "Contest it in traffic court (a lost day).",
+              "next": "court",
+              "effects": [
+                {
+                  "type": "roll",
+                  "key": "challan_waived",
+                  "chance": 0.4
+                },
+                {
+                  "type": "stat",
+                  "key": "energy",
+                  "delta": -10
+                }
+              ],
+              "routes": [
+                {
+                  "when": {
+                    "type": "flag",
+                    "key": "challan_waived"
+                  },
+                  "next": "waived"
+                }
+              ]
+            }
+          ]
+        },
+        "pay": {
+          "speaker": "narrator",
+          "text": "Paid. You notice the signal timings a lot more after that."
+        },
+        "court": {
+          "speaker": "narrator",
+          "text": "A morning in a queue, two minutes before a magistrate. Fine upheld, plus court fees.",
+          "onEnter": [
+            {
+              "type": "money",
+              "amount": -1500,
+              "label": "Fine and court fees",
+              "category": "legal"
+            }
+          ]
+        },
+        "waived": {
+          "speaker": "narrator",
+          "text": "The camera timestamp is wrong by three seconds. Case dismissed. You feel like a lawyer."
+        }
+      },
+      "repeatable": true
+    },
+    {
+      "id": "ev_l_health_scare",
+      "chapter": 0,
+      "title": "Health Scare",
+      "location": "hospital",
+      "summary": "Your body sends a warning.",
+      "trigger": {
+        "kind": "auto",
+        "when": {
+          "type": "stat",
+          "key": "health",
+          "op": "<",
+          "value": 25
+        },
+        "priority": 70
+      },
+      "start": "start",
+      "nodes": {
+        "start": {
+          "speaker": "narrator",
+          "text": "Chest pain at 2 a.m. An ambulance, an ECG, a cardiologist who looks at your reports and then at you. 'This is a warning,' she says. 'Next time it may not be.'",
+          "onEnter": [
+            {
+              "type": "money",
+              "amount": -25000,
+              "label": "Emergency hospital bill",
+              "category": "health"
+            },
+            {
+              "type": "stat",
+              "key": "wellbeing",
+              "delta": -6
+            }
+          ],
+          "variants": [
+            {
+              "when": {
+                "type": "flag",
+                "key": "smoker"
+              },
+              "text": "'And the cigarettes,' she adds. 'All of them. Today.'"
+            },
+            {
+              "when": {
+                "type": "flag",
+                "key": "heavy_drinker"
+              },
+              "text": "'And the drinking has to stop.'"
+            }
+          ],
+          "choices": [
+            {
+              "id": "c_overhaul",
+              "label": "Change everything — quit habits, exercise, sleep.",
+              "next": "overhaul",
+              "effects": [
+                {
+                  "type": "stat",
+                  "key": "health",
+                  "delta": 18
+                },
+                {
+                  "type": "stat",
+                  "key": "discipline",
+                  "delta": 3
+                },
+                {
+                  "type": "if",
+                  "when": {
+                    "type": "flag",
+                    "key": "smoker"
+                  },
+                  "then": [
+                    {
+                      "type": "clearFlag",
+                      "key": "smoker"
+                    },
+                    {
+                      "type": "flag",
+                      "key": "quit_smoking"
+                    }
+                  ]
+                },
+                {
+                  "type": "if",
+                  "when": {
+                    "type": "flag",
+                    "key": "heavy_drinker"
+                  },
+                  "then": [
+                    {
+                      "type": "clearFlag",
+                      "key": "heavy_drinker"
+                    },
+                    {
+                      "type": "flag",
+                      "key": "sober"
+                    },
+                    {
+                      "type": "flag",
+                      "key": "heavy_drinker_addressed"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "c_meds",
+              "label": "Take the medicines, try to cut down.",
+              "next": "meds",
+              "effects": [
+                {
+                  "type": "stat",
+                  "key": "health",
+                  "delta": 10
+                }
+              ]
+            }
+          ]
+        },
+        "overhaul": {
+          "speaker": "narrator",
+          "text": "It's not one decision; it's a thousand small ones. But you make the first one in the hospital bed, and you keep making them."
+        },
+        "meds": {
+          "speaker": "narrator",
+          "text": "The pills help. The habits stay. The doctor asks you to come back in three months."
+        }
+      },
+      "repeatable": true
+    },
+    {
+      "id": "ev_l_bonus",
+      "chapter": 2,
+      "title": "Festival Bonus",
+      "location": "office",
+      "summary": "An unexpected bonus lands.",
+      "trigger": {
+        "kind": "random",
+        "when": {
+          "type": "all",
+          "conditions": [
+            {
+              "type": "career",
+              "value": true
+            },
+            {
+              "type": "careerLevel",
+              "op": ">=",
+              "value": 1
+            }
+          ]
+        },
+        "chancePerMonth": 0.08
+      },
+      "start": "start",
+      "nodes": {
+        "start": {
+          "speaker": "narrator",
+          "text": "HR's email has one line and an attachment: a festival bonus of ₹25,000. The office is suddenly very cheerful.",
+          "onEnter": [
+            {
+              "type": "money",
+              "amount": 25000,
+              "label": "Festival bonus",
+              "category": "salary"
+            }
+          ],
+          "choices": [
+            {
+              "id": "c_save",
+              "label": "Save all of it.",
+              "next": "save",
+              "effects": [
+                {
+                  "type": "stat",
+                  "key": "discipline",
+                  "delta": 1
+                }
+              ]
+            },
+            {
+              "id": "c_family",
+              "label": "Send half home and treat the family.",
+              "next": "family",
+              "effects": [
+                {
+                  "type": "money",
+                  "amount": -12500,
+                  "label": "Gifts for the family",
+                  "category": "family"
+                },
+                {
+                  "type": "relationship",
+                  "npc": "amma",
+                  "affinity": 4,
+                  "trust": 2
+                }
+              ]
+            },
+            {
+              "id": "c_splurge",
+              "label": "Treat yourself.",
+              "next": "splurge",
+              "effects": [
+                {
+                  "type": "money",
+                  "amount": -20000,
+                  "label": "Festival splurge",
+                  "category": "shopping"
+                },
+                {
+                  "type": "stat",
+                  "key": "wellbeing",
+                  "delta": 4
+                },
+                {
+                  "type": "stat",
+                  "key": "looks",
+                  "delta": 2
+                }
+              ]
+            }
+          ]
+        },
+        "save": {
+          "speaker": "narrator",
+          "text": "Straight into savings. Future you nods approvingly."
+        },
+        "family": {
+          "speaker": "narrator",
+          "text": "Amma calls to say you shouldn't have, then tells all the neighbours that you did."
+        },
+        "splurge": {
+          "speaker": "narrator",
+          "text": "New clothes, a nice dinner, and a little guilt that tastes fine."
+        }
+      },
+      "repeatable": true
+    },
+    {
+      "id": "ev_l_salon_offer",
+      "chapter": 0,
+      "title": "A Regular in the Chair",
+      "location": "salon",
+      "summary": "The salon owner has noticed you.",
+      "trigger": {
+        "kind": "auto",
+        "when": {
+          "type": "all",
+          "conditions": [
+            {
+              "type": "counter",
+              "key": "action:salon_haircut",
+              "op": ">=",
+              "value": 4
+            },
+            {
+              "type": "partTime",
+              "value": false
+            },
+            {
+              "type": "career",
+              "value": false
+            },
+            {
+              "type": "not",
+              "condition": {
+                "type": "flag",
+                "key": "salon_offer_seen"
+              }
+            }
+          ]
+        },
+        "priority": 20
+      },
+      "start": "start",
+      "nodes": {
+        "start": {
+          "speaker": "narrator",
+          "text": "Meena, who owns the salon, finishes your trim and says, 'You always watch how I hold the scissors. Want to learn properly? Assistant job, evenings and weekends.'",
+          "choices": [
+            {
+              "id": "c_yes",
+              "label": "Take the job.",
+              "next": "yes",
+              "effects": [
+                {
+                  "type": "flag",
+                  "key": "salon_offer_seen"
+                },
+                {
+                  "type": "startPartTime",
+                  "job": "salon_assistant"
+                },
+                {
+                  "type": "skill",
+                  "key": "styling",
+                  "delta": 2
+                }
+              ]
+            },
+            {
+              "id": "c_no",
+              "label": "Thank her — not right now.",
+              "next": "no",
+              "effects": [
+                {
+                  "type": "flag",
+                  "key": "salon_offer_seen"
+                }
+              ]
+            }
+          ]
+        },
+        "yes": {
+          "speaker": "narrator",
+          "text": "Your first lesson: sweeping. Your second lesson: sweeping better. By the third week, she lets you hold the scissors."
+        },
+        "no": {
+          "speaker": "narrator",
+          "text": "'Offer stands,' Meena says. 'Ask anytime.' (The assistant job is listed at the salon.)"
+        }
+      }
+    }
+  ],
+  "achievements": [
+    {
+      "id": "just_married",
+      "title": "Just Married",
+      "description": "Got married.",
+      "condition": {
+        "type": "relationshipStatus",
+        "value": "married"
+      }
+    },
+    {
+      "id": "parent",
+      "title": "Little Footsteps",
+      "description": "Became a parent.",
+      "condition": {
+        "type": "children",
+        "op": ">=",
+        "value": 1
+      }
+    },
+    {
+      "id": "full_house",
+      "title": "Full House",
+      "description": "Raised two children.",
+      "condition": {
+        "type": "children",
+        "op": ">=",
+        "value": 2
+      },
+      "hidden": true
+    },
+    {
+      "id": "ten_years",
+      "title": "Tin Anniversary",
+      "description": "Stayed married for ten years.",
+      "condition": {
+        "type": "yearsMarried",
+        "op": ">=",
+        "value": 10
+      },
+      "hidden": true
+    }
+  ],
+  "epilogueLines": [
+    {
+      "when": {
+        "type": "relationshipStatus",
+        "value": "married"
+      },
+      "text": "You're married. Some days it's easy and some days it's work, and you both keep showing up."
+    },
+    {
+      "when": {
+        "type": "children",
+        "op": ">=",
+        "value": 1
+      },
+      "text": "There are small shoes by the door now. Your life is louder, more tired, and fuller than you imagined."
+    },
+    {
+      "when": {
+        "type": "flag",
+        "key": "amicable_divorce"
+      },
+      "text": "Your marriage ended, but kindly. You still wish each other well on birthdays."
+    },
+    {
+      "when": {
+        "type": "flag",
+        "key": "bitter_divorce"
+      },
+      "text": "The divorce was bitter and expensive. Healing is slower than the paperwork was."
+    }
+  ]
+}

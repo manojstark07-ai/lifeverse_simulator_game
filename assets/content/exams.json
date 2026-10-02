@@ -1,0 +1,54 @@
+{
+  "contentVersion": "2026.10-ch1",
+  "exams": [
+    {
+      "id": "utat",
+      "name": "Unified Technical Admission Test",
+      "shortName": "UTAT",
+      "version": "2026.1",
+      "fictional": true,
+      "disclaimer": "UTAT is a fictional exam invented for LIFEVERSE. Its questions are original practice material. They do not reproduce, represent or predict any official examination (such as JEE or state entrance tests), and its rules are not real admission rules.",
+      "description": "A 12-minute, 6-question aptitude paper for engineering admission. +4 for a correct answer, −1 for a wrong one, 0 for a skip. Your final score blends paper performance (70%) with your months of preparation (30%).",
+      "pool": "utat",
+      "questionCount": 6,
+      "durationSec": 720,
+      "marking": {
+        "correct": 4,
+        "wrong": -1
+      },
+      "weights": {
+        "performance": 0.7,
+        "preparation": 0.3
+      },
+      "preparation": {
+        "stats": {
+          "knowledge": 0.6,
+          "discipline": 0.15
+        },
+        "skills": {
+          "mathematics": 0.25
+        },
+        "practicePerSolve": 2,
+        "practiceCap": 12
+      },
+      "tiers": [
+        {
+          "id": "government",
+          "label": "Government college seat",
+          "minComposite": 62
+        },
+        {
+          "id": "private",
+          "label": "Private college seat",
+          "minComposite": 42
+        },
+        {
+          "id": "none",
+          "label": "No seat this year",
+          "minComposite": 0
+        }
+      ],
+      "maxAttempts": 2
+    }
+  ]
+}

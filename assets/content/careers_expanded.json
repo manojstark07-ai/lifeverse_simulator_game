@@ -1,0 +1,1688 @@
+{
+  "contentVersion": "2026.10-careers",
+  "careers": [
+    {
+      "id": "doctor",
+      "name": "Doctor",
+      "sector": "Healthcare",
+      "description": "Residency, night shifts, then a consultant’s chair. The longest road and one of the most respected destinations.",
+      "requiredPrograms": [
+        "mbbs"
+      ],
+      "primarySkill": "medicine",
+      "minPrimarySkill": 35,
+      "interviewPool": "interview_medical",
+      "weeklyHours": 60,
+      "demand": 0.85,
+      "skillGainsPerMonth": {
+        "medicine": 1.0,
+        "leadership": 0.3
+      },
+      "employers": [
+        "Apollo Hospitals",
+        "Fortis Healthcare",
+        "Manipal Hospitals",
+        "Narayana Health",
+        "Max Healthcare",
+        "Medanta"
+      ],
+      "ladder": [
+        {
+          "title": "Junior Resident",
+          "monthlySalary": 65000,
+          "minMonths": 0,
+          "skillRequired": 0
+        },
+        {
+          "title": "Senior Resident",
+          "monthlySalary": 95000,
+          "minMonths": 36,
+          "skillRequired": 50
+        },
+        {
+          "title": "Consultant",
+          "monthlySalary": 170000,
+          "minMonths": 36,
+          "skillRequired": 65
+        },
+        {
+          "title": "Senior Consultant",
+          "monthlySalary": 280000,
+          "minMonths": 48,
+          "skillRequired": 78
+        },
+        {
+          "title": "Head of Department",
+          "monthlySalary": 420000,
+          "minMonths": 48,
+          "skillRequired": 86
+        },
+        {
+          "title": "Medical Director",
+          "monthlySalary": 650000,
+          "minMonths": 60,
+          "skillRequired": 92
+        }
+      ]
+    },
+    {
+      "id": "nurse",
+      "name": "Nurse",
+      "sector": "Healthcare",
+      "description": "The people who actually run hospitals. Demand never drops, at home or abroad.",
+      "requiredPrograms": [
+        "bsc_nursing"
+      ],
+      "primarySkill": "medicine",
+      "minPrimarySkill": 25,
+      "interviewPool": "interview_medical",
+      "weeklyHours": 48,
+      "demand": 0.9,
+      "skillGainsPerMonth": {
+        "medicine": 0.9,
+        "leadership": 0.4
+      },
+      "employers": [
+        "Apollo Hospitals",
+        "Fortis Healthcare",
+        "Manipal Hospitals",
+        "Narayana Health",
+        "Max Healthcare",
+        "Medanta"
+      ],
+      "ladder": [
+        {
+          "title": "Staff Nurse",
+          "monthlySalary": 26000,
+          "minMonths": 0,
+          "skillRequired": 0
+        },
+        {
+          "title": "Senior Staff Nurse",
+          "monthlySalary": 36000,
+          "minMonths": 36,
+          "skillRequired": 40
+        },
+        {
+          "title": "Nursing Supervisor",
+          "monthlySalary": 52000,
+          "minMonths": 36,
+          "skillRequired": 55
+        },
+        {
+          "title": "Nursing Superintendent",
+          "monthlySalary": 80000,
+          "minMonths": 48,
+          "skillRequired": 68
+        },
+        {
+          "title": "Chief Nursing Officer",
+          "monthlySalary": 130000,
+          "minMonths": 48,
+          "skillRequired": 80
+        }
+      ]
+    },
+    {
+      "id": "pharmacist",
+      "name": "Pharmacist",
+      "sector": "Healthcare",
+      "description": "Dispense medicines safely, counsel patients, and maybe one day manage a chain of stores.",
+      "requiredPrograms": [
+        "bpharm"
+      ],
+      "primarySkill": "medicine",
+      "minPrimarySkill": 25,
+      "interviewPool": "interview_medical",
+      "weeklyHours": 45,
+      "demand": 0.6,
+      "skillGainsPerMonth": {
+        "medicine": 0.7,
+        "business": 0.4
+      },
+      "employers": [
+        "Apollo Pharmacy",
+        "MedPlus",
+        "Sun Pharma",
+        "Cipla",
+        "Dr. Reddy's Laboratories"
+      ],
+      "ladder": [
+        {
+          "title": "Pharmacist",
+          "monthlySalary": 22000,
+          "minMonths": 0,
+          "skillRequired": 0
+        },
+        {
+          "title": "Senior Pharmacist",
+          "monthlySalary": 32000,
+          "minMonths": 24,
+          "skillRequired": 40
+        },
+        {
+          "title": "Pharmacy Manager",
+          "monthlySalary": 48000,
+          "minMonths": 36,
+          "skillRequired": 52
+        },
+        {
+          "title": "Regional Pharmacy Head",
+          "monthlySalary": 80000,
+          "minMonths": 48,
+          "skillRequired": 65
+        }
+      ]
+    },
+    {
+      "id": "lawyer",
+      "name": "Corporate lawyer",
+      "sector": "Law",
+      "description": "Contracts, deals and disputes at a law firm. Brutal hours early on; partnership pays like few other jobs.",
+      "requiredPrograms": [
+        "llb"
+      ],
+      "primarySkill": "law",
+      "minPrimarySkill": 35,
+      "interviewPool": "interview_legal",
+      "weeklyHours": 60,
+      "demand": 0.6,
+      "skillGainsPerMonth": {
+        "law": 1.0,
+        "business": 0.3
+      },
+      "employers": [
+        "Cyril Amarchand Mangaldas",
+        "Shardul Amarchand Mangaldas & Co",
+        "Khaitan & Co",
+        "AZB & Partners",
+        "Trilegal",
+        "J. Sagar Associates"
+      ],
+      "ladder": [
+        {
+          "title": "Junior Associate",
+          "monthlySalary": 45000,
+          "minMonths": 0,
+          "skillRequired": 0
+        },
+        {
+          "title": "Associate",
+          "monthlySalary": 80000,
+          "minMonths": 24,
+          "skillRequired": 48
+        },
+        {
+          "title": "Senior Associate",
+          "monthlySalary": 140000,
+          "minMonths": 36,
+          "skillRequired": 62
+        },
+        {
+          "title": "Principal Associate",
+          "monthlySalary": 220000,
+          "minMonths": 36,
+          "skillRequired": 72
+        },
+        {
+          "title": "Partner",
+          "monthlySalary": 450000,
+          "minMonths": 48,
+          "skillRequired": 84
+        },
+        {
+          "title": "Managing Partner",
+          "monthlySalary": 800000,
+          "minMonths": 60,
+          "skillRequired": 92
+        }
+      ]
+    },
+    {
+      "id": "management_consultant",
+      "name": "Management consultant",
+      "sector": "Consulting",
+      "description": "Fly in, fix a company’s problems in twelve weeks, fly out. Spreadsheets at midnight, steep learning, steeper pay.",
+      "requiredPrograms": [
+        "mba"
+      ],
+      "primarySkill": "business",
+      "minPrimarySkill": 45,
+      "interviewPool": "interview_mgmt",
+      "weeklyHours": 60,
+      "demand": 0.5,
+      "skillGainsPerMonth": {
+        "business": 1.0,
+        "leadership": 0.5
+      },
+      "employers": [
+        "McKinsey & Company",
+        "Boston Consulting Group",
+        "Bain & Company",
+        "Deloitte",
+        "EY",
+        "KPMG",
+        "PwC"
+      ],
+      "ladder": [
+        {
+          "title": "Associate",
+          "monthlySalary": 150000,
+          "minMonths": 0,
+          "skillRequired": 0
+        },
+        {
+          "title": "Consultant",
+          "monthlySalary": 210000,
+          "minMonths": 24,
+          "skillRequired": 58
+        },
+        {
+          "title": "Engagement Manager",
+          "monthlySalary": 320000,
+          "minMonths": 36,
+          "skillRequired": 70
+        },
+        {
+          "title": "Principal",
+          "monthlySalary": 450000,
+          "minMonths": 36,
+          "skillRequired": 80
+        },
+        {
+          "title": "Partner",
+          "monthlySalary": 800000,
+          "minMonths": 48,
+          "skillRequired": 90
+        }
+      ]
+    },
+    {
+      "id": "product_manager",
+      "name": "Product manager",
+      "sector": "Technology",
+      "description": "Decide what gets built and why. Engineers, designers and data all report their opinions to you.",
+      "requiredPrograms": [
+        "mba",
+        "btech_cs"
+      ],
+      "primarySkill": "business",
+      "minPrimarySkill": 40,
+      "interviewPool": "interview_mgmt",
+      "weeklyHours": 50,
+      "demand": 0.6,
+      "skillGainsPerMonth": {
+        "business": 0.8,
+        "programming": 0.3,
+        "leadership": 0.4
+      },
+      "employers": [
+        "Flipkart",
+        "Swiggy",
+        "Zomato",
+        "PhonePe",
+        "Razorpay",
+        "CRED",
+        "Google",
+        "Microsoft"
+      ],
+      "ladder": [
+        {
+          "title": "Associate Product Manager",
+          "monthlySalary": 100000,
+          "minMonths": 0,
+          "skillRequired": 0
+        },
+        {
+          "title": "Product Manager",
+          "monthlySalary": 160000,
+          "minMonths": 24,
+          "skillRequired": 52
+        },
+        {
+          "title": "Senior Product Manager",
+          "monthlySalary": 240000,
+          "minMonths": 36,
+          "skillRequired": 64
+        },
+        {
+          "title": "Group Product Manager",
+          "monthlySalary": 340000,
+          "minMonths": 36,
+          "skillRequired": 74
+        },
+        {
+          "title": "Director of Product",
+          "monthlySalary": 480000,
+          "minMonths": 48,
+          "skillRequired": 84
+        },
+        {
+          "title": "Chief Product Officer",
+          "monthlySalary": 750000,
+          "minMonths": 48,
+          "skillRequired": 92
+        }
+      ]
+    },
+    {
+      "id": "investment_banker",
+      "name": "Investment banker",
+      "sector": "Finance & business",
+      "description": "Mergers, IPOs and 90-hour weeks. The money is extraordinary; so is the exhaustion.",
+      "requiredPrograms": [
+        "mba",
+        "bcom"
+      ],
+      "primarySkill": "accounting",
+      "minPrimarySkill": 45,
+      "interviewPool": "interview_mgmt",
+      "weeklyHours": 75,
+      "demand": 0.4,
+      "skillGainsPerMonth": {
+        "accounting": 0.8,
+        "business": 0.6
+      },
+      "employers": [
+        "Goldman Sachs",
+        "J.P. Morgan",
+        "Morgan Stanley",
+        "Kotak Investment Banking",
+        "Axis Capital",
+        "ICICI Securities"
+      ],
+      "ladder": [
+        {
+          "title": "Analyst",
+          "monthlySalary": 120000,
+          "minMonths": 0,
+          "skillRequired": 0
+        },
+        {
+          "title": "Associate",
+          "monthlySalary": 210000,
+          "minMonths": 24,
+          "skillRequired": 58
+        },
+        {
+          "title": "Vice President",
+          "monthlySalary": 350000,
+          "minMonths": 36,
+          "skillRequired": 70
+        },
+        {
+          "title": "Director",
+          "monthlySalary": 550000,
+          "minMonths": 36,
+          "skillRequired": 80
+        },
+        {
+          "title": "Managing Director",
+          "monthlySalary": 900000,
+          "minMonths": 48,
+          "skillRequired": 90
+        }
+      ]
+    },
+    {
+      "id": "chartered_accountant",
+      "name": "Chartered accountant",
+      "sector": "Finance & business",
+      "description": "Audits, tax and advisory at a big firm. Needs a B.Com and strong accounting (the professional exams are assumed).",
+      "requiredPrograms": [
+        "bcom"
+      ],
+      "primarySkill": "accounting",
+      "minPrimarySkill": 50,
+      "interviewPool": "interview_accounting",
+      "weeklyHours": 50,
+      "demand": 0.6,
+      "skillGainsPerMonth": {
+        "accounting": 1.0,
+        "law": 0.2
+      },
+      "employers": [
+        "Deloitte",
+        "EY",
+        "KPMG",
+        "PwC",
+        "Grant Thornton Bharat"
+      ],
+      "ladder": [
+        {
+          "title": "Audit Associate",
+          "monthlySalary": 60000,
+          "minMonths": 0,
+          "skillRequired": 0
+        },
+        {
+          "title": "Audit Senior",
+          "monthlySalary": 90000,
+          "minMonths": 24,
+          "skillRequired": 58
+        },
+        {
+          "title": "Audit Manager",
+          "monthlySalary": 140000,
+          "minMonths": 36,
+          "skillRequired": 68
+        },
+        {
+          "title": "Senior Manager",
+          "monthlySalary": 220000,
+          "minMonths": 36,
+          "skillRequired": 78
+        },
+        {
+          "title": "Partner",
+          "monthlySalary": 450000,
+          "minMonths": 48,
+          "skillRequired": 88
+        }
+      ]
+    },
+    {
+      "id": "data_scientist",
+      "name": "Data scientist",
+      "sector": "Technology",
+      "description": "Turn messy data into decisions and models. Maths matters as much as code.",
+      "requiredPrograms": [
+        "btech_cs"
+      ],
+      "primarySkill": "mathematics",
+      "minPrimarySkill": 40,
+      "interviewPool": "interview_software",
+      "weeklyHours": 45,
+      "demand": 0.75,
+      "skillGainsPerMonth": {
+        "mathematics": 0.8,
+        "programming": 0.6
+      },
+      "employers": [
+        "Google",
+        "Amazon",
+        "Microsoft",
+        "Fractal Analytics",
+        "Mu Sigma",
+        "Flipkart",
+        "Tata Consultancy Services"
+      ],
+      "ladder": [
+        {
+          "title": "Data Analyst",
+          "monthlySalary": 45000,
+          "minMonths": 0,
+          "skillRequired": 0
+        },
+        {
+          "title": "Data Scientist",
+          "monthlySalary": 85000,
+          "minMonths": 18,
+          "skillRequired": 50
+        },
+        {
+          "title": "Senior Data Scientist",
+          "monthlySalary": 150000,
+          "minMonths": 24,
+          "skillRequired": 64
+        },
+        {
+          "title": "Lead Data Scientist",
+          "monthlySalary": 230000,
+          "minMonths": 36,
+          "skillRequired": 76
+        },
+        {
+          "title": "Head of AI",
+          "monthlySalary": 400000,
+          "minMonths": 48,
+          "skillRequired": 88
+        }
+      ]
+    },
+    {
+      "id": "cybersecurity_analyst",
+      "name": "Cybersecurity analyst",
+      "sector": "Technology",
+      "description": "Hunt attackers, patch holes and explain to executives why the password cannot be \"admin123\".",
+      "requiredPrograms": [
+        "btech_cs"
+      ],
+      "primarySkill": "programming",
+      "minPrimarySkill": 45,
+      "interviewPool": "interview_software",
+      "weeklyHours": 45,
+      "demand": 0.7,
+      "skillGainsPerMonth": {
+        "programming": 0.9,
+        "streetwise": 0.2
+      },
+      "employers": [
+        "Palo Alto Networks",
+        "Quick Heal",
+        "Wipro",
+        "Infosys",
+        "HDFC Bank"
+      ],
+      "ladder": [
+        {
+          "title": "Security Analyst",
+          "monthlySalary": 55000,
+          "minMonths": 0,
+          "skillRequired": 0
+        },
+        {
+          "title": "Security Engineer",
+          "monthlySalary": 95000,
+          "minMonths": 18,
+          "skillRequired": 55
+        },
+        {
+          "title": "Senior Security Engineer",
+          "monthlySalary": 160000,
+          "minMonths": 24,
+          "skillRequired": 66
+        },
+        {
+          "title": "Security Architect",
+          "monthlySalary": 240000,
+          "minMonths": 36,
+          "skillRequired": 76
+        },
+        {
+          "title": "Chief Information Security Officer",
+          "monthlySalary": 450000,
+          "minMonths": 48,
+          "skillRequired": 88
+        }
+      ]
+    },
+    {
+      "id": "pilot",
+      "name": "Airline pilot",
+      "sector": "Aviation",
+      "description": "From the right seat to the left: First Officer, then Captain. Needs a commercial pilot licence and Health 55+.",
+      "requiredPrograms": [
+        "cpl"
+      ],
+      "primarySkill": "leadership",
+      "minPrimarySkill": 30,
+      "interviewPool": "nde",
+      "weeklyHours": 40,
+      "demand": 0.55,
+      "skillGainsPerMonth": {
+        "leadership": 0.7,
+        "mathematics": 0.3
+      },
+      "requires": {
+        "type": "stat",
+        "key": "health",
+        "op": ">=",
+        "value": 55
+      },
+      "requirementNote": "Needs Health 55+",
+      "employers": [
+        "IndiGo",
+        "Air India",
+        "Akasa Air",
+        "SpiceJet",
+        "Air India Express"
+      ],
+      "ladder": [
+        {
+          "title": "Trainee First Officer",
+          "monthlySalary": 120000,
+          "minMonths": 0,
+          "skillRequired": 0
+        },
+        {
+          "title": "First Officer",
+          "monthlySalary": 200000,
+          "minMonths": 18,
+          "skillRequired": 40
+        },
+        {
+          "title": "Senior First Officer",
+          "monthlySalary": 280000,
+          "minMonths": 24,
+          "skillRequired": 52
+        },
+        {
+          "title": "Captain",
+          "monthlySalary": 550000,
+          "minMonths": 36,
+          "skillRequired": 65
+        },
+        {
+          "title": "Senior Captain",
+          "monthlySalary": 750000,
+          "minMonths": 48,
+          "skillRequired": 78
+        },
+        {
+          "title": "Training Captain",
+          "monthlySalary": 900000,
+          "minMonths": 48,
+          "skillRequired": 86
+        }
+      ]
+    },
+    {
+      "id": "bpo_associate",
+      "name": "Customer support associate",
+      "sector": "Services",
+      "description": "Headsets, night shifts and angry customers you somehow calm down. Fast promotions for good communicators.",
+      "requiredPrograms": [],
+      "primarySkill": "business",
+      "minPrimarySkill": 0,
+      "interviewPool": "interview_service",
+      "weeklyHours": 48,
+      "demand": 0.85,
+      "skillGainsPerMonth": {
+        "business": 0.6,
+        "leadership": 0.3
+      },
+      "requires": {
+        "type": "stat",
+        "key": "communication",
+        "op": ">=",
+        "value": 35
+      },
+      "requirementNote": "Needs Communication 35+",
+      "employers": [
+        "Teleperformance",
+        "Concentrix",
+        "Genpact",
+        "Infosys BPM",
+        "Amazon"
+      ],
+      "ladder": [
+        {
+          "title": "Customer Support Associate",
+          "monthlySalary": 18000,
+          "minMonths": 0,
+          "skillRequired": 0
+        },
+        {
+          "title": "Senior Associate",
+          "monthlySalary": 23000,
+          "minMonths": 12,
+          "skillRequired": 15
+        },
+        {
+          "title": "Team Leader",
+          "monthlySalary": 35000,
+          "minMonths": 24,
+          "skillRequired": 30
+        },
+        {
+          "title": "Operations Manager",
+          "monthlySalary": 60000,
+          "minMonths": 36,
+          "skillRequired": 50
+        },
+        {
+          "title": "Centre Head",
+          "monthlySalary": 110000,
+          "minMonths": 48,
+          "skillRequired": 68
+        }
+      ]
+    },
+    {
+      "id": "retail_associate",
+      "name": "Retail store staff",
+      "sector": "Retail",
+      "description": "Restock shelves, run the till and handle festival rushes. Store managers are made, not hired.",
+      "requiredPrograms": [],
+      "primarySkill": "business",
+      "minPrimarySkill": 0,
+      "interviewPool": "interview_service",
+      "weeklyHours": 50,
+      "demand": 0.85,
+      "skillGainsPerMonth": {
+        "business": 0.7
+      },
+      "employers": [
+        "Reliance Retail",
+        "DMart",
+        "Zudio",
+        "Westside",
+        "Lifestyle",
+        "Croma"
+      ],
+      "ladder": [
+        {
+          "title": "Store Associate",
+          "monthlySalary": 15000,
+          "minMonths": 0,
+          "skillRequired": 0
+        },
+        {
+          "title": "Senior Associate",
+          "monthlySalary": 19000,
+          "minMonths": 12,
+          "skillRequired": 15
+        },
+        {
+          "title": "Department Manager",
+          "monthlySalary": 30000,
+          "minMonths": 24,
+          "skillRequired": 30
+        },
+        {
+          "title": "Store Manager",
+          "monthlySalary": 50000,
+          "minMonths": 36,
+          "skillRequired": 45
+        },
+        {
+          "title": "Regional Manager",
+          "monthlySalary": 100000,
+          "minMonths": 48,
+          "skillRequired": 65
+        }
+      ]
+    },
+    {
+      "id": "real_estate_agent",
+      "name": "Real estate consultant",
+      "sector": "Sales & marketing",
+      "description": "Show flats, negotiate, close. Commission-heavy: good years are very good.",
+      "requiredPrograms": [],
+      "primarySkill": "business",
+      "minPrimarySkill": 20,
+      "interviewPool": "interview_sales",
+      "weeklyHours": 55,
+      "demand": 0.6,
+      "skillGainsPerMonth": {
+        "business": 1.0
+      },
+      "requires": {
+        "type": "stat",
+        "key": "communication",
+        "op": ">=",
+        "value": 45
+      },
+      "requirementNote": "Needs Communication 45+",
+      "employers": [
+        "Godrej Properties",
+        "DLF",
+        "Prestige Group",
+        "Lodha",
+        "Sobha"
+      ],
+      "ladder": [
+        {
+          "title": "Sales Consultant",
+          "monthlySalary": 20000,
+          "minMonths": 0,
+          "skillRequired": 0
+        },
+        {
+          "title": "Senior Consultant",
+          "monthlySalary": 35000,
+          "minMonths": 12,
+          "skillRequired": 35
+        },
+        {
+          "title": "Sales Manager",
+          "monthlySalary": 65000,
+          "minMonths": 24,
+          "skillRequired": 50
+        },
+        {
+          "title": "Associate Director",
+          "monthlySalary": 120000,
+          "minMonths": 36,
+          "skillRequired": 65
+        },
+        {
+          "title": "Director of Sales",
+          "monthlySalary": 220000,
+          "minMonths": 48,
+          "skillRequired": 80
+        }
+      ]
+    },
+    {
+      "id": "fitness_trainer",
+      "name": "Fitness trainer",
+      "sector": "Health & fitness",
+      "description": "Turn your own fitness into a living. Early mornings, loyal clients, maybe your own gym one day.",
+      "requiredPrograms": [],
+      "primarySkill": "leadership",
+      "minPrimarySkill": 0,
+      "interviewPool": "interview_service",
+      "weeklyHours": 45,
+      "demand": 0.65,
+      "skillGainsPerMonth": {
+        "leadership": 0.6,
+        "business": 0.3
+      },
+      "requires": {
+        "type": "stat",
+        "key": "health",
+        "op": ">=",
+        "value": 60
+      },
+      "requirementNote": "Needs Health 60+",
+      "employers": [
+        "cult.fit",
+        "Gold's Gym",
+        "Anytime Fitness",
+        "Talwalkars"
+      ],
+      "ladder": [
+        {
+          "title": "Fitness Trainer",
+          "monthlySalary": 18000,
+          "minMonths": 0,
+          "skillRequired": 0
+        },
+        {
+          "title": "Senior Trainer",
+          "monthlySalary": 28000,
+          "minMonths": 12,
+          "skillRequired": 20
+        },
+        {
+          "title": "Head Coach",
+          "monthlySalary": 45000,
+          "minMonths": 24,
+          "skillRequired": 35
+        },
+        {
+          "title": "Studio Manager",
+          "monthlySalary": 65000,
+          "minMonths": 36,
+          "skillRequired": 50
+        },
+        {
+          "title": "Gym Owner",
+          "monthlySalary": 140000,
+          "minMonths": 48,
+          "skillRequired": 70
+        }
+      ]
+    },
+    {
+      "id": "journalist",
+      "name": "Journalist",
+      "sector": "Media",
+      "description": "Chase stories, meet deadlines, annoy the powerful. Pay is modest until it suddenly isn’t.",
+      "requiredPrograms": [],
+      "primarySkill": "content",
+      "minPrimarySkill": 25,
+      "interviewPool": "interview_digital",
+      "weeklyHours": 55,
+      "demand": 0.45,
+      "skillGainsPerMonth": {
+        "content": 0.8,
+        "law": 0.2
+      },
+      "requires": {
+        "type": "stat",
+        "key": "communication",
+        "op": ">=",
+        "value": 45
+      },
+      "requirementNote": "Needs Communication 45+",
+      "employers": [
+        "NDTV",
+        "The Hindu",
+        "The Times of India",
+        "India Today",
+        "The Indian Express",
+        "Scroll.in"
+      ],
+      "ladder": [
+        {
+          "title": "Trainee Reporter",
+          "monthlySalary": 20000,
+          "minMonths": 0,
+          "skillRequired": 0
+        },
+        {
+          "title": "Reporter",
+          "monthlySalary": 32000,
+          "minMonths": 12,
+          "skillRequired": 40
+        },
+        {
+          "title": "Senior Correspondent",
+          "monthlySalary": 55000,
+          "minMonths": 24,
+          "skillRequired": 55
+        },
+        {
+          "title": "Editor",
+          "monthlySalary": 95000,
+          "minMonths": 36,
+          "skillRequired": 68
+        },
+        {
+          "title": "Editor-in-Chief",
+          "monthlySalary": 220000,
+          "minMonths": 48,
+          "skillRequired": 82
+        }
+      ]
+    },
+    {
+      "id": "medical_rep",
+      "name": "Medical representative",
+      "sector": "Sales & marketing",
+      "description": "Visit doctors, pitch medicines, hit quarterly targets. A two-wheeler and charm help.",
+      "requiredPrograms": [],
+      "primarySkill": "business",
+      "minPrimarySkill": 15,
+      "interviewPool": "interview_sales",
+      "weeklyHours": 50,
+      "demand": 0.75,
+      "skillGainsPerMonth": {
+        "business": 0.8,
+        "medicine": 0.3
+      },
+      "requires": {
+        "type": "stat",
+        "key": "communication",
+        "op": ">=",
+        "value": 40
+      },
+      "requirementNote": "Needs Communication 40+",
+      "employers": [
+        "Sun Pharma",
+        "Cipla",
+        "Mankind Pharma",
+        "Lupin",
+        "Abbott India"
+      ],
+      "ladder": [
+        {
+          "title": "Medical Representative",
+          "monthlySalary": 22000,
+          "minMonths": 0,
+          "skillRequired": 0
+        },
+        {
+          "title": "Senior Medical Representative",
+          "monthlySalary": 30000,
+          "minMonths": 12,
+          "skillRequired": 30
+        },
+        {
+          "title": "Area Business Manager",
+          "monthlySalary": 50000,
+          "minMonths": 24,
+          "skillRequired": 45
+        },
+        {
+          "title": "Regional Manager",
+          "monthlySalary": 90000,
+          "minMonths": 36,
+          "skillRequired": 60
+        },
+        {
+          "title": "Zonal Sales Head",
+          "monthlySalary": 160000,
+          "minMonths": 48,
+          "skillRequired": 75
+        }
+      ]
+    },
+    {
+      "id": "factory_worker",
+      "name": "Production associate",
+      "sector": "Manufacturing",
+      "description": "Assembly lines, shift work and a canteen with excellent sambar. A plant can make you a manager in time.",
+      "requiredPrograms": [],
+      "primarySkill": "electrical",
+      "minPrimarySkill": 0,
+      "interviewPool": "interview_electrical",
+      "weeklyHours": 48,
+      "demand": 0.8,
+      "skillGainsPerMonth": {
+        "electrical": 0.6,
+        "leadership": 0.3
+      },
+      "employers": [
+        "Maruti Suzuki",
+        "Tata Motors",
+        "Mahindra & Mahindra",
+        "Hero MotoCorp",
+        "Bajaj Auto"
+      ],
+      "ladder": [
+        {
+          "title": "Production Trainee",
+          "monthlySalary": 16000,
+          "minMonths": 0,
+          "skillRequired": 0
+        },
+        {
+          "title": "Machine Operator",
+          "monthlySalary": 21000,
+          "minMonths": 12,
+          "skillRequired": 20
+        },
+        {
+          "title": "Line Supervisor",
+          "monthlySalary": 32000,
+          "minMonths": 24,
+          "skillRequired": 35
+        },
+        {
+          "title": "Shift In-charge",
+          "monthlySalary": 48000,
+          "minMonths": 36,
+          "skillRequired": 50
+        },
+        {
+          "title": "Plant Manager",
+          "monthlySalary": 120000,
+          "minMonths": 60,
+          "skillRequired": 72
+        }
+      ]
+    },
+    {
+      "id": "security_guard",
+      "name": "Security guard",
+      "sector": "Services",
+      "description": "Night shifts at gates and lobbies. Quiet, until it isn’t.",
+      "requiredPrograms": [],
+      "primarySkill": "streetwise",
+      "minPrimarySkill": 0,
+      "interviewPool": "interview_service",
+      "weeklyHours": 60,
+      "demand": 0.85,
+      "skillGainsPerMonth": {
+        "streetwise": 0.5,
+        "leadership": 0.3
+      },
+      "requires": {
+        "type": "stat",
+        "key": "health",
+        "op": ">=",
+        "value": 40
+      },
+      "requirementNote": "Needs Health 40+",
+      "employers": [
+        "SIS Group",
+        "G4S India",
+        "Securitas India"
+      ],
+      "ladder": [
+        {
+          "title": "Security Guard",
+          "monthlySalary": 14000,
+          "minMonths": 0,
+          "skillRequired": 0
+        },
+        {
+          "title": "Senior Guard",
+          "monthlySalary": 17000,
+          "minMonths": 12,
+          "skillRequired": 10
+        },
+        {
+          "title": "Security Supervisor",
+          "monthlySalary": 24000,
+          "minMonths": 24,
+          "skillRequired": 25
+        },
+        {
+          "title": "Security Officer",
+          "monthlySalary": 35000,
+          "minMonths": 36,
+          "skillRequired": 40
+        },
+        {
+          "title": "Chief Security Officer",
+          "monthlySalary": 80000,
+          "minMonths": 60,
+          "skillRequired": 60
+        }
+      ]
+    },
+    {
+      "id": "it_support",
+      "name": "IT support engineer",
+      "sector": "Technology",
+      "description": "Fix laptops, reset passwords, keep the office network alive. Self-taught coders welcome.",
+      "requiredPrograms": [],
+      "primarySkill": "programming",
+      "minPrimarySkill": 15,
+      "interviewPool": "interview_software",
+      "weeklyHours": 45,
+      "demand": 0.7,
+      "skillGainsPerMonth": {
+        "programming": 0.7,
+        "electrical": 0.2
+      },
+      "employers": [
+        "HCLTech",
+        "Wipro",
+        "Tech Mahindra",
+        "Accenture",
+        "Cognizant"
+      ],
+      "ladder": [
+        {
+          "title": "Helpdesk Technician",
+          "monthlySalary": 18000,
+          "minMonths": 0,
+          "skillRequired": 0
+        },
+        {
+          "title": "Support Engineer",
+          "monthlySalary": 26000,
+          "minMonths": 12,
+          "skillRequired": 30
+        },
+        {
+          "title": "System Administrator",
+          "monthlySalary": 42000,
+          "minMonths": 24,
+          "skillRequired": 45
+        },
+        {
+          "title": "IT Manager",
+          "monthlySalary": 80000,
+          "minMonths": 36,
+          "skillRequired": 60
+        }
+      ]
+    },
+    {
+      "id": "fashion_designer",
+      "name": "Fashion designer",
+      "sector": "Fashion",
+      "description": "Sketch, drape, pitch. A good eye and a thick skin go further than a degree.",
+      "requiredPrograms": [],
+      "primarySkill": "styling",
+      "minPrimarySkill": 30,
+      "interviewPool": "interview_digital",
+      "weeklyHours": 50,
+      "demand": 0.45,
+      "skillGainsPerMonth": {
+        "styling": 0.8,
+        "business": 0.3,
+        "content": 0.2
+      },
+      "employers": [
+        "Fabindia",
+        "Manyavar",
+        "Myntra",
+        "Biba",
+        "W for Woman"
+      ],
+      "ladder": [
+        {
+          "title": "Design Assistant",
+          "monthlySalary": 18000,
+          "minMonths": 0,
+          "skillRequired": 0
+        },
+        {
+          "title": "Designer",
+          "monthlySalary": 35000,
+          "minMonths": 24,
+          "skillRequired": 45
+        },
+        {
+          "title": "Senior Designer",
+          "monthlySalary": 60000,
+          "minMonths": 36,
+          "skillRequired": 60
+        },
+        {
+          "title": "Creative Director",
+          "monthlySalary": 150000,
+          "minMonths": 48,
+          "skillRequired": 80
+        }
+      ]
+    }
+  ],
+  "partTimeJobs": [
+    {
+      "id": "home_tutor",
+      "name": "Home tutor",
+      "employer": "Neighbourhood families",
+      "description": "Maths and science for two school kids, four evenings a week.",
+      "weeklyHours": 10,
+      "monthlyPay": 6000,
+      "skillGainsPerMonth": {
+        "mathematics": 0.5,
+        "leadership": 0.3
+      },
+      "statGainsPerMonth": {
+        "knowledge": 0.5,
+        "communication": 0.3
+      }
+    },
+    {
+      "id": "night_support",
+      "name": "Night-shift support agent",
+      "employer": "Concentrix",
+      "description": "Four night shifts a week answering calls from another time zone.",
+      "weeklyHours": 20,
+      "monthlyPay": 11000,
+      "skillGainsPerMonth": {
+        "business": 0.3
+      },
+      "statGainsPerMonth": {
+        "communication": 0.6,
+        "health": -0.3
+      }
+    },
+    {
+      "id": "store_weekend",
+      "name": "Weekend store associate",
+      "employer": "Zudio",
+      "description": "Folding clothes, running the billing counter and surviving sale days.",
+      "weeklyHours": 16,
+      "monthlyPay": 8000,
+      "skillGainsPerMonth": {
+        "business": 0.4
+      },
+      "statGainsPerMonth": {
+        "communication": 0.3
+      }
+    },
+    {
+      "id": "event_crew",
+      "name": "Event crew",
+      "employer": "BookMyShow Live",
+      "description": "Concerts and comedy nights: wristbands, barricades and free music.",
+      "weeklyHours": 12,
+      "monthlyPay": 7000,
+      "skillGainsPerMonth": {
+        "business": 0.3,
+        "leadership": 0.2
+      },
+      "statGainsPerMonth": {
+        "communication": 0.4,
+        "wellbeing": 0.3
+      }
+    },
+    {
+      "id": "freelance_gigs",
+      "name": "Online freelance gigs",
+      "employer": "Upwork",
+      "description": "Small websites, spreadsheets and data clean-ups for clients you will never meet.",
+      "weeklyHours": 12,
+      "monthlyPay": 6500,
+      "skillGainsPerMonth": {
+        "programming": 0.5,
+        "business": 0.2
+      },
+      "statGainsPerMonth": {
+        "discipline": 0.2
+      }
+    },
+    {
+      "id": "bartender",
+      "name": "Bartender",
+      "employer": "The Copper Mug",
+      "description": "Three late nights a week mixing drinks and listening to strangers’ problems.",
+      "weeklyHours": 18,
+      "monthlyPay": 10000,
+      "skillGainsPerMonth": {
+        "cooking": 0.3,
+        "streetwise": 0.3
+      },
+      "statGainsPerMonth": {
+        "communication": 0.5,
+        "health": -0.2
+      }
+    }
+  ],
+  "actions": [
+    {
+      "id": "pt_ask_home_tutor",
+      "label": "Put up a \"home tuition\" notice",
+      "description": "Two families call the same evening.",
+      "location": "library",
+      "energyCost": 2,
+      "requires": {
+        "type": "all",
+        "conditions": [
+          {
+            "type": "all",
+            "conditions": [
+              {
+                "type": "partTime",
+                "value": false
+              },
+              {
+                "type": "career",
+                "value": false
+              }
+            ]
+          },
+          {
+            "type": "stat",
+            "key": "knowledge",
+            "op": ">=",
+            "value": 40
+          }
+        ]
+      },
+      "effects": [
+        {
+          "type": "startPartTime",
+          "job": "home_tutor"
+        }
+      ]
+    },
+    {
+      "id": "pt_quit_home_tutor",
+      "label": "Stop tutoring",
+      "description": "Hand in your notice.",
+      "location": "library",
+      "energyCost": 0,
+      "requires": {
+        "type": "partTime",
+        "value": "home_tutor"
+      },
+      "effects": [
+        {
+          "type": "quitPartTime"
+        }
+      ]
+    },
+    {
+      "id": "pt_ask_night_support",
+      "label": "Apply for night-shift support work",
+      "description": "Concentrix is hiring for its night shift.",
+      "location": "office",
+      "energyCost": 2,
+      "requires": {
+        "type": "all",
+        "conditions": [
+          {
+            "type": "all",
+            "conditions": [
+              {
+                "type": "partTime",
+                "value": false
+              },
+              {
+                "type": "career",
+                "value": false
+              }
+            ]
+          },
+          {
+            "type": "stat",
+            "key": "communication",
+            "op": ">=",
+            "value": 30
+          }
+        ]
+      },
+      "effects": [
+        {
+          "type": "startPartTime",
+          "job": "night_support"
+        }
+      ]
+    },
+    {
+      "id": "pt_quit_night_support",
+      "label": "Quit the night shift",
+      "description": "Hand in your notice.",
+      "location": "office",
+      "energyCost": 0,
+      "requires": {
+        "type": "partTime",
+        "value": "night_support"
+      },
+      "effects": [
+        {
+          "type": "quitPartTime"
+        }
+      ]
+    },
+    {
+      "id": "pt_ask_store_weekend",
+      "label": "Ask about weekend work at Zudio",
+      "description": "The store manager needs weekend staff.",
+      "location": "mall",
+      "energyCost": 2,
+      "requires": {
+        "type": "all",
+        "conditions": [
+          {
+            "type": "partTime",
+            "value": false
+          },
+          {
+            "type": "career",
+            "value": false
+          }
+        ]
+      },
+      "effects": [
+        {
+          "type": "startPartTime",
+          "job": "store_weekend"
+        }
+      ]
+    },
+    {
+      "id": "pt_quit_store_weekend",
+      "label": "Quit the weekend store job",
+      "description": "Hand in your notice.",
+      "location": "mall",
+      "energyCost": 0,
+      "requires": {
+        "type": "partTime",
+        "value": "store_weekend"
+      },
+      "effects": [
+        {
+          "type": "quitPartTime"
+        }
+      ]
+    },
+    {
+      "id": "pt_ask_event_crew",
+      "label": "Sign up as event crew",
+      "description": "A concert in the park needs extra hands every weekend.",
+      "location": "park",
+      "energyCost": 2,
+      "requires": {
+        "type": "all",
+        "conditions": [
+          {
+            "type": "partTime",
+            "value": false
+          },
+          {
+            "type": "career",
+            "value": false
+          }
+        ]
+      },
+      "effects": [
+        {
+          "type": "startPartTime",
+          "job": "event_crew"
+        }
+      ]
+    },
+    {
+      "id": "pt_quit_event_crew",
+      "label": "Leave the event crew",
+      "description": "Hand in your notice.",
+      "location": "park",
+      "energyCost": 0,
+      "requires": {
+        "type": "partTime",
+        "value": "event_crew"
+      },
+      "effects": [
+        {
+          "type": "quitPartTime"
+        }
+      ]
+    },
+    {
+      "id": "pt_ask_freelance_gigs",
+      "label": "Start taking freelance gigs online",
+      "description": "Set up a profile and bid on small projects.",
+      "location": "home",
+      "energyCost": 2,
+      "requires": {
+        "type": "all",
+        "conditions": [
+          {
+            "type": "all",
+            "conditions": [
+              {
+                "type": "partTime",
+                "value": false
+              },
+              {
+                "type": "career",
+                "value": false
+              }
+            ]
+          },
+          {
+            "type": "skill",
+            "key": "programming",
+            "op": ">=",
+            "value": 20
+          }
+        ]
+      },
+      "effects": [
+        {
+          "type": "startPartTime",
+          "job": "freelance_gigs"
+        }
+      ]
+    },
+    {
+      "id": "pt_quit_freelance_gigs",
+      "label": "Stop freelancing",
+      "description": "Hand in your notice.",
+      "location": "home",
+      "energyCost": 0,
+      "requires": {
+        "type": "partTime",
+        "value": "freelance_gigs"
+      },
+      "effects": [
+        {
+          "type": "quitPartTime"
+        }
+      ]
+    },
+    {
+      "id": "pt_ask_bartender",
+      "label": "Ask the manager about bartending shifts",
+      "description": "The Copper Mug needs a bartender for late nights.",
+      "location": "bar",
+      "energyCost": 2,
+      "requires": {
+        "type": "all",
+        "conditions": [
+          {
+            "type": "all",
+            "conditions": [
+              {
+                "type": "partTime",
+                "value": false
+              },
+              {
+                "type": "career",
+                "value": false
+              }
+            ]
+          },
+          {
+            "type": "all",
+            "conditions": [
+              {
+                "type": "flag",
+                "key": "mature_on"
+              },
+              {
+                "type": "age",
+                "op": ">=",
+                "value": 21
+              }
+            ]
+          }
+        ]
+      },
+      "effects": [
+        {
+          "type": "startPartTime",
+          "job": "bartender"
+        }
+      ]
+    },
+    {
+      "id": "pt_quit_bartender",
+      "label": "Quit bartending",
+      "description": "Hand in your notice.",
+      "location": "bar",
+      "energyCost": 0,
+      "requires": {
+        "type": "partTime",
+        "value": "bartender"
+      },
+      "effects": [
+        {
+          "type": "quitPartTime"
+        }
+      ]
+    }
+  ],
+  "achievements": [
+    {
+      "id": "white_coat",
+      "title": "White Coat",
+      "description": "Started working as a doctor.",
+      "condition": {
+        "type": "career",
+        "value": "doctor"
+      }
+    },
+    {
+      "id": "objection",
+      "title": "Objection!",
+      "description": "Joined a law firm as a lawyer.",
+      "condition": {
+        "type": "career",
+        "value": "lawyer"
+      }
+    },
+    {
+      "id": "wings",
+      "title": "Wings",
+      "description": "Joined an airline as a pilot.",
+      "condition": {
+        "type": "career",
+        "value": "pilot"
+      }
+    },
+    {
+      "id": "corner_office",
+      "title": "Corner Office",
+      "description": "Reached level 4 or higher in any career.",
+      "condition": {
+        "type": "careerLevel",
+        "op": ">=",
+        "value": 3
+      }
+    }
+  ]
+}

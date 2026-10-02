@@ -1,0 +1,371 @@
+{
+  "contentVersion": "2026.10-ch1",
+  "achievements": [
+    {
+      "id": "first_job",
+      "title": "First Job",
+      "description": "Accepted your first full-time job.",
+      "condition": {
+        "type": "career",
+        "value": true
+      }
+    },
+    {
+      "id": "first_paycheck",
+      "title": "First Paycheck",
+      "description": "Received your first full-time salary.",
+      "condition": {
+        "type": "careerMonths",
+        "op": ">=",
+        "value": 1
+      }
+    },
+    {
+      "id": "seat_secured",
+      "title": "Seat Secured",
+      "description": "Earned an engineering seat through UTAT.",
+      "condition": {
+        "type": "examTier",
+        "exam": "utat",
+        "value": "private"
+      }
+    },
+    {
+      "id": "scholarship_winner",
+      "title": "Scholarship Winner",
+      "description": "Won a scholarship towards your fees.",
+      "condition": {
+        "type": "flag",
+        "key": "scholarship"
+      }
+    },
+    {
+      "id": "graduate",
+      "title": "Graduate",
+      "description": "Completed a qualification.",
+      "condition": {
+        "type": "graduated"
+      }
+    },
+    {
+      "id": "debt_free",
+      "title": "Debt-Free",
+      "description": "Repaid every loan you took.",
+      "condition": {
+        "type": "flag",
+        "key": "debt_free"
+      }
+    },
+    {
+      "id": "there_when_it_mattered",
+      "title": "There When It Mattered",
+      "description": "Dropped everything for a friend in crisis.",
+      "condition": {
+        "type": "memory",
+        "npc": "kavya",
+        "tag": "showed_up"
+      }
+    },
+    {
+      "id": "library_regular",
+      "title": "Library Regular",
+      "description": "Earned Mr. Fernandes' deep respect.",
+      "condition": {
+        "type": "relationship",
+        "npc": "joseph",
+        "field": "affinity",
+        "op": ">=",
+        "value": 50
+      }
+    },
+    {
+      "id": "business_founder",
+      "title": "Business Founder",
+      "description": "Co-founded a business.",
+      "condition": {
+        "type": "any",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "venture_partner"
+          },
+          {
+            "type": "flag",
+            "key": "venture_partner_sweat"
+          }
+        ]
+      }
+    },
+    {
+      "id": "second_wind",
+      "title": "Second Wind",
+      "description": "Took a drop year and came back into education.",
+      "condition": {
+        "type": "all",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "took_drop_year"
+          },
+          {
+            "type": "any",
+            "conditions": [
+              {
+                "type": "educationStatus",
+                "value": "enrolled"
+              },
+              {
+                "type": "graduated"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "bounce_back",
+      "title": "Bounce Back",
+      "description": "Failed a semester and still graduated.",
+      "condition": {
+        "type": "all",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "had_backlog"
+          },
+          {
+            "type": "graduated"
+          }
+        ]
+      }
+    },
+    {
+      "id": "scam_spotter",
+      "title": "Scam Spotter",
+      "description": "Reported a phishing message instead of clicking it.",
+      "condition": {
+        "type": "flag",
+        "key": "reported_scam"
+      },
+      "hidden": true
+    },
+    {
+      "id": "moving_up",
+      "title": "Moving Up",
+      "description": "Earned your first promotion.",
+      "condition": {
+        "type": "flag",
+        "key": "promoted"
+      }
+    },
+    {
+      "id": "six_figures",
+      "title": "Six Figures",
+      "description": "Built savings of ₹1,00,000.",
+      "condition": {
+        "type": "cash",
+        "op": ">=",
+        "value": 100000
+      }
+    },
+    {
+      "id": "chapter_one",
+      "title": "Chapter One",
+      "description": "Completed the first chapter of your life.",
+      "condition": {
+        "type": "flag",
+        "key": "chapter1_complete"
+      }
+    }
+  ],
+  "conclusions": [
+    {
+      "id": "c1_fixlab",
+      "chapter": 1,
+      "priority": 60,
+      "title": "Something of Our Own",
+      "condition": {
+        "type": "career",
+        "value": "fixlab_founder"
+      },
+      "text": "You walked out of college and into a cramped shop with your best friend's name next to yours on the board. The pay is thin and the risk is real. Every repaired phone, every reconciled ledger for a corner shop, every satisfied customer is a vote for the thing you two built — and the reason you'll lie awake some nights doing sums."
+    },
+    {
+      "id": "c1_first_commit",
+      "chapter": 1,
+      "priority": 50,
+      "title": "The First Commit",
+      "condition": {
+        "type": "career",
+        "value": "software_developer"
+      },
+      "text": "Four years of labs with missing keyboards, late-night debugging and one entrance exam that felt like the whole world have become a badge, a laptop and a desk. The first code you push at work is small and slightly embarrassing. It is also yours, and it ships."
+    },
+    {
+      "id": "c1_balanced_books",
+      "chapter": 1,
+      "priority": 50,
+      "title": "Balanced Books",
+      "condition": {
+        "type": "career",
+        "value": "accountant"
+      },
+      "text": "You learned the language of business and now you speak it for a living. Your first month is invoices, reconciliations and one memorable afternoon when a ₹36,000 difference turned out to be two swapped digits. Somewhere, a professional qualification is waiting for Chapter 2."
+    },
+    {
+      "id": "c1_live_wire",
+      "chapter": 1,
+      "priority": 50,
+      "title": "Live Wire",
+      "condition": {
+        "type": "career",
+        "value": "electrician"
+      },
+      "text": "Two years of workshops, safety drills and Mr. Rajan's lectures, and now you're the one people call when the lights go out. You earn sooner than most of your friends, your hands know things your head is still catching up with, and the path to running your own contracting business is clearly marked."
+    },
+    {
+      "id": "c1_long_way",
+      "chapter": 1,
+      "priority": 0,
+      "title": "The Long Way Round",
+      "condition": {
+        "type": "always"
+      },
+      "text": "This chapter didn't end the way the brochures promise. There's no offer letter on the fridge. There is, though, everything you learned getting here — about money, about people, and about how to stand back up. The next chapter begins exactly where you are, which is the only place any chapter has ever begun."
+    }
+  ],
+  "epilogueLines": [
+    {
+      "when": {
+        "type": "debt",
+        "op": ">=",
+        "value": 100000
+      },
+      "text": "You start this chapter carrying a sizeable loan. Every EMI is a small monthly vote for the person you decided to become."
+    },
+    {
+      "when": {
+        "type": "flag",
+        "key": "debt_free"
+      },
+      "text": "You have already paid off a loan — a skill most people learn much later and more expensively."
+    },
+    {
+      "when": {
+        "type": "flag",
+        "key": "scholarship"
+      },
+      "text": "A scholarship carried part of the weight. Somewhere, a committee bet on you, and won."
+    },
+    {
+      "when": {
+        "type": "any",
+        "conditions": [
+          {
+            "type": "memory",
+            "npc": "amma",
+            "tag": "paid_hospital"
+          },
+          {
+            "type": "memory",
+            "npc": "amma",
+            "tag": "worked_for_her"
+          },
+          {
+            "type": "memory",
+            "npc": "amma",
+            "tag": "borrowed_for_her"
+          }
+        ]
+      },
+      "text": "Amma still tells the hospital story to every visiting relative — with you as the hero, and the bill doubled for effect."
+    },
+    {
+      "when": {
+        "type": "memory",
+        "npc": "kavya",
+        "tag": "showed_up"
+      },
+      "text": "Kavya says you're the reason she didn't give up. You say she'd have found a way. You're both a little right."
+    },
+    {
+      "when": {
+        "type": "memory",
+        "npc": "kavya",
+        "tag": "too_busy"
+      },
+      "text": "You and Kavya talk less than you used to. It isn't too late to change that — but it won't change by itself."
+    },
+    {
+      "when": {
+        "type": "relationship",
+        "npc": "joseph",
+        "field": "affinity",
+        "op": ">=",
+        "value": 40
+      },
+      "text": "Mr. Fernandes keeps a list of former students who came back to the library to teach. Your name is on it."
+    },
+    {
+      "when": {
+        "type": "flag",
+        "key": "took_drop_year"
+      },
+      "text": "The drop year that felt like falling behind turned out to be the year you learned how to learn."
+    },
+    {
+      "when": {
+        "type": "flag",
+        "key": "had_backlog"
+      },
+      "text": "A failed semester taught you more about recovery than any topper ever learns."
+    },
+    {
+      "when": {
+        "type": "flag",
+        "key": "reported_scam"
+      },
+      "text": "You also, at some point, saved your savings from a fake KYC link. Underrated life skill."
+    },
+    {
+      "when": {
+        "type": "flag",
+        "key": "frugal"
+      },
+      "text": "You learned early that the cheapest upgrade is the one you don't need."
+    },
+    {
+      "when": {
+        "type": "flag",
+        "key": "living_independently"
+      },
+      "text": "You live on your own now — your own rent, your own groceries, your own rules, your own dishes."
+    },
+    {
+      "when": {
+        "type": "all",
+        "conditions": [
+          {
+            "type": "ambition",
+            "value": "build_own"
+          },
+          {
+            "type": "not",
+            "condition": {
+              "type": "career",
+              "value": "fixlab_founder"
+            }
+          }
+        ]
+      },
+      "text": "You still want to build something of your own one day. Chapter 2 is long."
+    },
+    {
+      "when": {
+        "type": "ambition",
+        "value": "family_first"
+      },
+      "text": "Whatever the job, you measure this chapter by the people at your table. By that measure, it was a good one."
+    }
+  ]
+}

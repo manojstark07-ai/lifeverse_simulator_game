@@ -1,0 +1,4979 @@
+{
+  "contentVersion": "2026.10-ch1",
+  "events": [
+    {
+      "id": "ev_results_day",
+      "chapter": 1,
+      "title": "Results Day",
+      "location": "home",
+      "summary": "School results arrive, and with them the first real decision.",
+      "trigger": {
+        "kind": "auto",
+        "when": {
+          "type": "always"
+        },
+        "priority": 100
+      },
+      "start": "start",
+      "nodes": {
+        "start": {
+          "speaker": "narrator",
+          "text": "Results are out. Your phone buzzes with Kavya's messages before you've finished reading your own marks. Amma is pretending not to hover in the doorway.",
+          "choices": [
+            {
+              "id": "c_read",
+              "label": "Read your marks properly",
+              "next": "amma"
+            }
+          ],
+          "variants": [
+            {
+              "when": {
+                "type": "background",
+                "value": "rural_farming"
+              },
+              "text": "Appa is already out in the field. He said he'd 'hear the news at lunch' — his way of not looking nervous."
+            },
+            {
+              "when": {
+                "type": "background",
+                "value": "urban_lower_middle"
+              },
+              "text": "Appa left for the early bus shift but has called twice to ask if the website has loaded yet."
+            },
+            {
+              "when": {
+                "type": "background",
+                "value": "affluent_business"
+              },
+              "text": "Your uncle has already forwarded your marks to the family WhatsApp group with three emojis and one question: 'Engineering or business?'"
+            }
+          ]
+        },
+        "amma": {
+          "speaker": "amma",
+          "text": "'So. Marks good enough to open doors. Which door, kanna? Don't answer to please me — answer for the next forty years.'",
+          "choices": [
+            {
+              "id": "c_engineering",
+              "label": "Engineering. I'll sit for the UTAT entrance exam in July.",
+              "next": "kavya",
+              "effects": [
+                {
+                  "type": "flag",
+                  "key": "intent_engineering"
+                },
+                {
+                  "type": "journal",
+                  "title": "A direction",
+                  "text": "Decided to aim for engineering through the UTAT entrance exam."
+                }
+              ],
+              "hint": "Exam-based admission. Four years. Strong tech careers."
+            },
+            {
+              "id": "c_commerce",
+              "label": "Commerce. A B.Com, and a path into accounting.",
+              "next": "kavya",
+              "effects": [
+                {
+                  "type": "flag",
+                  "key": "intent_commerce"
+                },
+                {
+                  "type": "journal",
+                  "title": "A direction",
+                  "text": "Decided to study commerce and head towards accounting."
+                }
+              ],
+              "hint": "Open admission. Three years. Steady finance careers."
+            },
+            {
+              "id": "c_trade",
+              "label": "A trade. The ITI electrician course — skilled work, earning sooner.",
+              "next": "kavya",
+              "effects": [
+                {
+                  "type": "flag",
+                  "key": "intent_trade"
+                },
+                {
+                  "type": "journal",
+                  "title": "A direction",
+                  "text": "Decided on the ITI electrician trade."
+                }
+              ],
+              "hint": "Open admission. Two years. High-demand skilled work."
+            }
+          ]
+        },
+        "kavya": {
+          "speaker": "kavya",
+          "text": "Kavya calls, talking before you've said hello. 'Come to the community library on Saturday. Mr. Fernandes runs free prep sessions. Also I need moral support — my uncle thinks engineering is wasted on girls.'",
+          "choices": [
+            {
+              "id": "c_promise",
+              "label": "Promise you'll be there.",
+              "next": null,
+              "effects": [
+                {
+                  "type": "relationship",
+                  "npc": "kavya",
+                  "affinity": 3,
+                  "trust": 2
+                }
+              ]
+            },
+            {
+              "id": "c_maybe",
+              "label": "Say you'll see how the week goes.",
+              "next": null
+            }
+          ],
+          "variants": [
+            {
+              "when": {
+                "type": "flag",
+                "key": "intent_engineering"
+              },
+              "text": "'Engineering? Then we're rivals AND study partners. Excellent.'"
+            },
+            {
+              "when": {
+                "type": "flag",
+                "key": "intent_commerce"
+              },
+              "text": "'Commerce? Smart. Someone has to count the money my future startup makes.'"
+            },
+            {
+              "when": {
+                "type": "flag",
+                "key": "intent_trade"
+              },
+              "text": "'An electrician! Finally, someone who can fix my laptop charger properly.'"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ev_family_money",
+      "chapter": 1,
+      "title": "The Household Notebook",
+      "location": "home",
+      "summary": "Amma lays out what the family can — and can't — afford.",
+      "trigger": {
+        "kind": "auto",
+        "when": {
+          "type": "daysSinceEvent",
+          "event": "ev_results_day",
+          "op": ">=",
+          "value": 3
+        },
+        "priority": 90
+      },
+      "start": "start",
+      "nodes": {
+        "start": {
+          "speaker": "amma",
+          "text": "That night, Amma spreads the household notebook across the kitchen table. Columns of numbers in her neat handwriting, some of them circled twice.",
+          "choices": [
+            {
+              "id": "c_self",
+              "label": "Tell her you'll find part-time work and cover your own expenses.",
+              "next": null,
+              "effects": [
+                {
+                  "type": "relationship",
+                  "npc": "amma",
+                  "affinity": 3,
+                  "trust": 5
+                },
+                {
+                  "type": "memory",
+                  "npc": "amma",
+                  "tag": "self_reliant",
+                  "text": "You promised to pull your own weight.",
+                  "weight": 1
+                },
+                {
+                  "type": "flag",
+                  "key": "wants_part_time"
+                }
+              ]
+            },
+            {
+              "id": "c_grateful",
+              "label": "Thank her, and promise to make the money count.",
+              "next": null,
+              "effects": [
+                {
+                  "type": "relationship",
+                  "npc": "amma",
+                  "affinity": 4,
+                  "trust": 2
+                },
+                {
+                  "type": "memory",
+                  "npc": "amma",
+                  "tag": "grateful",
+                  "text": "You thanked her for the sacrifices nobody talks about.",
+                  "weight": 1
+                }
+              ]
+            },
+            {
+              "id": "c_condition",
+              "label": "Ask Appa straight: is the business a condition?",
+              "next": "condition",
+              "requires": {
+                "type": "background",
+                "value": "affluent_business"
+              },
+              "hideIfLocked": true
+            }
+          ],
+          "variants": [
+            {
+              "when": {
+                "type": "background",
+                "value": "rural_farming"
+              },
+              "text": "'The paddy money comes in January. Until then we have what's in the tin. We can give you about ₹1,500 a month. If there are fees, we will find a way — but you should know what the way costs.'"
+            },
+            {
+              "when": {
+                "type": "background",
+                "value": "urban_lower_middle"
+              },
+              "text": "'Appa's salary and my tailoring cover the house. We can give you ₹4,000 a month. Fees... there are savings, but the roof repair money is in there too.'"
+            },
+            {
+              "when": {
+                "type": "background",
+                "value": "affluent_business"
+              },
+              "text": "'Money is not the worry, kanna. Appa will pay for anything. But he also hopes you'll step into the business one day. Think about whether that's a gift or a condition.'"
+            }
+          ]
+        },
+        "condition": {
+          "speaker": "narrator",
+          "text": "Appa laughs, then doesn't. 'Not a condition. A hope. But hopes have weight too.' He agrees to fund whatever you choose — and to stop raising it at every family function. Mostly.",
+          "onEnter": [
+            {
+              "type": "memory",
+              "npc": "amma",
+              "tag": "honest_talk",
+              "text": "You asked the hard question out loud, kindly.",
+              "weight": 1
+            },
+            {
+              "type": "relationship",
+              "npc": "amma",
+              "trust": 5
+            },
+            {
+              "type": "flag",
+              "key": "talked_business"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ev_library_mentor",
+      "chapter": 1,
+      "title": "The Community Library",
+      "location": "library",
+      "summary": "Meet Mr. Fernandes, who believes nobody is 'bad at maths'.",
+      "trigger": {
+        "kind": "auto",
+        "when": {
+          "type": "daysSinceEvent",
+          "event": "ev_results_day",
+          "op": ">=",
+          "value": 7
+        },
+        "priority": 80
+      },
+      "start": "start",
+      "nodes": {
+        "start": {
+          "speaker": "narrator",
+          "text": "The community library smells of old paper and phenyl. Kavya has saved you a seat. At the front, a thin man in a pressed shirt is writing a puzzle on the blackboard.",
+          "choices": [
+            {
+              "id": "c_listen",
+              "label": "Listen",
+              "next": "intro"
+            }
+          ],
+          "onEnter": [
+            {
+              "type": "meet",
+              "npc": "joseph"
+            }
+          ]
+        },
+        "intro": {
+          "speaker": "joseph",
+          "text": "'Joseph Fernandes. Thirty-four years teaching maths, three years retired, zero years bored. The rule of my library: nobody is \"bad at maths\". Some people are early, some are late. Now — who will try this one?'",
+          "choices": [
+            {
+              "id": "c_try",
+              "label": "Walk up to the board and try it.",
+              "next": null,
+              "cost": {
+                "energy": 4
+              },
+              "challenge": {
+                "kind": "puzzle",
+                "onPass": {
+                  "next": "pass",
+                  "effects": [
+                    {
+                      "type": "relationship",
+                      "npc": "joseph",
+                      "affinity": 5,
+                      "trust": 3
+                    },
+                    {
+                      "type": "stat",
+                      "key": "communication",
+                      "delta": 1
+                    },
+                    {
+                      "type": "memory",
+                      "npc": "joseph",
+                      "tag": "solved_board",
+                      "text": "Solved the blackboard puzzle on your first day.",
+                      "weight": 1
+                    }
+                  ]
+                },
+                "onFail": {
+                  "next": "fail",
+                  "effects": [
+                    {
+                      "type": "relationship",
+                      "npc": "joseph",
+                      "affinity": 3,
+                      "trust": 2
+                    },
+                    {
+                      "type": "memory",
+                      "npc": "joseph",
+                      "tag": "tried_board",
+                      "text": "Volunteered for the board puzzle, got it wrong, and stayed to understand why.",
+                      "weight": 1
+                    }
+                  ]
+                },
+                "pool": "utat",
+                "count": 1,
+                "passFraction": 1.0
+              }
+            },
+            {
+              "id": "c_watch",
+              "label": "Watch quietly and take careful notes.",
+              "next": "watch",
+              "effects": [
+                {
+                  "type": "stat",
+                  "key": "knowledge",
+                  "delta": 0.5
+                }
+              ]
+            }
+          ]
+        },
+        "pass": {
+          "speaker": "joseph",
+          "text": "'Correct — and you showed your working, which matters more than the answer.' He hands you a dog-eared practice book. 'The door is open six days a week. Use it.'",
+          "onEnter": [
+            {
+              "type": "flag",
+              "key": "mentor_open"
+            }
+          ]
+        },
+        "fail": {
+          "speaker": "joseph",
+          "text": "'Wrong, and wonderfully so — now we can see exactly where the thinking slipped.' He walks you through it step by step. 'Come back. Mistakes are cheaper here than in an exam hall.'",
+          "onEnter": [
+            {
+              "type": "flag",
+              "key": "mentor_open"
+            }
+          ]
+        },
+        "watch": {
+          "speaker": "joseph",
+          "text": "After the session, he stops you at the door. 'You took notes. Good. Next time, take a risk as well.' He nods at the timetable: open six days a week.",
+          "onEnter": [
+            {
+              "type": "flag",
+              "key": "mentor_open"
+            },
+            {
+              "type": "relationship",
+              "npc": "joseph",
+              "affinity": 2
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ev_part_time_offer",
+      "chapter": 1,
+      "title": "Help Wanted",
+      "location": "cafe",
+      "summary": "A café needs counter staff. Money now, or time for later?",
+      "trigger": {
+        "kind": "auto",
+        "when": {
+          "type": "all",
+          "conditions": [
+            {
+              "type": "daysSinceEvent",
+              "event": "ev_library_mentor",
+              "op": ">=",
+              "value": 5
+            },
+            {
+              "type": "career",
+              "value": false
+            }
+          ]
+        },
+        "priority": 70
+      },
+      "start": "start",
+      "nodes": {
+        "start": {
+          "speaker": "narrator",
+          "text": "At Filter Kaapi Corner, the owner, Mr. Sundaram, is shouting at a coffee machine. Kavya nudges you. 'He's hiring. Weekends and three evenings a week. Sixteen hours.'",
+          "choices": [
+            {
+              "id": "c_take",
+              "label": "Ask for the job.",
+              "next": "hired",
+              "effects": [
+                {
+                  "type": "startPartTime",
+                  "job": "cafe_counter"
+                }
+              ],
+              "hint": "Steady income; 16 fewer free hours each week."
+            },
+            {
+              "id": "c_decline",
+              "label": "Not now — you want your hours for studying.",
+              "next": "declined",
+              "effects": [
+                {
+                  "type": "stat",
+                  "key": "discipline",
+                  "delta": 1
+                }
+              ]
+            }
+          ],
+          "variants": [
+            {
+              "when": {
+                "type": "flag",
+                "key": "wants_part_time"
+              },
+              "text": "You did promise Amma you'd pull your own weight."
+            }
+          ]
+        },
+        "hired": {
+          "speaker": "narrator",
+          "text": "Mr. Sundaram looks you up and down. 'Can you count change and smile at the same time? Start Saturday.' It will pay — in money, and in hours you won't have."
+        },
+        "declined": {
+          "speaker": "narrator",
+          "text": "'Suit yourself,' says Mr. Sundaram. 'The sign stays in the window till someone takes it.'",
+          "onEnter": [
+            {
+              "type": "flag",
+              "key": "cafe_offer_open"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ev_entrance_exam",
+      "chapter": 1,
+      "title": "UTAT Day",
+      "location": "exam_hall",
+      "summary": "Sit the (fictional) engineering entrance exam.",
+      "trigger": {
+        "kind": "auto",
+        "when": {
+          "type": "all",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "intent_engineering"
+            },
+            {
+              "type": "day",
+              "op": ">=",
+              "value": 50
+            },
+            {
+              "type": "examAttempts",
+              "exam": "utat",
+              "op": "==",
+              "value": 0
+            },
+            {
+              "type": "educationStatus",
+              "value": "none"
+            }
+          ]
+        },
+        "priority": 95
+      },
+      "start": "start",
+      "nodes": {
+        "start": {
+          "speaker": "narrator",
+          "text": "UTAT day. The exam hall is a converted wedding hall with ceiling fans that only work on one side. Roll number 4471 — that's you — is on the side without fans.",
+          "choices": [
+            {
+              "id": "c_sit",
+              "label": "Begin the paper.",
+              "next": null,
+              "challenge": {
+                "kind": "exam",
+                "onPass": {
+                  "next": "done",
+                  "effects": []
+                },
+                "onFail": {
+                  "next": "done",
+                  "effects": []
+                },
+                "examId": "utat"
+              },
+              "hint": "6 questions, 12 minutes. +4 correct, −1 wrong, 0 skipped."
+            }
+          ],
+          "variants": [
+            {
+              "when": {
+                "type": "stat",
+                "key": "energy",
+                "op": "<",
+                "value": 40
+              },
+              "text": "You barely slept. Your eyes keep sliding off the first line of the instructions."
+            },
+            {
+              "when": {
+                "type": "counter",
+                "key": "practiceSessions",
+                "op": ">=",
+                "value": 4
+              },
+              "text": "The weeks of practice papers have made the format feel almost familiar."
+            }
+          ]
+        },
+        "done": {
+          "speaker": "narrator",
+          "text": "Pens down. Outside, Kavya is already arguing with a stranger about question four. Results come out in ten days."
+        }
+      }
+    },
+    {
+      "id": "ev_exam_results",
+      "chapter": 1,
+      "title": "Results: UTAT",
+      "location": "home",
+      "summary": "The UTAT results are published.",
+      "trigger": {
+        "kind": "auto",
+        "when": {
+          "type": "all",
+          "conditions": [
+            {
+              "type": "daysSinceEvent",
+              "event": "ev_entrance_exam",
+              "op": ">=",
+              "value": 10
+            },
+            {
+              "type": "educationStatus",
+              "value": "none"
+            }
+          ]
+        },
+        "priority": 95
+      },
+      "start": "start",
+      "nodes": {
+        "start": {
+          "speaker": "narrator",
+          "text": "The results website crashes twice. On the third try, it loads.",
+          "choices": [
+            {
+              "id": "c_check",
+              "label": "Look at the screen.",
+              "next": "none",
+              "routes": [
+                {
+                  "when": {
+                    "type": "examTier",
+                    "exam": "utat",
+                    "value": "government",
+                    "exact": true,
+                    "latest": true
+                  },
+                  "next": "gov"
+                },
+                {
+                  "when": {
+                    "type": "examTier",
+                    "exam": "utat",
+                    "value": "private",
+                    "exact": true,
+                    "latest": true
+                  },
+                  "next": "private"
+                }
+              ]
+            }
+          ]
+        },
+        "gov": {
+          "speaker": "amma",
+          "text": "Amma reads it out loud — twice. 'Government college. GOVERNMENT!' She has phoned three relatives before you can stop her.",
+          "choices": [
+            {
+              "id": "c_accept_gov",
+              "label": "Accept the government college seat.",
+              "next": null,
+              "effects": [
+                {
+                  "type": "enroll",
+                  "program": "btech_cs",
+                  "tier": "fromExam"
+                },
+                {
+                  "type": "flag",
+                  "key": "joined_engineering"
+                },
+                {
+                  "type": "clearFlag",
+                  "key": "drop_year"
+                }
+              ]
+            },
+            {
+              "id": "c_commerce",
+              "label": "Switch to commerce instead.",
+              "next": null,
+              "effects": [
+                {
+                  "type": "flag",
+                  "key": "intent_commerce"
+                },
+                {
+                  "type": "clearFlag",
+                  "key": "intent_engineering"
+                },
+                {
+                  "type": "clearFlag",
+                  "key": "drop_year"
+                }
+              ]
+            },
+            {
+              "id": "c_trade",
+              "label": "Switch to the ITI electrician trade.",
+              "next": null,
+              "effects": [
+                {
+                  "type": "flag",
+                  "key": "intent_trade"
+                },
+                {
+                  "type": "clearFlag",
+                  "key": "intent_engineering"
+                },
+                {
+                  "type": "clearFlag",
+                  "key": "drop_year"
+                }
+              ]
+            }
+          ],
+          "variants": [
+            {
+              "when": {
+                "type": "flag",
+                "key": "need_based_eligible"
+              },
+              "text": "A banner on the results page mentions the Vidya Merit Scholarship for students from families with limited income."
+            }
+          ]
+        },
+        "private": {
+          "speaker": "amma",
+          "text": "A private college seat. Good labs, decent placements — and fees of ₹1,60,000 a year. Amma does the arithmetic in her head and goes quiet.",
+          "choices": [
+            {
+              "id": "c_accept_private",
+              "label": "Accept the private college seat.",
+              "next": null,
+              "effects": [
+                {
+                  "type": "enroll",
+                  "program": "btech_cs",
+                  "tier": "fromExam"
+                },
+                {
+                  "type": "flag",
+                  "key": "joined_engineering"
+                },
+                {
+                  "type": "clearFlag",
+                  "key": "drop_year"
+                }
+              ]
+            },
+            {
+              "id": "c_retake",
+              "label": "Take a drop year and retake UTAT next July.",
+              "next": "drop",
+              "effects": [
+                {
+                  "type": "flag",
+                  "key": "drop_year"
+                },
+                {
+                  "type": "flag",
+                  "key": "took_drop_year"
+                },
+                {
+                  "type": "journal",
+                  "title": "A drop year",
+                  "text": "Chose to prepare for a year and retake UTAT."
+                }
+              ],
+              "requires": {
+                "type": "examAttempts",
+                "exam": "utat",
+                "op": "<",
+                "value": 2
+              },
+              "hideIfLocked": true
+            },
+            {
+              "id": "c_commerce",
+              "label": "Switch to commerce instead.",
+              "next": null,
+              "effects": [
+                {
+                  "type": "flag",
+                  "key": "intent_commerce"
+                },
+                {
+                  "type": "clearFlag",
+                  "key": "intent_engineering"
+                },
+                {
+                  "type": "clearFlag",
+                  "key": "drop_year"
+                }
+              ]
+            },
+            {
+              "id": "c_trade",
+              "label": "Switch to the ITI electrician trade.",
+              "next": null,
+              "effects": [
+                {
+                  "type": "flag",
+                  "key": "intent_trade"
+                },
+                {
+                  "type": "clearFlag",
+                  "key": "intent_engineering"
+                },
+                {
+                  "type": "clearFlag",
+                  "key": "drop_year"
+                }
+              ]
+            }
+          ],
+          "variants": [
+            {
+              "when": {
+                "type": "background",
+                "value": "affluent_business"
+              },
+              "text": "Appa shrugs. 'It's fine. Take it.' It is easy for him to say, and that's both the gift and the problem."
+            }
+          ]
+        },
+        "none": {
+          "speaker": "narrator",
+          "text": "No seat this year. The number on the screen feels like a verdict. It isn't. It's one morning's data point — but it's the data point you have.",
+          "choices": [
+            {
+              "id": "c_retake",
+              "label": "Take a drop year and retake UTAT next July.",
+              "next": "drop",
+              "effects": [
+                {
+                  "type": "flag",
+                  "key": "drop_year"
+                },
+                {
+                  "type": "flag",
+                  "key": "took_drop_year"
+                },
+                {
+                  "type": "journal",
+                  "title": "A drop year",
+                  "text": "Chose to prepare for a year and retake UTAT."
+                }
+              ],
+              "requires": {
+                "type": "examAttempts",
+                "exam": "utat",
+                "op": "<",
+                "value": 2
+              },
+              "hideIfLocked": true
+            },
+            {
+              "id": "c_commerce",
+              "label": "Switch to commerce instead.",
+              "next": null,
+              "effects": [
+                {
+                  "type": "flag",
+                  "key": "intent_commerce"
+                },
+                {
+                  "type": "clearFlag",
+                  "key": "intent_engineering"
+                },
+                {
+                  "type": "clearFlag",
+                  "key": "drop_year"
+                }
+              ]
+            },
+            {
+              "id": "c_trade",
+              "label": "Switch to the ITI electrician trade.",
+              "next": null,
+              "effects": [
+                {
+                  "type": "flag",
+                  "key": "intent_trade"
+                },
+                {
+                  "type": "clearFlag",
+                  "key": "intent_engineering"
+                },
+                {
+                  "type": "clearFlag",
+                  "key": "drop_year"
+                }
+              ]
+            }
+          ]
+        },
+        "drop": {
+          "speaker": "joseph",
+          "text": "Mr. Fernandes listens to the whole story, then nods. 'A drop year is a year, not a sentence. Give it a timetable like a job — or it will give you one.'",
+          "onEnter": [
+            {
+              "type": "relationship",
+              "npc": "joseph",
+              "affinity": 3,
+              "trust": 2
+            },
+            {
+              "type": "memory",
+              "npc": "joseph",
+              "tag": "drop_year",
+              "text": "Came to the library on the day of the results and asked for a plan.",
+              "weight": 1
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ev_admissions",
+      "chapter": 1,
+      "title": "Admission Counters",
+      "location": "campus",
+      "summary": "Apply to an open-admission course.",
+      "trigger": {
+        "kind": "auto",
+        "when": {
+          "type": "all",
+          "conditions": [
+            {
+              "type": "any",
+              "conditions": [
+                {
+                  "type": "flag",
+                  "key": "intent_commerce"
+                },
+                {
+                  "type": "flag",
+                  "key": "intent_trade"
+                }
+              ]
+            },
+            {
+              "type": "educationStatus",
+              "value": "none"
+            },
+            {
+              "type": "day",
+              "op": ">=",
+              "value": 60
+            },
+            {
+              "type": "not",
+              "condition": {
+                "type": "flag",
+                "key": "drop_year"
+              }
+            }
+          ]
+        },
+        "priority": 85
+      },
+      "start": "start",
+      "nodes": {
+        "start": {
+          "speaker": "narrator",
+          "text": "Admission counters open across the district. Queues, photocopies, and a man selling laminated pouches at a startling markup.",
+          "choices": [
+            {
+              "id": "c_bcom",
+              "label": "Submit your B.Com application (fees ₹22,000 a year).",
+              "next": "in",
+              "effects": [
+                {
+                  "type": "enroll",
+                  "program": "bcom",
+                  "tier": "aided"
+                }
+              ],
+              "requires": {
+                "type": "flag",
+                "key": "intent_commerce"
+              },
+              "hideIfLocked": true
+            },
+            {
+              "id": "c_iti",
+              "label": "Join the Government ITI electrician trade (fees ₹6,000 a year).",
+              "next": "in",
+              "effects": [
+                {
+                  "type": "enroll",
+                  "program": "iti_electrician",
+                  "tier": "govt_iti"
+                }
+              ],
+              "requires": {
+                "type": "flag",
+                "key": "intent_trade"
+              },
+              "hideIfLocked": true
+            },
+            {
+              "id": "c_rethink",
+              "label": "Wait. Step out of the queue and rethink.",
+              "next": "rethink"
+            }
+          ]
+        },
+        "rethink": {
+          "speaker": "narrator",
+          "text": "You stand outside the counter for twenty minutes, watching other people's futures get stapled together.",
+          "choices": [
+            {
+              "id": "c_bcom2",
+              "label": "Apply for the B.Com.",
+              "next": "in",
+              "effects": [
+                {
+                  "type": "enroll",
+                  "program": "bcom",
+                  "tier": "aided"
+                },
+                {
+                  "type": "flag",
+                  "key": "intent_commerce"
+                },
+                {
+                  "type": "clearFlag",
+                  "key": "intent_trade"
+                }
+              ]
+            },
+            {
+              "id": "c_iti2",
+              "label": "Apply for the ITI electrician trade.",
+              "next": "in",
+              "effects": [
+                {
+                  "type": "enroll",
+                  "program": "iti_electrician",
+                  "tier": "govt_iti"
+                },
+                {
+                  "type": "flag",
+                  "key": "intent_trade"
+                },
+                {
+                  "type": "clearFlag",
+                  "key": "intent_commerce"
+                }
+              ]
+            }
+          ]
+        },
+        "in": {
+          "speaker": "narrator",
+          "text": "Forms submitted, receipt in hand. The first semester's fees are due now. It's real."
+        }
+      }
+    },
+    {
+      "id": "ev_bank_fees",
+      "chapter": 1,
+      "title": "Token Number 37",
+      "location": "bank",
+      "summary": "Open a bank account and decide how to pay for your education.",
+      "trigger": {
+        "kind": "auto",
+        "when": {
+          "type": "educationStatus",
+          "value": "enrolled"
+        },
+        "priority": 88
+      },
+      "start": "start",
+      "nodes": {
+        "start": {
+          "speaker": "narrator",
+          "text": "The college accepts only bank transfers, so you end up at the Kaveri Co-operative Bank with Amma, a folder of photocopies, and token number 37. An hour later you have a savings account, a passbook, and an appointment with the loans officer.",
+          "choices": [
+            {
+              "id": "c_loan",
+              "label": "Take an education loan for the rest of the course fees.",
+              "next": "loan",
+              "effects": [
+                {
+                  "type": "takeLoan",
+                  "product": "kaveri_education",
+                  "amount": "remainingFees"
+                },
+                {
+                  "type": "flag",
+                  "key": "took_education_loan"
+                }
+              ],
+              "hint": "9.5% a year. Nothing to pay until 6 months after the course."
+            },
+            {
+              "id": "c_scholarship",
+              "label": "Apply for the need-based Vidya Merit Scholarship.",
+              "next": "scholar",
+              "effects": [
+                {
+                  "type": "scholarship",
+                  "share": 0.5,
+                  "name": "Vidya Merit Scholarship"
+                },
+                {
+                  "type": "journal",
+                  "title": "Scholarship",
+                  "text": "Won the Vidya Merit Scholarship: half of all course fees covered."
+                }
+              ],
+              "requires": {
+                "type": "all",
+                "conditions": [
+                  {
+                    "type": "flag",
+                    "key": "need_based_eligible"
+                  },
+                  {
+                    "type": "stat",
+                    "key": "knowledge",
+                    "op": ">=",
+                    "value": 36
+                  }
+                ]
+              },
+              "hint": "Need-based and merit-based: covers half the fees."
+            },
+            {
+              "id": "c_self",
+              "label": "Pay as you go from savings, family support and work.",
+              "next": null,
+              "effects": [
+                {
+                  "type": "stat",
+                  "key": "discipline",
+                  "delta": 1
+                }
+              ],
+              "hint": "No debt — but every semester's fees must be found in cash."
+            }
+          ],
+          "variants": [
+            {
+              "when": {
+                "type": "arrears",
+                "op": ">",
+                "value": 0
+              },
+              "text": "The officer points at your fee receipt: you couldn't cover the full first-semester fees. The college has given you until the end of the month."
+            }
+          ],
+          "onEnter": [
+            {
+              "type": "openBankAccount",
+              "bank": "Kaveri Co-operative Bank"
+            }
+          ]
+        },
+        "loan": {
+          "speaker": "narrator",
+          "text": "The officer explains slowly: 9.5% a year; nothing to pay while you study plus six months; interest piles up the whole time and is added to the loan when repayments start. Seven years of EMIs after that. You sign in four places."
+        },
+        "scholar": {
+          "speaker": "narrator",
+          "text": "The scholarship office stamps your form. Half your fees, for the whole course — as long as you don't drop out. Any half already paid will be refunded.",
+          "choices": [
+            {
+              "id": "c_loan_rest",
+              "label": "Borrow the remaining half as an education loan.",
+              "next": "loan",
+              "effects": [
+                {
+                  "type": "takeLoan",
+                  "product": "kaveri_education",
+                  "amount": "remainingFees"
+                },
+                {
+                  "type": "flag",
+                  "key": "took_education_loan"
+                }
+              ]
+            },
+            {
+              "id": "c_no_loan",
+              "label": "Cover the remaining half yourself.",
+              "next": null,
+              "effects": [
+                {
+                  "type": "stat",
+                  "key": "discipline",
+                  "delta": 1
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ev_first_day",
+      "chapter": 1,
+      "title": "First Day",
+      "location": "campus",
+      "summary": "Your first day of {program}.",
+      "trigger": {
+        "kind": "auto",
+        "when": {
+          "type": "all",
+          "conditions": [
+            {
+              "type": "daysSinceEvent",
+              "event": "ev_bank_fees",
+              "op": ">=",
+              "value": 5
+            },
+            {
+              "type": "educationStatus",
+              "value": "enrolled"
+            }
+          ]
+        },
+        "priority": 60
+      },
+      "start": "start",
+      "nodes": {
+        "start": {
+          "speaker": "narrator",
+          "text": "First day of {program}.",
+          "choices": [
+            {
+              "id": "c_club",
+              "label": "Sign up for the department club.",
+              "next": null,
+              "effects": [
+                {
+                  "type": "stat",
+                  "key": "communication",
+                  "delta": 2
+                },
+                {
+                  "type": "programSkill",
+                  "delta": 1
+                },
+                {
+                  "type": "flag",
+                  "key": "joined_club"
+                }
+              ],
+              "cost": {
+                "energy": 5
+              }
+            },
+            {
+              "id": "c_front",
+              "label": "Skip the clubs; sit in the front row and focus.",
+              "next": null,
+              "effects": [
+                {
+                  "type": "stat",
+                  "key": "discipline",
+                  "delta": 2
+                },
+                {
+                  "type": "stat",
+                  "key": "knowledge",
+                  "delta": 1
+                }
+              ]
+            },
+            {
+              "id": "c_back",
+              "label": "Find the back bench and make friends.",
+              "next": null,
+              "effects": [
+                {
+                  "type": "stat",
+                  "key": "communication",
+                  "delta": 2
+                },
+                {
+                  "type": "stat",
+                  "key": "wellbeing",
+                  "delta": 3
+                },
+                {
+                  "type": "flag",
+                  "key": "made_college_friends"
+                }
+              ]
+            }
+          ],
+          "variants": [
+            {
+              "when": {
+                "type": "program",
+                "value": "btech_cs"
+              },
+              "text": "The CSE lab has forty computers and thirty-one working keyboards. Seniors are recruiting for the coding club with free samosas."
+            },
+            {
+              "when": {
+                "type": "program",
+                "value": "bcom"
+              },
+              "text": "Your professor opens with: 'Accounting is the language of business. By March you will all be fluent — or poor.' Nobody is sure if it's a joke."
+            },
+            {
+              "when": {
+                "type": "program",
+                "value": "iti_electrician"
+              },
+              "text": "The workshop smells of solder and machine oil. The instructor, Mr. Rajan, makes everyone recite the safety rules before touching anything — twice."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ev_kavya_crisis",
+      "chapter": 1,
+      "title": "A Message at 11:40 pm",
+      "location": "park",
+      "summary": "Kavya needs you on the same day you need yourself.",
+      "trigger": {
+        "kind": "auto",
+        "when": {
+          "type": "all",
+          "conditions": [
+            {
+              "type": "daysSinceEvent",
+              "event": "ev_first_day",
+              "op": ">=",
+              "value": 30
+            }
+          ]
+        },
+        "priority": 55
+      },
+      "start": "start",
+      "nodes": {
+        "start": {
+          "speaker": "narrator",
+          "text": "Kavya's message arrives at 11:40 pm: 'can u talk tmrw. pls. family stuff. it's bad.' Tomorrow is also your first internal assessment.",
+          "choices": [
+            {
+              "id": "c_there",
+              "label": "Spend the day with her. Everything else can wait.",
+              "next": "there",
+              "effects": [
+                {
+                  "type": "relationship",
+                  "npc": "kavya",
+                  "affinity": 10,
+                  "trust": 10
+                },
+                {
+                  "type": "memory",
+                  "npc": "kavya",
+                  "tag": "showed_up",
+                  "text": "You showed up when her family was pushing her to quit.",
+                  "weight": 2
+                },
+                {
+                  "type": "flag",
+                  "key": "semester_penalty"
+                }
+              ],
+              "cost": {
+                "energy": 10
+              },
+              "hint": "Your assessment will suffer."
+            },
+            {
+              "id": "c_later",
+              "label": "Sit the assessment, then give her your whole evening.",
+              "next": "later",
+              "effects": [
+                {
+                  "type": "relationship",
+                  "npc": "kavya",
+                  "affinity": 5,
+                  "trust": 4
+                },
+                {
+                  "type": "memory",
+                  "npc": "kavya",
+                  "tag": "called_later",
+                  "text": "You called the same evening and listened for three hours.",
+                  "weight": 1
+                }
+              ],
+              "cost": {
+                "energy": 6
+              }
+            },
+            {
+              "id": "c_text",
+              "label": "Send a kind text. You can't afford distractions right now.",
+              "next": "text",
+              "effects": [
+                {
+                  "type": "relationship",
+                  "npc": "kavya",
+                  "affinity": -4,
+                  "trust": -6,
+                  "conflict": 10
+                },
+                {
+                  "type": "memory",
+                  "npc": "kavya",
+                  "tag": "too_busy",
+                  "text": "When she needed you, you sent a text.",
+                  "weight": -1
+                },
+                {
+                  "type": "stat",
+                  "key": "discipline",
+                  "delta": 1
+                }
+              ]
+            }
+          ]
+        },
+        "there": {
+          "speaker": "kavya",
+          "text": "'My uncle says engineering is wasted on me. Correspondence degree, help in his shop, done. Amma agrees because he pays my sister's school fees.' She is quiet for a long time. 'I want to build something. Something mine.' By evening she's laughing again — and planning.",
+          "onEnter": [
+            {
+              "type": "flag",
+              "key": "kavya_dream_shared"
+            }
+          ]
+        },
+        "later": {
+          "speaker": "kavya",
+          "text": "On the phone she's calmer than you expected. 'It's fine. It's not fine. But it's fine.' She tells you about her uncle's plan for her life. 'One day I'm going to build something of my own. You'll see.'",
+          "onEnter": [
+            {
+              "type": "flag",
+              "key": "kavya_dream_shared"
+            }
+          ]
+        },
+        "text": {
+          "speaker": "narrator",
+          "text": "She replies with a thumbs up. Just a thumbs up. You do well in the assessment. It doesn't feel like winning."
+        }
+      }
+    },
+    {
+      "id": "ev_first_semester",
+      "chapter": 1,
+      "title": "Semester Exams",
+      "location": "campus",
+      "summary": "Your first university examination.",
+      "trigger": {
+        "kind": "auto",
+        "when": {
+          "type": "monthsEnrolled",
+          "op": ">=",
+          "value": 5
+        },
+        "priority": 65
+      },
+      "start": "start",
+      "nodes": {
+        "start": {
+          "speaker": "narrator",
+          "text": "Semester exams. The {program} paper is tomorrow morning, and tonight you can feel exactly how much — or how little — you studied.",
+          "choices": [
+            {
+              "id": "c_cs",
+              "label": "Write the paper (2 questions).",
+              "next": null,
+              "requires": {
+                "type": "program",
+                "value": "btech_cs"
+              },
+              "hideIfLocked": true,
+              "challenge": {
+                "kind": "puzzle",
+                "onPass": {
+                  "next": "good",
+                  "effects": [
+                    {
+                      "type": "flag",
+                      "key": "semester_boost"
+                    }
+                  ]
+                },
+                "onFail": {
+                  "next": "bad",
+                  "effects": [
+                    {
+                      "type": "flag",
+                      "key": "semester_penalty"
+                    }
+                  ]
+                },
+                "pool": "sem_cs",
+                "count": 2,
+                "passFraction": 0.5
+              }
+            },
+            {
+              "id": "c_com",
+              "label": "Write the paper (2 questions).",
+              "next": null,
+              "requires": {
+                "type": "program",
+                "value": "bcom"
+              },
+              "hideIfLocked": true,
+              "challenge": {
+                "kind": "puzzle",
+                "onPass": {
+                  "next": "good",
+                  "effects": [
+                    {
+                      "type": "flag",
+                      "key": "semester_boost"
+                    }
+                  ]
+                },
+                "onFail": {
+                  "next": "bad",
+                  "effects": [
+                    {
+                      "type": "flag",
+                      "key": "semester_penalty"
+                    }
+                  ]
+                },
+                "pool": "sem_commerce",
+                "count": 2,
+                "passFraction": 0.5
+              }
+            },
+            {
+              "id": "c_iti",
+              "label": "Sit the trade theory paper (2 questions).",
+              "next": null,
+              "requires": {
+                "type": "program",
+                "value": "iti_electrician"
+              },
+              "hideIfLocked": true,
+              "challenge": {
+                "kind": "puzzle",
+                "onPass": {
+                  "next": "good",
+                  "effects": [
+                    {
+                      "type": "flag",
+                      "key": "semester_boost"
+                    }
+                  ]
+                },
+                "onFail": {
+                  "next": "bad",
+                  "effects": [
+                    {
+                      "type": "flag",
+                      "key": "semester_penalty"
+                    }
+                  ]
+                },
+                "pool": "sem_trade",
+                "count": 2,
+                "passFraction": 0.5
+              }
+            },
+            {
+              "id": "c_auto",
+              "label": "Write steadily on autopilot — no heroics.",
+              "next": "auto"
+            }
+          ],
+          "variants": [
+            {
+              "when": {
+                "type": "stat",
+                "key": "knowledge",
+                "op": ">=",
+                "value": 45
+              },
+              "text": "You've kept up all term. The syllabus feels like a map you've already walked."
+            },
+            {
+              "when": {
+                "type": "stat",
+                "key": "knowledge",
+                "op": "<",
+                "value": 35
+              },
+              "text": "Whole chapters look unfamiliar. Your notes from August are optimistic."
+            }
+          ]
+        },
+        "good": {
+          "speaker": "narrator",
+          "text": "You walk out knowing you did well. The grades will show it."
+        },
+        "bad": {
+          "speaker": "narrator",
+          "text": "Two questions you really should have known. You'll see the damage when grades come out."
+        },
+        "auto": {
+          "speaker": "narrator",
+          "text": "You write steadily and without brilliance. It'll be fine. Probably."
+        }
+      }
+    },
+    {
+      "id": "ev_amma_hospital",
+      "chapter": 1,
+      "title": "A Call at 6 am",
+      "location": "hospital",
+      "summary": "A family emergency tests your savings and your priorities.",
+      "trigger": {
+        "kind": "auto",
+        "when": {
+          "type": "any",
+          "conditions": [
+            {
+              "type": "monthsEnrolled",
+              "op": ">=",
+              "value": 8
+            },
+            {
+              "type": "all",
+              "conditions": [
+                {
+                  "type": "flag",
+                  "key": "drop_year"
+                },
+                {
+                  "type": "day",
+                  "op": ">=",
+                  "value": 200
+                }
+              ]
+            }
+          ]
+        },
+        "priority": 75
+      },
+      "start": "start",
+      "nodes": {
+        "start": {
+          "speaker": "narrator",
+          "text": "A neighbour calls at 6 am: Amma fainted at the market. At the government hospital the doctor is kind and brisk — a minor operation, nothing life-threatening. The private ward and medicines will cost about ₹30,000. The free ward has a three-week wait.",
+          "choices": [
+            {
+              "id": "c_savings",
+              "label": "Pay from your own savings.",
+              "next": "paid",
+              "effects": [
+                {
+                  "type": "money",
+                  "amount": -30000,
+                  "label": "Hospital bill",
+                  "category": "medical"
+                },
+                {
+                  "type": "relationship",
+                  "npc": "amma",
+                  "affinity": 8,
+                  "trust": 5
+                },
+                {
+                  "type": "memory",
+                  "npc": "amma",
+                  "tag": "paid_hospital",
+                  "text": "You paid for her operation from your own savings.",
+                  "weight": 2
+                }
+              ],
+              "requires": {
+                "type": "cash",
+                "op": ">=",
+                "value": 30000
+              }
+            },
+            {
+              "id": "c_loan",
+              "label": "Take a ₹30,000 personal loan (15% a year).",
+              "next": "paid",
+              "effects": [
+                {
+                  "type": "openBankAccount",
+                  "bank": "Kaveri Co-operative Bank"
+                },
+                {
+                  "type": "takeLoan",
+                  "product": "kaveri_personal",
+                  "amount": 30000
+                },
+                {
+                  "type": "money",
+                  "amount": -30000,
+                  "label": "Hospital bill",
+                  "category": "medical"
+                },
+                {
+                  "type": "relationship",
+                  "npc": "amma",
+                  "affinity": 6,
+                  "trust": 4
+                },
+                {
+                  "type": "memory",
+                  "npc": "amma",
+                  "tag": "borrowed_for_her",
+                  "text": "You borrowed money so she wouldn't have to wait.",
+                  "weight": 2
+                }
+              ],
+              "hint": "Repayments start next month."
+            },
+            {
+              "id": "c_shifts",
+              "label": "Pay now and work double café shifts for a month.",
+              "next": "paid",
+              "effects": [
+                {
+                  "type": "money",
+                  "amount": -30000,
+                  "label": "Hospital bill",
+                  "category": "medical"
+                },
+                {
+                  "type": "relationship",
+                  "npc": "amma",
+                  "affinity": 6,
+                  "trust": 5
+                },
+                {
+                  "type": "memory",
+                  "npc": "amma",
+                  "tag": "worked_for_her",
+                  "text": "You worked double shifts for a month to pay her bill.",
+                  "weight": 2
+                },
+                {
+                  "type": "delayed",
+                  "inDays": 30,
+                  "note": "A month of double shifts",
+                  "effects": [
+                    {
+                      "type": "money",
+                      "amount": 12000,
+                      "label": "Double café shifts",
+                      "category": "salary"
+                    },
+                    {
+                      "type": "stat",
+                      "key": "energy",
+                      "delta": -20
+                    },
+                    {
+                      "type": "stat",
+                      "key": "wellbeing",
+                      "delta": -6
+                    },
+                    {
+                      "type": "flag",
+                      "key": "semester_penalty"
+                    }
+                  ]
+                }
+              ],
+              "requires": {
+                "type": "partTime",
+                "value": "cafe_counter"
+              },
+              "hint": "Exhausting; your studies will suffer."
+            },
+            {
+              "id": "c_free",
+              "label": "Wait for the free ward.",
+              "next": "wait",
+              "effects": [
+                {
+                  "type": "relationship",
+                  "npc": "amma",
+                  "affinity": 2
+                },
+                {
+                  "type": "stat",
+                  "key": "wellbeing",
+                  "delta": -6
+                },
+                {
+                  "type": "flag",
+                  "key": "amma_free_ward"
+                },
+                {
+                  "type": "delayed",
+                  "inDays": 21,
+                  "note": "Amma's operation in the free ward went well",
+                  "effects": [
+                    {
+                      "type": "relationship",
+                      "npc": "amma",
+                      "affinity": 4
+                    },
+                    {
+                      "type": "stat",
+                      "key": "wellbeing",
+                      "delta": 5
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "variants": [
+            {
+              "when": {
+                "type": "background",
+                "value": "affluent_business"
+              },
+              "text": "Appa is travelling for work. You're the one at the hospital, holding her handbag and her reading glasses."
+            }
+          ]
+        },
+        "paid": {
+          "speaker": "amma",
+          "text": "Groggy after the operation, Amma squeezes your hand. 'You didn't have to.' You did, though. Of course you did."
+        },
+        "wait": {
+          "speaker": "amma",
+          "text": "The wait is long and the ward is crowded, but Amma insists she's fine. 'I've waited for buses longer than this.' You visit every evening."
+        }
+      }
+    },
+    {
+      "id": "ev_phone_emi",
+      "chapter": 1,
+      "title": "No-Cost EMI",
+      "location": "cafe",
+      "summary": "A shiny phone, a cracked screen, and the fine print.",
+      "trigger": {
+        "kind": "auto",
+        "when": {
+          "type": "monthsEnrolled",
+          "op": ">=",
+          "value": 10
+        },
+        "priority": 40
+      },
+      "start": "start",
+      "nodes": {
+        "start": {
+          "speaker": "narrator",
+          "text": "Everyone in your class seems to have a new phone. A showroom near college offers a ₹45,000 phone on 'no-cost EMI': ₹3,750 a month for twelve months, plus a ₹1,500 processing fee. Your own phone's crack is shaped like Tamil Nadu.",
+          "choices": [
+            {
+              "id": "c_emi",
+              "label": "Buy it on EMI.",
+              "next": "emi",
+              "effects": [
+                {
+                  "type": "openBankAccount",
+                  "bank": "Kaveri Co-operative Bank"
+                },
+                {
+                  "type": "takeLoan",
+                  "product": "consumer_emi",
+                  "amount": 45000
+                },
+                {
+                  "type": "money",
+                  "amount": -45000,
+                  "label": "New phone",
+                  "category": "shopping"
+                },
+                {
+                  "type": "money",
+                  "amount": -1500,
+                  "label": "EMI processing fee",
+                  "category": "fees"
+                },
+                {
+                  "type": "stat",
+                  "key": "wellbeing",
+                  "delta": 4
+                },
+                {
+                  "type": "flag",
+                  "key": "bought_phone_emi"
+                }
+              ],
+              "hint": "₹3,750/month for 12 months."
+            },
+            {
+              "id": "c_cash",
+              "label": "Buy it outright with savings.",
+              "next": "cash",
+              "effects": [
+                {
+                  "type": "money",
+                  "amount": -45000,
+                  "label": "New phone",
+                  "category": "shopping"
+                },
+                {
+                  "type": "stat",
+                  "key": "wellbeing",
+                  "delta": 4
+                }
+              ],
+              "requires": {
+                "type": "cash",
+                "op": ">=",
+                "value": 45000
+              }
+            },
+            {
+              "id": "c_repair",
+              "label": "Repair the screen for ₹2,500 and move on.",
+              "next": "repair",
+              "effects": [
+                {
+                  "type": "money",
+                  "amount": -2500,
+                  "label": "Screen repair",
+                  "category": "shopping"
+                },
+                {
+                  "type": "stat",
+                  "key": "discipline",
+                  "delta": 1
+                },
+                {
+                  "type": "flag",
+                  "key": "frugal"
+                }
+              ]
+            },
+            {
+              "id": "c_live",
+              "label": "Live with the crack. It has character.",
+              "next": "live",
+              "effects": [
+                {
+                  "type": "stat",
+                  "key": "wellbeing",
+                  "delta": -1
+                },
+                {
+                  "type": "flag",
+                  "key": "frugal"
+                }
+              ]
+            }
+          ]
+        },
+        "emi": {
+          "speaker": "narrator",
+          "text": "The phone is beautiful. The first EMI reminder SMS arrives before you've peeled off the screen protector. Twelve months of ₹3,750 — no interest, but the fee and the full sticker price mean 'no-cost' still cost something."
+        },
+        "cash": {
+          "speaker": "narrator",
+          "text": "Paid in full. It's a great phone. Your savings look noticeably smaller than they did this morning."
+        },
+        "repair": {
+          "speaker": "narrator",
+          "text": "The repair-shop uncle fixes it in forty minutes and throws in a free screen guard. Your savings stay mostly intact."
+        },
+        "live": {
+          "speaker": "narrator",
+          "text": "The crack is still shaped like Tamil Nadu. You start to think of it as patriotic."
+        }
+      }
+    },
+    {
+      "id": "ev_mentor_project",
+      "chapter": 1,
+      "title": "The Library Grant",
+      "location": "library",
+      "summary": "Mr. Fernandes needs your skills.",
+      "trigger": {
+        "kind": "auto",
+        "when": {
+          "type": "all",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "mentor_open"
+            },
+            {
+              "type": "relationship",
+              "npc": "joseph",
+              "field": "affinity",
+              "op": ">=",
+              "value": 15
+            },
+            {
+              "type": "monthsEnrolled",
+              "op": ">=",
+              "value": 12
+            }
+          ]
+        },
+        "priority": 50
+      },
+      "start": "start",
+      "nodes": {
+        "start": {
+          "speaker": "joseph",
+          "text": "'The library's grant is up for renewal and the trust wants three things: a working catalogue, clean accounts, and reading-room lights that don't flicker. I can do none of these. You can do at least one.'",
+          "choices": [
+            {
+              "id": "c_cs",
+              "label": "Build a simple catalogue app.",
+              "next": "done",
+              "effects": [
+                {
+                  "type": "skill",
+                  "key": "programming",
+                  "delta": 3
+                },
+                {
+                  "type": "relationship",
+                  "npc": "joseph",
+                  "affinity": 6,
+                  "trust": 6
+                },
+                {
+                  "type": "memory",
+                  "npc": "joseph",
+                  "tag": "built_catalogue",
+                  "text": "Built the library's catalogue app.",
+                  "weight": 2
+                },
+                {
+                  "type": "flag",
+                  "key": "mentor_project_done"
+                }
+              ],
+              "requires": {
+                "type": "program",
+                "value": "btech_cs"
+              },
+              "hideIfLocked": true,
+              "cost": {
+                "energy": 15
+              }
+            },
+            {
+              "id": "c_com",
+              "label": "Reconcile the library's accounts.",
+              "next": "done",
+              "effects": [
+                {
+                  "type": "skill",
+                  "key": "accounting",
+                  "delta": 3
+                },
+                {
+                  "type": "relationship",
+                  "npc": "joseph",
+                  "affinity": 6,
+                  "trust": 6
+                },
+                {
+                  "type": "memory",
+                  "npc": "joseph",
+                  "tag": "fixed_accounts",
+                  "text": "Reconciled the library's books for the grant renewal.",
+                  "weight": 2
+                },
+                {
+                  "type": "flag",
+                  "key": "mentor_project_done"
+                }
+              ],
+              "requires": {
+                "type": "program",
+                "value": "bcom"
+              },
+              "hideIfLocked": true,
+              "cost": {
+                "energy": 15
+              }
+            },
+            {
+              "id": "c_iti",
+              "label": "Rewire the reading-room lights (with Mr. Rajan signing off on safety).",
+              "next": "done",
+              "effects": [
+                {
+                  "type": "skill",
+                  "key": "electrical",
+                  "delta": 3
+                },
+                {
+                  "type": "relationship",
+                  "npc": "joseph",
+                  "affinity": 6,
+                  "trust": 6
+                },
+                {
+                  "type": "memory",
+                  "npc": "joseph",
+                  "tag": "fixed_lights",
+                  "text": "Rewired the reading room so the lights finally stopped flickering.",
+                  "weight": 2
+                },
+                {
+                  "type": "flag",
+                  "key": "mentor_project_done"
+                }
+              ],
+              "requires": {
+                "type": "program",
+                "value": "iti_electrician"
+              },
+              "hideIfLocked": true,
+              "cost": {
+                "energy": 15
+              }
+            },
+            {
+              "id": "c_general",
+              "label": "Help however you can: sorting books and running the kids' Saturday session.",
+              "next": "done",
+              "effects": [
+                {
+                  "type": "stat",
+                  "key": "communication",
+                  "delta": 2
+                },
+                {
+                  "type": "relationship",
+                  "npc": "joseph",
+                  "affinity": 4,
+                  "trust": 4
+                },
+                {
+                  "type": "memory",
+                  "npc": "joseph",
+                  "tag": "helped_saturdays",
+                  "text": "Ran the children's Saturday session.",
+                  "weight": 1
+                },
+                {
+                  "type": "flag",
+                  "key": "mentor_project_done"
+                }
+              ],
+              "cost": {
+                "energy": 10
+              }
+            },
+            {
+              "id": "c_decline",
+              "label": "Apologise — you don't have the time this term.",
+              "next": "decline",
+              "effects": [
+                {
+                  "type": "relationship",
+                  "npc": "joseph",
+                  "affinity": -2
+                },
+                {
+                  "type": "stat",
+                  "key": "discipline",
+                  "delta": 0.5
+                }
+              ]
+            }
+          ]
+        },
+        "done": {
+          "speaker": "joseph",
+          "text": "'The trust renewed the grant. They asked who did the work. I told them.' He hands you a reference letter, typed on an actual typewriter.",
+          "onEnter": [
+            {
+              "type": "flag",
+              "key": "has_reference"
+            },
+            {
+              "type": "stat",
+              "key": "wellbeing",
+              "delta": 2
+            }
+          ]
+        },
+        "decline": {
+          "speaker": "joseph",
+          "text": "'Understood. Time is the one thing nobody can lend you.' He means it kindly. It still stings a little."
+        }
+      }
+    },
+    {
+      "id": "ev_kavya_venture",
+      "chapter": 1,
+      "title": "FixLab",
+      "location": "cafe",
+      "summary": "Kavya wants a co-founder.",
+      "trigger": {
+        "kind": "auto",
+        "when": {
+          "type": "all",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "kavya_dream_shared"
+            },
+            {
+              "type": "relationship",
+              "npc": "kavya",
+              "field": "affinity",
+              "op": ">=",
+              "value": 35
+            },
+            {
+              "type": "monthsEnrolled",
+              "op": ">=",
+              "value": 16
+            }
+          ]
+        },
+        "priority": 45
+      },
+      "start": "start",
+      "nodes": {
+        "start": {
+          "speaker": "kavya",
+          "text": "'Okay. Don't laugh. A repair-and-services collective run by students: phones, fans, accounts for small shops, tuition. I handle customers; you handle whatever you're good at; we split everything. I need ₹15,000 for tools and flyers, and ten hours a week from you.'",
+          "choices": [
+            {
+              "id": "c_invest",
+              "label": "In. Put in ₹15,000 and ten hours a week.",
+              "next": "in",
+              "effects": [
+                {
+                  "type": "money",
+                  "amount": -15000,
+                  "label": "FixLab investment",
+                  "category": "business"
+                },
+                {
+                  "type": "flag",
+                  "key": "venture_partner"
+                },
+                {
+                  "type": "relationship",
+                  "npc": "kavya",
+                  "affinity": 8,
+                  "trust": 8
+                },
+                {
+                  "type": "memory",
+                  "npc": "kavya",
+                  "tag": "cofounder",
+                  "text": "You put your savings into FixLab.",
+                  "weight": 2
+                },
+                {
+                  "type": "stat",
+                  "key": "energy",
+                  "delta": -10
+                },
+                {
+                  "type": "schedule",
+                  "event": "ev_venture_checkin",
+                  "inDays": 120
+                }
+              ],
+              "requires": {
+                "type": "cash",
+                "op": ">=",
+                "value": 15000
+              },
+              "hint": "Real money at risk."
+            },
+            {
+              "id": "c_sweat",
+              "label": "In — but you can only give time, not money.",
+              "next": "in",
+              "effects": [
+                {
+                  "type": "flag",
+                  "key": "venture_partner_sweat"
+                },
+                {
+                  "type": "relationship",
+                  "npc": "kavya",
+                  "affinity": 5,
+                  "trust": 4
+                },
+                {
+                  "type": "memory",
+                  "npc": "kavya",
+                  "tag": "cofounder_sweat",
+                  "text": "You joined FixLab with time instead of money.",
+                  "weight": 1
+                },
+                {
+                  "type": "stat",
+                  "key": "energy",
+                  "delta": -10
+                },
+                {
+                  "type": "schedule",
+                  "event": "ev_venture_checkin",
+                  "inDays": 120
+                }
+              ]
+            },
+            {
+              "id": "c_no",
+              "label": "Say no — honestly. You can't take on the risk right now.",
+              "next": "no",
+              "effects": [
+                {
+                  "type": "relationship",
+                  "npc": "kavya",
+                  "affinity": -2,
+                  "trust": 2
+                },
+                {
+                  "type": "memory",
+                  "npc": "kavya",
+                  "tag": "honest_no",
+                  "text": "You said no to FixLab, but you were honest about why.",
+                  "weight": 0.5
+                }
+              ]
+            }
+          ]
+        },
+        "in": {
+          "speaker": "kavya",
+          "text": "She hugs you so hard your glasses — real or metaphorical — fall off. 'We're calling it FixLab. Don't argue.'"
+        },
+        "no": {
+          "speaker": "kavya",
+          "text": "'Fair.' She means it, mostly. 'Your loss when I'm on a magazine cover.'"
+        }
+      }
+    },
+    {
+      "id": "ev_venture_checkin",
+      "chapter": 1,
+      "title": "FixLab's Big Offer",
+      "location": "cafe",
+      "summary": "A deal that could make or break FixLab.",
+      "trigger": {
+        "kind": "scheduled"
+      },
+      "start": "start",
+      "nodes": {
+        "start": {
+          "speaker": "kavya",
+          "text": "Four months into FixLab: a notebook of customers, a box of broken phones, and a decision. A hardware shop wants FixLab to take on all its repair work for a fixed monthly fee. Kavya wants your read on the numbers.",
+          "choices": [
+            {
+              "id": "c_analyse",
+              "label": "Work through the numbers together.",
+              "next": null,
+              "cost": {
+                "energy": 6
+              },
+              "challenge": {
+                "kind": "puzzle",
+                "onPass": {
+                  "next": "success",
+                  "effects": []
+                },
+                "onFail": {
+                  "next": "fold",
+                  "effects": []
+                },
+                "pool": "venture_case",
+                "count": 2,
+                "passFraction": 0.5
+              },
+              "hint": "Two case-study questions."
+            },
+            {
+              "id": "c_gut",
+              "label": "Tell her to trust her gut.",
+              "next": null,
+              "effects": [
+                {
+                  "type": "roll",
+                  "key": "venture_gut",
+                  "chance": 0.45
+                }
+              ],
+              "cost": {
+                "energy": 2
+              },
+              "routes": [
+                {
+                  "when": {
+                    "type": "flag",
+                    "key": "venture_gut"
+                  },
+                  "next": "success"
+                }
+              ]
+            }
+          ]
+        },
+        "success": {
+          "speaker": "narrator",
+          "text": "You spot what the numbers really say, renegotiate the terms, and FixLab's books finally tip into profit. Kavya frames the first month's profit statement and hangs it above the soldering station.",
+          "onEnter": [
+            {
+              "type": "flag",
+              "key": "venture_success"
+            },
+            {
+              "type": "skill",
+              "key": "business",
+              "delta": 4
+            },
+            {
+              "type": "relationship",
+              "npc": "kavya",
+              "affinity": 5,
+              "trust": 5
+            },
+            {
+              "type": "memory",
+              "npc": "kavya",
+              "tag": "good_call",
+              "text": "Together you made the call that saved FixLab.",
+              "weight": 2
+            },
+            {
+              "type": "if",
+              "when": {
+                "type": "flag",
+                "key": "venture_partner"
+              },
+              "then": [
+                {
+                  "type": "money",
+                  "amount": 24000,
+                  "label": "FixLab profit share (incl. your ₹15,000 back)",
+                  "category": "business"
+                }
+              ],
+              "else": [
+                {
+                  "type": "money",
+                  "amount": 9000,
+                  "label": "FixLab profit share",
+                  "category": "business"
+                }
+              ]
+            }
+          ]
+        },
+        "fold": {
+          "speaker": "narrator",
+          "text": "The deal looked good on paper and wasn't. Within six weeks FixLab is running at a loss, and you and Kavya agree to wind it down while you can still pay everyone back. She's quiet for a day. Then: 'Next time, we'll know.'",
+          "onEnter": [
+            {
+              "type": "flag",
+              "key": "venture_folded"
+            },
+            {
+              "type": "skill",
+              "key": "business",
+              "delta": 2
+            },
+            {
+              "type": "relationship",
+              "npc": "kavya",
+              "affinity": 1,
+              "trust": 2
+            },
+            {
+              "type": "memory",
+              "npc": "kavya",
+              "tag": "learned_together",
+              "text": "You wound down FixLab together, without blaming each other.",
+              "weight": 1
+            },
+            {
+              "type": "if",
+              "when": {
+                "type": "flag",
+                "key": "venture_partner"
+              },
+              "then": [
+                {
+                  "type": "money",
+                  "amount": 5000,
+                  "label": "FixLab wind-down: part of your investment back",
+                  "category": "business"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ev_internship",
+      "chapter": 1,
+      "title": "Internship Season",
+      "location": "office",
+      "summary": "Two internship offers land in the same week.",
+      "trigger": {
+        "kind": "auto",
+        "when": {
+          "type": "programProgress",
+          "op": ">=",
+          "value": 0.6
+        },
+        "priority": 60
+      },
+      "start": "start",
+      "nodes": {
+        "start": {
+          "speaker": "narrator",
+          "text": "Internship season. Two offers arrive in the same week: a paid one at a mid-size firm, and an unpaid one at a famous name that would look great on a résumé.",
+          "choices": [
+            {
+              "id": "c_paid",
+              "label": "Take the paid internship (₹8,000 a month for two months).",
+              "next": "paid",
+              "effects": [
+                {
+                  "type": "money",
+                  "amount": 16000,
+                  "label": "Internship stipend",
+                  "category": "salary"
+                },
+                {
+                  "type": "programSkill",
+                  "delta": 4
+                },
+                {
+                  "type": "stat",
+                  "key": "communication",
+                  "delta": 1
+                },
+                {
+                  "type": "flag",
+                  "key": "interned"
+                }
+              ]
+            },
+            {
+              "id": "c_prestige",
+              "label": "Take the unpaid internship at the famous firm.",
+              "next": "prestige",
+              "effects": [
+                {
+                  "type": "programSkill",
+                  "delta": 6
+                },
+                {
+                  "type": "money",
+                  "amount": -4000,
+                  "label": "Internship commuting costs",
+                  "category": "living"
+                },
+                {
+                  "type": "flag",
+                  "key": "interned"
+                },
+                {
+                  "type": "flag",
+                  "key": "prestige_internship"
+                }
+              ]
+            },
+            {
+              "id": "c_skip",
+              "label": "Skip internships this year and rest.",
+              "next": "skip",
+              "effects": [
+                {
+                  "type": "stat",
+                  "key": "wellbeing",
+                  "delta": 4
+                },
+                {
+                  "type": "stat",
+                  "key": "energy",
+                  "delta": 10
+                }
+              ]
+            }
+          ],
+          "variants": [
+            {
+              "when": {
+                "type": "partTime",
+                "value": "cafe_counter"
+              },
+              "text": "Either one means two months of telling Mr. Sundaram you can't cover weekends."
+            }
+          ]
+        },
+        "paid": {
+          "speaker": "narrator",
+          "text": "Two months of real work, real deadlines and a real stipend. Your mentor there says you ask good questions."
+        },
+        "prestige": {
+          "speaker": "narrator",
+          "text": "The famous firm is everything people say, and also not. You learn a lot, earn nothing, and leave with a line on your résumé that recruiters will notice."
+        },
+        "skip": {
+          "speaker": "narrator",
+          "text": "You sleep, read for fun, and watch an entire cricket series. It feels oddly productive."
+        }
+      }
+    },
+    {
+      "id": "ev_final_crossroads",
+      "chapter": 1,
+      "title": "Final Term",
+      "location": "campus",
+      "summary": "Decide where to aim your first career.",
+      "trigger": {
+        "kind": "auto",
+        "when": {
+          "type": "programProgress",
+          "op": ">=",
+          "value": 0.85
+        },
+        "priority": 60
+      },
+      "start": "start",
+      "nodes": {
+        "start": {
+          "speaker": "narrator",
+          "text": "Final term. Placement notices, coaching-class flyers and Kavya's latest idea compete for the same wall space — and the same hours of your life.",
+          "choices": [
+            {
+              "id": "c_bengaluru",
+              "label": "Aim for a job in Bengaluru: bigger market, much higher rent.",
+              "next": "bengaluru",
+              "effects": [
+                {
+                  "type": "flag",
+                  "key": "target_bengaluru"
+                }
+              ],
+              "hint": "Higher salaries; you'd live independently."
+            },
+            {
+              "id": "c_home",
+              "label": "Look for work close to home.",
+              "next": "home",
+              "effects": [
+                {
+                  "type": "flag",
+                  "key": "target_home"
+                }
+              ],
+              "hint": "Lower costs; smaller job market."
+            },
+            {
+              "id": "c_fixlab",
+              "label": "Go full-time on FixLab with Kavya.",
+              "next": "fixlab",
+              "effects": [
+                {
+                  "type": "flag",
+                  "key": "go_venture"
+                }
+              ],
+              "requires": {
+                "type": "flag",
+                "key": "venture_success"
+              }
+            }
+          ]
+        },
+        "bengaluru": {
+          "speaker": "narrator",
+          "text": "You update your résumé and set your job-search location to Bengaluru. Rents there are brutal; salaries, slightly less so."
+        },
+        "home": {
+          "speaker": "narrator",
+          "text": "You stay. Lower costs, Amma's cooking, and a smaller job market that at least knows your name."
+        },
+        "fixlab": {
+          "speaker": "kavya",
+          "text": "'Are you serious? You're serious.' Kavya starts a list titled THINGS WE NEED TO NOT DIE."
+        }
+      }
+    },
+    {
+      "id": "ev_job_interview",
+      "chapter": 1,
+      "title": "The First Interview",
+      "location": "office",
+      "summary": "Interview for your first full-time job.",
+      "trigger": {
+        "kind": "auto",
+        "when": {
+          "type": "all",
+          "conditions": [
+            {
+              "type": "educationStatus",
+              "value": "graduated"
+            },
+            {
+              "type": "career",
+              "value": false
+            },
+            {
+              "type": "not",
+              "condition": {
+                "type": "flag",
+                "key": "go_venture"
+              }
+            }
+          ]
+        },
+        "priority": 70
+      },
+      "start": "start",
+      "nodes": {
+        "start": {
+          "speaker": "narrator",
+          "text": "Your first real job interview. The waiting room has a fish tank and a framed poster that says INTEGRITY. The candidate before you comes out looking pale.",
+          "choices": [
+            {
+              "id": "c_sw",
+              "label": "Interview for Trainee Software Engineer.",
+              "next": null,
+              "requires": {
+                "type": "graduated",
+                "value": "btech_cs"
+              },
+              "hideIfLocked": true,
+              "challenge": {
+                "kind": "interview",
+                "onPass": {
+                  "next": "offer_sw",
+                  "effects": []
+                },
+                "onFail": {
+                  "next": "rejected",
+                  "effects": []
+                },
+                "career": "software_developer",
+                "count": 2
+              }
+            },
+            {
+              "id": "c_acc",
+              "label": "Interview for Accounts Trainee.",
+              "next": null,
+              "requires": {
+                "type": "graduated",
+                "value": "bcom"
+              },
+              "hideIfLocked": true,
+              "challenge": {
+                "kind": "interview",
+                "onPass": {
+                  "next": "offer_acc",
+                  "effects": []
+                },
+                "onFail": {
+                  "next": "rejected",
+                  "effects": []
+                },
+                "career": "accountant",
+                "count": 2
+              }
+            },
+            {
+              "id": "c_elec",
+              "label": "Interview for Apprentice Electrician.",
+              "next": null,
+              "requires": {
+                "type": "graduated",
+                "value": "iti_electrician"
+              },
+              "hideIfLocked": true,
+              "challenge": {
+                "kind": "interview",
+                "onPass": {
+                  "next": "offer_elec",
+                  "effects": []
+                },
+                "onFail": {
+                  "next": "rejected",
+                  "effects": []
+                },
+                "career": "electrician",
+                "count": 2
+              }
+            },
+            {
+              "id": "c_later",
+              "label": "Not today — prepare more first.",
+              "next": null,
+              "effects": [
+                {
+                  "type": "schedule",
+                  "event": "ev_interview_retry",
+                  "inDays": 30
+                }
+              ],
+              "hint": "Another opening will come up in about a month."
+            }
+          ],
+          "variants": [
+            {
+              "when": {
+                "type": "flag",
+                "key": "has_reference"
+              },
+              "text": "Mr. Fernandes' typewritten reference letter is in your folder. It feels heavier than paper should."
+            }
+          ]
+        },
+        "rejected": {
+          "speaker": "narrator",
+          "text": "A polite email: 'We have decided to move forward with other candidates.' It stings. It is also the most common sentence in every career's first chapter. Another opening should come up in about a month.",
+          "onEnter": [
+            {
+              "type": "schedule",
+              "event": "ev_interview_retry",
+              "inDays": 30
+            },
+            {
+              "type": "stat",
+              "key": "wellbeing",
+              "delta": -3
+            }
+          ]
+        },
+        "offer_sw": {
+          "speaker": "narrator",
+          "text": "An offer letter: Trainee Software Engineer at Pinecone Systems, a fictional product company. HR asks whether you'd like to discuss the salary before signing.",
+          "choices": [
+            {
+              "id": "c_accept",
+              "label": "Accept the offer as it stands.",
+              "next": null,
+              "effects": [
+                {
+                  "type": "if",
+                  "when": {
+                    "type": "flag",
+                    "key": "target_bengaluru"
+                  },
+                  "then": [
+                    {
+                      "type": "relocate",
+                      "city": "bengaluru",
+                      "independent": true
+                    }
+                  ]
+                },
+                {
+                  "type": "hire",
+                  "career": "software_developer",
+                  "employer": "Pinecone Systems",
+                  "salaryMultiplier": 1
+                }
+              ]
+            },
+            {
+              "id": "c_negotiate",
+              "label": "Negotiate politely, pointing to your projects and experience.",
+              "next": "neg_hold",
+              "effects": [
+                {
+                  "type": "if",
+                  "when": {
+                    "type": "flag",
+                    "key": "target_bengaluru"
+                  },
+                  "then": [
+                    {
+                      "type": "relocate",
+                      "city": "bengaluru",
+                      "independent": true
+                    }
+                  ]
+                },
+                {
+                  "type": "hire",
+                  "career": "software_developer",
+                  "employer": "Pinecone Systems",
+                  "salaryMultiplier": 1
+                },
+                {
+                  "type": "roll",
+                  "key": "negotiation_luck",
+                  "chance": 0.35
+                }
+              ],
+              "routes": [
+                {
+                  "when": {
+                    "type": "any",
+                    "conditions": [
+                      {
+                        "type": "all",
+                        "conditions": [
+                          {
+                            "type": "stat",
+                            "key": "communication",
+                            "op": ">=",
+                            "value": 50
+                          },
+                          {
+                            "type": "any",
+                            "conditions": [
+                              {
+                                "type": "flag",
+                                "key": "interned"
+                              },
+                              {
+                                "type": "flag",
+                                "key": "has_reference"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "type": "flag",
+                        "key": "negotiation_luck"
+                      }
+                    ]
+                  },
+                  "next": "neg_win"
+                }
+              ],
+              "hint": "Might raise your salary. Might not."
+            }
+          ]
+        },
+        "offer_acc": {
+          "speaker": "narrator",
+          "text": "An offer letter: Accounts Trainee at Meenakshi & Rao Associates, a fictional mid-size audit firm. HR asks whether you'd like to discuss the salary before signing.",
+          "choices": [
+            {
+              "id": "c_accept",
+              "label": "Accept the offer as it stands.",
+              "next": null,
+              "effects": [
+                {
+                  "type": "if",
+                  "when": {
+                    "type": "flag",
+                    "key": "target_bengaluru"
+                  },
+                  "then": [
+                    {
+                      "type": "relocate",
+                      "city": "bengaluru",
+                      "independent": true
+                    }
+                  ]
+                },
+                {
+                  "type": "hire",
+                  "career": "accountant",
+                  "employer": "Meenakshi & Rao Associates",
+                  "salaryMultiplier": 1
+                }
+              ]
+            },
+            {
+              "id": "c_negotiate",
+              "label": "Negotiate politely, pointing to your projects and experience.",
+              "next": "neg_hold",
+              "effects": [
+                {
+                  "type": "if",
+                  "when": {
+                    "type": "flag",
+                    "key": "target_bengaluru"
+                  },
+                  "then": [
+                    {
+                      "type": "relocate",
+                      "city": "bengaluru",
+                      "independent": true
+                    }
+                  ]
+                },
+                {
+                  "type": "hire",
+                  "career": "accountant",
+                  "employer": "Meenakshi & Rao Associates",
+                  "salaryMultiplier": 1
+                },
+                {
+                  "type": "roll",
+                  "key": "negotiation_luck",
+                  "chance": 0.35
+                }
+              ],
+              "routes": [
+                {
+                  "when": {
+                    "type": "any",
+                    "conditions": [
+                      {
+                        "type": "all",
+                        "conditions": [
+                          {
+                            "type": "stat",
+                            "key": "communication",
+                            "op": ">=",
+                            "value": 50
+                          },
+                          {
+                            "type": "any",
+                            "conditions": [
+                              {
+                                "type": "flag",
+                                "key": "interned"
+                              },
+                              {
+                                "type": "flag",
+                                "key": "has_reference"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "type": "flag",
+                        "key": "negotiation_luck"
+                      }
+                    ]
+                  },
+                  "next": "neg_win"
+                }
+              ],
+              "hint": "Might raise your salary. Might not."
+            }
+          ]
+        },
+        "offer_elec": {
+          "speaker": "narrator",
+          "text": "An offer letter: Apprentice Electrician at Volt & Co. Contractors, a fictional contracting firm. HR asks whether you'd like to discuss the salary before signing.",
+          "choices": [
+            {
+              "id": "c_accept",
+              "label": "Accept the offer as it stands.",
+              "next": null,
+              "effects": [
+                {
+                  "type": "if",
+                  "when": {
+                    "type": "flag",
+                    "key": "target_bengaluru"
+                  },
+                  "then": [
+                    {
+                      "type": "relocate",
+                      "city": "bengaluru",
+                      "independent": true
+                    }
+                  ]
+                },
+                {
+                  "type": "hire",
+                  "career": "electrician",
+                  "employer": "Volt & Co. Contractors",
+                  "salaryMultiplier": 1
+                }
+              ]
+            },
+            {
+              "id": "c_negotiate",
+              "label": "Negotiate politely, pointing to your projects and experience.",
+              "next": "neg_hold",
+              "effects": [
+                {
+                  "type": "if",
+                  "when": {
+                    "type": "flag",
+                    "key": "target_bengaluru"
+                  },
+                  "then": [
+                    {
+                      "type": "relocate",
+                      "city": "bengaluru",
+                      "independent": true
+                    }
+                  ]
+                },
+                {
+                  "type": "hire",
+                  "career": "electrician",
+                  "employer": "Volt & Co. Contractors",
+                  "salaryMultiplier": 1
+                },
+                {
+                  "type": "roll",
+                  "key": "negotiation_luck",
+                  "chance": 0.35
+                }
+              ],
+              "routes": [
+                {
+                  "when": {
+                    "type": "any",
+                    "conditions": [
+                      {
+                        "type": "all",
+                        "conditions": [
+                          {
+                            "type": "stat",
+                            "key": "communication",
+                            "op": ">=",
+                            "value": 50
+                          },
+                          {
+                            "type": "any",
+                            "conditions": [
+                              {
+                                "type": "flag",
+                                "key": "interned"
+                              },
+                              {
+                                "type": "flag",
+                                "key": "has_reference"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "type": "flag",
+                        "key": "negotiation_luck"
+                      }
+                    ]
+                  },
+                  "next": "neg_win"
+                }
+              ],
+              "hint": "Might raise your salary. Might not."
+            }
+          ]
+        },
+        "neg_win": {
+          "speaker": "narrator",
+          "text": "HR calls back the next morning: they can do 8% more. You try very hard to sound casual.",
+          "onEnter": [
+            {
+              "type": "salary",
+              "percent": 8
+            },
+            {
+              "type": "flag",
+              "key": "negotiated_well"
+            }
+          ]
+        },
+        "neg_hold": {
+          "speaker": "narrator",
+          "text": "HR is polite and immovable: the number is the number for freshers. You sign anyway. A first salary is a starting line, not a finish line."
+        }
+      }
+    },
+    {
+      "id": "ev_interview_retry",
+      "chapter": 1,
+      "title": "Another Opening",
+      "location": "office",
+      "summary": "Interview for your first full-time job.",
+      "trigger": {
+        "kind": "scheduled"
+      },
+      "start": "start",
+      "nodes": {
+        "start": {
+          "speaker": "narrator",
+          "text": "A new opening, a new waiting room. This one has no fish tank, but the chairs are more comfortable. You know the routine a little better now.",
+          "choices": [
+            {
+              "id": "c_sw",
+              "label": "Interview for Trainee Software Engineer.",
+              "next": null,
+              "requires": {
+                "type": "graduated",
+                "value": "btech_cs"
+              },
+              "hideIfLocked": true,
+              "challenge": {
+                "kind": "interview",
+                "onPass": {
+                  "next": "offer_sw",
+                  "effects": []
+                },
+                "onFail": {
+                  "next": "rejected",
+                  "effects": []
+                },
+                "career": "software_developer",
+                "count": 2
+              }
+            },
+            {
+              "id": "c_acc",
+              "label": "Interview for Accounts Trainee.",
+              "next": null,
+              "requires": {
+                "type": "graduated",
+                "value": "bcom"
+              },
+              "hideIfLocked": true,
+              "challenge": {
+                "kind": "interview",
+                "onPass": {
+                  "next": "offer_acc",
+                  "effects": []
+                },
+                "onFail": {
+                  "next": "rejected",
+                  "effects": []
+                },
+                "career": "accountant",
+                "count": 2
+              }
+            },
+            {
+              "id": "c_elec",
+              "label": "Interview for Apprentice Electrician.",
+              "next": null,
+              "requires": {
+                "type": "graduated",
+                "value": "iti_electrician"
+              },
+              "hideIfLocked": true,
+              "challenge": {
+                "kind": "interview",
+                "onPass": {
+                  "next": "offer_elec",
+                  "effects": []
+                },
+                "onFail": {
+                  "next": "rejected",
+                  "effects": []
+                },
+                "career": "electrician",
+                "count": 2
+              }
+            },
+            {
+              "id": "c_later",
+              "label": "Not today — prepare more first.",
+              "next": null,
+              "effects": [
+                {
+                  "type": "schedule",
+                  "event": "ev_interview_retry",
+                  "inDays": 30
+                }
+              ],
+              "hint": "Another opening will come up in about a month."
+            },
+            {
+              "id": "c_other",
+              "label": "Step back from the job hunt and close this chapter another way.",
+              "next": null,
+              "effects": [
+                {
+                  "type": "endChapter"
+                }
+              ],
+              "requires": {
+                "type": "counter",
+                "key": "interviews",
+                "op": ">=",
+                "value": 2
+              }
+            }
+          ],
+          "variants": [
+            {
+              "when": {
+                "type": "flag",
+                "key": "has_reference"
+              },
+              "text": "Mr. Fernandes' typewritten reference letter is in your folder. It feels heavier than paper should."
+            }
+          ]
+        },
+        "rejected": {
+          "speaker": "narrator",
+          "text": "A polite email: 'We have decided to move forward with other candidates.' It stings. It is also the most common sentence in every career's first chapter. Another opening should come up in about a month.",
+          "onEnter": [
+            {
+              "type": "schedule",
+              "event": "ev_interview_retry",
+              "inDays": 30
+            },
+            {
+              "type": "stat",
+              "key": "wellbeing",
+              "delta": -3
+            }
+          ]
+        },
+        "offer_sw": {
+          "speaker": "narrator",
+          "text": "An offer letter: Trainee Software Engineer at Pinecone Systems, a fictional product company. HR asks whether you'd like to discuss the salary before signing.",
+          "choices": [
+            {
+              "id": "c_accept",
+              "label": "Accept the offer as it stands.",
+              "next": null,
+              "effects": [
+                {
+                  "type": "if",
+                  "when": {
+                    "type": "flag",
+                    "key": "target_bengaluru"
+                  },
+                  "then": [
+                    {
+                      "type": "relocate",
+                      "city": "bengaluru",
+                      "independent": true
+                    }
+                  ]
+                },
+                {
+                  "type": "hire",
+                  "career": "software_developer",
+                  "employer": "Pinecone Systems",
+                  "salaryMultiplier": 1
+                }
+              ]
+            },
+            {
+              "id": "c_negotiate",
+              "label": "Negotiate politely, pointing to your projects and experience.",
+              "next": "neg_hold",
+              "effects": [
+                {
+                  "type": "if",
+                  "when": {
+                    "type": "flag",
+                    "key": "target_bengaluru"
+                  },
+                  "then": [
+                    {
+                      "type": "relocate",
+                      "city": "bengaluru",
+                      "independent": true
+                    }
+                  ]
+                },
+                {
+                  "type": "hire",
+                  "career": "software_developer",
+                  "employer": "Pinecone Systems",
+                  "salaryMultiplier": 1
+                },
+                {
+                  "type": "roll",
+                  "key": "negotiation_luck",
+                  "chance": 0.35
+                }
+              ],
+              "routes": [
+                {
+                  "when": {
+                    "type": "any",
+                    "conditions": [
+                      {
+                        "type": "all",
+                        "conditions": [
+                          {
+                            "type": "stat",
+                            "key": "communication",
+                            "op": ">=",
+                            "value": 50
+                          },
+                          {
+                            "type": "any",
+                            "conditions": [
+                              {
+                                "type": "flag",
+                                "key": "interned"
+                              },
+                              {
+                                "type": "flag",
+                                "key": "has_reference"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "type": "flag",
+                        "key": "negotiation_luck"
+                      }
+                    ]
+                  },
+                  "next": "neg_win"
+                }
+              ],
+              "hint": "Might raise your salary. Might not."
+            }
+          ]
+        },
+        "offer_acc": {
+          "speaker": "narrator",
+          "text": "An offer letter: Accounts Trainee at Meenakshi & Rao Associates, a fictional mid-size audit firm. HR asks whether you'd like to discuss the salary before signing.",
+          "choices": [
+            {
+              "id": "c_accept",
+              "label": "Accept the offer as it stands.",
+              "next": null,
+              "effects": [
+                {
+                  "type": "if",
+                  "when": {
+                    "type": "flag",
+                    "key": "target_bengaluru"
+                  },
+                  "then": [
+                    {
+                      "type": "relocate",
+                      "city": "bengaluru",
+                      "independent": true
+                    }
+                  ]
+                },
+                {
+                  "type": "hire",
+                  "career": "accountant",
+                  "employer": "Meenakshi & Rao Associates",
+                  "salaryMultiplier": 1
+                }
+              ]
+            },
+            {
+              "id": "c_negotiate",
+              "label": "Negotiate politely, pointing to your projects and experience.",
+              "next": "neg_hold",
+              "effects": [
+                {
+                  "type": "if",
+                  "when": {
+                    "type": "flag",
+                    "key": "target_bengaluru"
+                  },
+                  "then": [
+                    {
+                      "type": "relocate",
+                      "city": "bengaluru",
+                      "independent": true
+                    }
+                  ]
+                },
+                {
+                  "type": "hire",
+                  "career": "accountant",
+                  "employer": "Meenakshi & Rao Associates",
+                  "salaryMultiplier": 1
+                },
+                {
+                  "type": "roll",
+                  "key": "negotiation_luck",
+                  "chance": 0.35
+                }
+              ],
+              "routes": [
+                {
+                  "when": {
+                    "type": "any",
+                    "conditions": [
+                      {
+                        "type": "all",
+                        "conditions": [
+                          {
+                            "type": "stat",
+                            "key": "communication",
+                            "op": ">=",
+                            "value": 50
+                          },
+                          {
+                            "type": "any",
+                            "conditions": [
+                              {
+                                "type": "flag",
+                                "key": "interned"
+                              },
+                              {
+                                "type": "flag",
+                                "key": "has_reference"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "type": "flag",
+                        "key": "negotiation_luck"
+                      }
+                    ]
+                  },
+                  "next": "neg_win"
+                }
+              ],
+              "hint": "Might raise your salary. Might not."
+            }
+          ]
+        },
+        "offer_elec": {
+          "speaker": "narrator",
+          "text": "An offer letter: Apprentice Electrician at Volt & Co. Contractors, a fictional contracting firm. HR asks whether you'd like to discuss the salary before signing.",
+          "choices": [
+            {
+              "id": "c_accept",
+              "label": "Accept the offer as it stands.",
+              "next": null,
+              "effects": [
+                {
+                  "type": "if",
+                  "when": {
+                    "type": "flag",
+                    "key": "target_bengaluru"
+                  },
+                  "then": [
+                    {
+                      "type": "relocate",
+                      "city": "bengaluru",
+                      "independent": true
+                    }
+                  ]
+                },
+                {
+                  "type": "hire",
+                  "career": "electrician",
+                  "employer": "Volt & Co. Contractors",
+                  "salaryMultiplier": 1
+                }
+              ]
+            },
+            {
+              "id": "c_negotiate",
+              "label": "Negotiate politely, pointing to your projects and experience.",
+              "next": "neg_hold",
+              "effects": [
+                {
+                  "type": "if",
+                  "when": {
+                    "type": "flag",
+                    "key": "target_bengaluru"
+                  },
+                  "then": [
+                    {
+                      "type": "relocate",
+                      "city": "bengaluru",
+                      "independent": true
+                    }
+                  ]
+                },
+                {
+                  "type": "hire",
+                  "career": "electrician",
+                  "employer": "Volt & Co. Contractors",
+                  "salaryMultiplier": 1
+                },
+                {
+                  "type": "roll",
+                  "key": "negotiation_luck",
+                  "chance": 0.35
+                }
+              ],
+              "routes": [
+                {
+                  "when": {
+                    "type": "any",
+                    "conditions": [
+                      {
+                        "type": "all",
+                        "conditions": [
+                          {
+                            "type": "stat",
+                            "key": "communication",
+                            "op": ">=",
+                            "value": 50
+                          },
+                          {
+                            "type": "any",
+                            "conditions": [
+                              {
+                                "type": "flag",
+                                "key": "interned"
+                              },
+                              {
+                                "type": "flag",
+                                "key": "has_reference"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "type": "flag",
+                        "key": "negotiation_luck"
+                      }
+                    ]
+                  },
+                  "next": "neg_win"
+                }
+              ],
+              "hint": "Might raise your salary. Might not."
+            }
+          ]
+        },
+        "neg_win": {
+          "speaker": "narrator",
+          "text": "HR calls back the next morning: they can do 8% more. You try very hard to sound casual.",
+          "onEnter": [
+            {
+              "type": "salary",
+              "percent": 8
+            },
+            {
+              "type": "flag",
+              "key": "negotiated_well"
+            }
+          ]
+        },
+        "neg_hold": {
+          "speaker": "narrator",
+          "text": "HR is polite and immovable: the number is the number for freshers. You sign anyway. A first salary is a starting line, not a finish line."
+        }
+      },
+      "repeatable": true
+    },
+    {
+      "id": "ev_fixlab_launch",
+      "chapter": 1,
+      "title": "FixLab, Full-Time",
+      "location": "cafe",
+      "summary": "Turn FixLab into your job.",
+      "trigger": {
+        "kind": "auto",
+        "when": {
+          "type": "all",
+          "conditions": [
+            {
+              "type": "graduated"
+            },
+            {
+              "type": "flag",
+              "key": "go_venture"
+            },
+            {
+              "type": "career",
+              "value": false
+            }
+          ]
+        },
+        "priority": 70
+      },
+      "start": "start",
+      "nodes": {
+        "start": {
+          "speaker": "kavya",
+          "text": "Graduation photos are barely uploaded when Kavya hands you a visiting card: CO-FOUNDER, FIXLAB. 'We can each draw ₹15,000 a month. More when we grow. If we grow.'",
+          "choices": [
+            {
+              "id": "c_launch",
+              "label": "Shake on it.",
+              "next": null,
+              "effects": [
+                {
+                  "type": "hire",
+                  "career": "fixlab_founder",
+                  "employer": "FixLab",
+                  "salaryMultiplier": 1
+                },
+                {
+                  "type": "relationship",
+                  "npc": "kavya",
+                  "affinity": 5,
+                  "trust": 5
+                }
+              ]
+            },
+            {
+              "id": "c_jobs",
+              "label": "Wait — look at regular jobs first after all.",
+              "next": null,
+              "effects": [
+                {
+                  "type": "clearFlag",
+                  "key": "go_venture"
+                },
+                {
+                  "type": "relationship",
+                  "npc": "kavya",
+                  "affinity": -5,
+                  "trust": -3
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ev_farewell",
+      "chapter": 1,
+      "title": "The Night Before",
+      "location": "home",
+      "summary": "The end of the beginning.",
+      "trigger": {
+        "kind": "auto",
+        "when": {
+          "type": "all",
+          "conditions": [
+            {
+              "type": "career",
+              "value": true
+            },
+            {
+              "type": "not",
+              "condition": {
+                "type": "flag",
+                "key": "chapter1_complete"
+              }
+            }
+          ]
+        },
+        "priority": 90
+      },
+      "start": "start",
+      "nodes": {
+        "start": {
+          "speaker": "amma",
+          "text": "The night before your first day of work, Amma makes your favourite dinner — and pretends she made it by accident.",
+          "choices": [
+            {
+              "id": "c_remit",
+              "label": "Promise to send 10% of every salary home.",
+              "next": "kavya_end",
+              "effects": [
+                {
+                  "type": "flag",
+                  "key": "remit_home"
+                },
+                {
+                  "type": "relationship",
+                  "npc": "amma",
+                  "affinity": 6,
+                  "trust": 4
+                },
+                {
+                  "type": "memory",
+                  "npc": "amma",
+                  "tag": "sends_money",
+                  "text": "You promised to send part of every salary home.",
+                  "weight": 1
+                }
+              ]
+            },
+            {
+              "id": "c_visit",
+              "label": "Promise to visit every month, however busy you get.",
+              "next": "kavya_end",
+              "effects": [
+                {
+                  "type": "relationship",
+                  "npc": "amma",
+                  "affinity": 4,
+                  "trust": 3
+                },
+                {
+                  "type": "memory",
+                  "npc": "amma",
+                  "tag": "promised_visits",
+                  "text": "You promised to visit every month.",
+                  "weight": 1
+                }
+              ]
+            },
+            {
+              "id": "c_hug",
+              "label": "Just hug her.",
+              "next": "kavya_end",
+              "effects": [
+                {
+                  "type": "relationship",
+                  "npc": "amma",
+                  "affinity": 3
+                }
+              ]
+            }
+          ],
+          "variants": [
+            {
+              "when": {
+                "type": "any",
+                "conditions": [
+                  {
+                    "type": "memory",
+                    "npc": "amma",
+                    "tag": "paid_hospital"
+                  },
+                  {
+                    "type": "memory",
+                    "npc": "amma",
+                    "tag": "worked_for_her"
+                  },
+                  {
+                    "type": "memory",
+                    "npc": "amma",
+                    "tag": "borrowed_for_her"
+                  }
+                ]
+              },
+              "text": "She brings up the hospital bill. Not to thank you again — just so you know she hasn't forgotten."
+            },
+            {
+              "when": {
+                "type": "flag",
+                "key": "living_independently"
+              },
+              "text": "Your bag for Bengaluru is packed by the door. She has added three kinds of pickle to it without asking."
+            },
+            {
+              "when": {
+                "type": "memory",
+                "npc": "amma",
+                "tag": "self_reliant"
+              },
+              "text": "'You said you'd pull your own weight,' she says. 'You pulled some of ours too.'"
+            }
+          ]
+        },
+        "kavya_end": {
+          "speaker": "kavya",
+          "text": "Later, Kavya turns up.",
+          "choices": [
+            {
+              "id": "c_close",
+              "label": "Close this chapter of your life.",
+              "next": null,
+              "effects": [
+                {
+                  "type": "endChapter"
+                }
+              ]
+            }
+          ],
+          "variants": [
+            {
+              "when": {
+                "type": "flag",
+                "key": "venture_success"
+              },
+              "text": "'Partner,' she says, raising a glass of rose milk. 'FixLab is interviewing its first employee next week. We are interviewING. Can you believe it?'"
+            },
+            {
+              "when": {
+                "type": "memory",
+                "npc": "kavya",
+                "tag": "showed_up"
+              },
+              "text": "'You were there when it mattered,' she says, out of nowhere. 'I don't forget that.'"
+            },
+            {
+              "when": {
+                "type": "memory",
+                "npc": "kavya",
+                "tag": "too_busy"
+              },
+              "text": "Actually, she doesn't come. She sends a message instead: 'congrats. really.' It is warmer than it could have been, and colder than it used to be."
+            },
+            {
+              "when": {
+                "type": "always"
+              },
+              "text": "She has sweets and strong opinions about your new commute."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ev_money_crisis",
+      "chapter": 1,
+      "title": "Overdue",
+      "location": "home",
+      "summary": "Bills are piling up. Something has to change.",
+      "trigger": {
+        "kind": "auto",
+        "when": {
+          "type": "arrearsMonths",
+          "op": ">=",
+          "value": 2
+        },
+        "priority": 98
+      },
+      "start": "start",
+      "nodes": {
+        "start": {
+          "speaker": "narrator",
+          "text": "For the second month running, there wasn't enough. The overdue amount is growing and the college office has started sending reminders with words in capital letters.",
+          "choices": [
+            {
+              "id": "c_family",
+              "label": "Ask your family for help.",
+              "next": "family",
+              "effects": [
+                {
+                  "type": "if",
+                  "when": {
+                    "type": "background",
+                    "value": "affluent_business"
+                  },
+                  "then": [
+                    {
+                      "type": "money",
+                      "amount": 30000,
+                      "label": "Help from family",
+                      "category": "family"
+                    },
+                    {
+                      "type": "relationship",
+                      "npc": "amma",
+                      "trust": -2
+                    }
+                  ],
+                  "else": [
+                    {
+                      "type": "money",
+                      "amount": 8000,
+                      "label": "Help from family",
+                      "category": "family"
+                    },
+                    {
+                      "type": "relationship",
+                      "npc": "amma",
+                      "affinity": 2,
+                      "trust": 2
+                    },
+                    {
+                      "type": "stat",
+                      "key": "wellbeing",
+                      "delta": -2
+                    }
+                  ]
+                },
+                {
+                  "type": "memory",
+                  "npc": "amma",
+                  "tag": "asked_for_help",
+                  "text": "You asked for help when you were drowning.",
+                  "weight": 0.5
+                }
+              ]
+            },
+            {
+              "id": "c_loan",
+              "label": "Take a ₹25,000 personal loan (15% a year).",
+              "next": "done",
+              "effects": [
+                {
+                  "type": "openBankAccount",
+                  "bank": "Kaveri Co-operative Bank"
+                },
+                {
+                  "type": "takeLoan",
+                  "product": "kaveri_personal",
+                  "amount": 25000
+                }
+              ],
+              "hint": "Fixes this month; costs you for two years."
+            },
+            {
+              "id": "c_job",
+              "label": "Take the café job.",
+              "next": "done",
+              "effects": [
+                {
+                  "type": "startPartTime",
+                  "job": "cafe_counter"
+                },
+                {
+                  "type": "clearFlag",
+                  "key": "cafe_offer_open"
+                }
+              ],
+              "requires": {
+                "type": "all",
+                "conditions": [
+                  {
+                    "type": "partTime",
+                    "value": false
+                  },
+                  {
+                    "type": "career",
+                    "value": false
+                  }
+                ]
+              },
+              "hideIfLocked": true
+            },
+            {
+              "id": "c_cut",
+              "label": "Cut every expense you can: walk, cook, cancel subscriptions.",
+              "next": "done",
+              "effects": [
+                {
+                  "type": "flag",
+                  "key": "frugal_mode"
+                },
+                {
+                  "type": "flag",
+                  "key": "frugal"
+                },
+                {
+                  "type": "stat",
+                  "key": "wellbeing",
+                  "delta": -3
+                }
+              ],
+              "hint": "Living costs fall by 15%, for good."
+            },
+            {
+              "id": "c_drop",
+              "label": "Leave your course and work full-time.",
+              "next": "done",
+              "effects": [
+                {
+                  "type": "dropOut"
+                }
+              ],
+              "requires": {
+                "type": "educationStatus",
+                "value": "enrolled"
+              },
+              "hideIfLocked": true,
+              "hint": "Ends your studies and starts any education-loan repayments."
+            }
+          ]
+        },
+        "family": {
+          "speaker": "amma",
+          "text": "The conversation is hard. The help is real. Neither of you mentions it again at dinner — which is its own kind of kindness."
+        },
+        "done": {
+          "speaker": "narrator",
+          "text": "It isn't comfortable, but it's a plan. Next month's numbers should look different."
+        }
+      },
+      "repeatable": true,
+      "worldEvent": true
+    },
+    {
+      "id": "ev_burnout",
+      "chapter": 1,
+      "title": "Running on Empty",
+      "location": "home",
+      "summary": "You've been running too hard for too long.",
+      "trigger": {
+        "kind": "auto",
+        "when": {
+          "type": "stat",
+          "key": "wellbeing",
+          "op": "<=",
+          "value": 25
+        },
+        "priority": 97
+      },
+      "start": "start",
+      "nodes": {
+        "start": {
+          "speaker": "narrator",
+          "text": "You fall asleep at your desk for the third time this week. Small things make you want to cry; big things make you feel nothing at all.",
+          "choices": [
+            {
+              "id": "c_rest",
+              "label": "Take a real weekend off. No books, no shifts.",
+              "next": "rest",
+              "effects": [
+                {
+                  "type": "stat",
+                  "key": "energy",
+                  "delta": 25
+                },
+                {
+                  "type": "stat",
+                  "key": "wellbeing",
+                  "delta": 12
+                },
+                {
+                  "type": "stat",
+                  "key": "discipline",
+                  "delta": -1
+                }
+              ],
+              "cost": {
+                "days": 2
+              }
+            },
+            {
+              "id": "c_talk",
+              "label": "Talk to Amma about how you're really feeling.",
+              "next": "talk",
+              "effects": [
+                {
+                  "type": "stat",
+                  "key": "wellbeing",
+                  "delta": 10
+                },
+                {
+                  "type": "relationship",
+                  "npc": "amma",
+                  "affinity": 4,
+                  "trust": 4
+                },
+                {
+                  "type": "memory",
+                  "npc": "amma",
+                  "tag": "opened_up",
+                  "text": "You told her how tired you really were.",
+                  "weight": 1
+                }
+              ]
+            },
+            {
+              "id": "c_push",
+              "label": "Push through. Everyone's tired.",
+              "next": "push",
+              "effects": [
+                {
+                  "type": "stat",
+                  "key": "wellbeing",
+                  "delta": -4
+                },
+                {
+                  "type": "stat",
+                  "key": "discipline",
+                  "delta": 1
+                }
+              ]
+            }
+          ]
+        },
+        "rest": {
+          "speaker": "narrator",
+          "text": "Two days of sleep, idli and old films. The world doesn't end. Your to-do list is still there on Monday, but you're a different person facing it."
+        },
+        "talk": {
+          "speaker": "amma",
+          "text": "Amma listens without interrupting, which is a first. Then she makes you coffee and says: 'Rest is also work, kanna. Ask any farmer.'"
+        },
+        "push": {
+          "speaker": "narrator",
+          "text": "You push through. It works, for now. Your body files the complaint for later."
+        }
+      },
+      "repeatable": true,
+      "worldEvent": true
+    },
+    {
+      "id": "ev_dropout_path",
+      "chapter": 1,
+      "title": "What Now?",
+      "location": "library",
+      "summary": "Your course is behind you. What comes next?",
+      "trigger": {
+        "kind": "auto",
+        "when": {
+          "type": "all",
+          "conditions": [
+            {
+              "type": "educationStatus",
+              "value": "dropped"
+            },
+            {
+              "type": "not",
+              "condition": {
+                "type": "flag",
+                "key": "chapter1_complete"
+              }
+            },
+            {
+              "type": "career",
+              "value": false
+            }
+          ]
+        },
+        "priority": 90
+      },
+      "start": "start",
+      "nodes": {
+        "start": {
+          "speaker": "joseph",
+          "text": "Mr. Fernandes pours two cups of tea and doesn't mention the course you left. 'So. What does the next year look like?'",
+          "choices": [
+            {
+              "id": "c_iti",
+              "label": "Enrol in the ITI electrician trade at the next intake.",
+              "next": "restart",
+              "effects": [
+                {
+                  "type": "enroll",
+                  "program": "iti_electrician",
+                  "tier": "govt_iti"
+                }
+              ],
+              "requires": {
+                "type": "not",
+                "condition": {
+                  "type": "graduated",
+                  "value": "iti_electrician"
+                }
+              },
+              "hideIfLocked": true
+            },
+            {
+              "id": "c_work",
+              "label": "Work full-time for now and close this chapter.",
+              "next": null,
+              "effects": [
+                {
+                  "type": "endChapter"
+                }
+              ]
+            }
+          ]
+        },
+        "restart": {
+          "speaker": "joseph",
+          "text": "'Good. A shorter road is still a road.' He writes the admission date on the back of a library card."
+        }
+      },
+      "repeatable": true,
+      "worldEvent": true
+    },
+    {
+      "id": "ev_utat_retake",
+      "chapter": 1,
+      "title": "UTAT, Again",
+      "location": "exam_hall",
+      "summary": "Your second — and final — UTAT attempt.",
+      "trigger": {
+        "kind": "auto",
+        "when": {
+          "type": "all",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "drop_year"
+            },
+            {
+              "type": "day",
+              "op": ">=",
+              "value": 415
+            },
+            {
+              "type": "examAttempts",
+              "exam": "utat",
+              "op": "==",
+              "value": 1
+            },
+            {
+              "type": "educationStatus",
+              "value": "none"
+            }
+          ]
+        },
+        "priority": 95
+      },
+      "start": "start",
+      "nodes": {
+        "start": {
+          "speaker": "narrator",
+          "text": "A year later, the same converted wedding hall. This time you pick the side with working fans.",
+          "choices": [
+            {
+              "id": "c_sit",
+              "label": "Begin the paper.",
+              "next": null,
+              "challenge": {
+                "kind": "exam",
+                "onPass": {
+                  "next": "done",
+                  "effects": []
+                },
+                "onFail": {
+                  "next": "done",
+                  "effects": []
+                },
+                "examId": "utat"
+              }
+            }
+          ],
+          "variants": [
+            {
+              "when": {
+                "type": "counter",
+                "key": "practiceSessions",
+                "op": ">=",
+                "value": 10
+              },
+              "text": "A year of practice papers has worn a groove into how you think."
+            }
+          ]
+        },
+        "done": {
+          "speaker": "narrator",
+          "text": "Pens down. However it went, you know you gave it a real second chance."
+        }
+      }
+    },
+    {
+      "id": "ev_retake_results",
+      "chapter": 1,
+      "title": "Results: UTAT (Second Attempt)",
+      "location": "home",
+      "summary": "The UTAT results are published.",
+      "trigger": {
+        "kind": "auto",
+        "when": {
+          "type": "all",
+          "conditions": [
+            {
+              "type": "daysSinceEvent",
+              "event": "ev_utat_retake",
+              "op": ">=",
+              "value": 10
+            },
+            {
+              "type": "educationStatus",
+              "value": "none"
+            }
+          ]
+        },
+        "priority": 95
+      },
+      "start": "start",
+      "nodes": {
+        "start": {
+          "speaker": "narrator",
+          "text": "The results website crashes twice. On the third try, it loads.",
+          "choices": [
+            {
+              "id": "c_check",
+              "label": "Look at the screen.",
+              "next": "none",
+              "routes": [
+                {
+                  "when": {
+                    "type": "examTier",
+                    "exam": "utat",
+                    "value": "government",
+                    "exact": true,
+                    "latest": true
+                  },
+                  "next": "gov"
+                },
+                {
+                  "when": {
+                    "type": "examTier",
+                    "exam": "utat",
+                    "value": "private",
+                    "exact": true,
+                    "latest": true
+                  },
+                  "next": "private"
+                }
+              ]
+            }
+          ]
+        },
+        "gov": {
+          "speaker": "amma",
+          "text": "Amma reads it out loud — twice. 'Government college. GOVERNMENT!' She has phoned three relatives before you can stop her.",
+          "choices": [
+            {
+              "id": "c_accept_gov",
+              "label": "Accept the government college seat.",
+              "next": null,
+              "effects": [
+                {
+                  "type": "enroll",
+                  "program": "btech_cs",
+                  "tier": "fromExam"
+                },
+                {
+                  "type": "flag",
+                  "key": "joined_engineering"
+                },
+                {
+                  "type": "clearFlag",
+                  "key": "drop_year"
+                }
+              ]
+            },
+            {
+              "id": "c_commerce",
+              "label": "Switch to commerce instead.",
+              "next": null,
+              "effects": [
+                {
+                  "type": "flag",
+                  "key": "intent_commerce"
+                },
+                {
+                  "type": "clearFlag",
+                  "key": "intent_engineering"
+                },
+                {
+                  "type": "clearFlag",
+                  "key": "drop_year"
+                }
+              ]
+            },
+            {
+              "id": "c_trade",
+              "label": "Switch to the ITI electrician trade.",
+              "next": null,
+              "effects": [
+                {
+                  "type": "flag",
+                  "key": "intent_trade"
+                },
+                {
+                  "type": "clearFlag",
+                  "key": "intent_engineering"
+                },
+                {
+                  "type": "clearFlag",
+                  "key": "drop_year"
+                }
+              ]
+            }
+          ],
+          "variants": [
+            {
+              "when": {
+                "type": "flag",
+                "key": "need_based_eligible"
+              },
+              "text": "A banner on the results page mentions the Vidya Merit Scholarship for students from families with limited income."
+            }
+          ]
+        },
+        "private": {
+          "speaker": "amma",
+          "text": "A private college seat. Good labs, decent placements — and fees of ₹1,60,000 a year. Amma does the arithmetic in her head and goes quiet.",
+          "choices": [
+            {
+              "id": "c_accept_private",
+              "label": "Accept the private college seat.",
+              "next": null,
+              "effects": [
+                {
+                  "type": "enroll",
+                  "program": "btech_cs",
+                  "tier": "fromExam"
+                },
+                {
+                  "type": "flag",
+                  "key": "joined_engineering"
+                },
+                {
+                  "type": "clearFlag",
+                  "key": "drop_year"
+                }
+              ]
+            },
+            {
+              "id": "c_commerce",
+              "label": "Switch to commerce instead.",
+              "next": null,
+              "effects": [
+                {
+                  "type": "flag",
+                  "key": "intent_commerce"
+                },
+                {
+                  "type": "clearFlag",
+                  "key": "intent_engineering"
+                },
+                {
+                  "type": "clearFlag",
+                  "key": "drop_year"
+                }
+              ]
+            },
+            {
+              "id": "c_trade",
+              "label": "Switch to the ITI electrician trade.",
+              "next": null,
+              "effects": [
+                {
+                  "type": "flag",
+                  "key": "intent_trade"
+                },
+                {
+                  "type": "clearFlag",
+                  "key": "intent_engineering"
+                },
+                {
+                  "type": "clearFlag",
+                  "key": "drop_year"
+                }
+              ]
+            }
+          ],
+          "variants": [
+            {
+              "when": {
+                "type": "background",
+                "value": "affluent_business"
+              },
+              "text": "Appa shrugs. 'It's fine. Take it.' It is easy for him to say, and that's both the gift and the problem."
+            }
+          ]
+        },
+        "none": {
+          "speaker": "narrator",
+          "text": "No seat this year. The number on the screen feels like a verdict. It isn't. It's one morning's data point — but it's the data point you have.",
+          "choices": [
+            {
+              "id": "c_commerce",
+              "label": "Switch to commerce instead.",
+              "next": null,
+              "effects": [
+                {
+                  "type": "flag",
+                  "key": "intent_commerce"
+                },
+                {
+                  "type": "clearFlag",
+                  "key": "intent_engineering"
+                },
+                {
+                  "type": "clearFlag",
+                  "key": "drop_year"
+                }
+              ]
+            },
+            {
+              "id": "c_trade",
+              "label": "Switch to the ITI electrician trade.",
+              "next": null,
+              "effects": [
+                {
+                  "type": "flag",
+                  "key": "intent_trade"
+                },
+                {
+                  "type": "clearFlag",
+                  "key": "intent_engineering"
+                },
+                {
+                  "type": "clearFlag",
+                  "key": "drop_year"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ev_w_tuition",
+      "chapter": 1,
+      "title": "A Tuition Request",
+      "location": "home",
+      "summary": "A neighbour needs a tutor for their child.",
+      "trigger": {
+        "kind": "random",
+        "when": {
+          "type": "all",
+          "conditions": [
+            {
+              "type": "career",
+              "value": false
+            },
+            {
+              "type": "stat",
+              "key": "knowledge",
+              "op": ">=",
+              "value": 35
+            }
+          ]
+        },
+        "chancePerMonth": 0.12
+      },
+      "start": "start",
+      "nodes": {
+        "start": {
+          "speaker": "narrator",
+          "text": "The neighbour's son has board exams and the family can't afford a coaching centre. They ask if you could tutor him three evenings a week this month — for ₹3,000.",
+          "choices": [
+            {
+              "id": "c_yes",
+              "label": "Agree to tutor him.",
+              "next": "yes",
+              "effects": [
+                {
+                  "type": "money",
+                  "amount": 3000,
+                  "label": "Tuition fees",
+                  "category": "salary"
+                },
+                {
+                  "type": "stat",
+                  "key": "communication",
+                  "delta": 1.5
+                },
+                {
+                  "type": "stat",
+                  "key": "knowledge",
+                  "delta": 0.5
+                },
+                {
+                  "type": "stat",
+                  "key": "energy",
+                  "delta": -8
+                }
+              ]
+            },
+            {
+              "id": "c_free",
+              "label": "Tutor him for free.",
+              "next": "yes",
+              "effects": [
+                {
+                  "type": "stat",
+                  "key": "communication",
+                  "delta": 1.5
+                },
+                {
+                  "type": "stat",
+                  "key": "wellbeing",
+                  "delta": 3
+                },
+                {
+                  "type": "stat",
+                  "key": "energy",
+                  "delta": -8
+                },
+                {
+                  "type": "flag",
+                  "key": "tutored_free"
+                }
+              ]
+            },
+            {
+              "id": "c_no",
+              "label": "Politely decline — your own schedule is full.",
+              "next": null
+            }
+          ]
+        },
+        "yes": {
+          "speaker": "narrator",
+          "text": "Explaining things to a fifteen-year-old turns out to be the best way to find out what you don't really understand."
+        }
+      },
+      "repeatable": true,
+      "worldEvent": true
+    },
+    {
+      "id": "ev_w_monsoon",
+      "chapter": 1,
+      "title": "Flooded Streets",
+      "location": "park",
+      "summary": "The northeast monsoon floods your route.",
+      "trigger": {
+        "kind": "random",
+        "when": {
+          "type": "all",
+          "conditions": [
+            {
+              "type": "month",
+              "op": ">=",
+              "value": 10
+            },
+            {
+              "type": "month",
+              "op": "<=",
+              "value": 12
+            }
+          ]
+        },
+        "chancePerMonth": 0.25
+      },
+      "start": "start",
+      "nodes": {
+        "start": {
+          "speaker": "narrator",
+          "text": "Overnight rain has turned the main road into a river with opinions. Buses aren't running.",
+          "choices": [
+            {
+              "id": "c_auto",
+              "label": "Pay ₹600 for an auto-rickshaw at monsoon rates.",
+              "next": "go",
+              "effects": [
+                {
+                  "type": "money",
+                  "amount": -600,
+                  "label": "Monsoon auto fare",
+                  "category": "living"
+                }
+              ]
+            },
+            {
+              "id": "c_wade",
+              "label": "Wade through it.",
+              "next": "go",
+              "effects": [
+                {
+                  "type": "stat",
+                  "key": "energy",
+                  "delta": -8
+                },
+                {
+                  "type": "stat",
+                  "key": "wellbeing",
+                  "delta": -2
+                }
+              ]
+            },
+            {
+              "id": "c_stay",
+              "label": "Stay home and study instead.",
+              "next": "stay",
+              "effects": [
+                {
+                  "type": "stat",
+                  "key": "knowledge",
+                  "delta": 0.5
+                },
+                {
+                  "type": "stat",
+                  "key": "discipline",
+                  "delta": -0.5
+                }
+              ]
+            }
+          ]
+        },
+        "go": {
+          "speaker": "narrator",
+          "text": "You arrive damp, late and oddly proud of yourself."
+        },
+        "stay": {
+          "speaker": "narrator",
+          "text": "You watch the rain from the window with a textbook open on your lap. Some of it even goes in."
+        }
+      },
+      "repeatable": true,
+      "worldEvent": true
+    },
+    {
+      "id": "ev_w_harvest",
+      "chapter": 1,
+      "title": "Harvest Week",
+      "location": "home",
+      "summary": "The family needs hands at harvest time.",
+      "trigger": {
+        "kind": "random",
+        "when": {
+          "type": "all",
+          "conditions": [
+            {
+              "type": "background",
+              "value": "rural_farming"
+            },
+            {
+              "type": "month",
+              "op": "==",
+              "value": 1
+            }
+          ]
+        },
+        "chancePerMonth": 0.6
+      },
+      "start": "start",
+      "nodes": {
+        "start": {
+          "speaker": "narrator",
+          "text": "Harvest week. Appa's back is bad this year and labourers cost double during Pongal.",
+          "choices": [
+            {
+              "id": "c_help",
+              "label": "Go home and help for the week.",
+              "next": "help",
+              "effects": [
+                {
+                  "type": "relationship",
+                  "npc": "amma",
+                  "affinity": 5,
+                  "trust": 4
+                },
+                {
+                  "type": "stat",
+                  "key": "energy",
+                  "delta": -12
+                },
+                {
+                  "type": "stat",
+                  "key": "wellbeing",
+                  "delta": 2
+                },
+                {
+                  "type": "money",
+                  "amount": 2000,
+                  "label": "Your share of the harvest money",
+                  "category": "family"
+                },
+                {
+                  "type": "memory",
+                  "npc": "amma",
+                  "tag": "came_for_harvest",
+                  "text": "You came home to help with the harvest.",
+                  "weight": 1
+                }
+              ],
+              "cost": {
+                "days": 5
+              }
+            },
+            {
+              "id": "c_send",
+              "label": "Send money for a labourer instead (₹2,500).",
+              "next": "send",
+              "effects": [
+                {
+                  "type": "money",
+                  "amount": -2500,
+                  "label": "Paid for a harvest labourer",
+                  "category": "family"
+                },
+                {
+                  "type": "relationship",
+                  "npc": "amma",
+                  "affinity": 2,
+                  "trust": 1
+                }
+              ]
+            },
+            {
+              "id": "c_cant",
+              "label": "Explain that you can't come this year.",
+              "next": "cant",
+              "effects": [
+                {
+                  "type": "relationship",
+                  "npc": "amma",
+                  "affinity": -3
+                }
+              ]
+            }
+          ]
+        },
+        "help": {
+          "speaker": "narrator",
+          "text": "Five days of mud, sun and Amma's lunches in steel tiffins. Your shoulders ache. Something in you is restored."
+        },
+        "send": {
+          "speaker": "narrator",
+          "text": "Appa calls to say the labourer is slower than you. It's a compliment, delivered his way."
+        },
+        "cant": {
+          "speaker": "amma",
+          "text": "'Study, then,' Amma says. She doesn't sound angry. She sounds tired, which is worse."
+        }
+      },
+      "repeatable": true,
+      "worldEvent": true
+    },
+    {
+      "id": "ev_w_kyc_scam",
+      "chapter": 1,
+      "title": "Urgent: KYC Update",
+      "location": "bank",
+      "summary": "A suspicious message about your bank account.",
+      "trigger": {
+        "kind": "random",
+        "when": {
+          "type": "eventDone",
+          "value": "ev_bank_fees"
+        },
+        "chancePerMonth": 0.1
+      },
+      "start": "start",
+      "nodes": {
+        "start": {
+          "speaker": "narrator",
+          "text": "SMS: 'Dear customer, your Kaveri Bank account will be BLOCKED today. Update KYC immediately: kaveri-kyc-update.co/verify'. It has the bank's logo. It also has a spelling mistake.",
+          "choices": [
+            {
+              "id": "c_click",
+              "label": "Click the link and enter your details.",
+              "next": "scammed",
+              "effects": [
+                {
+                  "type": "money",
+                  "amount": -5000,
+                  "label": "Lost to a phishing scam",
+                  "category": "scam"
+                },
+                {
+                  "type": "stat",
+                  "key": "wellbeing",
+                  "delta": -5
+                },
+                {
+                  "type": "flag",
+                  "key": "was_scammed"
+                }
+              ]
+            },
+            {
+              "id": "c_ignore",
+              "label": "Ignore it.",
+              "next": "ignored"
+            },
+            {
+              "id": "c_report",
+              "label": "Report it to the bank and forward it to the cyber-crime helpline.",
+              "next": "reported",
+              "effects": [
+                {
+                  "type": "flag",
+                  "key": "reported_scam"
+                },
+                {
+                  "type": "stat",
+                  "key": "discipline",
+                  "delta": 0.5
+                }
+              ]
+            }
+          ]
+        },
+        "scammed": {
+          "speaker": "narrator",
+          "text": "Two minutes later, ₹5,000 leaves your account. The bank says it will 'investigate'. You learn the most expensive lesson in this chapter: real banks never ask for details through links."
+        },
+        "ignored": {
+          "speaker": "narrator",
+          "text": "You delete it. The account is fine. Banks don't ask for KYC through text links — and now you know."
+        },
+        "reported": {
+          "speaker": "narrator",
+          "text": "The bank thanks you and blocks the domain. A week later the same message reaches your neighbour, and you're the one who tells her not to click."
+        }
+      },
+      "repeatable": true,
+      "worldEvent": true
+    }
+  ]
+}

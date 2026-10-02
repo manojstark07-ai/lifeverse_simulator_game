@@ -1,0 +1,1386 @@
+{
+  "contentVersion": "2026.10-cyber-bio-underworld",
+  "locations": [
+    {
+      "id": "dark_web_terminal",
+      "name": "Dark Web Terminal",
+      "mapLabel": "Dark Web",
+      "description": "A hidden online marketplace of rumours, scams, stolen data and undercover accounts. 18+, mature themes.",
+      "gridX": 4,
+      "gridY": 4,
+      "kind": "cyber",
+      "requires": {
+        "type": "flag",
+        "key": "mature_on"
+      }
+    },
+    {
+      "id": "bio_backroom",
+      "name": "Backroom Clinic",
+      "mapLabel": "Backroom",
+      "description": "A shuttered clinic where fake reports, illegal samples and desperate people cross paths. 18+, mature themes.",
+      "gridX": 3,
+      "gridY": 4,
+      "kind": "clinic",
+      "requires": {
+        "type": "flag",
+        "key": "mature_on"
+      }
+    }
+  ],
+  "actions": [
+    {
+      "id": "darkweb_lurk",
+      "label": "Read dark web boards",
+      "description": "You lurk on invitation-only boards. Most posts are scams; some are traps; a few are dangerously real.",
+      "location": "dark_web_terminal",
+      "energyCost": 8,
+      "requires": {
+        "type": "flag",
+        "key": "mature_on"
+      },
+      "effects": [
+        {
+          "type": "flag",
+          "key": "darkweb_accessed"
+        },
+        {
+          "type": "skill",
+          "key": "programming",
+          "delta": 0.4
+        },
+        {
+          "type": "skill",
+          "key": "law",
+          "delta": 0.2
+        },
+        {
+          "type": "schedule",
+          "event": "ev_darkweb_invite",
+          "inDays": 0
+        }
+      ]
+    },
+    {
+      "id": "cyber_leak_market",
+      "label": "Inspect a stolen-data listing",
+      "description": "A seller claims to have customer records. You can expose it, ignore it, or gamble with a criminal market.",
+      "location": "dark_web_terminal",
+      "energyCost": 10,
+      "moneyCost": 1000,
+      "requires": {
+        "type": "all",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "mature_on"
+          },
+          {
+            "type": "skill",
+            "key": "programming",
+            "op": ">=",
+            "value": 15
+          }
+        ]
+      },
+      "effects": [
+        {
+          "type": "counter",
+          "key": "heat",
+          "delta": 1
+        },
+        {
+          "type": "schedule",
+          "event": "ev_data_leak_market",
+          "inDays": 0
+        }
+      ]
+    },
+    {
+      "id": "cyber_ransomware_offer",
+      "label": "Answer a ransomware crew's offer",
+      "description": "A crew wants a 'non-technical helper' to pick targets and move money. It sounds easy because they are lying.",
+      "location": "dark_web_terminal",
+      "energyCost": 14,
+      "requires": {
+        "type": "all",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "mature_on"
+          },
+          {
+            "type": "skill",
+            "key": "programming",
+            "op": ">=",
+            "value": 25
+          }
+        ]
+      },
+      "effects": [
+        {
+          "type": "counter",
+          "key": "heat",
+          "delta": 2
+        },
+        {
+          "type": "schedule",
+          "event": "ev_ransomware_offer",
+          "inDays": 0
+        }
+      ]
+    },
+    {
+      "id": "bio_sample_courier",
+      "label": "Take a biomedical courier job",
+      "description": "A sealed cold box, no paperwork, and a payment too large for honest lab work.",
+      "location": "bio_backroom",
+      "energyCost": 12,
+      "requires": {
+        "type": "flag",
+        "key": "mature_on"
+      },
+      "effects": [
+        {
+          "type": "counter",
+          "key": "heat",
+          "delta": 1
+        },
+        {
+          "type": "schedule",
+          "event": "ev_bio_sample_courier",
+          "inDays": 0
+        }
+      ]
+    },
+    {
+      "id": "bio_trial_fraud",
+      "label": "Investigate fake clinical trial papers",
+      "description": "A recruiter is selling forged trial documents to desperate patients and shady clinics.",
+      "location": "bio_backroom",
+      "energyCost": 12,
+      "requires": {
+        "type": "all",
+        "conditions": [
+          {
+            "type": "flag",
+            "key": "mature_on"
+          },
+          {
+            "type": "skill",
+            "key": "medicine",
+            "op": ">=",
+            "value": 15
+          }
+        ]
+      },
+      "effects": [
+        {
+          "type": "schedule",
+          "event": "ev_bio_trial_fraud",
+          "inDays": 0
+        }
+      ]
+    },
+    {
+      "id": "crime_street_shooting",
+      "label": "Walk into a gang shooting",
+      "description": "A fight in Old Town turns into gunfire. You have seconds to choose who you are.",
+      "location": "backstreets",
+      "energyCost": 10,
+      "requires": {
+        "type": "flag",
+        "key": "mature_on"
+      },
+      "effects": [
+        {
+          "type": "schedule",
+          "event": "ev_street_shooting",
+          "inDays": 0
+        }
+      ]
+    }
+  ],
+  "events": [
+    {
+      "id": "ev_darkweb_invite",
+      "chapter": 0,
+      "title": "Invitation Link",
+      "location": "dark_web_terminal",
+      "summary": "A stranger offers access to a darker market.",
+      "trigger": {
+        "kind": "scheduled"
+      },
+      "start": "start",
+      "nodes": {
+        "start": {
+          "speaker": "narrator",
+          "text": "A private message arrives: an invite link, a countdown timer, and a promise that 'real money starts after the first favour.'",
+          "choices": [
+            {
+              "id": "c_report",
+              "label": "Screenshot it and report the account.",
+              "next": "reported",
+              "effects": [
+                {
+                  "type": "skill",
+                  "key": "law",
+                  "delta": 0.8
+                },
+                {
+                  "type": "stat",
+                  "key": "discipline",
+                  "delta": 1
+                },
+                {
+                  "type": "counter",
+                  "key": "heat",
+                  "delta": -1
+                }
+              ]
+            },
+            {
+              "id": "c_enter",
+              "label": "Enter the market and look around.",
+              "next": "maze",
+              "challenge": {
+                "kind": "puzzle",
+                "pool": "cyber_underworld",
+                "count": 3,
+                "passFraction": 0.67,
+                "onPass": {
+                  "next": "clean_exit",
+                  "effects": [
+                    {
+                      "type": "skill",
+                      "key": "programming",
+                      "delta": 1
+                    },
+                    {
+                      "type": "counter",
+                      "key": "heat",
+                      "delta": 1
+                    }
+                  ]
+                },
+                "onFail": {
+                  "next": "tracked",
+                  "effects": [
+                    {
+                      "type": "counter",
+                      "key": "heat",
+                      "delta": 3
+                    },
+                    {
+                      "type": "stat",
+                      "key": "wellbeing",
+                      "delta": -3
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "id": "c_close",
+              "label": "Close the laptop.",
+              "next": "closed"
+            }
+          ]
+        },
+        "reported": {
+          "speaker": "narrator",
+          "text": "The account disappears by morning. Maybe it was a scam. Maybe it was a sting. Either way, you sleep."
+        },
+        "maze": {
+          "speaker": "narrator",
+          "text": "The market is mostly lies wrapped in jargon. The danger is not that it looks scary; the danger is that some parts look ordinary."
+        },
+        "clean_exit": {
+          "speaker": "narrator",
+          "text": "You leave with more caution than curiosity. That counts as a win."
+        },
+        "tracked": {
+          "speaker": "narrator",
+          "text": "A warning email arrives from your bank about suspicious activity. Someone was watching the watcher."
+        },
+        "closed": {
+          "speaker": "narrator",
+          "text": "The timer hits zero without you. The room feels quieter after that."
+        }
+      },
+      "repeatable": true
+    },
+    {
+      "id": "ev_data_leak_market",
+      "chapter": 0,
+      "title": "The Leak",
+      "location": "dark_web_terminal",
+      "summary": "A stolen database is for sale.",
+      "trigger": {
+        "kind": "scheduled"
+      },
+      "start": "start",
+      "nodes": {
+        "start": {
+          "speaker": "narrator",
+          "text": "The seller previews names, phone numbers and addresses. Somewhere in that spreadsheet are real people who never agreed to become inventory.",
+          "choices": [
+            {
+              "id": "c_tip",
+              "label": "Tip off the company and cyber cell.",
+              "next": "tip",
+              "effects": [
+                {
+                  "type": "skill",
+                  "key": "law",
+                  "delta": 1
+                },
+                {
+                  "type": "skill",
+                  "key": "programming",
+                  "delta": 0.5
+                },
+                {
+                  "type": "flag",
+                  "key": "cyber_tipster"
+                },
+                {
+                  "type": "counter",
+                  "key": "heat",
+                  "delta": -2
+                }
+              ]
+            },
+            {
+              "id": "c_buy",
+              "label": "Buy the data and try to resell it.",
+              "next": "resell",
+              "cost": {
+                "money": 6000
+              },
+              "challenge": {
+                "kind": "puzzle",
+                "pool": "cyber_underworld",
+                "count": 3,
+                "passFraction": 0.67,
+                "onPass": {
+                  "next": "profit",
+                  "effects": [
+                    {
+                      "type": "money",
+                      "amount": 25000,
+                      "label": "Stolen data resale",
+                      "category": "crime"
+                    },
+                    {
+                      "type": "counter",
+                      "key": "crimes",
+                      "delta": 1
+                    },
+                    {
+                      "type": "counter",
+                      "key": "heat",
+                      "delta": 3
+                    },
+                    {
+                      "type": "flag",
+                      "key": "crime_any"
+                    },
+                    {
+                      "type": "flag",
+                      "key": "data_broker"
+                    }
+                  ]
+                },
+                "onFail": {
+                  "next": "sting",
+                  "effects": [
+                    {
+                      "type": "counter",
+                      "key": "heat",
+                      "delta": 4
+                    },
+                    {
+                      "type": "flag",
+                      "key": "police_record"
+                    },
+                    {
+                      "type": "schedule",
+                      "event": "ev_arrest_petty",
+                      "inDays": 0
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "id": "c_ignore",
+              "label": "Back away.",
+              "next": "ignore"
+            }
+          ]
+        },
+        "tip": {
+          "speaker": "narrator",
+          "text": "A month later the breach makes the news with fewer victims than it could have had."
+        },
+        "resell": {
+          "speaker": "narrator",
+          "text": "Every buyer sounds like an undercover officer when your own name is now in a chat log."
+        },
+        "profit": {
+          "speaker": "narrator",
+          "text": "Money lands in your wallet. So does a new kind of paranoia."
+        },
+        "sting": {
+          "speaker": "narrator",
+          "text": "The buyer asks one question too many. Then the screen goes quiet and someone knocks on your door."
+        },
+        "ignore": {
+          "speaker": "narrator",
+          "text": "You close the tab. For once, curiosity loses."
+        }
+      },
+      "repeatable": true
+    },
+    {
+      "id": "ev_ransomware_offer",
+      "chapter": 0,
+      "title": "The Ransom Crew",
+      "location": "dark_web_terminal",
+      "summary": "A cybercrime crew offers a payout.",
+      "trigger": {
+        "kind": "scheduled"
+      },
+      "start": "start",
+      "nodes": {
+        "start": {
+          "speaker": "narrator",
+          "text": "They do not ask you to write code. They ask you to choose victims, handle panic, and pretend there is a clean side to dirty money.",
+          "choices": [
+            {
+              "id": "c_refuse",
+              "label": "Refuse and cut contact.",
+              "next": "refused",
+              "effects": [
+                {
+                  "type": "stat",
+                  "key": "discipline",
+                  "delta": 2
+                }
+              ]
+            },
+            {
+              "id": "c_undercover",
+              "label": "Play along just long enough to gather evidence.",
+              "next": "undercover",
+              "challenge": {
+                "kind": "puzzle",
+                "pool": "cyber_underworld",
+                "count": 4,
+                "passFraction": 0.75,
+                "onPass": {
+                  "next": "evidence",
+                  "effects": [
+                    {
+                      "type": "skill",
+                      "key": "law",
+                      "delta": 1.5
+                    },
+                    {
+                      "type": "skill",
+                      "key": "programming",
+                      "delta": 1
+                    },
+                    {
+                      "type": "counter",
+                      "key": "heat",
+                      "delta": -3
+                    },
+                    {
+                      "type": "flag",
+                      "key": "cyber_tipster"
+                    }
+                  ]
+                },
+                "onFail": {
+                  "next": "exposed",
+                  "effects": [
+                    {
+                      "type": "stat",
+                      "key": "wellbeing",
+                      "delta": -5
+                    },
+                    {
+                      "type": "counter",
+                      "key": "heat",
+                      "delta": 2
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "id": "c_join",
+              "label": "Join the crew for one payout.",
+              "next": "joined",
+              "challenge": {
+                "kind": "puzzle",
+                "pool": "cyber_underworld",
+                "count": 4,
+                "passFraction": 0.5,
+                "onPass": {
+                  "next": "paid",
+                  "effects": [
+                    {
+                      "type": "money",
+                      "amount": 120000,
+                      "label": "Ransomware cut",
+                      "category": "crime"
+                    },
+                    {
+                      "type": "counter",
+                      "key": "crimes",
+                      "delta": 1
+                    },
+                    {
+                      "type": "counter",
+                      "key": "heat",
+                      "delta": 5
+                    },
+                    {
+                      "type": "flag",
+                      "key": "crime_any"
+                    },
+                    {
+                      "type": "flag",
+                      "key": "cybercriminal"
+                    }
+                  ]
+                },
+                "onFail": {
+                  "next": "raid",
+                  "effects": [
+                    {
+                      "type": "flag",
+                      "key": "police_record"
+                    },
+                    {
+                      "type": "counter",
+                      "key": "heat",
+                      "delta": 6
+                    },
+                    {
+                      "type": "schedule",
+                      "event": "ev_arrest_petty",
+                      "inDays": 0
+                    }
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        "refused": {
+          "speaker": "narrator",
+          "text": "They call you soft. You call it survival."
+        },
+        "undercover": {
+          "speaker": "narrator",
+          "text": "Every message you save feels like standing closer to a live wire."
+        },
+        "evidence": {
+          "speaker": "narrator",
+          "text": "The cyber cell takes the evidence seriously. Nobody thanks you loudly, which is probably safer."
+        },
+        "exposed": {
+          "speaker": "narrator",
+          "text": "The crew realises you were collecting evidence. Your phone vibrates all night with threats."
+        },
+        "joined": {
+          "speaker": "narrator",
+          "text": "The victim's panic arrives in screenshots. It is easy to forget a crime has a face until it does."
+        },
+        "paid": {
+          "speaker": "narrator",
+          "text": "The payout clears. The heat does not."
+        },
+        "raid": {
+          "speaker": "narrator",
+          "text": "A group chat becomes a charge sheet. The crew vanishes; your devices do not."
+        }
+      },
+      "repeatable": true
+    },
+    {
+      "id": "ev_bio_sample_courier",
+      "chapter": 0,
+      "title": "Cold Box",
+      "location": "bio_backroom",
+      "summary": "A biomedical courier job raises alarms.",
+      "trigger": {
+        "kind": "scheduled"
+      },
+      "start": "start",
+      "nodes": {
+        "start": {
+          "speaker": "narrator",
+          "text": "The box is cold enough to fog in the heat. The clinic owner says not to ask what is inside. That is an answer.",
+          "choices": [
+            {
+              "id": "c_return",
+              "label": "Return it and walk away.",
+              "next": "returned",
+              "effects": [
+                {
+                  "type": "stat",
+                  "key": "discipline",
+                  "delta": 1
+                },
+                {
+                  "type": "counter",
+                  "key": "heat",
+                  "delta": -1
+                }
+              ]
+            },
+            {
+              "id": "c_deliver",
+              "label": "Deliver the box.",
+              "next": "delivery",
+              "challenge": {
+                "kind": "puzzle",
+                "pool": "bio_underworld",
+                "count": 3,
+                "passFraction": 0.67,
+                "onPass": {
+                  "next": "paid",
+                  "effects": [
+                    {
+                      "type": "money",
+                      "amount": 18000,
+                      "label": "Backroom courier payment",
+                      "category": "crime"
+                    },
+                    {
+                      "type": "counter",
+                      "key": "crimes",
+                      "delta": 1
+                    },
+                    {
+                      "type": "counter",
+                      "key": "heat",
+                      "delta": 2
+                    },
+                    {
+                      "type": "flag",
+                      "key": "bio_black_market"
+                    },
+                    {
+                      "type": "flag",
+                      "key": "crime_any"
+                    }
+                  ]
+                },
+                "onFail": {
+                  "next": "checkpoint",
+                  "effects": [
+                    {
+                      "type": "counter",
+                      "key": "heat",
+                      "delta": 4
+                    },
+                    {
+                      "type": "flag",
+                      "key": "police_record"
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "id": "c_hospital",
+              "label": "Take it to a real hospital and explain.",
+              "next": "hospital",
+              "effects": [
+                {
+                  "type": "skill",
+                  "key": "medicine",
+                  "delta": 0.8
+                },
+                {
+                  "type": "skill",
+                  "key": "law",
+                  "delta": 0.6
+                },
+                {
+                  "type": "flag",
+                  "key": "bio_whistleblower"
+                }
+              ]
+            }
+          ]
+        },
+        "returned": {
+          "speaker": "narrator",
+          "text": "The owner laughs at you, but locks the box away fast."
+        },
+        "delivery": {
+          "speaker": "narrator",
+          "text": "Every speed breaker sounds like the box cracking."
+        },
+        "paid": {
+          "speaker": "narrator",
+          "text": "The money is clean. The route was not."
+        },
+        "checkpoint": {
+          "speaker": "narrator",
+          "text": "A checkpoint officer asks for papers. The box has none."
+        },
+        "hospital": {
+          "speaker": "narrator",
+          "text": "The hospital security desk becomes a police desk within twenty minutes."
+        }
+      },
+      "repeatable": true
+    },
+    {
+      "id": "ev_bio_trial_fraud",
+      "chapter": 0,
+      "title": "Trial Papers",
+      "location": "bio_backroom",
+      "summary": "Fake clinical trial documents put patients at risk.",
+      "trigger": {
+        "kind": "scheduled"
+      },
+      "start": "start",
+      "nodes": {
+        "start": {
+          "speaker": "narrator",
+          "text": "A recruiter is selling trial forms with forged stamps. The patients think the papers mean hope. The clinic thinks they mean profit.",
+          "choices": [
+            {
+              "id": "c_expose",
+              "label": "Expose the fraud.",
+              "next": "exposed",
+              "challenge": {
+                "kind": "puzzle",
+                "pool": "bio_underworld",
+                "count": 4,
+                "passFraction": 0.75,
+                "onPass": {
+                  "next": "case",
+                  "effects": [
+                    {
+                      "type": "skill",
+                      "key": "medicine",
+                      "delta": 1.5
+                    },
+                    {
+                      "type": "skill",
+                      "key": "law",
+                      "delta": 1
+                    },
+                    {
+                      "type": "flag",
+                      "key": "bio_whistleblower"
+                    }
+                  ]
+                },
+                "onFail": {
+                  "next": "messy",
+                  "effects": [
+                    {
+                      "type": "stat",
+                      "key": "wellbeing",
+                      "delta": -3
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "id": "c_forge",
+              "label": "Help clean up the forged paperwork.",
+              "next": "forge",
+              "effects": [
+                {
+                  "type": "money",
+                  "amount": 35000,
+                  "label": "Forged trial papers",
+                  "category": "crime"
+                },
+                {
+                  "type": "counter",
+                  "key": "crimes",
+                  "delta": 1
+                },
+                {
+                  "type": "counter",
+                  "key": "heat",
+                  "delta": 4
+                },
+                {
+                  "type": "flag",
+                  "key": "bio_black_market"
+                },
+                {
+                  "type": "flag",
+                  "key": "crime_any"
+                }
+              ]
+            },
+            {
+              "id": "c_leave",
+              "label": "Leave and warn one patient quietly.",
+              "next": "warned",
+              "effects": [
+                {
+                  "type": "stat",
+                  "key": "wellbeing",
+                  "delta": 1
+                }
+              ]
+            }
+          ]
+        },
+        "exposed": {
+          "speaker": "narrator",
+          "text": "You sort forms, dates and contradictions until the pattern becomes impossible to ignore."
+        },
+        "case": {
+          "speaker": "narrator",
+          "text": "The case reaches a regulator. The clinic shuts for a week; the recruiter disappears."
+        },
+        "messy": {
+          "speaker": "narrator",
+          "text": "The documents are worse than you thought. You cannot prove enough, but you know enough to feel sick."
+        },
+        "forge": {
+          "speaker": "narrator",
+          "text": "Your edits make the papers look cleaner. That is the dirtiest part."
+        },
+        "warned": {
+          "speaker": "narrator",
+          "text": "One person walks away. It is not enough, but it is not nothing."
+        }
+      },
+      "repeatable": true
+    },
+    {
+      "id": "ev_street_shooting",
+      "chapter": 0,
+      "title": "Gunfire in Old Town",
+      "location": "backstreets",
+      "summary": "A street fight turns into a shooting.",
+      "trigger": {
+        "kind": "scheduled"
+      },
+      "start": "start",
+      "nodes": {
+        "start": {
+          "speaker": "narrator",
+          "text": "A bottle breaks, someone shouts a name, and then the first shot makes the whole lane duck at once.",
+          "choices": [
+            {
+              "id": "c_cover",
+              "label": "Pull a bystander behind cover.",
+              "next": "cover",
+              "effects": [
+                {
+                  "type": "skill",
+                  "key": "leadership",
+                  "delta": 1
+                },
+                {
+                  "type": "stat",
+                  "key": "wellbeing",
+                  "delta": 1
+                },
+                {
+                  "type": "counter",
+                  "key": "heat",
+                  "delta": -1
+                }
+              ]
+            },
+            {
+              "id": "c_run",
+              "label": "Run through the side lane.",
+              "next": "run",
+              "challenge": {
+                "kind": "puzzle",
+                "pool": "street_smarts",
+                "count": 2,
+                "passFraction": 0.5,
+                "onPass": {
+                  "next": "escaped",
+                  "effects": [
+                    {
+                      "type": "stat",
+                      "key": "energy",
+                      "delta": -5
+                    }
+                  ]
+                },
+                "onFail": {
+                  "next": "hurt",
+                  "effects": [
+                    {
+                      "type": "stat",
+                      "key": "health",
+                      "delta": -12
+                    },
+                    {
+                      "type": "stat",
+                      "key": "wellbeing",
+                      "delta": -6
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "id": "c_join",
+              "label": "Side with the crew.",
+              "next": "crew",
+              "effects": [
+                {
+                  "type": "counter",
+                  "key": "heat",
+                  "delta": 4
+                },
+                {
+                  "type": "counter",
+                  "key": "crimes",
+                  "delta": 1
+                },
+                {
+                  "type": "flag",
+                  "key": "crime_any"
+                },
+                {
+                  "type": "stat",
+                  "key": "discipline",
+                  "delta": -2
+                }
+              ]
+            }
+          ]
+        },
+        "cover": {
+          "speaker": "narrator",
+          "text": "The bystander cannot stop shaking. Neither can you."
+        },
+        "run": {
+          "speaker": "narrator",
+          "text": "The lane bends twice. Your feet decide before your brain can."
+        },
+        "escaped": {
+          "speaker": "narrator",
+          "text": "You get out with scraped palms and a new respect for quiet streets."
+        },
+        "hurt": {
+          "speaker": "narrator",
+          "text": "A splinter of brick or metal catches you. The hospital lights are too white."
+        },
+        "crew": {
+          "speaker": "narrator",
+          "text": "The crew remembers that you stood with them. So do the police."
+        }
+      },
+      "repeatable": true
+    }
+  ],
+  "exams": [
+    {
+      "id": "cfa_safe",
+      "name": "Cyber Forensics Aptitude",
+      "shortName": "CFA-Safe",
+      "version": "2026.1",
+      "fictional": true,
+      "disclaimer": "CFA-Safe is a fictional exam invented for LIFEVERSE. It uses original, defensive and ethics-focused questions, not real hacking instructions.",
+      "description": "A defensive cyber exam about evidence, incident response, privacy and safe reasoning. 6 questions in 12 minutes; +4 correct, -1 wrong.",
+      "pool": "cyber_forensics",
+      "questionCount": 6,
+      "durationSec": 720,
+      "marking": {
+        "correct": 4,
+        "wrong": -1
+      },
+      "weights": {
+        "performance": 0.7,
+        "preparation": 0.3
+      },
+      "preparation": {
+        "stats": {
+          "knowledge": 0.35,
+          "discipline": 0.2
+        },
+        "skills": {
+          "programming": 0.3,
+          "law": 0.15
+        },
+        "practicePerSolve": 2,
+        "practiceCap": 10
+      },
+      "tiers": [
+        {
+          "id": "analyst",
+          "label": "Cyber analyst certificate",
+          "minComposite": 62
+        },
+        {
+          "id": "foundation",
+          "label": "Foundation pass",
+          "minComposite": 45
+        },
+        {
+          "id": "none",
+          "label": "Did not qualify",
+          "minComposite": 0
+        }
+      ],
+      "maxAttempts": 3
+    },
+    {
+      "id": "bmet",
+      "name": "Biomedical Ethics & Triage Test",
+      "shortName": "BMET",
+      "version": "2026.1",
+      "fictional": true,
+      "disclaimer": "BMET is a fictional exam invented for LIFEVERSE. It focuses on patient safety, ethics and high-level biomedical reasoning; it is not medical advice.",
+      "description": "A biomedical ethics and triage exam for lab, clinic and public-health paths. 6 questions in 12 minutes; +4 correct, -1 wrong.",
+      "pool": "bioethics",
+      "questionCount": 6,
+      "durationSec": 720,
+      "marking": {
+        "correct": 4,
+        "wrong": -1
+      },
+      "weights": {
+        "performance": 0.7,
+        "preparation": 0.3
+      },
+      "preparation": {
+        "stats": {
+          "knowledge": 0.35,
+          "communication": 0.15,
+          "discipline": 0.15
+        },
+        "skills": {
+          "medicine": 0.25,
+          "law": 0.1
+        },
+        "practicePerSolve": 2,
+        "practiceCap": 10
+      },
+      "tiers": [
+        {
+          "id": "distinction",
+          "label": "Biomedical ethics distinction",
+          "minComposite": 65
+        },
+        {
+          "id": "pass",
+          "label": "Ethics pass",
+          "minComposite": 45
+        },
+        {
+          "id": "none",
+          "label": "Did not qualify",
+          "minComposite": 0
+        }
+      ],
+      "maxAttempts": 3
+    }
+  ],
+  "puzzles": [
+    {
+      "id": "cyber_safe_01",
+      "category": "debugging",
+      "difficulty": 1,
+      "pools": [
+        "cyber_underworld",
+        "cyber_forensics"
+      ],
+      "type": "mcq",
+      "prompt": "A company discovers customer data posted online. What is the safest first response?",
+      "options": [
+        "Hide the breach and hope it disappears",
+        "Preserve evidence, contain exposure and notify responsible parties",
+        "Buy the data quietly",
+        "Blame a junior employee immediately"
+      ],
+      "answer": 1,
+      "explanation": "Defensive response starts with preserving evidence, limiting further harm and following notification duties.",
+      "timeLimitSec": 90
+    },
+    {
+      "id": "cyber_safe_02",
+      "category": "logic",
+      "difficulty": 2,
+      "pools": [
+        "cyber_underworld",
+        "cyber_forensics"
+      ],
+      "type": "mcq",
+      "prompt": "Three accounts logged in after midnight. A has a normal device and normal city, B has a new device and new country, C has a normal device but impossible travel. Which two need urgent review?",
+      "options": [
+        "A and B",
+        "B and C",
+        "A and C",
+        "Only A"
+      ],
+      "answer": 1,
+      "explanation": "New country/device and impossible travel are stronger anomaly signals than a normal login.",
+      "timeLimitSec": 90
+    },
+    {
+      "id": "cyber_safe_03",
+      "category": "math",
+      "difficulty": 1,
+      "pools": [
+        "cyber_forensics"
+      ],
+      "type": "numeric",
+      "prompt": "A breach exposed 2,400 records. 35% included phone numbers. How many records included phone numbers?",
+      "answer": 840,
+      "explanation": "35% of 2,400 is 0.35 × 2,400 = 840 records.",
+      "timeLimitSec": 90,
+      "tolerance": 0,
+      "unit": "records"
+    },
+    {
+      "id": "cyber_safe_04",
+      "category": "case",
+      "difficulty": 2,
+      "pools": [
+        "cyber_underworld",
+        "cyber_forensics"
+      ],
+      "type": "mcq",
+      "prompt": "A friend offers you a folder of leaked exam accounts. What is the best choice?",
+      "options": [
+        "Use only one account",
+        "Sell it before anyone notices",
+        "Refuse, preserve minimal evidence and report through a safe channel",
+        "Post the folder publicly"
+      ],
+      "answer": 2,
+      "explanation": "The safest ethical path is to avoid using the data, avoid spreading it and report through a responsible channel.",
+      "timeLimitSec": 90
+    },
+    {
+      "id": "cyber_safe_05",
+      "category": "reading",
+      "difficulty": 2,
+      "pools": [
+        "cyber_forensics"
+      ],
+      "type": "mcq",
+      "passage": "An incident report should help responders understand what happened without destroying evidence or making unsupported claims.",
+      "prompt": "Which sentence best belongs in the report?",
+      "options": [
+        "The attacker was definitely an employee because employees are suspicious.",
+        "At 02:14, account X logged in from a new country; logs were preserved for review.",
+        "We deleted the logs to stop panic.",
+        "No action is needed because the website still loads."
+      ],
+      "answer": 1,
+      "explanation": "A good report records observable facts and preservation steps without jumping to unsupported blame.",
+      "timeLimitSec": 90
+    },
+    {
+      "id": "cyber_safe_06",
+      "category": "logic",
+      "difficulty": 3,
+      "pools": [
+        "cyber_underworld",
+        "cyber_forensics"
+      ],
+      "type": "mcq",
+      "prompt": "A marketplace seller asks for payment first, refuses escrow, changes names twice, and pressures you with a timer. What is the strongest conclusion?",
+      "options": [
+        "The timer proves the deal is real",
+        "It is likely a scam or sting",
+        "Changing names improves privacy",
+        "Refusing escrow is normal proof of trust"
+      ],
+      "answer": 1,
+      "explanation": "Pressure, identity changes and refusal of safeguards are major warning signs.",
+      "timeLimitSec": 90
+    },
+    {
+      "id": "bio_safe_01",
+      "category": "science",
+      "difficulty": 1,
+      "pools": [
+        "bio_underworld",
+        "bioethics"
+      ],
+      "type": "mcq",
+      "prompt": "A medical sample arrives without consent paperwork or chain-of-custody notes. What should happen first?",
+      "options": [
+        "Process it quickly",
+        "Reject or quarantine it and escalate to a supervisor",
+        "Relabel it with today's date",
+        "Send it to a friend for testing"
+      ],
+      "answer": 1,
+      "explanation": "Unknown consent and custody create safety, legal and ethical risks. Quarantine and escalation protect patients.",
+      "timeLimitSec": 90
+    },
+    {
+      "id": "bio_safe_02",
+      "category": "math",
+      "difficulty": 1,
+      "pools": [
+        "bioethics"
+      ],
+      "type": "numeric",
+      "prompt": "A clinic has 80 trial forms. 15% are missing signatures. How many forms are missing signatures?",
+      "answer": 12,
+      "explanation": "15% of 80 is 0.15 × 80 = 12 forms.",
+      "timeLimitSec": 90,
+      "tolerance": 0,
+      "unit": "forms"
+    },
+    {
+      "id": "bio_safe_03",
+      "category": "case",
+      "difficulty": 2,
+      "pools": [
+        "bio_underworld",
+        "bioethics"
+      ],
+      "type": "mcq",
+      "prompt": "A recruiter promises a guaranteed cure if patients pay cash before joining a trial. What is the biggest warning sign?",
+      "options": [
+        "The promise of a guaranteed cure",
+        "The room has chairs",
+        "The recruiter uses a pen",
+        "Patients ask questions"
+      ],
+      "answer": 0,
+      "explanation": "Ethical trials do not promise guaranteed cures. Exaggerated certainty is a serious red flag.",
+      "timeLimitSec": 90
+    },
+    {
+      "id": "bio_safe_04",
+      "category": "reading",
+      "difficulty": 2,
+      "pools": [
+        "bioethics"
+      ],
+      "type": "mcq",
+      "passage": "Informed consent means the person understands the purpose, risks, alternatives and right to refuse without punishment.",
+      "prompt": "Which situation violates informed consent?",
+      "options": [
+        "A patient asks for time to read the form",
+        "A patient refuses and still receives normal care",
+        "A recruiter hides risks so the patient will sign",
+        "A doctor explains alternatives"
+      ],
+      "answer": 2,
+      "explanation": "Hiding risks prevents meaningful consent because the patient cannot weigh the decision honestly.",
+      "timeLimitSec": 90
+    },
+    {
+      "id": "bio_safe_05",
+      "category": "logic",
+      "difficulty": 3,
+      "pools": [
+        "bio_underworld",
+        "bioethics"
+      ],
+      "type": "mcq",
+      "prompt": "A cold-chain log has entries at 8:00, 10:00, 12:00 and 16:00, but policy requires checks every 2 hours. Which interval is missing a check?",
+      "options": [
+        "8:00 to 10:00",
+        "10:00 to 12:00",
+        "12:00 to 16:00",
+        "No interval"
+      ],
+      "answer": 2,
+      "explanation": "The gap from 12:00 to 16:00 is four hours, so the 14:00 check is missing.",
+      "timeLimitSec": 90
+    },
+    {
+      "id": "bio_safe_06",
+      "category": "case",
+      "difficulty": 2,
+      "pools": [
+        "bio_underworld",
+        "bioethics"
+      ],
+      "type": "mcq",
+      "prompt": "You see forged trial stamps that could put patients at risk. What is the best response?",
+      "options": [
+        "Improve the forgery",
+        "Ignore it because paperwork is boring",
+        "Document concerns and report through a safe medical or legal channel",
+        "Sell the forms"
+      ],
+      "answer": 2,
+      "explanation": "Patient safety comes first. Documenting concerns and using a safe reporting channel reduces harm.",
+      "timeLimitSec": 90
+    }
+  ],
+  "achievements": [
+    {
+      "id": "cyber_tipster",
+      "title": "White Hat Whisper",
+      "description": "Helped stop a cybercrime path without becoming part of it.",
+      "condition": {
+        "type": "flag",
+        "key": "cyber_tipster"
+      }
+    },
+    {
+      "id": "digital_heat",
+      "title": "Digital Heat",
+      "description": "Got involved in cybercrime.",
+      "condition": {
+        "type": "flag",
+        "key": "cybercriminal"
+      },
+      "hidden": true
+    },
+    {
+      "id": "bio_whistleblower",
+      "title": "Patient First",
+      "description": "Reported biomedical fraud or unsafe samples.",
+      "condition": {
+        "type": "flag",
+        "key": "bio_whistleblower"
+      }
+    },
+    {
+      "id": "backroom_bio",
+      "title": "Backroom Biology",
+      "description": "Entered the biomedical black market.",
+      "condition": {
+        "type": "flag",
+        "key": "bio_black_market"
+      },
+      "hidden": true
+    }
+  ],
+  "epilogueLines": [
+    {
+      "when": {
+        "type": "flag",
+        "key": "cybercriminal"
+      },
+      "text": "Your digital crimes leave traces in places you cannot see."
+    },
+    {
+      "when": {
+        "type": "flag",
+        "key": "bio_black_market"
+      },
+      "text": "Backroom biomedical work paid quickly, but every clinic now feels like a question."
+    }
+  ]
+}
